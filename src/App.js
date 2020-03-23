@@ -4,7 +4,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1> Hello, React</h1>
+        <h1> Hello, Git Successfully Added</h1>
       </header>
     </div>
   );
