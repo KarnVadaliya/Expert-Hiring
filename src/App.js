@@ -4,7 +4,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1> Hello, Git Successfully Added from command line</h1>
+        <h1> Hello, Git Successfully Added from Karn</h1>
       </header>
     </div>
   );
