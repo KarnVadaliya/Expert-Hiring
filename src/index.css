@@ -12,3 +12,19 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.serviceBar{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  background-color: #f4f4f4;
+}
+.serviceItem{
+  list-style-type: none;
+  padding: 0.5em;
+  margin: 1em;
+}
+.serviceItem:hover{
+  transform: scale(1.3);
+}
