@@ -245,7 +245,7 @@ class NavbarComponent extends Component {
               className="modal-dialog-centered"
               size="sm"
               isOpen={this.state.signUpModal}
-              toggle={() => this.toggleModal("signUpModal")}
+              toggle={() => this.toggleModal("signUpModal") }
             >
               <div className="modal-body p-0">
                 <Card className="bg-secondary shadow border-0">
