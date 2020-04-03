@@ -2,6 +2,7 @@ import React from 'react';
 import Navbar from './components/NavbarComponent';
 import Searchbar from './components/Searchbar';
 
+import ServiceBar from './components/ServiceBarComponent';
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
         <Navbar></Navbar>
         <Searchbar></Searchbar>
         {/* {console.log(this.state.service)} */}
+        <ServiceBar></ServiceBar>
       </header>
     </div>
   );
