@@ -136,7 +136,8 @@ class NavbarComponent extends Component {
             
               <Nav className="ml-lg-auto" navbar>
                 <Button color="white" outline 
-                        type="button" 
+                        type="button"
+                        size="sm" 
                         onClick={() => this.toggleModal("loginSignUpModal")}>
                         Login / Sign Up
                 </Button>
