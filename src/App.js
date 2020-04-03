@@ -1,5 +1,6 @@
 import React from 'react';
 import Navbar from './components/NavbarComponent';
+import Searchbar from './components/Searchbar';
 
 
 function App() {
@@ -7,6 +8,8 @@ function App() {
     <div className="App">
       <header className="App-header">
         <Navbar></Navbar>
+        <Searchbar></Searchbar>
+        {/* {console.log(this.state.service)} */}
       </header>
     </div>
   );

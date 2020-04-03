@@ -12,3 +12,14 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.header{
+  background-image: url('header.png');
+  background-position:center;
+  background-repeat:no-repeat;
+  background-size:cover;
+  margin-top: -25px;
+  padding: 5%;
+
+
+}
