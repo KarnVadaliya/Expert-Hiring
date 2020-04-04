@@ -36,7 +36,9 @@ class NavbarComponent extends Component {
 
 
     state = {
-      defaultModal: false
+      defaultModal: false,
+      service : '',
+      city: ''
     };
 
     toggleModal = state => {
@@ -245,7 +247,9 @@ class NavbarComponent extends Component {
               className="modal-dialog-centered"
               size="sm"
               isOpen={this.state.signUpModal}
-              toggle={() => this.toggleModal("signUpModal") }
+              toggle={() => {this.toggleModal("signUpModal");
+              this.toggleModal("loginSignUpModal");
+              }}
             >
               <div className="modal-body p-0">
                 <Card className="bg-secondary shadow border-0">
@@ -347,7 +351,6 @@ class NavbarComponent extends Component {
             </UncontrolledCollapse>
           </Container>
         </Navbar>
-
 
          
            
