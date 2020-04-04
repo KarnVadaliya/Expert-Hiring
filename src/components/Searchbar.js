@@ -21,7 +21,7 @@ export default class Searchbar extends Component {
 
     state={
         currentCity:'Ahmedabad',
-        cities: ['Boston','Bangalore','New Jersey'],
+        cities: ['Boston','Bangalore','New Jersey', 'New York'],
         // cities: []
     }
 
