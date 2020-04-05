@@ -12345,7 +12345,7 @@ a.btn-icon-only {
     right: 0;
     top: 600px;
     height: 2000px;
-    background: #f4f5f7;
+    background: black;
     transform: skew(0, -8deg); }
   .footer.has-cards .container {
     pointer-events: auto;

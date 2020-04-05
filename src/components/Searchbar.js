@@ -21,7 +21,7 @@ export default class Searchbar extends Component {
 
     state={
         currentCity:'Ahmedabad',
-        cities: ['Boston','Bangalore','New Jersey'],
+        cities: ['Boston','Bangalore','New Jersey', 'New York'],
         // cities: []
     }
 
@@ -48,7 +48,7 @@ export default class Searchbar extends Component {
 
         return (
             <div className="header" style={{marginTop:""}}>
-                <h1 className="display-1" style={{textAlign:"center", color:"white"}}>Your Service Expert in Ahmedabad</h1>
+                <h1 className="display-1" style={{textAlign:"center", color:"white"}}>Your service expert in {this.state.currentCity}</h1>
                 <br></br>
                 <div id="wrapper" style={{display:"flex"}}>
                     <div style={{flex:"45%", textAlign:"right"}}>
