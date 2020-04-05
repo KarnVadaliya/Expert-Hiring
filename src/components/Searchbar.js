@@ -14,14 +14,14 @@ import {
     Col
 } from "reactstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLocationArrow } from '@fortawesome/free-solid-svg-icons';
+import { faLocationArrow, faSearch } from '@fortawesome/free-solid-svg-icons';
 
 
 export default class Searchbar extends Component {
 
     state={
         currentCity:'Ahmedabad',
-        cities: ['Boston','Bangalore','New Jersey'],
+        cities: ['Boston','Bangalore','New Jersey', 'New York'],
         // cities: []
     }
 
@@ -53,8 +53,9 @@ export default class Searchbar extends Component {
                 <div id="wrapper" style={{display:"flex"}}>
                     <div style={{flex:"45%", textAlign:"right"}}>
                         <UncontrolledDropdown>
-                        <DropdownToggle caret color="default">
-                            <FontAwesomeIcon icon={faLocationArrow} style={{paddingRight:"7px"}}></FontAwesomeIcon>
+                        <DropdownToggle caret color="white">
+                            {/* <FontAwesomeIcon icon={faLocationArrow} style={{paddingRight:"7px"}}></FontAwesomeIcon> */}
+                            <i style={{paddingRight:"9px"}}className="fa fa-location-arrow" />
                             Ahmedabad
                         </DropdownToggle>
                         <DropdownMenu>
@@ -68,10 +69,10 @@ export default class Searchbar extends Component {
                             <InputGroup className="mb-4">
                             <InputGroupAddon addonType="prepend">
                                 <InputGroupText>
-                                <i className="ni ni-zoom-split-in" />
+                                <i className="fa fa-search" />
                                 </InputGroupText>
                             </InputGroupAddon>
-                            <Input placeholder="Search for a service in your city.." type="text" />
+                            <Input placeholder="Search for a service" type="text" />
                             </InputGroup>
                         </FormGroup>
                         </Col>                  
