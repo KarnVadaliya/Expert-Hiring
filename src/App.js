@@ -10,7 +10,6 @@ function App() {
       <header className="App-header">
         <Navbar></Navbar>
         <Searchbar></Searchbar>
-        {/* {console.log(this.state.service)} */}
         <ServiceBar></ServiceBar>
       </header>
     </div>
