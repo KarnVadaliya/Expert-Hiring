@@ -4,6 +4,8 @@ import Searchbar from './components/Searchbar';
 
 import ServiceBar from './components/ServiceBarComponent';
 
+import Services from './components/ServicesComponent';
+
 function App() {
   return (
     <div className="App">
@@ -12,6 +14,7 @@ function App() {
         <Searchbar></Searchbar>
         {/* {console.log(this.state.service)} */}
         <ServiceBar></ServiceBar>
+        <Services></Services>
       </header>
     </div>
   );
