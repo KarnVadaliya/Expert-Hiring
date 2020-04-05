@@ -38,3 +38,74 @@ code {
 .serviceItem:hover{
   transform: scale(1.2);
 }
+
+.service{
+  height: auto;
+  margin: 5px;
+  top : 10px;
+  padding: 30px;
+}
+
+.service h5{
+  font-size: 1.7em;
+  color: black;
+  margin-top: 5px;
+}
+
+.servicesNav{
+  margin-left: 2em;
+  margin-top: 2em;
+  position: sticky;
+  top: 1em;
+  width: 300px;
+  float: left;
+  
+}
+
+.servicesNav a{
+  font-size: 1.5em;
+  text-align: center;
+  color: black;
+}
+
+.servicesNav a:hover{
+ font-weight: bold;
+}
+.is-current a{
+  font-weight: bold;
+}
+
+
+li{
+  list-style-type: none;
+}
+
+
+.servicesDescription{
+  margin-left: 320px;
+}
+
+.serviceContent{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+ 
+}
+
+.serviceCell{
+  box-shadow: 1px 2px 2px 1px #888888;
+  margin: 2em;
+}
+
+.serviceCell h6{
+  text-align: center;
+  padding: 8px;
+}
+
+.serviceCell img{
+  width: 275px;
+  height: 180px;
+}
+
+
