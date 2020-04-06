@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Searchbar from './Searchbar';
-import ServiceBar from './ServiceBarComponent';
-import Services from './ServicesComponent';
+import ServiceBar from './ServiceBar';
+import Services from './Services';
 
 export default class Home extends Component {
     render() {

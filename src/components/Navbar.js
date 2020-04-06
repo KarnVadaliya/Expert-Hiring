@@ -7,7 +7,6 @@ import LogModal from './LogModal';
 
 import {
     UncontrolledCollapse,
-    Button,
     DropdownItem,
     DropdownToggle,
     DropdownMenu,
@@ -88,18 +87,15 @@ class NavbarComponent extends Component {
                             left
                           >
                             <Link to="/about">
-                            <DropdownItem
-                              // onClick={e => e.preventDefault()}
-                            >
+                            <DropdownItem>
                               About Us
                             </DropdownItem>
                             </Link>
-                            <DropdownItem
-                              href="#pablo"
-                              onClick={e => e.preventDefault()}
-                            >
+                            <Link to="/contact">
+                            <DropdownItem>
                               Contact Us
                             </DropdownItem>
+                            </Link>
                             <DropdownItem
                               href="#pablo"
                               onClick={e => e.preventDefault()}

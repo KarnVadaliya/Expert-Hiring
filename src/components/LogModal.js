@@ -89,8 +89,8 @@ export default class LogModal extends Component {
     render() {
     
         return (
-            <div>
-            <Nav className="ml-lg-auto" navbar>
+            <div className="ml-lg-auto">
+            <Nav navbar>
                 <Button color="white" outline 
                         type="button"
                         size="sm" 
@@ -297,6 +297,22 @@ export default class LogModal extends Component {
                         </Button>
                       </div>
                     </Form>
+
+                    <div className="mt-3 row">
+                      <div>
+
+                        <small>Already a Member? </small> 
+                        <a
+                        href="#pablo"
+                        onClick={() => this.toggleModal("signUpModal")}
+                        className ="text-default"
+                        >
+                        <small> Login Here!</small> 
+                        </a>
+
+                      </div>
+
+                    </div>
                    
                   </CardBody>
                 </Card>

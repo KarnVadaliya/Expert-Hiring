@@ -9,7 +9,7 @@ class ServicesComponent extends Component{
 
                 <div className="servicesSection">
                     <div className="servicesNav">
-                        <h3 style={{fontWeight:"bold",color:"black",letterSpacing:"1.5px"}}>CATEGORIES</h3>
+                        <h3 style={{fontWeight:"600",color:"black",letterSpacing:"0.8px"}}>All Categories</h3>
                         <Scrollspy items={ ['Salon', 'Massage', 'Appliance','Electronic','Cleaning','Home-Service','Fitness'] } currentClassName="is-current">
                             <li><a href="#Salon">Salon</a></li>
                             <li><a href="#Massage">Massage</a></li>
