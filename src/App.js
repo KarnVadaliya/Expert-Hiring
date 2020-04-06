@@ -6,6 +6,8 @@ import Footer from './components/Footer';
 
 import ServiceBar from './components/ServiceBarComponent';
 
+import Services from './components/ServicesComponent';
+
 function App() {
   return (
     <div className="App">
@@ -13,6 +15,7 @@ function App() {
         <Navbar></Navbar>
         <Searchbar></Searchbar>
         <ServiceBar></ServiceBar>
+        <Services></Services>
         <Footer/>
       </header>
     </div>
