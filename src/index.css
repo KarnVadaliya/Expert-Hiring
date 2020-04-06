@@ -47,7 +47,7 @@ code {
 }
 
 .service h5{
-  font-size: 1.7em;
+  font-size: 1.5em;
   color: black;
   margin-top: 5px;
 }
@@ -63,13 +63,14 @@ code {
 }
 
 .servicesNav a{
-  font-size: 1.5em;
+  font-size: 1.3em;
   text-align: center;
   color: black;
+  line-height: 2em;
 }
 
 .servicesNav a:hover{
- font-weight: bold;
+ font-weight: 600;
 }
 .is-current a{
   font-weight: bold;
