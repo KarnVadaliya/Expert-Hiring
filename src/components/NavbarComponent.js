@@ -33,9 +33,11 @@ class NavbarComponent extends Component {
           expand="lg"
             >
           <Container>
-            <NavbarBrand href="#pablo" onClick={e => e.preventDefault()}>
+          <Link to="/" style={{color:"white"}}>
+            <NavbarBrand>
              BRAND NAME
             </NavbarBrand>
+          </Link>
             <button
               aria-controls="navbar-primary"
               aria-expanded={false}
@@ -85,12 +87,13 @@ class NavbarComponent extends Component {
                             aria-labelledby="nav-inner-primary_dropdown_1"
                             left
                           >
+                            <Link to="/about">
                             <DropdownItem
-                              href="#pablo"
-                              onClick={e => e.preventDefault()}
+                              // onClick={e => e.preventDefault()}
                             >
                               About Us
                             </DropdownItem>
+                            </Link>
                             <DropdownItem
                               href="#pablo"
                               onClick={e => e.preventDefault()}

@@ -13,14 +13,23 @@ import {
     Button,
     Nav
 } from "reactstrap";
+import axios from 'axios';
 
 export default class LogModal extends Component {
 
-    state = {
+    constructor(props){
+      super(props);
+
+      this.state = {
         defaultModal: false,
         service : '',
-        city: ''
+        city: '',
+        email: '',
+        name: '',
+        password: ''
       };
+    }
+
   
     toggleModal = state => {
         this.setState({
@@ -28,7 +37,57 @@ export default class LogModal extends Component {
         });
       };
 
+    handleOnChange = e =>{
+      this.setState({
+        [e.target.name]: e.target.value
+      });
+    }
+
+    handleSubmit = e =>{
+      e.preventDefault();
+
+      
+
+      const user = {
+        email: this.state.email,
+        name: this.state.name,
+        password: this.state.password
+      };
+
+      axios.post('http://localhost:5000/users/add',
+      {
+        email: this.state.email,
+        name: this.state.name,
+        password: this.state.password
+      },{
+        "headers": {
+          'Content-Type': 'application/json',
+        }
+      })
+        .then(res=>{
+          console.log(res.data);
+          
+        })
+        .catch(err=>console.log(err));
+
+      console.log(user);
+
+      this.setState({
+        defaultModal: false,
+        service : '',
+        city: '',
+        email: '',
+        name: '',
+        password: ''
+      })
+
+      window.location = '/';
+      
+      
+    }
+
     render() {
+    
         return (
             <div>
             <Nav className="ml-lg-auto" navbar>
@@ -181,7 +240,7 @@ export default class LogModal extends Component {
                               <i className="ni ni-circle-08" />
                             </InputGroupText>
                           </InputGroupAddon>
-                          <Input placeholder="Name" type="text" />
+                          <Input placeholder="Name" type="text" name="name" onChange={this.handleOnChange} required value={this.state.name}/>
                         </InputGroup>
                       </FormGroup>
                       <FormGroup className="mb-3">
@@ -191,7 +250,7 @@ export default class LogModal extends Component {
                               <i className="ni ni-email-83" />
                             </InputGroupText>
                           </InputGroupAddon>
-                          <Input placeholder="Email" type="email" />
+                          <Input placeholder="Email" type="email" name="email" onChange={this.handleOnChange} required value={this.state.email}/>
                         </InputGroup>
                       </FormGroup>
                       <FormGroup>
@@ -201,7 +260,7 @@ export default class LogModal extends Component {
                               <i className="ni ni-lock-circle-open" />
                             </InputGroupText>
                           </InputGroupAddon>
-                          <Input placeholder="Password" type="password" />
+                          <Input placeholder="Password" type="password" name="password" onChange={this.handleOnChange} required value={this.state.password}/>
                         </InputGroup>
                       </FormGroup>
 
@@ -232,6 +291,7 @@ export default class LogModal extends Component {
                           className="my-4"
                           color="default"
                           type="button"
+                          onClick={this.handleSubmit}
                         >
                           Create Account
                         </Button>
