@@ -83,6 +83,7 @@ export default class LogModal extends Component {
 
       window.location = '/';
       
+      
     }
 
     render() {
