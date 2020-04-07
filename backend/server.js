@@ -20,7 +20,10 @@ const PORT = process.env.PORT || 5000;
 
 const userRouter = require('./routes/users');
 app.use('/users',userRouter);
+//localhost:5000/users => userRouter
 
+// 1)Log in
+// 2)Register
 
 
 app.listen(PORT, () => {

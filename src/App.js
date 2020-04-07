@@ -14,11 +14,14 @@ function App() {
         <Navbar></Navbar>
         <Route path="/" exact component={Home}></Route>  
         <Route path="/about" component={AboutUs}></Route>  
-        <Route path="/contact" component={ContactUs}></Route>     
+        <Route path="/contact" component={ContactUs}></Route> 
+        {/* <Route path="/party" component={Party}></Route>     */}
         <Footer></Footer>
     </div>
     </BrowserRouter>
   );
 }
+
+//routes define
 
 export default App;
