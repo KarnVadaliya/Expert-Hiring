@@ -23,8 +23,7 @@ import {
   } from "reactstrap";
 
 
-class NavbarComponent extends Component {
-
+class NavbarComponent extends Component {    
     render(){
         return(
           
@@ -86,8 +85,7 @@ class NavbarComponent extends Component {
                             left
                           >
                             <DropdownItem
-                              href="#pablo"
-                              onClick={e => e.preventDefault()}
+                              tag={Link} to={`/aboutUs`}
                             >
                               About Us
                             </DropdownItem>
