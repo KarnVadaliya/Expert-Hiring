@@ -137,6 +137,7 @@ class Footer extends React.Component {
                       </NavLink>
                     </NavItem>
                   </Link>
+                  
                   <NavItem>
                     <NavLink
                       href="https://github.com/creativetimofficial/argon-design-system-react/blob/master/LICENSE.md"
