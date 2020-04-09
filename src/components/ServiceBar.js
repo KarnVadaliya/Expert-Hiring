@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 
-
-
-
 class ServiceBarComponet extends Component{
     render(){
         return(
