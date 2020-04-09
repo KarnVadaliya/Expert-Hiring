@@ -8,6 +8,8 @@ import ServiceBar from './components/ServiceBarComponent';
 
 import Services from './components/ServicesComponent';
 
+import Makeup from './components/Makeup';
+
 function App() {
   return (
     <div className="App">
@@ -16,6 +18,7 @@ function App() {
         <Searchbar></Searchbar>
         <ServiceBar></ServiceBar>
         <Services></Services>
+        <Makeup></Makeup>
         <Footer/>
       </header>
     </div>
