@@ -95,20 +95,6 @@ export default (state = initialState, action) => {
                 showCart: !state.showCart
             }
         case REMOVE_PRODUCT_CART:
-            // let tempList = {};
-            // for(var product in state.products){
-            //     if(state.products[product].id != action.payload){
-            //         let removeQuantity = state.products[action.payload];
-            //         removeQuantity.quantity = state.products[action.payload].quantity - 1;
-                    // if(removeQuantity == 0)
-                    //     removeQuantity.inCart = false;
-                    // else
-                    //     removeQuantity.inCart = true;
-                   
-            //         tempList[state.products[product].id] = removeQuantity
-            //     }
-                    
-            // }
             let removeQuantity = {...state.products[action.payload]};
             removeQuantity.quantity -= 1;
             if(removeQuantity.quantity < 0 ) removeQuantity.quantity = 0;
@@ -116,10 +102,6 @@ export default (state = initialState, action) => {
                 removeQuantity.inCart = false;
             else
                 removeQuantity.inCart = true;
-
-            // console.log(addQuantity);
-
-            // console.log(tempList);
             return{
                 ...state,
                 cartNumbers: state.cartNumbers - 1,
