@@ -1,28 +1,8 @@
-/*!
-
-=========================================================
-* Argon Design System React - v1.1.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/argon-design-system-react
-* Copyright 2020 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://github.com/creativetimofficial/argon-design-system-react/blob/master/LICENSE.md)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
-/*eslint-disable*/
 import React from "react";
 import { Link, BrowserRouter } from "react-router-dom";
 // reactstrap components
 import {
   Button,
-  Card,
-  CardImg,
   NavItem,
   NavLink,
   Nav,
@@ -44,30 +24,26 @@ class Footer extends React.Component {
                 <h5 className="text-primary font-weight-bold mb-2">
                   Location
                 </h5>
-                {/* <h4 className="mb-0 font-weight-bold">
-                  Serving in
-                </h4> */}
+
                 <Row>
                     <Col md="4" xs="3">
                         <span>Ahmedabad</span>
                     </Col>
                     <Col md="4" xs="3">
-                        <span>Ahmedabad</span>
+                        <span>Boston</span>
                     </Col>
                     <Col md="4" xs="3">
-                        <span>Ahmedabad</span>
+                        <span>New York</span>
                     </Col>
                     <Col md="4" xs="3">
-                        <span>Ahmedabad</span>
+                        <span>New Jersey</span>
                     </Col>
                     <Col md="4" xs="3">
-                        <span>Ahmedabad</span>
+                        <span>San Fransico</span>
                     </Col>
                     <Col md="4" xs="3">
-                        <span>Ahmedabad</span>
+                        <span>Mumbai</span>
                     </Col>
-                   
-                    
                 </Row>
               </Col>
               <Col className="text-lg-center btn-wrapper" lg="6">
@@ -146,22 +122,22 @@ class Footer extends React.Component {
               <Col md="6">
                 <Nav className="nav-footer justify-content-end">
                   
-                  <NavItem>
-                    <NavLink
-                      href="https://www.creative-tim.com/presentation?ref=adsr-footer"
-                      target="_blank"
-                    >
-                      About Us
-                    </NavLink>
-                  </NavItem>
-                  <NavItem>
-                    <NavLink
-                      href="http://blog.creative-tim.com?ref=adsr-footer"
-                      target="_blank"
-                    >
-                      Contact Us
-                    </NavLink>
-                  </NavItem>
+                  <Link to = "/about">
+                    <NavItem>
+                      <NavLink>
+                        About Us
+                      </NavLink>
+                    </NavItem>
+                  </Link>
+
+                  <Link to = "/contact">
+                    <NavItem>
+                      <NavLink>
+                        Contact Us
+                      </NavLink>
+                    </NavItem>
+                  </Link>
+                  
                   <NavItem>
                     <NavLink
                       href="https://github.com/creativetimofficial/argon-design-system-react/blob/master/LICENSE.md"

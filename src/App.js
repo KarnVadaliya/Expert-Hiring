@@ -1,27 +1,26 @@
 import React from 'react';
-import Navbar from './components/NavbarComponent';
-import Searchbar from './components/Searchbar';
-// import CardsFooter from '../node_modules/argon-design-system-react/src/components/Footers/CardsFooter';
+import Navbar from './components/Navbar';
+
+import { BrowserRouter, Route } from 'react-router-dom';
+import Home from './components/Home';
+import AboutUs from './components/AboutUs';
+import ContactUs from './components/ContactUs';
 import Footer from './components/Footer';
-
-import ServiceBar from './components/ServiceBarComponent';
-
-import Services from './components/ServicesComponent';
 
 import Makeup from './components/Makeup';
 
 function App() {
   return (
+    <BrowserRouter>
     <div className="App">
-      <header className="App-header">
         <Navbar></Navbar>
-        <Searchbar></Searchbar>
-        <ServiceBar></ServiceBar>
-        <Services></Services>
-        <Makeup></Makeup>
-        <Footer/>
-      </header>
+        <Route path="/" exact component={Home}></Route>  
+        <Route path="/about" component={AboutUs}></Route>  
+        <Route path="/contact" component={ContactUs}></Route>  
+        <Route path="/makeup" component={Makeup} ></Route>  
+        <Footer></Footer>
     </div>
+    </BrowserRouter>
   );
 }
 
