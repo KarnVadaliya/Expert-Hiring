@@ -67,6 +67,7 @@ code {
   text-align: center;
   color: black;
   line-height: 2em;
+ 
 }
 
 .servicesNav a:hover{
@@ -110,3 +111,22 @@ li{
 }
 
 
+.btn-is-current .btn{
+  background-color: rgb(55, 87,146);
+  color: white;
+}
+
+/* 55, 87,146 */
+
+.cartAtBottom{
+  background-color: white;
+  width: 400px;
+  height: 60px;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  /* border:1px solid black; */
+  /* border-radius: 1%; */
+  overflow: hidden;
+  z-index: 20;
+}

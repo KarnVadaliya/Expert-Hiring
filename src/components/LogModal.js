@@ -81,7 +81,11 @@ export default class LogModal extends Component {
         password: ''
       })
 
-      window.location = '/';
+      this.toggleModal("signUpModal");
+      this.toggleModal("loginSignUpModal");
+
+      // window.location = '/';
+
 
       
     }
