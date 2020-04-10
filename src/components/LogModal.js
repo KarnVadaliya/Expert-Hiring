@@ -81,8 +81,12 @@ export default class LogModal extends Component {
         password: ''
       })
 
-      window.location = '/';
-      
+      this.toggleModal("signUpModal");
+      this.toggleModal("loginSignUpModal");
+
+      // window.location = '/';
+
+
       
     }
 
@@ -298,7 +302,7 @@ export default class LogModal extends Component {
                       </div>
                     </Form>
 
-                    <div className="mt-3 row">
+                    <div className="mt-3" style={{textAlign:"center"}}>
                       <div>
 
                         <small>Already a Member? </small> 

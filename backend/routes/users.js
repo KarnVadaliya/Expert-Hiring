@@ -21,4 +21,8 @@ router.route('/add').post((req,res)=>{
         .catch(error=>res.status(400).json('Error: '+error));
 });
 
+//delete
+
+//put
+
 module.exports = router;
