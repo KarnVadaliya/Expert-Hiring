@@ -23,11 +23,14 @@ const PORT = process.env.PORT || 5000;
 
 const userRouter = require('./routes/users');
 app.use('/users',userRouter);
+//localhost:5000/users => userRouter
+
 
 app.use(passport.initialize());
 app.use(passport.session());
 
 const User = require('./models/users.model'); 
+
 
 passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser((user, cb) => {
