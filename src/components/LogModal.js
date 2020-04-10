@@ -24,8 +24,8 @@ export default class LogModal extends Component {
         defaultModal: false,
         service : '',
         city: '',
-        email: '',
         name: '',
+        username: '',
         password: ''
       };
     }
@@ -43,21 +43,45 @@ export default class LogModal extends Component {
       });
     }
 
+
+    handleLoginSubmit = e =>{
+      e.preventDefault();
+
+      const user = {
+        username: this.state.username,
+        password: this.state.password
+      };
+
+      axios.post('http://localhost:5000/users/login',
+      {
+        username: this.state.username,
+        password: this.state.password
+      },{
+        "headers": {
+          'Content-Type': 'application/json',
+        }
+      })
+        .then(res => {
+          console.log(res.data);
+          
+        })
+        .catch(err=>console.log(err));
+    }
+
+
     handleSubmit = e =>{
       e.preventDefault();
 
-      
-
       const user = {
-        email: this.state.email,
         name: this.state.name,
+        username: this.state.username,
         password: this.state.password
       };
 
       axios.post('http://localhost:5000/users/add',
       {
-        email: this.state.email,
         name: this.state.name,
+        username: this.state.username,
         password: this.state.password
       },{
         "headers": {
@@ -76,15 +100,20 @@ export default class LogModal extends Component {
         defaultModal: false,
         service : '',
         city: '',
-        email: '',
+        username: '',
         name: '',
         password: ''
       })
 
-      window.location = '/';
-      
+      this.toggleModal("signUpModal");
+      this.toggleModal("loginSignUpModal");
+
+      // window.location = '/';
+
+
       
     }
+
 
     render() {
     
@@ -140,7 +169,7 @@ export default class LogModal extends Component {
                               <i className="ni ni-email-83" />
                             </InputGroupText>
                           </InputGroupAddon>
-                          <Input placeholder="Email" type="email" />
+                          <Input placeholder="Email" type="email" name="username" onChange={this.handleOnChange} />
                         </InputGroup>
                       </FormGroup>
                       <FormGroup>
@@ -150,7 +179,7 @@ export default class LogModal extends Component {
                               <i className="ni ni-lock-circle-open" />
                             </InputGroupText>
                           </InputGroupAddon>
-                          <Input placeholder="Password" type="password" />
+                          <Input placeholder="Password" type="password" name="password" onChange={this.handleOnChange} />
                         </InputGroup>
                       </FormGroup>
                       
@@ -159,6 +188,7 @@ export default class LogModal extends Component {
                           className="my-4"
                           color="default"
                           type="button"
+                          onClick={this.handleLoginSubmit}
                         >
                           Login
                         </Button>
@@ -250,7 +280,7 @@ export default class LogModal extends Component {
                               <i className="ni ni-email-83" />
                             </InputGroupText>
                           </InputGroupAddon>
-                          <Input placeholder="Email" type="email" name="email" onChange={this.handleOnChange} required value={this.state.email}/>
+                          <Input placeholder="Email" type="email" name="username" onChange={this.handleOnChange} required value={this.state.username}/>
                         </InputGroup>
                       </FormGroup>
                       <FormGroup>
@@ -298,7 +328,7 @@ export default class LogModal extends Component {
                       </div>
                     </Form>
 
-                    <div className="mt-3 row">
+                    <div className="mt-3" style={{textAlign:"center"}}>
                       <div>
 
                         <small>Already a Member? </small> 
