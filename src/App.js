@@ -9,6 +9,7 @@ import Footer from './components/Footer';
 import SofaCleaning from './components/Cleaning/SofaCleaning';
 import Example from './components/Example';
 import MakeUp from './components/Services/Makeup';
+import SalonAtHome from './components/Services/SalonAtHome';
 
 
 
@@ -21,6 +22,7 @@ function App() {
           <Route path="/about" component={AboutUs}></Route>  
           <Route path="/contact" component={ContactUs}></Route> 
           <Route path="/makeup" component={MakeUp}></Route> 
+          <Route path="/salon-at-home" component={SalonAtHome}></Route> 
           <Route path="/cleaning/sofaCleaning" component={SofaCleaning}></Route>
           <Route path="/example" component={Example}></Route>
           <Footer></Footer>
