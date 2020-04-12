@@ -1,9 +1,10 @@
 
 
 .serviceBg{
-    height: 350px;
+    height: 400px;
     opacity: 90%;
     margin-top: -41px;
+    filter: brightness(.9);
   }
   
   .serviceBg h2{
@@ -66,6 +67,7 @@
   .info p {
     font-size: 0.85em;
     margin-top: -0.7em;
+    font-weight: 500;
   }
 
   .info h5 {
@@ -74,6 +76,15 @@
       font-weight: bold;
     
   }
+
+  .info h6 {
+      
+    margin-left: 20px;
+    color: #525F7F;
+    font-size: 0.9em;
+    margin-top: -10px;
+  
+}
   
   .info h4{
     margin-left: 20px;
@@ -116,7 +127,8 @@
   
   .initial{
     float: left;
-    background-color: white;
+    background-color: grey;
+    color: white;
     text-align: center;
     vertical-align: middle;
     line-height: 50px;
@@ -124,13 +136,73 @@
     width: 50px;
     height: 50px;
   }
+
+  .professionalsDetails .name {
+    color: black;
+    font-weight: 550;
+  }
+
+  .professionalsDetails p {
+    margin-top: 0.6em;
+    font-weight: 550;
+
+  }
+
+  .professionalsDetails .rating{
+    font-size: 0.9em;
+    color: #5300a5;
+    font-weight: 550;
+  }
   
   .professionalsDetails button{
     border-radius: 23px;
-    border: none;
+    border: 1px solid #d4d4d4;
+    color: #424242;
+    background-color: #FFFFFF;
     text-align: center;
-    padding: 2px;
+    padding: 8px 16px;
     clear: both;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+  }
+
+  .professionalsDetails button:hover{
+    border: 1px solid black;
+  }
+
+  .info button{
+    border-radius: 23px;
+    border: 1px solid #d4d4d4;
+    color: #424242;
+    background-color: #FFFFFF;
+    text-align: center;
+    padding: 8px 16px;
+    clear: both;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+  }
+
+  .info button:hover{
+    border: 1px solid black;
+  }
+
+
+
+  .review .rname {
+
+    color: black;
+    font-size: 0.9em;
+    font-weight: 550;
+
+  }
+
+  .review p {
+   
+    font-size: 0.85em;
+    font-weight: 500;
+    color: #525F7F;
   }
   
   .reviews p{
@@ -144,6 +216,20 @@
   }
   .reviewer .rname {
     margin-left: 10px;
+    font-size: 0.85em;
+  }
+
+  .reviewer .initial {
+    
+    float: left;
+    background-color: grey;
+    color: white;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 40px;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
   }
   
   .serviceBox{
@@ -217,4 +303,11 @@
 
     font-size: 1.50em;
     font-weight: 700;
+  }
+
+  .crating {
+    font-size: 1.2em;
+    font-weight: 550;
+    margin-top: 1em;
+    margin-left: 1em;
   }

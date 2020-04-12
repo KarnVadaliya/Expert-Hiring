@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "../../assets/vendor/nucleo/css/nucleo.css";
 import "../../assets/vendor/font-awesome/css/font-awesome.min.css";
 import "../../assets/scss/argon-design-system-react.scss";
-import Background from '../../assets/img/serviceBackgrounds/makeupBg.jpg'
+import Background from '../../assets/img/serviceBackgrounds/salonBg.jpeg'
 import './services.css'
 import Scrollspy from 'react-scrollspy'
 
@@ -14,7 +14,7 @@ class Makeup extends Component{
         return(
             <div className="sevice" style={{backgroundColor:"#F5F5F5"}}>
                 <div className="serviceBg" style={{backgroundImage: `url(${Background})`}}>
-                    <h2>Makeup and Styling Service in ****** </h2>
+                    <h2>Salon At Home</h2>
                 </div>
                 <div className="info">
 
@@ -199,9 +199,9 @@ class Makeup extends Component{
                     <div className="serviceBoxButtons">
                         <h4>Need a Beautician for :</h4>
                         <div className="serviceButtonGroup">
-                            <button>Makeup<i className="fa fa-chevron-right"></i></button>
-                            <button>Hair-Styling<i className="fa fa-chevron-right"></i></button>
-                            <button>Grooming<i className="fa fa-chevron-right"></i></button>
+                            <button>Waxing & Threading<i className="fa fa-chevron-right"></i></button>
+                            <button>Manicure + Pedicure<i className="fa fa-chevron-right"></i></button>
+                            <button>Facial & Hair Services<i className="fa fa-chevron-right"></i></button>
                         </div>
                     </div>
                     <div className="serviceBoxRatings" >
