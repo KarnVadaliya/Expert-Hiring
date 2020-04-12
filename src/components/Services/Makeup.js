@@ -46,7 +46,20 @@ class Makeup extends Component{
                             </div> 
                             <p>&emsp;&emsp;</p>
                             <div>
-                                <h5>Hello There</h5>
+                                <h5>Choose a Salon Service</h5>
+                                <p>Choose from various salon packges and services</p>
+                               
+                            </div>
+                            <hr ></hr>
+                        </li>
+                        <li>
+                            <div>
+                                    <img src={require("../../assets/img/serviceBackgrounds/icon3.png")}></img>
+                                    <div className="verticalLine"></div>
+                            </div>
+                            <p>&emsp;&emsp;</p>
+                            <div>
+                                <h5>Choose your time-slot</h5>
                                 <p>Hello There</p>
                                
                             </div>
@@ -55,19 +68,6 @@ class Makeup extends Component{
                         <li>
                             <div>
                                     <img src={require("../../assets/img/serviceBackgrounds/icon2.png")}></img>
-                                    <div className="verticalLine"></div>
-                            </div>
-                            <p>&emsp;&emsp;</p>
-                            <div>
-                                <h5>Hello There</h5>
-                                <p>Hello There</p>
-                               
-                            </div>
-                            <hr ></hr>
-                        </li>
-                        <li>
-                            <div>
-                                    <img src={require("../../assets/img/serviceBackgrounds/icon3.png")}></img>
                             </div>
                             <p>&emsp;&emsp;</p>
                             <div>

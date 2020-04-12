@@ -19,11 +19,12 @@ export default class Searchbar extends Component {
 
     state={
         currentCity:'Ahmedabad',
-        cities: ['Boston','Bangalore','New Jersey', 'New York'],
-        // cities: []
+        cities: ['Boston','Bangalore','New Jersey', 'New York']
     }
 
+
     render() {
+        console.log(this.props);
         const { cities } = this.state;
         const cityInformation = (cities.length) ? (
             cities.map(city=>{

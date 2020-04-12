@@ -4,3 +4,4 @@ export const REMOVE_PRODUCT_CART = 'REMOVE_PRODUCT_CART';
 
 
 export const SET_USER = 'SET_USER';
+export const ADD_PRODUCT_DB = 'ADD_PRODUCT_DB';

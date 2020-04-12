@@ -26,6 +26,9 @@ app.use('/users',userRouter);
 //localhost:5000/users => userRouter
 
 
+const productsSofaCleaningRouter = require('./routes/cleaning/productsSofaCleaning');
+app.use('/cleaning/sofaCleaning',productsSofaCleaningRouter);
+
 app.use(passport.initialize());
 app.use(passport.session());
 
