@@ -25,6 +25,9 @@ app.use('/users',userRouter);
 // 1)Log in
 // 2)Register
 
+const productsSofaCleaningRouter = require('./routes/cleaning/productsSofaCleaning');
+app.use('/cleaning/sofaCleaning',productsSofaCleaningRouter);
+
 
 app.listen(PORT, () => {
   console.log(`app running on port ${PORT}`)

@@ -1,19 +1,15 @@
 import React, { Component } from 'react';
 import Scrollspy from 'react-scrollspy';
 import { Button } from "reactstrap";
-import {
-    Card,
-    CardBody,
-    CardTitle, CardText, Row, Col, CardImg, Badge
-  } from "reactstrap";
+import { Row, Col, Badge } from "reactstrap";
 import "../../assets/vendor/font-awesome/css/font-awesome.min.css";
 import { connect } from 'react-redux';
-import { addProductToCart } from '../../actions/addProduct';
-import { removeProductFromCart } from '../../actions/removeProduct';
 import { toggleCartModal } from '../../actions/toggleCartModal';
 import CartModal from '../CartModal';
-import cleaningImage from './cleaning.jpg';
-
+import { addProductFromDB } from '../../actions/addInputs/addProductFromDB';
+import Axios from 'axios';
+import ProductCard from './ProductCard';
+import LoadingCard from './LoadingCard';
 
 
   
@@ -23,8 +19,35 @@ class SofaCleaning extends Component {
         super(props);
   
         this.state = {
-          services: ['3 Sofa Seats','5 Sofa Seats','4 Sofa Seats','6 Sofa Seats','7 Sofa Seats','8 Sofa Seats','9 Sofa Seats']
+          services: ['3 Sofa Seats','4 Sofa Seats','5 Sofa Seats','6 Sofa Seats']
         };
+    }
+
+    componentDidMount(){
+        Axios.get('http://localhost:5000/cleaning/sofaCleaning/')
+            .then(res=>{
+                console.log(res.data);
+                res.data.map(product=> this.props.addProductFromDB(product));
+                console.log(this.props.cartState);
+            })
+            .catch(err=>{
+                console.log(err)
+            });
+    }
+
+    getList = (name) =>{
+        switch (name) {
+            case '3 Sofa Seats':
+                return global.threeList;
+            case '4 Sofa Seats':
+                return global.fourList;
+            case '5 Sofa Seats':
+                return global.fiveList;
+            case '6 Sofa Seats':
+                return global.sixList;
+            default:
+                break;
+        }
     }
 
     
@@ -45,133 +68,87 @@ class SofaCleaning extends Component {
             <li><a href={"#fetching"}><Button color="default" outline type="button" style={{marginBottom:"6px"}}>Fetching...</Button></a></li>
         );
 
-        // console.log(typeof(this.props.cartState.products));
+        
         const threeSeatsCategory = [];
         for(var product in this.props.cartState.products){
             if(this.props.cartState.products[product].category === '3 Sofa Seat')
                 threeSeatsCategory.push(this.props.cartState.products[product])
         }
-        // console.log(threeSeatsCategory);
+      
 
         const fiveSeatsCategory = [];
         for(var product in this.props.cartState.products){
             if(this.props.cartState.products[product].category === '5 Sofa Seat')
                 fiveSeatsCategory.push(this.props.cartState.products[product])
         }
-        // console.log(fiveSeatsCategory);
+        
 
         const fourSeatsCategory = [];
         for(var product in this.props.cartState.products){
             if(this.props.cartState.products[product].category === '4 Sofa Seat')
                 fourSeatsCategory.push(this.props.cartState.products[product])
         }
-        // console.log(fourSeatsCategory);
 
-        const threeList = (threeSeatsCategory.length) ? (
+        const sixSeatsCategory = [];
+        for(var product in this.props.cartState.products){
+            if(this.props.cartState.products[product].category === '6 Sofa Seat')
+                sixSeatsCategory.push(this.props.cartState.products[product])
+        }
+        
+
+        global.threeList = (threeSeatsCategory.length) ? (
             threeSeatsCategory.map(product => {
                 return(
-                    <Row style={{marginBottom:"20px"}}>
-                    <Col sm="6">
-                        <Card body outline color="default" className="text-center" style={{width:"fit-content"}}>
-                        <CardImg top width="100%" src={cleaningImage} alt="Card image cap" />
-                            <CardBody>
-                                <CardTitle style={{fontWeight:"bold"}}>{product.name}</CardTitle>
-                                <CardText>{product.description}</CardText>
-                                <CardText>Price: ${product.price}</CardText>
-                                <p>Added: {product.quantity}</p>
-                                <Button color="success" onClick={() => this.props.addProductToCart(product.id)}>Add{" "}<i className="fa fa-plus"></i></Button>
-                                { product.inCart && 
-                                <Button color="danger" onClick={() => this.props.removeProductFromCart(product.id)}>Remove{" "}<i className="fa fa-minus"></i></Button>}
-                            </CardBody>
-                        </Card>
-                    </Col>
-                    </Row>     
+                    <ProductCard product={product}/>
                 ) 
             })
         ) : (
-            <Row style={{marginBottom:"20px"}}>
-                <Col sm="6">
-                    <Card body outline color="default" className="text-center">
-                        <CardBody>
-                          <CardText>Loading...</CardText>               
-                        </CardBody>
-                    </Card>
-                </Col>
-            </Row>
+            <LoadingCard />
         );
 
-
-        const fiveList = (fiveSeatsCategory.length) ? (
-            fiveSeatsCategory.map(product => {
-                return(
-                    <Row style={{marginBottom:"20px"}}>
-                    <Col sm="6">
-                        <Card body outline color="default" className="text-center" style={{width:"fit-content"}}>
-                        <CardImg top width="100%" src={cleaningImage} alt="Card image cap" />
-                            <CardBody>
-                                <CardTitle style={{fontWeight:"bold"}}>{product.name}</CardTitle>
-                                <CardText>{product.description}</CardText>
-                                <CardText>Price: ${product.price}</CardText>
-                                <p>Added: {product.quantity}</p>
-                                <Button color="success" onClick={() => this.props.addProductToCart(product.id)}>Add{" "}<i className="fa fa-plus"></i></Button>
-                                { product.inCart && 
-                                <Button color="danger" onClick={() => this.props.removeProductFromCart(product.id)}>Remove{" "}<i className="fa fa-minus"></i></Button>}
-                            </CardBody>
-                        </Card>
-                    </Col>
-                    </Row>     
-                ) 
-            })
-        ) : (
-            <Row style={{marginBottom:"20px"}}>
-                <Col sm="6">
-                    <Card body outline color="default" className="text-center">
-                        <CardBody>
-                          <CardText>Loading...</CardText>               
-                        </CardBody>
-                    </Card>
-                </Col>
-            </Row>
-        );
-
-
-        const fourList = (fourSeatsCategory.length) ? (
+        global.fourList = (fourSeatsCategory.length) ? (
             fourSeatsCategory.map(product => {
                 return(
-                    <Row style={{marginBottom:"20px"}}>
-                    <Col sm="6">
-                        <Card body outline color="default" className="text-center" style={{width:"fit-content"}}>
-                        <CardImg top width="100%" src={cleaningImage} alt="Card image cap" />
-                            <CardBody>
-                                <CardTitle style={{fontWeight:"bold"}}>{product.name}</CardTitle>
-                                <CardText>{product.description}</CardText>
-                                <CardText>Price: ${product.price}</CardText>
-                                <p>Added: {product.quantity}</p>
-                                <Button color="success" onClick={() => this.props.addProductToCart(product.id)}>Add{" "}<i className="fa fa-plus"></i></Button>
-                                { product.inCart && 
-                                <Button color="danger" onClick={() => this.props.removeProductFromCart(product.id)}>Remove{" "}<i className="fa fa-minus"></i></Button>}
-                            </CardBody>
-                        </Card>
-                    </Col>
-                    </Row>     
+                    <ProductCard product={product}/>
                 ) 
             })
         ) : (
-            <Row style={{marginBottom:"20px"}}>
-                <Col sm="6">
-                    <Card body outline color="default" className="text-center">
-                        <CardBody>
-                          <CardText>Loading...</CardText>               
-                        </CardBody>
-                    </Card>
-                </Col>
-            </Row>
+            <LoadingCard />
+        );
+
+        global.fiveList = (fiveSeatsCategory.length) ? (
+            fiveSeatsCategory.map(product => {
+                return(
+                   <ProductCard product={product}/>
+                ) 
+            })
+        ) : (
+            <LoadingCard />
+        );
+
+        global.sixList = (sixSeatsCategory.length) ? (
+            sixSeatsCategory.map(product => {
+                return(
+                    <ProductCard product={product}/>
+                ) 
+            })
+        ) : (
+            <LoadingCard />
         );
 
 
-
+        const sectionList = this.state.services.map(service =>{
+            return(
+                <section id={service.replace(/\s/g,'')} className="service">
+                    <h3 style={{fontWeight:"bold", paddingLeft:"10px"}}>{service}</h3>             
+                    {this.getList(service)}                            
+                </section>
+            );
+        });
+        
+        
         return (
-            <div>
+            <>
                 <div className="cartAtBottom" style={{textAlign:"right"}}>
                     <Button onClick={this.props.toggleCartModal} style={{height:"50px", width:"400px", margin:"2px", backgroundImage:"linear-gradient(to right, #667eea, #764ba2, #6B8DD6, #8E37D7)"}}>
                     <Row>
@@ -196,48 +173,11 @@ class SofaCleaning extends Component {
                     </div>
 
                     <div className="servicesDescription" style={{borderLeft:"1px solid gray", paddingLeft:"3%"}}>
-
-                        <section id="3SofaSeats" className="service">
-                            <h3 style={{fontWeight:"bold", paddingLeft:"10px"}}>3 Sofa Seats</h3>             
-                            {threeList}                            
-                        </section>
-
-                        <section id="5SofaSeats" className="service">
-                            <h3 style={{fontWeight:"bold", paddingLeft:"10px"}}>5 Sofa Seats</h3>
-                            {fiveList}
-                        </section>
-
-
-                        <section id="4SofaSeats" className="service">
-                            <h3 style={{fontWeight:"bold", paddingLeft:"10px"}}>4 Sofa Seats</h3>
-                            {fourList}
-                        </section>
-
-                        <section id="6SofaSeats" className="service">
-                            <h3 style={{fontWeight:"bold", paddingLeft:"10px"}}>3 Sofa Seats</h3>
-                            <Row>
-                                <Col sm="6">
-                                    <Card body outline color="default" className="text-center">
-                                        {/* <CardHeader tag="h3">3 Sofa Seats</CardHeader> */}
-                                        <CardBody>
-                                            <CardTitle>3 Sofa Seats</CardTitle>
-                                            <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
-                                            <p>Added: </p>
-                                            <Button color="success" onClick={this.props.addProductToCart}>Add{" "}<i className="fa fa-plus"></i></Button>
-                                            <Button color="danger">Remove{" "}<i className="fa fa-minus"></i></Button>
-                                        </CardBody>
-                                    </Card>
-                                </Col>
-                            </Row>     
-                        </section>
+                        {sectionList}
                     </div>
 
                 </div>
-
-                
-                    
-
-            </div>
+            </>
         )
     }
 }
@@ -246,4 +186,4 @@ const mapStateToProps = (state) => ({
     cartState: state.cartState
 });
 
-export default connect(mapStateToProps,{ addProductToCart, toggleCartModal, removeProductFromCart })(SofaCleaning);
+export default connect(mapStateToProps,{ toggleCartModal, addProductFromDB })(SofaCleaning);
