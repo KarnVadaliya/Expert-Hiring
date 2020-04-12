@@ -5,16 +5,14 @@ import {
     DropdownItem,
     UncontrolledDropdown,
     FormGroup,
-    Form,
     Input,
     InputGroupAddon,
     InputGroupText,
     InputGroup,
-    Row,
     Col
 } from "reactstrap";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLocationArrow, faSearch } from '@fortawesome/free-solid-svg-icons';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { faLocationArrow, faSearch } from '@fortawesome/free-solid-svg-icons';
 
 
 export default class Searchbar extends Component {

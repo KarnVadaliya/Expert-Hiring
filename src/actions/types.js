@@ -1,3 +1,6 @@
 export const ADD_PRODUCT_CART = 'ADD_PRODUCT_CART' ;
 export const TOGGLE_CART_MODAL = 'TOGGLE_CART_MODAL';
 export const REMOVE_PRODUCT_CART = 'REMOVE_PRODUCT_CART';
+
+
+export const SET_USER = 'SET_USER';

@@ -12,7 +12,7 @@ import Scrollspy from 'react-scrollspy'
 class Makeup extends Component{
     render(){
         return(
-            <div>
+            <div className="sevice" style={{backgroundColor:"#F5F5F5"}}>
                 <div className="serviceBg" style={{backgroundImage: `url(${Background})`}}>
                     <h2>Makeup and Styling Service in ****** </h2>
                 </div>

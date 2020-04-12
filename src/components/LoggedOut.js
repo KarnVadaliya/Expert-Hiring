@@ -1,4 +1,7 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { setUser } from '../actions/setUser';
+import { connect } from 'react-redux';
+import classnames from "classnames";
 import {
     Modal,
     Card,
@@ -15,38 +18,92 @@ import {
 } from "reactstrap";
 import axios from 'axios';
 
-export default class LogModal extends Component {
+class LoggedOut extends Component {
 
     constructor(props){
       super(props);
 
       this.state = {
         defaultModal: false,
-        service : '',
-        city: '',
         name: '',
         username: '',
-        password: ''
+        password: '',
+        nameState: '',
+        emailState: '',
+        passwordState: ''
       };
     }
 
-  
+   
+
     toggleModal = state => {
         this.setState({
           [state]: !this.state[state]
         });
       };
 
-    handleOnChange = e =>{
+    
+
+    handleOnChange = (e, stateName) =>{
+
+
+      let newState = this.state;
+
+      if(stateName === "name"){
+
+        
+
+        const regexName = /^[A-Za-z][A-Za-z\'\-]+([\A-Za-z][A-Za-z\'\-]+)*/;
+
+        var validateName = e.target.value.match(regexName);
+
+        if (!validateName) {
+          newState[stateName + "State"] = "invalid";
+        } else {
+          newState[stateName + "State"] = "valid";
+        }
+
+      }
+
+
+      if(stateName === "email"){
+
+        const regexEmail = /([\w\.]+)@([\w\.]+)\.(\w+)/;
+
+        var validateEmail = e.target.value.match(regexEmail);
+
+        if (!validateEmail) {
+          newState[stateName + "State"] = "invalid";
+        } else {
+          newState[stateName + "State"] = "valid";
+        }
+
+      }
+
+      if(stateName === "password"){
+
+        const regexPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&_])[A-Za-z\d@$!%*?&]{8,}$/;
+
+        var validatePassword = e.target.value.match(regexPassword);
+
+        if (!validatePassword) {
+          newState[stateName + "State"] = "invalid";
+        } else {
+          newState[stateName + "State"] = "valid";
+        }
+
+      }
+      
+      const isCheckbox = e.target.type === "checkbox";
       this.setState({
-        [e.target.name]: e.target.value
+        [e.target.name]: isCheckbox ? e.target.checked : e.target.value
       });
     }
 
 
     handleLoginSubmit = e =>{
       e.preventDefault();
-
+      
       const user = {
         username: this.state.username,
         password: this.state.password
@@ -62,10 +119,13 @@ export default class LogModal extends Component {
         }
       })
         .then(res => {
-          console.log(res.data);
-          
+          this.props.setUser(res.data); 
+          console.log(this.props)
         })
         .catch(err=>console.log(err));
+
+        console.log(user);
+        
     }
 
 
@@ -78,40 +138,60 @@ export default class LogModal extends Component {
         password: this.state.password
       };
 
-      axios.post('http://localhost:5000/users/add',
-      {
-        name: this.state.name,
-        username: this.state.username,
-        password: this.state.password
-      },{
-        "headers": {
-          'Content-Type': 'application/json',
-        }
-      })
-        .then(res=>{
-          console.log(res.data);
-          
-        })
-        .catch(err=>console.log(err));
+      let newState = this.state;
 
-      console.log(user);
+      if (newState.username === "") {
+        newState["emailState"] = "invalid";
+        console.log(newState);
+      } else {
+        newState["emailState"] = "valid";
+      }
 
-      this.setState({
-        defaultModal: false,
-        service : '',
-        city: '',
-        username: '',
-        name: '',
-        password: ''
-      })
+      if (newState.password === "") {
+        newState["passwordState"] = "invalid";
+      } else {
+        newState["passwordState"] = "valid";
+      }
 
-      this.toggleModal("signUpModal");
-      this.toggleModal("loginSignUpModal");
-
-      // window.location = '/';
-
+      if (newState.name === "") {
+        newState["nameState"] = "invalid";
+      } else {
+        newState["emailState"] = "valid";
+      }
 
       
+
+      // axios.post('http://localhost:5000/users/add',
+      // {
+      //   name: this.state.name,
+      //   username: this.state.username,
+      //   password: this.state.password
+      // },{
+      //   "headers": {
+      //     'Content-Type': 'application/json',
+      //   }
+      // })
+      //   .then(res=>{
+      //     console.log(res.data);
+          
+      //   })
+      //   .catch(err=>console.log(err));
+
+      // console.log(user);
+
+      // this.setState({
+      //   defaultModal: false,
+      //   nameState: '',
+      //   emailState: '',
+      //   passwordState: '',
+      //   username: '',
+      //   name: '',
+      //   password: ''
+      // })
+
+      // this.toggleModal("signUpModal");
+      // this.toggleModal("loginSignUpModal");
+
     }
 
 
@@ -263,35 +343,96 @@ export default class LogModal extends Component {
                       <small>Or sign up with credentials</small>
                     </div>
                     <Form role="form">
-                      <FormGroup>
-                        <InputGroup className="input-group-alternative mb-3">
+                      <FormGroup className={classnames(
+                          "mb-3",
+                          { focused: this.state.focusedName },
+                          { "has-danger": this.state.nameState === "invalid" },
+                          { "has-success": this.state.nameState === "valid" }
+                        )}>
+                        <InputGroup className={classnames("input-group-merge input-group-alternative", {
+                            "is-invalid": this.state.nameState === "invalid"
+                          })}>
                           <InputGroupAddon addonType="prepend">
                             <InputGroupText>
-                              <i className="ni ni-circle-08" />
+                              <i className={classnames(
+                                  "ni ni-circle-08",
+                                  { "text-danger": this.state.nameState === "invalid" },
+                                  { "text-success": this.state.nameState === "valid" }
+                                )}  />
                             </InputGroupText>
                           </InputGroupAddon>
-                          <Input placeholder="Name" type="text" name="name" onChange={this.handleOnChange} required value={this.state.name}/>
+                          <Input placeholder="Name" type="text" name="name"
+                          className={classnames(
+                            { "text-danger": this.state.nameState === "invalid" },
+                            { "text-success": this.state.nameState === "valid" }
+                          )}
+                          onFocus={() => this.setState({ focusedName: true })}
+                          onBlur={() => this.setState({ focusedName: false })}
+                          onChange={e => this.handleOnChange(e, "name")} 
+                          value={this.state.name} required
+                          />
                         </InputGroup>
+                        <div className="invalid-feedback">Name should have more than 2 Letters</div>
                       </FormGroup>
-                      <FormGroup className="mb-3">
-                        <InputGroup className="input-group-alternative">
+                      <FormGroup className={classnames(
+                          "mb-3",
+                          { focused: this.state.focusedEmail },
+                          { "has-danger": this.state.emailState === "invalid" },
+                          { "has-success": this.state.emailState === "valid" }
+                        )}>
+                        <InputGroup className={classnames("input-group-merge input-group-alternative", {
+                            "is-invalid": this.state.emailState === "invalid"
+                          })}>
                           <InputGroupAddon addonType="prepend">
                             <InputGroupText>
-                              <i className="ni ni-email-83" />
+                              <i className={classnames(
+                                  "ni ni-email-83",
+                                  { "text-danger": this.state.emailState === "invalid" },
+                                  { "text-success": this.state.emailState === "valid" }
+                                )} />
                             </InputGroupText>
                           </InputGroupAddon>
-                          <Input placeholder="Email" type="email" name="username" onChange={this.handleOnChange} required value={this.state.username}/>
+                          <Input placeholder="Email" type="email" name="username"
+                                  className={classnames(
+                                    { "text-danger": this.state.emailState === "invalid" },
+                                    { "text-success": this.state.emailState === "valid" }
+                                  )}
+                                  onFocus={() => this.setState({ focusedEmail: true })}
+                                  onBlur={() => this.setState({ focusedEmail: false })}
+                                  onChange={e => this.handleOnChange(e, "email")} 
+                                  value={this.state.username} required/>
                         </InputGroup>
+                        <div className="invalid-feedback">Please enter Valid Email Address</div>
                       </FormGroup>
-                      <FormGroup>
-                        <InputGroup className="input-group-alternative">
+                      <FormGroup className={classnames(
+                          "mb-3",
+                          { focused: this.state.focusedPassword },
+                          { "has-danger": this.state.passwordState === "invalid" },
+                          { "has-success": this.state.passwordState === "valid" }
+                        )}>
+                        <InputGroup className={classnames("input-group-merge input-group-alternative", {
+                            "is-invalid": this.state.passwordState === "invalid"
+                          })}>
                           <InputGroupAddon addonType="prepend">
                             <InputGroupText>
-                              <i className="ni ni-lock-circle-open" />
+                              <i className={classnames(
+                                  "ni ni-lock-circle-open",
+                                  { "text-danger": this.state.passwordState === "invalid" },
+                                  { "text-success": this.state.passwordState === "valid" }
+                                )} />
                             </InputGroupText>
                           </InputGroupAddon>
-                          <Input placeholder="Password" type="password" name="password" onChange={this.handleOnChange} required value={this.state.password}/>
+                          <Input placeholder="Password" type="password" name="password" 
+                                   className={classnames(
+                                    { "text-danger": this.state.passwordState === "invalid" },
+                                    { "text-success": this.state.passwordState === "valid" }
+                                  )}
+                                  onFocus={() => this.setState({ focusedPassword: true })}
+                                  onBlur={() => this.setState({ focusedPassword: false })}
+                                  onChange={e => this.handleOnChange(e, "password")} 
+                                  required value={this.state.password}/>
                         </InputGroup>
+                        <div className="invalid-feedback">Password must contain atleast <br/> 1 Uppercase Letter, 1 Lowercase Letter, 1 Special Character and 1 Number </div>
                       </FormGroup>
 
                       <div className="custom-control custom-control-alternative custom-checkbox">
@@ -353,3 +494,9 @@ export default class LogModal extends Component {
         )
     }
 }
+
+const mapStateToProps = (state) => ({
+    userState: state.userState
+});
+
+export default connect(mapStateToProps,{ setUser })(LoggedOut);

@@ -1,11 +1,11 @@
 import React from 'react';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Button, Modal, ModalBody, ModalFooter } from 'reactstrap';
 import { connect } from 'react-redux';
 import { toggleCartModal } from '../actions/toggleCartModal';
 import {
     Card,
     CardBody,
-    CardTitle, CardText, Row, Col, CardHeader, Badge
+    CardTitle, CardText
   } from "reactstrap";
   import { removeProductFromCart } from '../actions/removeProduct';
   import { addProductToCart } from '../actions/addProduct';

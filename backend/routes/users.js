@@ -24,6 +24,7 @@ router.route('/').get((req, res) => {
 
 // Add a new User
 router.route('/add').post((req, res) => {
+    // res.send("hellooo");
     const name = req.body.name;
     const username = req.body.username;
     const password = req.body.password;
@@ -51,6 +52,7 @@ router.route('/add').post((req, res) => {
             }
         });
         res.json('User created')
+       
     })
 });
 
@@ -75,8 +77,6 @@ router.post("/login", async (req, res) => {
     }
 });
 
-//delete
 
-//put
 
 module.exports = router;
