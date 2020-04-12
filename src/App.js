@@ -15,7 +15,7 @@ function App() {
   return (
       <BrowserRouter>
       <div className="App">
-          <Navbar></Navbar>
+          <Navbar name={"hello"}></Navbar>
           <Route path="/" exact component={Home}></Route>  
           <Route path="/about" component={AboutUs}></Route>  
           <Route path="/contact" component={ContactUs}></Route> 
