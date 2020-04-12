@@ -1,18 +1,19 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
-import "../../assets/vendor/nucleo/css/nucleo.css";
-import "../../assets/vendor/font-awesome/css/font-awesome.min.css";
-import "../../assets/scss/argon-design-system-react.scss";
-import Background from '../../assets/img/serviceBackgrounds/makeupBg.jpg'
+import "../../../assets/vendor/nucleo/css/nucleo.css";
+import "../../../assets/vendor/font-awesome/css/font-awesome.min.css";
+import "../../../assets/scss/argon-design-system-react.scss";
+import Background from '../../../assets/img/serviceBackgrounds/makeupBg.jpg'
 import './makeup.css'
 import Scrollspy from 'react-scrollspy'
 
 
 
 class Makeup extends Component{
+
     render(){
         return(
-            <div className="sevice" style={{backgroundColor:"#F5F5F5"}}>
+            <div className="service" style={{backgroundColor:"#F5F5F5"}}>
                 <div className="serviceBg" style={{backgroundImage: `url(${Background})`}}>
                     <h2>Makeup and Styling Service in ****** </h2>
                 </div>
@@ -41,7 +42,7 @@ class Makeup extends Component{
                     <ul>
                         <li>
                             <div>
-                                    <img src={require("../../assets/img/serviceBackgrounds/icon1.png")}></img>
+                                    <img src={require("../../../assets/img/serviceBackgrounds/icon1.png")}></img>
                                     <div className="verticalLine"></div>
                             </div> 
                             <p>&emsp;&emsp;</p>
@@ -54,7 +55,7 @@ class Makeup extends Component{
                         </li>
                         <li>
                             <div>
-                                    <img src={require("../../assets/img/serviceBackgrounds/icon3.png")}></img>
+                                    <img src={require("../../../assets/img/serviceBackgrounds/icon3.png")}></img>
                                     <div className="verticalLine"></div>
                             </div>
                             <p>&emsp;&emsp;</p>
@@ -67,7 +68,7 @@ class Makeup extends Component{
                         </li>
                         <li>
                             <div>
-                                    <img src={require("../../assets/img/serviceBackgrounds/icon2.png")}></img>
+                                    <img src={require("../../../assets/img/serviceBackgrounds/icon2.png")}></img>
                             </div>
                             <p>&emsp;&emsp;</p>
                             <div>
@@ -84,9 +85,9 @@ class Makeup extends Component{
                     <h6>200 makeup artists in boston</h6>
                     <hr></hr>
                     <div className="professionalsDetails">
-                        <img src={require("../../assets/img/serviceBackgrounds/random.jpg")}></img>
+                        <img src={require("../../../assets/img/serviceBackgrounds/random.jpg")}></img>
                         <div style={{marginLeft:"120px"}}>
-                            <span>Deepak Lalwani</span><br></br>
+                            <span>Deepak Lalwani</span><br></br><br></br>
                             <p>SWAMINARAYAN NAGAR, Hatkeshwar - C.T.M Road, Kailash Nagar, C.T.M, Amraiwadi, Ahmedabad, Gujarat, India</p>
                             <p>&#9733; 5.0 (818 ratings)  342 rated 5 star</p>
                             <br></br>
