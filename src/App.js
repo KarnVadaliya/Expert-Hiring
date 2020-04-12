@@ -8,6 +8,7 @@ import ContactUs from './components/ContactUs';
 import Footer from './components/Footer';
 import SofaCleaning from './components/Cleaning/SofaCleaning';
 import Example from './components/Example';
+import MakeUp from './components/Services/Makeup';
 
 
 
@@ -19,7 +20,7 @@ function App() {
           <Route path="/" exact component={Home}></Route>  
           <Route path="/about" component={AboutUs}></Route>  
           <Route path="/contact" component={ContactUs}></Route> 
-          {/* <Route path="/party" component={Party}></Route>     */}
+          <Route path="/makeup" component={MakeUp}></Route> 
           <Route path="/cleaning/sofaCleaning" component={SofaCleaning}></Route>
           <Route path="/example" component={Example}></Route>
           <Footer></Footer>
@@ -28,6 +29,5 @@ function App() {
   );
 }
 
-//routes define
 
 export default App;
