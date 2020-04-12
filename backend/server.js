@@ -1,8 +1,8 @@
-
-
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
 const cors = require('cors');
 require('dotenv').config({path: __dirname + '/.env'})
 const uri = process.env.DB_CONNECTION;
@@ -16,18 +16,34 @@ mongoose.connect(uri,{useNewUrlParser:true,useUnifiedTopology: true})
 app.use(express.json());
 app.use(cors());
 
+app.use(bodyParser.json()); // support json encoded bodies
+app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
+
 const PORT = process.env.PORT || 5000;
 
 const userRouter = require('./routes/users');
 app.use('/users',userRouter);
 //localhost:5000/users => userRouter
 
-// 1)Log in
-// 2)Register
 
 const productsSofaCleaningRouter = require('./routes/cleaning/productsSofaCleaning');
 app.use('/cleaning/sofaCleaning',productsSofaCleaningRouter);
 
+app.use(passport.initialize());
+app.use(passport.session());
+
+const User = require('./models/users.model'); 
+
+
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser((user, cb) => {
+  User.serializeUser();
+  cb(null, user);
+});
+passport.deserializeUser((user, cb) => {
+  User.deserializeUser();
+  cb(null, user);
+});
 
 app.listen(PORT, () => {
   console.log(`app running on port ${PORT}`)
