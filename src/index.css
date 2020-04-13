@@ -282,6 +282,7 @@ transform: scale(1.2);
 .serviceModalRight{
   flex-grow: 2;
   margin-top: 2%;
+}
 .btn-is-current .btn{
   background-color: rgb(55, 87,146);
   color: white;
