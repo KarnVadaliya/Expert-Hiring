@@ -8,6 +8,7 @@ import ContactUs from './components/ContactUs';
 import Footer from './components/Footer';
 
 import Makeup from './components/Makeup';
+import Payment from './components/Payment';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/about" component={AboutUs}></Route>  
         <Route path="/contact" component={ContactUs}></Route>  
         <Route path="/makeup" component={Makeup} ></Route>  
+        <Route path="/payment" component={Payment}></Route>
         <Footer></Footer>
     </div>
     </BrowserRouter>

@@ -26,14 +26,14 @@ class ServicesComponent extends Component{
                             <h5>Salon</h5>
                             <div className="serviceContent">
                                 <div className="serviceCell">
-                                    <a href="https://www.youtube.com/">
+                                   <Link to="/makeup">
                                             <div>
                                                 <img alt="makeup and hairstyling" src={require("../assets/img/serviceIcons/salon2.jpg")}/>
                                             </div>
                                             <div>
                                                 <h6>Makeup &amp; Hairstyling</h6>
                                             </div>
-                                    </a>
+                                        </Link>
                                     </div>
                                     <div className="serviceCell">
                                     <a href="https://www.youtube.com/">

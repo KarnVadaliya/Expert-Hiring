@@ -11,7 +11,7 @@ class Makeup extends Component{
         return(
             <div>
                 <div className="serviceBg" style={{backgroundImage: `url(${Background})`}}>
-                    <h2> Best Makeup and Styling Service in ****** </h2>
+                    <h2 style={{left:"0px"}}> Best Makeup and Styling Service in ****** </h2>
                 </div>
                 <div className="info">
                     <div className="infoCell">
