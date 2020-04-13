@@ -1,6 +1,6 @@
 import React from 'react';
-import { addProductToCart } from '../../actions/addProduct';
-import { removeProductFromCart } from '../../actions/removeProduct';
+import { addProductToCart } from '../../../../actions/addProduct';
+import { removeProductFromCart } from '../../../../actions/removeProduct';
 import { connect } from 'react-redux';
 import cleaningImage from './cleaning.jpg';
 import {

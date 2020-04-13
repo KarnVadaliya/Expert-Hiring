@@ -158,14 +158,14 @@ class ServicesComponent extends Component{
                                     </a>
                                     </div>
                                     <div className="serviceCell">
-                                    <a href="https://www.youtube.com/">
+                                    <Link to="/cleaning/sofaCleaning">
                                             <div>
                                                 <img alt="Sofa Cleaning" src={require("../assets/img/serviceIcons/cleaning2.jpg")}/>
                                             </div>
                                             <div>
                                                 <h6>Sofa Cleaning</h6>
                                             </div>
-                                    </a>
+                                    </Link>
                                     </div>
                                     <div className="serviceCell">
                                     <a href="https://www.youtube.com/">

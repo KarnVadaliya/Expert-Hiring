@@ -2,19 +2,20 @@ import React, { Component } from 'react';
 import Scrollspy from 'react-scrollspy';
 import { Button } from "reactstrap";
 import { Row, Col, Badge } from "reactstrap";
-import "../../assets/vendor/font-awesome/css/font-awesome.min.css";
+import "../../../../assets/vendor/font-awesome/css/font-awesome.min.css";
 import { connect } from 'react-redux';
-import { toggleCartModal } from '../../actions/toggleCartModal';
-import CartModal from '../CartModal';
-import { addProductFromDB } from '../../actions/addInputs/addProductFromDB';
+import { toggleCartModal } from '../../../../actions/toggleCartModal';
+import CartModal from './CartModal';
+import { addProductFromDB } from '../../../../actions/addInputs/addProductFromDB';
 import Axios from 'axios';
 import ProductCard from './ProductCard';
 import LoadingCard from './LoadingCard';
+import { Link } from "react-router-dom";
 
 
   
 
-class SofaCleaning extends Component {
+class SofaCleaningCart extends Component {
     constructor(props){
         super(props);
   
@@ -149,6 +150,7 @@ class SofaCleaning extends Component {
         
         return (
             <>
+
                 <div className="cartAtBottom" style={{textAlign:"right"}}>
                     <Button onClick={this.props.toggleCartModal} style={{height:"50px", width:"400px", margin:"2px", backgroundImage:"linear-gradient(to right, #667eea, #764ba2, #6B8DD6, #8E37D7)"}}>
                     <Row>
@@ -162,7 +164,9 @@ class SofaCleaning extends Component {
                     <CartModal/>
                     </Button>
                 </div>
-                
+
+                <Link to="/cleaning/sofaCleaning"><i className="fa fa-chevron-left" style={{fontSize:"50px", marginLeft:"10%", position:"absolute", top:"9%"}}/></Link>
+
                 <h1 style={{fontWeight:"bold", letterSpacing:"2px", textTransform:"uppercase", textAlign:"center"}}>Professional Sofa Cleaning</h1>
                 <br></br><br></br>
                 <div className="servicesSection">
@@ -186,4 +190,4 @@ const mapStateToProps = (state) => ({
     cartState: state.cartState
 });
 
-export default connect(mapStateToProps,{ toggleCartModal, addProductFromDB })(SofaCleaning);
+export default connect(mapStateToProps,{ toggleCartModal, addProductFromDB })(SofaCleaningCart);
