@@ -5,27 +5,26 @@ import {
     DropdownItem,
     UncontrolledDropdown,
     FormGroup,
-    Form,
     Input,
     InputGroupAddon,
     InputGroupText,
     InputGroup,
-    Row,
     Col
 } from "reactstrap";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLocationArrow, faSearch } from '@fortawesome/free-solid-svg-icons';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { faLocationArrow, faSearch } from '@fortawesome/free-solid-svg-icons';
 
 
 export default class Searchbar extends Component {
 
     state={
         currentCity:'Ahmedabad',
-        cities: ['Boston','Bangalore','New Jersey'],
-        // cities: []
+        cities: ['Boston','Bangalore','New Jersey', 'New York']
     }
 
+
     render() {
+        console.log(this.props);
         const { cities } = this.state;
         const cityInformation = (cities.length) ? (
             cities.map(city=>{
@@ -48,7 +47,7 @@ export default class Searchbar extends Component {
 
         return (
             <div className="header" style={{marginTop:""}}>
-                <h1 className="display-1" style={{textAlign:"center", color:"white"}}>Your Service Expert in Ahmedabad</h1>
+                <h1 className="display-1" style={{textAlign:"center", color:"white"}}>Your service expert in {this.state.currentCity}</h1>
                 <br></br>
                 <div id="wrapper" style={{display:"flex"}}>
                     <div style={{flex:"45%", textAlign:"right"}}>

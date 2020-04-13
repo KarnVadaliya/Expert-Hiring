@@ -10,26 +10,40 @@
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
     "argon-design-system-react": "^1.1.0",
+    "availity-reactstrap-validation": "^2.6.1",
+    "axios": "^0.19.2",
+    "body-parser": "^1.19.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-handlebars": "^3.1.0",
     "mongodb": "^3.5.5",
-    "mongoose": "^5.9.4",
-    "nodemon": "^2.0.2",
-    "react": "^16.13.0",
-    "react-dom": "^16.13.0",
+    "mongoose": "^5.9.7",
+    "paypal-checkout": "^4.0.312",
+    "nodemailer": "^6.4.6",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "passport-local-mongoose": "^6.0.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
     "react-icons": "^3.9.0",
-    "react-native-paper": "^3.6.0",
+    "react-native-paper": "^3.8.0",
     "react-redux": "^7.2.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.0",
-    "redux": "^4.0.5"
+    "react-scrollspy": "^3.4.2",
+    "react-sticky": "^6.0.3",
+    "redux": "^4.0.5",
+    "redux-devtools-extension": "^2.13.8",
+    "redux-thunk": "^2.3.0",
+    "thunk": "0.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "client": "npm run start --prefix",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "nodemon ./backend/server.js",
+    "ganesh": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
+    "proxy": "http://localhost:5000"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -45,5 +59,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "concurrently": "^5.1.0",
+    "nodemon": "^2.0.3"
   }
 }

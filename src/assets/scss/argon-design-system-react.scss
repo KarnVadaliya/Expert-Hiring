@@ -30,3 +30,9 @@
 
 // React Differences
 @import "react/react-differences";
+
+
+.input-group.is-invalid ~ .invalid-feedback {
+    display: block;
+}
+
