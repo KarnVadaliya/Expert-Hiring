@@ -1,18 +1,19 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
-import "../../assets/vendor/nucleo/css/nucleo.css";
-import "../../assets/vendor/font-awesome/css/font-awesome.min.css";
-import "../../assets/scss/argon-design-system-react.scss";
-import Background from '../../assets/img/serviceBackgrounds/makeupBg.jpg'
-import './services.css'
+import "../../../assets/vendor/nucleo/css/nucleo.css";
+import "../../../assets/vendor/font-awesome/css/font-awesome.min.css";
+import "../../../assets/scss/argon-design-system-react.scss";
+import Background from '../../../assets/img/serviceBackgrounds/makeupBg.jpg'
+import '../services.css'
 import Scrollspy from 'react-scrollspy'
 
 
 
 class Makeup extends Component{
+
     render(){
         return(
-            <div className="sevice" style={{backgroundColor:"#F5F5F5"}}>
+            <div className="service" style={{backgroundColor:"#F5F5F5"}}>
                 <div className="serviceBg" style={{backgroundImage: `url(${Background})`}}>
                     <h2>Makeup and Styling Service in ****** </h2>
                 </div>
@@ -23,15 +24,7 @@ class Makeup extends Component{
                              <li><a href="#Professionals">Professionals</a></li>
                              <li><a href="#Reviews">Customer Reviews</a></li>
                 </Scrollspy>
-                    {/* <div className="infoCell">
-                        <button><a href="#works">How it Works</a></button>
-                    </div>
-                    <div className="infoCell">
-                    <button><a href="#professionals">Professionals</a></button>
-                    </div>
-                    <div className="infoCell">
-                    <button><a href="#reviews">Customer Reviews</a></button>
-                    </div> */}
+                   
                 </div>
                 <br></br>
                 <div className="infoDescription">
@@ -41,7 +34,7 @@ class Makeup extends Component{
                     <ul>
                         <li>
                             <div>
-                                    <img src={require("../../assets/img/serviceBackgrounds/icon1.png")}></img>
+                                    <img src={require("../../../assets/img/serviceBackgrounds/icon1.png")}></img>
                                     <div className="verticalLine"></div>
                             </div> 
                             <p>&emsp;&emsp;</p>
@@ -54,7 +47,7 @@ class Makeup extends Component{
                         </li>
                         <li>
                             <div>
-                                    <img src={require("../../assets/img/serviceBackgrounds/icon3.png")}></img>
+                                    <img src={require("../../../assets/img/serviceBackgrounds/icon3.png")}></img>
                                     <div className="verticalLine"></div>
                             </div>
                             <p>&emsp;&emsp;</p>
@@ -67,7 +60,7 @@ class Makeup extends Component{
                         </li>
                         <li>
                             <div>
-                                    <img src={require("../../assets/img/serviceBackgrounds/icon4.png")}></img>
+                                    <img src={require("../../../assets/img/serviceBackgrounds/icon4.png")}></img>
                             </div>
                             <p>&emsp;&emsp;</p>
                             <div>
@@ -84,7 +77,7 @@ class Makeup extends Component{
                     <h6>200 Beauty Service Professionals in Boston</h6>
                     <hr></hr>
                     <div className="professionalsDetails">
-                        <img src={require("../../assets/img/serviceBackgrounds/random.jpg")}></img>
+                        <img src={require("../../../assets/img/serviceBackgrounds/random.jpg")}></img>
                         <div style={{marginLeft:"120px"}}>
                             <span className="name">Deepak Lalwani</span>
                             <br></br>
@@ -122,7 +115,7 @@ class Makeup extends Component{
                     <hr></hr>
 
                     <div className="professionalsDetails">
-                        <img src={require("../../assets/img/serviceBackgrounds/random.jpg")}></img>
+                        <img src={require("../../../assets/img/serviceBackgrounds/random.jpg")}></img>
                         <div style={{marginLeft:"120px"}}>
                             <span className="name">Deepak Lalwani</span>
                             <br></br>
