@@ -20,7 +20,8 @@ class SofaCleaningCart extends Component {
         super(props);
   
         this.state = {
-          services: ['3 Sofa Seats','4 Sofa Seats','5 Sofa Seats','6 Sofa Seats']
+          services: ['3 Sofa Seats','4 Sofa Seats','5 Sofa Seats','6 Sofa Seats'],
+          products: []
         };
     }
 
@@ -28,8 +29,13 @@ class SofaCleaningCart extends Component {
         Axios.get('http://localhost:5000/cleaning/sofaCleaning/')
             .then(res=>{
                 console.log(res.data);
-                res.data.map(product=> this.props.addProductFromDB(product));
+                let tempList = []
+                // res.data.map(product=> this.props.addProductFromDB(product));
+                res.data.map(product => tempList.push(product));
                 console.log(this.props.cartState);
+                this.setState({
+                    products: tempList
+                })
             })
             .catch(err=>{
                 console.log(err)
@@ -54,7 +60,7 @@ class SofaCleaningCart extends Component {
     
 
     render() {
-        console.log(this.props);
+        console.log(this.state);
         const { services } = this.state;
 
         const trimmedServices = services.map(category => category.replace(/\s/g,''));
@@ -71,35 +77,35 @@ class SofaCleaningCart extends Component {
 
         
         const threeSeatsCategory = [];
-        for(var product in this.props.cartState.products){
-            if(this.props.cartState.products[product].category === '3 Sofa Seat')
-                threeSeatsCategory.push(this.props.cartState.products[product])
+        for(var product in this.state.products){
+            if(this.state.products[product].category === '3 Sofa Seat')
+                threeSeatsCategory.push(this.state.products[product])
         }
       
 
         const fiveSeatsCategory = [];
-        for(var product in this.props.cartState.products){
-            if(this.props.cartState.products[product].category === '5 Sofa Seat')
-                fiveSeatsCategory.push(this.props.cartState.products[product])
+        for(var product in this.state.products){
+            if(this.state.products[product].category === '5 Sofa Seat')
+                fiveSeatsCategory.push(this.state.products[product])
         }
         
 
         const fourSeatsCategory = [];
-        for(var product in this.props.cartState.products){
-            if(this.props.cartState.products[product].category === '4 Sofa Seat')
-                fourSeatsCategory.push(this.props.cartState.products[product])
+        for(var product in this.state.products){
+            if(this.state.products[product].category === '4 Sofa Seat')
+                fourSeatsCategory.push(this.state.products[product])
         }
 
         const sixSeatsCategory = [];
-        for(var product in this.props.cartState.products){
-            if(this.props.cartState.products[product].category === '6 Sofa Seat')
-                sixSeatsCategory.push(this.props.cartState.products[product])
+        for(var product in this.state.products){
+            if(this.state.products[product].category === '6 Sofa Seat')
+                sixSeatsCategory.push(this.state.products[product])
         }
         
 
         global.threeList = (threeSeatsCategory.length) ? (
             threeSeatsCategory.map(product => {
-                return(
+                return(                    
                     <ProductCard product={product}/>
                 ) 
             })
@@ -155,7 +161,7 @@ class SofaCleaningCart extends Component {
                     <Button onClick={this.props.toggleCartModal} style={{height:"50px", width:"400px", margin:"2px", backgroundImage:"linear-gradient(to right, #667eea, #764ba2, #6B8DD6, #8E37D7)"}}>
                     <Row>
                         <Col sm="6">
-                            <h5 style={{textAlign:"left", color:"white"}}><Badge className="badge-white">{this.props.cartState.cartNumbers}</Badge>&nbsp;&nbsp;${this.props.cartState.cartCost}</h5> 
+                            <h5 style={{textAlign:"left", color:"white"}}><Badge className="badge-white">{this.state.cartNumbers}</Badge>&nbsp;&nbsp;${this.props.cartState.cartCost}</h5> 
                         </Col>
                         <Col sm="6">
                             <h5 style={{textAlign:"right", color:"white"}}><i className="fa fa-chevron-up"></i></h5>                             
