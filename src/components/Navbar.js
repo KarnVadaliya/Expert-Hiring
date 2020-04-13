@@ -111,12 +111,12 @@ class NavbarComponent extends Component {
                               Contact Us
                             </DropdownItem>
                             </Link>
-                            <DropdownItem
-                              href="#pablo"
-                              onClick={e => e.preventDefault()}
-                            >
+                            <Link to="/careers">
+                            <DropdownItem>
                               Careers
                             </DropdownItem>
+                            </Link>
+                            
                         </DropdownMenu>
                     </UncontrolledDropdown>
                 
