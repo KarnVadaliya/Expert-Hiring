@@ -26,12 +26,22 @@ class ServicesComponent extends Component{
                             <h5>Salon</h5>
                             <div className="serviceContent">
                                 <div className="serviceCell">
-                                   <Link to="/makeup">
+                                        <Link to="/makeup">
                                             <div>
                                                 <img alt="makeup and hairstyling" src={require("../assets/img/serviceIcons/salon2.jpg")}/>
                                             </div>
                                             <div>
                                                 <h6>Makeup &amp; Hairstyling</h6>
+                                            </div>
+                                        </Link>
+                                    </div>
+                                    <div className="serviceCell">
+                                        <Link to="/salon-at-home">
+                                            <div>
+                                                <img alt="Salon at Home" src={require("../assets/img/serviceIcons/salon1.jpg")}/>
+                                            </div>
+                                            <div>
+                                                <h6>Salon at Home (Women)</h6>
                                             </div>
                                         </Link>
                                     </div>

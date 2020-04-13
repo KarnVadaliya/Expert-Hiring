@@ -47,7 +47,7 @@ code {
 }
 
 .service h5{
-  font-size: 1.5em;
+  font-size: 1.7em;
   color: black;
   margin-top: 5px;
 }
@@ -63,15 +63,17 @@ code {
 }
 
 .servicesNav a{
-  font-size: 1.3em;
+  font-size: 1.5em;
   text-align: center;
   color: black;
   line-height: 2em;
+ 
 }
 
 .servicesNav a:hover{
- font-weight: 600;
+ font-weight: bold;
 }
+
 .is-current a{
   font-weight: bold;
 }
@@ -280,4 +282,22 @@ transform: scale(1.2);
 .serviceModalRight{
   flex-grow: 2;
   margin-top: 2%;
+.btn-is-current .btn{
+  background-color: rgb(55, 87,146);
+  color: white;
+}
+
+/* 55, 87,146 */
+
+.cartAtBottom{
+  background-color: white;
+  width: 400px;
+  height: 60px;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  /* border:1px solid black; */
+  /* border-radius: 1%; */
+  overflow: hidden;
+  z-index: 20;
 }

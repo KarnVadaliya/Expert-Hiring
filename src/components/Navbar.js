@@ -3,7 +3,9 @@ import { Link } from "react-router-dom";
 import "../assets/vendor/nucleo/css/nucleo.css";
 import "../assets/vendor/font-awesome/css/font-awesome.min.css";
 import "../assets/scss/argon-design-system-react.scss";
-import LogModal from './LogModal';
+import LoggedOut from './LoggedOut';
+import LoggedIn from './LoggedIn';
+import { connect } from 'react-redux';
 
 import {
     UncontrolledCollapse,
@@ -25,6 +27,19 @@ import {
 class NavbarComponent extends Component {
 
     render(){
+
+            const user = this.props.userState.User;
+
+            let display = <LoggedOut/>;
+
+             if (user.username != null) {
+              display = <LoggedIn user={this.props.userState.User}/>;
+            } else {
+              display = <LoggedOut/>;
+            }
+
+
+
         return(
           
             <Navbar
@@ -113,8 +128,8 @@ class NavbarComponent extends Component {
                 
               </Nav>
             
-              
-              <LogModal/>
+              {display}
+             
             
             </UncontrolledCollapse>
           </Container>
@@ -132,6 +147,8 @@ class NavbarComponent extends Component {
 
 
 
+const mapStateToProps = (state) => ({
+  userState: state.userState
+});
 
-
-export default NavbarComponent;
+export default connect(mapStateToProps)(NavbarComponent);
