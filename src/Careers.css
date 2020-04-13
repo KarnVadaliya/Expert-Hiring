@@ -1,0 +1,135 @@
+
+
+ #box{
+	position: relative;
+	width: 225px;
+	height: 225px;
+	margin: 20px;
+	box-sizing: border-box;
+	display: inline-block;
+}
+
+#imgbox{
+	position: relative;
+	overflow: hidden;
+}
+
+ #imgbox img{
+	width: 225px;
+	height: 225px;
+	transition: transform 2s;
+}
+
+
+ #box:hover #imgbox img{
+	transform: scale(1.2);
+}
+
+ #details{
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	right: 10px;
+	bottom: 10px;
+	transform: scaleY(0);
+	transition: transform 2s;
+}
+ #box:hover #careerDetails{
+	transform: scaleY(1);
+	cursor: pointer;
+
+}
+
+ #box #careerDetails #content{
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	text-align: center;
+	padding: 15px;
+	color: #fff;
+}
+ #box #careerDetails #content h3{
+	color: cyan;
+}
+
+ #box #careerDetails{
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	right: 10px;
+	bottom: 10px;
+	background: rgba(0,0,0,0.5);
+	transition: transform .5s;
+	overflow: hidden;
+}
+
+ #box:hover #careerDetails{
+	cursor: pointer;
+}
+
+
+ #box #careerDetails #content{
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+    text-align: center;
+	color: #fff;
+}
+
+.fixed_img {
+    width: 100%;
+    height: 400px;
+  }
+
+  .image_container h2{
+      text-align: center;
+  }
+  .image_container p{
+    text-align: center;
+    padding-left: 20%;
+    padding-right: 20%;
+}
+
+
+.margin-left {
+    margin-left: 0px;
+}
+.visible-xs {
+    display: block !important;
+}
+.margin-right2 {
+    margin-right: 0px;
+}
+
+.why-bn {
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-position-x: center;
+    background-position-y: center;
+    background-size: 31%;
+    text-align: center;
+    color: white;
+}
+.bg-light-gray {
+    background-color: #f9f9f9;
+}
+.why-categories {
+    margin-top: 30px;
+}
+.container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+
+.why-bn p {
+    color: #666666;
+    width: 90%;
+    margin: 0 auto;
+    line-height: 20px;
+    font-weight: normal;
+    font-size: 15px;
+}
+
