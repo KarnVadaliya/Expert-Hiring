@@ -30,8 +30,8 @@ import {
                             <CardText>{product.description}</CardText>
                             <CardText>Price: ${product.price}</CardText>
                             <p>Added: {product.quantity}</p>
-                            <Button color="success" onClick={() => props.addProductToCart(product.id)}>Add{" "}<i className="fa fa-plus"></i></Button>
-                            <Button color="danger" onClick={()=>props.removeProductFromCart(product.id)}>Remove{" "}<i className="fa fa-minus"></i></Button>
+                            <Button color="success" onClick={() => props.addProductToCart(product)}>Add{" "}<i className="fa fa-plus"></i></Button>
+                            <Button color="danger" onClick={()=>props.removeProductFromCart(product)}>Remove{" "}<i className="fa fa-minus"></i></Button>
                         </CardBody>
                     </Card>
                 );
@@ -43,7 +43,7 @@ import {
                 </CardBody>
             </Card>
         );
-
+            console.log(props.cartState.productsInCart)
      return(
          <div>
             <Modal isOpen={props.cartState.showCart} toggle={props.toggleCartModal} size="md">
@@ -56,7 +56,7 @@ import {
                 </ModalBody>
                 <ModalFooter>
                 {   props.cartState.cartCost!=0 &&
-                    <Link to="/payment"><Button color="primary" onClick={props.toggleCartModal}>CHECKOUT</Button></Link>}{' '}
+                    <Link to={{ pathname: "/payment"}} ><Button color="primary" >CHECKOUT</Button></Link>}{' '}
                 <Button color="secondary" onClick={props.toggleCartModal}>Cancel</Button>
                 </ModalFooter>
             </Modal>
