@@ -129,8 +129,7 @@ class Payment extends Component{
     }
 
 
-    
-
+   
 
 
     render(){
@@ -183,6 +182,7 @@ class Payment extends Component{
             <Label for="exampleDate">Date*</Label>
             <Input
               className={this.state.dateError}
+              required
               type="date"
               name="date"
               id="exampleDate"
@@ -245,14 +245,11 @@ class Payment extends Component{
         </Col>
 
       </Row>
-      {/* <FormGroup check>
-        <Input type="checkbox" name="check" id="exampleCheck"/>
-        <Label for="exampleCheck" required check>Check me out</Label>
-      </FormGroup>
-      <Button>Sign in</Button> */}
     </Form>
       <br></br>
-        <PaypalCheckoutButton order={order} />
+     
+        { this.state.name!=="" && this.state.number!=="" && this.state.city!=="" && this.state.address1!=="" && this.state.date!="" && this.state.zip!=="" && this.state.mystate!=="none" &&
+          <PaypalCheckoutButton  order={order} />}
    
 
       
