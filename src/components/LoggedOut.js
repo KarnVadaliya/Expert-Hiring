@@ -119,6 +119,7 @@ class LoggedOut extends Component {
         }
       })
         .then(res => {
+          // console.log(res.data.name);
           this.props.setUser(res.data); 
           console.log(this.props)
         })
