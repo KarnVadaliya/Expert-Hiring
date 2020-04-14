@@ -120,6 +120,8 @@ class LoggedOut extends Component {
       })
         .then(res => {
           // console.log(res.data.name);
+          // console.log(JSON.parse(JSON.stringify(res.data)));
+          sessionStorage.setItem('user',JSON.stringify(res.data));
           this.props.setUser(res.data); 
         })
         .catch(err=>console.log(err));

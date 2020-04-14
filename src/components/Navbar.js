@@ -27,12 +27,13 @@ import {
 class NavbarComponent extends Component {
 
     render(){
-
+      console.log(this.props);
+      console.log((sessionStorage.getItem('user')));
             const user = this.props.userState.user;
 
             let display = <LoggedOut/>;
 
-             if (user.username != null) {
+             if (Object.keys(user).length !== 0) {
               display = <LoggedIn user={this.props.userState.user}/>;
             } else {
               display = <LoggedOut/>;

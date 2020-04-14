@@ -17,7 +17,7 @@ class LoggedIn extends Component {
                     <Nav navbar>
                         
                         <UncontrolledDropdown nav inNavbar>
-                            {/* <DropdownToggle nav>Hi, {this.props.user.name}</DropdownToggle> */}
+                            <DropdownToggle nav>Hi, {this.props.user.name}</DropdownToggle>
                             <DropdownMenu
                                 aria-labelledby="nav-inner-primary_dropdown_1"
                                 left
