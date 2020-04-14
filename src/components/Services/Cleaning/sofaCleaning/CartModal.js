@@ -1,31 +1,30 @@
 import React from 'react';
 import { Button, Modal, ModalBody, ModalFooter } from 'reactstrap';
 import { connect } from 'react-redux';
-import { toggleCartModal } from '../actions/toggleCartModal';
+import { toggleCartModal } from '../../../../actions/toggleCartModal';
 import {
     Card,
     CardBody,
     CardTitle, CardText
   } from "reactstrap";
-  import { removeProductFromCart } from '../actions/removeProduct';
-  import { addProductToCart } from '../actions/addProduct';
+  import { removeProductFromCart } from '../../../../actions/removeProduct';
+  import { addProductToCart } from '../../../../actions/addProduct';
+  import { Link } from 'react-router-dom';
 
 
- 
  const CartModal = (props) => {
     
         console.log(props);
         const productsList = [];
-        for(var product in props.cartState.products){
-            if(props.cartState.products[product].inCart)
-                productsList.push(props.cartState.products[product])
+        for(var product in props.cartState.productsInCart){
+            productsList.push(props.cartState.productsInCart[product])
         }
         console.log(productsList);
 
         const productsInCart = productsList.length ? (
             productsList.map(product=>{
                 return (
-                    <Card body outline color="default" className="text-center" style={{marginTop:"20px"}}>
+                    <Card key={product.id} body outline color="default" className="text-center" style={{marginTop:"20px"}}>
                         <CardBody>
                             <CardTitle style={{fontWeight:"bold"}}>{product.name}</CardTitle>
                             <CardText>{product.description}</CardText>
@@ -56,7 +55,8 @@ import {
                     <h5 style={{fontWeight:"bold", textAlign:"center"}}>TOTAL: $ {props.cartState.cartCost}</h5>
                 </ModalBody>
                 <ModalFooter>
-                <Button color="primary" onClick={props.toggleCartModal}>Do Something</Button>{' '}
+                {   props.cartState.cartCost!=0 &&
+                    <Link to="/payment"><Button color="primary" onClick={props.toggleCartModal}>CHECKOUT</Button></Link>}{' '}
                 <Button color="secondary" onClick={props.toggleCartModal}>Cancel</Button>
                 </ModalFooter>
             </Modal>

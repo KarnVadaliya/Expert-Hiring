@@ -1,6 +1,6 @@
 import React from 'react';
-import { addProductToCart } from '../../actions/addProduct';
-import { removeProductFromCart } from '../../actions/removeProduct';
+import { addProductToCart } from '../../../../actions/addProduct';
+import { removeProductFromCart } from '../../../../actions/removeProduct';
 import { connect } from 'react-redux';
 import cleaningImage from './cleaning.jpg';
 import {
@@ -11,6 +11,7 @@ import {
 import { Button } from "reactstrap";
 
 const ProductCard = (props) =>{
+    // {console.log(props.product)}
     return(
         <>
         <Row style={{marginBottom:"20px"}}>
@@ -22,9 +23,9 @@ const ProductCard = (props) =>{
                         <CardText>{props.product.description}</CardText>
                         <CardText>Price: ${props.product.price}</CardText>
                         <p>Added: {props.product.quantity}</p>
-                        <Button color="success" onClick={() => props.addProductToCart(props.product.id)}>Add{" "}<i className="fa fa-plus"></i></Button>
+                        <Button color="success" onClick={() => props.addProductToCart(props.product)}>Add{" "}<i className="fa fa-plus"></i></Button>
                         { props.product.inCart && 
-                        <Button color="danger" onClick={() => props.removeProductFromCart(props.product.id)}>Remove{" "}<i className="fa fa-minus"></i></Button>}
+                        <Button color="danger" onClick={() => props.removeProductFromCart(props.product)}>Remove{" "}<i className="fa fa-minus"></i></Button>}
                     </CardBody>
                 </Card>
             </Col>
@@ -32,6 +33,8 @@ const ProductCard = (props) =>{
         </>
     );
 }
-
-export default connect(null, { addProductToCart, removeProductFromCart })(ProductCard)
+const mapStateToProps = (state) => ({
+    cartState: state.cartState
+});
+export default connect(mapStateToProps, { addProductToCart, removeProductFromCart })(ProductCard)
 

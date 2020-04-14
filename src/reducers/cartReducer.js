@@ -1,27 +1,32 @@
 import { ADD_PRODUCT_CART, REMOVE_PRODUCT_CART, ADD_PRODUCT_DB } from "../actions/types";
 import { TOGGLE_CART_MODAL } from '../actions/types';
 
+
 const initialState = {
     cartNumbers: 0,
     showCart: false,
     cartCost: 0,
-    products: {}
+    productsInCart: {}
 }
 
 export default (state = initialState, action) => {
     switch (action.type) {
         case ADD_PRODUCT_CART:
-            let addQuantity = {...state.products[action.payload]};
+            let addQuantity = {...state.productsInCart[action.payload]};
+            console.log(Object.keys(addQuantity).length===0);
+            if(Object.keys(addQuantity).length === 0){
+                addQuantity = action.payload
+            }
             addQuantity.quantity += 1;
             addQuantity.inCart = true;
-            console.log(addQuantity);
+ 
             return {
                 ...state,
                 cartNumbers: state.cartNumbers + 1,
-                cartCost: state.cartCost + state.products[action.payload].price,
-                products: {
-                    ...state.products,
-                    [action.payload]: addQuantity
+                cartCost: state.cartCost + addQuantity.price,
+                productsInCart:{
+                    ...state.productsInCart,
+                    [action.payload.id]: addQuantity
                 }
             }
         case TOGGLE_CART_MODAL:
@@ -30,30 +35,38 @@ export default (state = initialState, action) => {
                 showCart: !state.showCart
             }
         case REMOVE_PRODUCT_CART:
-            let removeQuantity = {...state.products[action.payload]};
+            // let removeQuantity = {...state.productsInCart[action.payload]};
+            let removeQuantity = action.payload;
             removeQuantity.quantity -= 1;
-            if(removeQuantity.quantity < 0 ) removeQuantity.quantity = 0;
+            if(removeQuantity.quantity < 0 ) {
+                removeQuantity.quantity = 0;
+            }
             if(removeQuantity.quantity == 0)
                 removeQuantity.inCart = false;
             else
                 removeQuantity.inCart = true;
-            return{
-                ...state,
-                cartNumbers: state.cartNumbers - 1,
-                cartCost: state.cartCost - state.products[action.payload].price,
-                products: {
-                    ...state.products,
-                    [action.payload]: removeQuantity
+            let temp = state.productsInCart;
+            if(removeQuantity.quantity===0){
+                delete temp[action.payload.id.toString()];
+                // console.log(temp);
+                return{
+                    ...state,
+                    cartNumbers: state.cartNumbers - 1,
+                    cartCost: state.cartCost - removeQuantity.price,
+                    productsInCart: temp
+                }
+            }else{
+                return{
+                    ...state,
+                    cartNumbers: state.cartNumbers - 1,
+                    cartCost: state.cartCost - removeQuantity.price,
+                    productsInCart: {
+                        ...state.productsInCart,
+                        [action.payload.id]: removeQuantity
+                    }
                 }
             }
-        case ADD_PRODUCT_DB:
-            return{
-                ...state,
-                products: {
-                    ...state.products,
-                    [action.payload.id]: action.payload
-                }
-            }
+            
         default:
             return state;
     }
