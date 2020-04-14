@@ -77,6 +77,10 @@ router.post("/login", async (req, res) => {
     }
 });
 
-
+router.route('/findByID/:id').get((req,res)=>{
+    User.findById(req.params.id)
+        .then(user => res.json(user))
+        .catch(error => res.status(400).json('Error: ' + error));
+});
 
 module.exports = router;

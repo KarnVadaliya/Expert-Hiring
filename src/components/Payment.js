@@ -5,6 +5,7 @@ import PaypalCheckoutButton from './PayPalCheckoutButton';
 import { Col, Button, Form, FormGroup, Label, Input, FormText, Row, Table } from 'reactstrap';
 import { connect } from 'react-redux';
 
+
 class Payment extends Component{
     constructor(props)
     {
