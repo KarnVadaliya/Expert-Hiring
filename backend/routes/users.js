@@ -83,6 +83,25 @@ router.route('/findByEmail/:email').get((req,res)=>{
     .catch(error => res.status(400).json('Error: ' + error));
 });
 
+router.route("/addPayment").post((req,res)=>{
+    User.find({username: req.body.username})
+        .then(user=>{
+            console.log(req.body.payment);
+            User.updateOne({username: req.body.username}, {
+                $push: { paymentHistory : req.body.payment }
+            })
+                .then(data=> res.status(200).send(data))
+                .catch(error => res.status(400).send(error.message));
+        })
+        .catch(err=>{
+            res.status(400).send(err.message);
+        })
+});
 
+router.route('/findByID/:id').get((req,res)=>{
+    User.findById(req.params.id)
+        .then(user => res.json(user))
+        .catch(error => res.status(400).json('Error: ' + error));
+});
 
 module.exports = router;
