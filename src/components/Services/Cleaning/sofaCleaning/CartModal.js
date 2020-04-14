@@ -30,8 +30,8 @@ import {
                             <CardText>{product.description}</CardText>
                             <CardText>Price: ${product.price}</CardText>
                             <p>Added: {product.quantity}</p>
-                            <Button color="success" onClick={() => props.addProductToCart(product.id)}>Add{" "}<i className="fa fa-plus"></i></Button>
-                            <Button color="danger" onClick={()=>props.removeProductFromCart(product.id)}>Remove{" "}<i className="fa fa-minus"></i></Button>
+                            <Button color="success" onClick={() => props.addProductToCart(product)}>Add{" "}<i className="fa fa-plus"></i></Button>
+                            <Button color="danger" onClick={()=>props.removeProductFromCart(product)}>Remove{" "}<i className="fa fa-minus"></i></Button>
                         </CardBody>
                     </Card>
                 );

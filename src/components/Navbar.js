@@ -29,7 +29,10 @@ class NavbarComponent extends Component {
     render(){
 
             const user = this.props.userState.User;
-
+            // const user = {
+            //   name : this.props.userState.name,
+            //   username: this.props.userState.username
+            // }
             let display = <LoggedOut/>;
 
              if (user.username != null) {
@@ -38,7 +41,7 @@ class NavbarComponent extends Component {
               display = <LoggedOut/>;
             }
 
-
+            console.log(this.props);
 
         return(
           
