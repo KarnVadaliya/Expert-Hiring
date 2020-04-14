@@ -177,7 +177,15 @@ class Payment extends Component{
         },
       };
       
-
+      const myArr=["AL","AK","AZ","AR","CA","CO","CT","DE","FL","GA","HI","ID",
+      "IL","IN","IA","KS","KY","LA","ME","MD","MA","MI","MN","MS","MO","MT",
+      "NE","NV","NH","NJ","NM","NY","NC","ND","OH","OK","OR","PA","RI",
+      "SC","SD","TN","TX","UT","VT","VA","WA","WV","WI","WY"]
+      const usaStates= myArr.map(x=>{
+        return(
+          <option value={x}>{x}</option>
+        )
+      })
 
     return(
     <div style={{width:"70%", marginLeft:"15%"}}>
@@ -272,10 +280,7 @@ class Payment extends Component{
             <Label for="exampleState">State*</Label>
             <Input className={this.state.mystateError} type="select" name="mystate" required id="exampleSelect" value={this.state.mystate} onBlur={this.handleError} onChange={this.handleSelectList}  >
               <option value="none" > --Select-- </option>
-              <option value="NY">NY</option>
-              <option value="MA">MA</option>
-              <option value="CA">CA</option>
-              <option value="TX">TX</option>
+              {usaStates}
           </Input>
           </FormGroup>
         </Col>
