@@ -29,6 +29,9 @@ app.use('/users',userRouter);
 const productsSofaCleaningRouter = require('./routes/cleaning/productsSofaCleaning');
 app.use('/cleaning/sofaCleaning',productsSofaCleaningRouter);
 
+const professionalRouter = require('./routes/professionals/professionals');
+app.use('/professionals', professionalRouter);
+
 app.use(passport.initialize());
 app.use(passport.session());
 

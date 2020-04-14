@@ -34,11 +34,16 @@ const PayPalCheckoutButton = ({ order }) => {
             description: 'My Test App',
             custom: order.customer || '',
             item_list: {
-              items: order.items
+              items: order.items,
+              shipping_address:order.address
             },
           },
         ],
         note_to_payer:'Thank You',
+        redirect_urls:{
+          return_url:"https://www.youtube.com/",
+          cancel_url:"https://www.google.com/"
+        }
       };
   
       // console.log(payment);

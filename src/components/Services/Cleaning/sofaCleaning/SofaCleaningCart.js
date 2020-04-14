@@ -2,24 +2,26 @@ import React, { Component } from 'react';
 import Scrollspy from 'react-scrollspy';
 import { Button } from "reactstrap";
 import { Row, Col, Badge } from "reactstrap";
-import "../../assets/vendor/font-awesome/css/font-awesome.min.css";
+import "../../../../assets/vendor/font-awesome/css/font-awesome.min.css";
 import { connect } from 'react-redux';
-import { toggleCartModal } from '../../actions/toggleCartModal';
-import CartModal from '../CartModal';
-import { addProductFromDB } from '../../actions/addInputs/addProductFromDB';
+import { toggleCartModal } from '../../../../actions/toggleCartModal';
+import CartModal from './CartModal';
+import { addProductFromDB } from '../../../../actions/addInputs/addProductFromDB';
 import Axios from 'axios';
 import ProductCard from './ProductCard';
 import LoadingCard from './LoadingCard';
+import { Link } from "react-router-dom";
 
 
   
 
-class SofaCleaning extends Component {
+class SofaCleaningCart extends Component {
     constructor(props){
         super(props);
   
         this.state = {
-          services: ['3 Sofa Seats','4 Sofa Seats','5 Sofa Seats','6 Sofa Seats']
+          services: ['3 Sofa Seats','4 Sofa Seats','5 Sofa Seats','6 Sofa Seats'],
+          products: []
         };
     }
 
@@ -27,8 +29,13 @@ class SofaCleaning extends Component {
         Axios.get('http://localhost:5000/cleaning/sofaCleaning/')
             .then(res=>{
                 console.log(res.data);
-                res.data.map(product=> this.props.addProductFromDB(product));
+                let tempList = []
+                // res.data.map(product=> this.props.addProductFromDB(product));
+                res.data.map(product => tempList.push(product));
                 console.log(this.props.cartState);
+                this.setState({
+                    products: tempList
+                })
             })
             .catch(err=>{
                 console.log(err)
@@ -53,7 +60,7 @@ class SofaCleaning extends Component {
     
 
     render() {
-        console.log(this.props);
+        console.log(this.state);
         const { services } = this.state;
 
         const trimmedServices = services.map(category => category.replace(/\s/g,''));
@@ -70,35 +77,35 @@ class SofaCleaning extends Component {
 
         
         const threeSeatsCategory = [];
-        for(var product in this.props.cartState.products){
-            if(this.props.cartState.products[product].category === '3 Sofa Seat')
-                threeSeatsCategory.push(this.props.cartState.products[product])
+        for(var product in this.state.products){
+            if(this.state.products[product].category === '3 Sofa Seat')
+                threeSeatsCategory.push(this.state.products[product])
         }
       
 
         const fiveSeatsCategory = [];
-        for(var product in this.props.cartState.products){
-            if(this.props.cartState.products[product].category === '5 Sofa Seat')
-                fiveSeatsCategory.push(this.props.cartState.products[product])
+        for(var product in this.state.products){
+            if(this.state.products[product].category === '5 Sofa Seat')
+                fiveSeatsCategory.push(this.state.products[product])
         }
         
 
         const fourSeatsCategory = [];
-        for(var product in this.props.cartState.products){
-            if(this.props.cartState.products[product].category === '4 Sofa Seat')
-                fourSeatsCategory.push(this.props.cartState.products[product])
+        for(var product in this.state.products){
+            if(this.state.products[product].category === '4 Sofa Seat')
+                fourSeatsCategory.push(this.state.products[product])
         }
 
         const sixSeatsCategory = [];
-        for(var product in this.props.cartState.products){
-            if(this.props.cartState.products[product].category === '6 Sofa Seat')
-                sixSeatsCategory.push(this.props.cartState.products[product])
+        for(var product in this.state.products){
+            if(this.state.products[product].category === '6 Sofa Seat')
+                sixSeatsCategory.push(this.state.products[product])
         }
         
 
         global.threeList = (threeSeatsCategory.length) ? (
             threeSeatsCategory.map(product => {
-                return(
+                return(                    
                     <ProductCard product={product}/>
                 ) 
             })
@@ -149,11 +156,12 @@ class SofaCleaning extends Component {
         
         return (
             <>
+
                 <div className="cartAtBottom" style={{textAlign:"right"}}>
                     <Button onClick={this.props.toggleCartModal} style={{height:"50px", width:"400px", margin:"2px", backgroundImage:"linear-gradient(to right, #667eea, #764ba2, #6B8DD6, #8E37D7)"}}>
                     <Row>
                         <Col sm="6">
-                            <h5 style={{textAlign:"left", color:"white"}}><Badge className="badge-white">{this.props.cartState.cartNumbers}</Badge>&nbsp;&nbsp;${this.props.cartState.cartCost}</h5> 
+                            <h5 style={{textAlign:"left", color:"white"}}><Badge className="badge-white">{this.state.cartNumbers}</Badge>&nbsp;&nbsp;${this.props.cartState.cartCost}</h5> 
                         </Col>
                         <Col sm="6">
                             <h5 style={{textAlign:"right", color:"white"}}><i className="fa fa-chevron-up"></i></h5>                             
@@ -162,7 +170,9 @@ class SofaCleaning extends Component {
                     <CartModal/>
                     </Button>
                 </div>
-                
+
+                <Link to="/cleaning/sofaCleaning"><i className="fa fa-chevron-left" style={{fontSize:"50px", marginLeft:"10%", position:"absolute", top:"9%"}}/></Link>
+
                 <h1 style={{fontWeight:"bold", letterSpacing:"2px", textTransform:"uppercase", textAlign:"center"}}>Professional Sofa Cleaning</h1>
                 <br></br><br></br>
                 <div className="servicesSection">
@@ -186,4 +196,4 @@ const mapStateToProps = (state) => ({
     cartState: state.cartState
 });
 
-export default connect(mapStateToProps,{ toggleCartModal, addProductFromDB })(SofaCleaning);
+export default connect(mapStateToProps,{ toggleCartModal, addProductFromDB })(SofaCleaningCart);
