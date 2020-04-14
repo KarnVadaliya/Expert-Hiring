@@ -1,7 +1,6 @@
 import { ADD_PRODUCT_CART, REMOVE_PRODUCT_CART, EMPTY_CART} from "../actions/types";
 import { TOGGLE_CART_MODAL } from '../actions/types';
 
-
 const initialState = {
     cartNumbers: 0,
     showCart: false,
