@@ -4,6 +4,7 @@ import paypal from 'paypal-checkout';
 import { connect } from 'react-redux';
 import { setPayment } from '../actions/setPayment';
 import { emptyCart } from '../actions/emptyCart';
+import Axios from 'axios';
 
 
 class PayPalCheckoutButton extends React.Component {
@@ -63,6 +64,18 @@ class PayPalCheckoutButton extends React.Component {
               .then(response => {
                 console.log(response);
                 this.props.emptyCart();
+                Axios.post('http://localhost:5000/users/addPayment',
+                {
+                    username: this.props.userState.user.username,
+                    payment: response
+                },{
+                    "headers": {
+                      'Content-Type': 'application/json',
+                    }
+                  })
+                  .then(res=>{console.log(res)})
+                  .catch(err=>{console.log(err)})
+
                 this.props.setPayment(response);
                 alert(`The payment was processed correctly, ID: ${response.id}`)
               })
