@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../index.css'
+import '../Careers.css';
 import  Axios, * as others  from "axios";
 
 
@@ -201,18 +202,6 @@ export default class ContactUs extends Component {
                                         <i className = "fa fa-paper-plane-o" aria-hidden = "true"></i>
                                         &nbsp;Send Request
                                     </Button>
-
-                                    {/* <Button
-                                        aria-pressed={true}
-                                        className="active"
-                                        color="secondary"
-                                        href="#pablo"
-                                        onClick={this.resetForm}
-                                        role="button"
-                                        size="lg">
-                                    <i class="fa fa-undo"></i>
-                                    &nbsp;Reset
-                                    </Button> */}
                                 </Form>
                                 {this.state.emailSent === true && <p className="d-inline success-msg">Email Sent</p>}
                         {this.state.emailSent === false && <p className="d-inline err-msg">Email Not Sent</p>}
@@ -220,7 +209,97 @@ export default class ContactUs extends Component {
                         </div>
                     </div>
                 </div>
-            </section>
+                <br></br>
+                <br></br>
+                <br></br>
+                <h1 className= "text-center"><strong> Our Main Offices</strong></h1>
+            <div className= "container"> 
+                <div className = "well well-sm">
+                    <div className = "row">
+                        <div className = "col-md-4">
+                            <div id="box">
+                                <div id="imgbox">
+                                <img src= {require("../assets/img/careers/jobs.jpg")} />
+                                </div>
+                                <div id="careerDetails">
+                                    <div id="content" onClick={() => this.toggleModal("formModal")}>
+                                        <h3>Ahemdabad, India</h3>
+                                        <p><strong>401, Indraprastha Business Park, Ahmedabad, Gujarat, India 380051</strong></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className = "col-md-4">
+                            <div id="box">
+                                <div id="imgbox">
+                                <img src= {require("../assets/img/careers/jobs.jpg")} />
+                                </div>
+                                <div id="careerDetails">
+                                    <div id="content" onClick={() => this.toggleModal("formModal")}>
+                                        <h3>Boston, US</h3>
+                                        <p><strong>123, Northampton Street, Boston, MA, United States  02115</strong></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className = "col-md-4">
+                            <div id="box">
+                                <div id="imgbox">
+                                <img src= {require("../assets/img/careers/jobs.jpg")} />
+                                </div>
+                                <div id="careerDetails">
+                                    <div id="content" onClick={() => this.toggleModal("formModal")}>
+                                        <h3>New York, US</h3>
+                                        <p><strong>C-32 A Cipet Road, Industrial Estate, SIDCO Industrial Estate, New York, United States </strong></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className = "col-md-4">
+                            <div id="box">
+                                <div id="imgbox">
+                                <img src= {require("../assets/img/careers/jobs.jpg")} />
+                                </div>
+                                <div id="careerDetails">
+                                    <div id="content" onClick={() => this.toggleModal("formModal")}>
+                                        <h3>New Jersey, US</h3>
+                                        <p><strong>Plot No:- 66, Phase-2, Industrial Area, New Jersey, United States </strong></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className = "col-md-4">
+                            <div id="box">
+                                <div id="imgbox">
+                                <img src= {require("../assets/img/careers/jobs.jpg")} />
+                                </div>
+                                <div id="careerDetails">
+                                    <div id="content" onClick={() => this.toggleModal("formModal")}>
+                                        <h3>San Francisco, US</h3>
+                                        <p><strong>Trendz Enclave, First Floor, Plot No. 44, San Francisco, United States </strong></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className = "col-md-4">
+                            <div id="box">
+                                <div id="imgbox">
+                                <img src= {require("../assets/img/careers/jobs.jpg")} />
+                                </div>
+                                <div id="careerDetails">
+                                    <div id="content" onClick={() => this.toggleModal("formModal")}>
+                                        <h3>Mumbai, India</h3>
+                                        <p><strong>Unit - 1101 & 1102, Godrej Coliseum, Sion (East), Mumbai, India 400022 </strong></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </section>
             
 
             

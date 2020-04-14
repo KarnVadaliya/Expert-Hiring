@@ -28,12 +28,12 @@ class NavbarComponent extends Component {
 
     render(){
 
-            const user = this.props.userState.User;
+            const user = this.props.userState.user;
 
             let display = <LoggedOut/>;
 
              if (user.username != null) {
-              display = <LoggedIn user={this.props.userState.User}/>;
+              display = <LoggedIn user={this.props.userState.user}/>;
             } else {
               display = <LoggedOut/>;
             }
