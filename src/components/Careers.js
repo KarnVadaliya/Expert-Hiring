@@ -431,15 +431,6 @@ export default class Careers extends Component {
                         >
                           Apply
                         </Button>
-                        {/* <Button
-                            className="ml-auto"
-                            color="link"
-                            data-dismiss="modal"
-                            type="button"
-                            onClick={() => this.toggleModal("defaultModal")}
-                        >
-                        Close
-                        </Button> */}
                         {/* <Alert color="success" >
                             <strong>Success!</strong> This is a success alert—check it out!
                         </Alert> */}
