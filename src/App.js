@@ -5,10 +5,13 @@ import Navbar from './components/Navbar';
 import Home from './components/Home';
 import AboutUs from './components/AboutUs';
 import ContactUs from './components/ContactUs';
-import SofaCleaningCart from './components/Services/Cleaning/sofaCleaning/SofaCleaningCart';
+import SofaCleaningCart from './components/Services/Cleaning/SofaCleaning/SofaCleaningCart';
 import MakeUp from './components/Services/make-up/Makeup';
 import ScrollToTop from './ScrollToTop';
-import SofaCleaning from './components/Services/Cleaning/sofaCleaning/SofaCleaning';
+import SofaCleaning from './components/Services/Cleaning/SofaCleaning/SofaCleaning';
+import Electrician from './components/Services/Home Service/Electrician/Electrician';
+import Plumber from './components/Services/Home Service/Plumber/Plumber';
+import Carpenter from './components/Services/Home Service/Carpenter/Carpenter';
 import Careers from './components/Careers';
 import SalonAtHome from './components/Services/SalonAtHome';
 import Payment from './components/Payment';
@@ -30,6 +33,9 @@ function App() {
                   <Route path="/careers" component={Careers}></Route>
                   <Route path="/cleaning/sofaCleaning" exact component={SofaCleaning}></Route>             
                   <Route path="/cleaning/sofaCleaning/shop" component={SofaCleaningCart}></Route> 
+                  <Route path="/homeservice/plumber" exact component={Plumber}></Route>     
+                  <Route path="/homeservice/electrician" exact component={Electrician}></Route>     
+                  <Route path="/homeservice/carpenter" exact component={Carpenter}></Route>        
                   <Footer />
               </div>
             </ScrollToTop>

@@ -1,17 +1,16 @@
 
-
 .serviceBg{
     height: 400px;
-    opacity: 90%;
-    margin-top: -41px;
-    filter: brightness(.9);
+    width: 100%;
+    margin-top: -76px;
+    filter: brightness(0.9);
   }
   
   .serviceBg h2{
     color: white;
     font-weight: bold;
     margin-right: 580px;
-    padding-top: 200px;
+    padding-top: 120px;
   }
   
   .info{

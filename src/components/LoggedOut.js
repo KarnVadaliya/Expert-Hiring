@@ -162,36 +162,36 @@ class LoggedOut extends Component {
 
       
 
-      // axios.post('http://localhost:5000/users/add',
-      // {
-      //   name: this.state.name,
-      //   username: this.state.username,
-      //   password: this.state.password
-      // },{
-      //   "headers": {
-      //     'Content-Type': 'application/json',
-      //   }
-      // })
-      //   .then(res=>{
-      //     console.log(res.data);
+      axios.post('http://localhost:5000/users/add',
+      {
+        name: this.state.name,
+        username: this.state.username,
+        password: this.state.password
+      },{
+        "headers": {
+          'Content-Type': 'application/json',
+        }
+      })
+        .then(res=>{
+          console.log(res.data);
           
-      //   })
-      //   .catch(err=>console.log(err));
+        })
+        .catch(err=>console.log(err));
 
-      // console.log(user);
+      console.log(user);
 
-      // this.setState({
-      //   defaultModal: false,
-      //   nameState: '',
-      //   emailState: '',
-      //   passwordState: '',
-      //   username: '',
-      //   name: '',
-      //   password: ''
-      // })
+      this.setState({
+        defaultModal: false,
+        nameState: '',
+        emailState: '',
+        passwordState: '',
+        username: '',
+        name: '',
+        password: ''
+      })
 
-      // this.toggleModal("signUpModal");
-      // this.toggleModal("loginSignUpModal");
+      this.toggleModal("signUpModal");
+      this.toggleModal("loginSignUpModal");
 
     }
 

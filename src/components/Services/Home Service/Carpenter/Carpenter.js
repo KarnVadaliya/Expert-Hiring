@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import "../../../../assets/vendor/nucleo/css/nucleo.css";
 import "../../../../assets/vendor/font-awesome/css/font-awesome.min.css";
 import "../../../../assets/scss/argon-design-system-react.scss";
-import Background from '../../../../assets/img/serviceBackgrounds/makeupBg.jpg'
+import Background from '../../../../assets/img/serviceBackgrounds/electricianBg.jpg'
 import '../../services.css'
 import Scrollspy from 'react-scrollspy'
 import Axios from 'axios'
@@ -27,7 +27,7 @@ class SofaCleaning extends Component{
             }
           })
           .then(res=>{
-            
+           
               const reviews = [];
               res.data.map(professional=>professional.reviews.map(review=>reviews.push(review)));
               this.setState({
@@ -78,7 +78,7 @@ class SofaCleaning extends Component{
             tempProfessionals.map(professional => {
                 return(
                     <React.Fragment key={professional._id}>
-                        <img src={require("../../../../assets/img/serviceBackgrounds/random.jpg")}></img>
+                        <img src={require("../../../../assets/img/serviceBackgrounds/electricianBg.jpg")}></img>
                         <div style={{marginLeft:"120px"}}>
                             <span className="name">{professional.name}</span><br></br><br></br>
                             <p>{professional.address}</p>

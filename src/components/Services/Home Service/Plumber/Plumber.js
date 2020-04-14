@@ -27,7 +27,7 @@ class SofaCleaning extends Component{
             }
           })
           .then(res=>{
-            
+            //   const userReviews = this.sortReviews(res.data);
               const reviews = [];
               res.data.map(professional=>professional.reviews.map(review=>reviews.push(review)));
               this.setState({
