@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { setPayment } from '../actions/setPayment';
 import { emptyCart } from '../actions/emptyCart';
 import nodemailer from 'nodemailer';
+import Axios from 'axios';
 
 class PayPalCheckoutButton extends React.Component {
 
@@ -66,32 +67,46 @@ class PayPalCheckoutButton extends React.Component {
               .then(response => {
                 console.log(response);
                 this.props.emptyCart();
+                Axios.post('http://localhost:5000/users/addPayment',
+                {
+                    username: this.props.userState.user.username,
+                    payment: response
+                },{
+                    "headers": {
+                      'Content-Type': 'application/json',
+                    }
+                  })
+                  .then(res=>{console.log(res)})
+                  .catch(err=>{console.log(err)})
+
+
                 this.props.setPayment(response);
                 console.log(this.props.userState);
                 // alert(`The payment was processed correctly, ID: ${response.id}`)
 
-                // var transporter = nodemailer.createTransport({
-                //   service: 'gmail',
-                //   auth: {
-                //     user: 'webdesign.legion.16@gmail.com',
-                //     pass: 'Legion@16'
-                //   }
-                // });
+
+                var transporter = nodemailer.createTransport({
+                  service: 'gmail',
+                  auth: {
+                    user: 'webdesign.legion.16@gmail.com',
+                    pass: 'Legion@16'
+                  }
+                });
       
-                // var mailOptions = {
-                //   from: 'webdesign.legion.16@gmail.com',
-                //   to: 'karn.vadaliya@gmail.com',
-                //   subject: 'Kantalo aave che',
-                //   html: `<p>Payment done ${response.id}</p>`
-                // };
+                var mailOptions = {
+                  from: 'webdesign.legion.16@gmail.com',
+                  to: 'karn.vadaliya@gmail.com',
+                  subject: 'Kantalo aave che',
+                  html: `<p>Payment done ${response.id}</p>`
+                };
                 
-                // transporter.sendMail(mailOptions, function(error, info){
-                //   if (error) {
-                //     console.log(error);
-                //   } else {
-                //     console.log('Email sent: ' + info.response);
-                //   }
-                // });
+                transporter.sendMail(mailOptions, function(error, info){
+                  if (error) {
+                    console.log(error);
+                  } else {
+                    console.log('Email sent: ' + info.response);
+                  }
+                });
 
               })
               .catch(error => {

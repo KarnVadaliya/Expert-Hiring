@@ -22,6 +22,9 @@ const userSchema = new Schema({
         required: true,
         select: false,
         minlength: 3
+    },
+    paymentHistory: {
+        type: Array
     }
 });
 
