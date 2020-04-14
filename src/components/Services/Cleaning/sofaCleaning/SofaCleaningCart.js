@@ -29,10 +29,8 @@ class SofaCleaningCart extends Component {
         Axios.get('http://localhost:5000/cleaning/sofaCleaning/')
             .then(res=>{
                 console.log(res.data);
-                let tempList = []
-                // res.data.map(product=> this.props.addProductFromDB(product));
+                let tempList = [];
                 res.data.map(product => tempList.push(product));
-                console.log(this.props.cartState);
                 this.setState({
                     products: tempList
                 })
@@ -60,6 +58,18 @@ class SofaCleaningCart extends Component {
     
 
     render() {
+        let tempList = [];
+        this.state.products.map(product => tempList.push(product));
+        tempList.map(product => {
+            if(this.props.cartState.productsInCart[product.id] != null){
+                product.quantity = this.props.cartState.productsInCart[product.id].quantity;
+                product.inCart = this.props.cartState.productsInCart[product.id].inCart;
+            }else{
+                product.quantity = 0;
+                product.inCart = false;
+            }
+        });
+
         console.log(this.state);
         const { services } = this.state;
 
@@ -77,30 +87,30 @@ class SofaCleaningCart extends Component {
 
         
         const threeSeatsCategory = [];
-        for(var product in this.state.products){
-            if(this.state.products[product].category === '3 Sofa Seat')
-                threeSeatsCategory.push(this.state.products[product])
-        }
+        tempList.map(product=>{
+            if(product.category === '3 Sofa Seat')
+                threeSeatsCategory.push(product);
+        });
       
 
         const fiveSeatsCategory = [];
-        for(var product in this.state.products){
-            if(this.state.products[product].category === '5 Sofa Seat')
-                fiveSeatsCategory.push(this.state.products[product])
-        }
+        tempList.map(product=>{
+            if(product.category === '5 Sofa Seat')
+                fiveSeatsCategory.push(product);
+        });
         
 
         const fourSeatsCategory = [];
-        for(var product in this.state.products){
-            if(this.state.products[product].category === '4 Sofa Seat')
-                fourSeatsCategory.push(this.state.products[product])
-        }
+        tempList.map(product=>{
+            if(product.category === '4 Sofa Seat')
+                fourSeatsCategory.push(product);
+        });
 
         const sixSeatsCategory = [];
-        for(var product in this.state.products){
-            if(this.state.products[product].category === '6 Sofa Seat')
-                sixSeatsCategory.push(this.state.products[product])
-        }
+        tempList.map(product=>{
+            if(product.category === '6 Sofa Seat')
+                sixSeatsCategory.push(product);
+        });
         
 
         global.threeList = (threeSeatsCategory.length) ? (
@@ -161,7 +171,7 @@ class SofaCleaningCart extends Component {
                     <Button onClick={this.props.toggleCartModal} style={{height:"50px", width:"400px", margin:"2px", backgroundImage:"linear-gradient(to right, #667eea, #764ba2, #6B8DD6, #8E37D7)"}}>
                     <Row>
                         <Col sm="6">
-                            <h5 style={{textAlign:"left", color:"white"}}><Badge className="badge-white">{this.state.cartNumbers}</Badge>&nbsp;&nbsp;${this.props.cartState.cartCost}</h5> 
+                            <h5 style={{textAlign:"left", color:"white"}}><Badge className="badge-white">{this.props.cartState.cartNumbers}</Badge>&nbsp;&nbsp;${this.props.cartState.cartCost}</h5> 
                         </Col>
                         <Col sm="6">
                             <h5 style={{textAlign:"right", color:"white"}}><i className="fa fa-chevron-up"></i></h5>                             

@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import paypal from 'paypal-checkout';
 import PaypalCheckoutButton from './PayPalCheckoutButton';
-import { Col, Button, Form, FormGroup, Label, Input, FormText, Row } from 'reactstrap';
+import { Col, Button, Form, FormGroup, Label, Input, FormText, Row, Table } from 'reactstrap';
+import { connect } from 'react-redux';
 
 class Payment extends Component{
     constructor(props)
@@ -32,6 +33,7 @@ class Payment extends Component{
             dateError:""
         }
     }
+
 
 
     handleOnChangeTextBox = e => {
@@ -129,38 +131,86 @@ class Payment extends Component{
     }
 
 
-    
-
+   
 
 
     render(){
-    
+
+      const productsList = [];
+        for(var product in this.props.cartState.productsInCart){
+            productsList.push(this.props.cartState.productsInCart[product])
+        }
+       
+      var count=0;
+      var itemlist=[]
+      const products=productsList.map(product=>{
+        itemlist.push({
+            name: product.name,
+            description: product.description,
+            price: product.price,
+            quantity: product.quantity,
+            currency: 'USD'
+        },)
+        count++;
+        return (
+              <tr>
+                <th scope="row">{count}</th>
+                <td><strong>{product.name}</strong><br></br><p>{product.description}</p></td>
+                <td>{product.quantity}</td>
+                <td>$ {product.quantity*product.price}</td>
+              </tr> 
+        )
+      });
+
+
       const order = {
-        customer: 'FenilShah',
-        total: '100.00',
-        items: [
-          {
-            name: 'Oneplus',
-            description: 'Amazing Phone',
-            price: '60.00',
-            quantity: 1,
-            currency: 'USD'
-          },
-          {
-            name: 'Oneplus cable',
-            description: 'Fast charging Cable',
-            price: '20.00',
-            quantity: 2,
-            currency: 'USD'
-          },
-        ],
+        customer: this.state.name,
+        total: this.props.cartState.cartCost,
+        items: itemlist,
+        address: {
+          line1: this.state.address1,
+          line2: this.state.address2,
+          city:this.state.city,
+          country_code: "US",
+          postal_code: this.state.zip,
+          state:this.state.mystate,
+        },
       };
+      
+      const myArr=["AL","AK","AZ","AR","CA","CO","CT","DE","FL","GA","HI","ID",
+      "IL","IN","IA","KS","KY","LA","ME","MD","MA","MI","MN","MS","MO","MT",
+      "NE","NV","NH","NJ","NM","NY","NC","ND","OH","OK","OR","PA","RI",
+      "SC","SD","TN","TX","UT","VT","VA","WA","WV","WI","WY"]
+      const usaStates= myArr.map(x=>{
+        return(
+          <option value={x}>{x}</option>
+        )
+      })
 
     return(
     <div style={{width:"70%", marginLeft:"15%"}}>
-    <h3>Your Order</h3>
-
-    <h3>Enter Details</h3>
+    <h3 style={{fontWeight:"550"}} >Your Order</h3>
+         <Table responsive>
+            <thead>
+              <tr>
+                <th style={{fontSize:"20px"}}>No.</th>
+                <th style={{fontSize:"20px"}}>Service Name</th>
+                <th style={{fontSize:"20px"}}>Quantity</th>
+                <th style={{fontSize:"20px"}}>Price</th>
+              </tr>
+            </thead>
+            <tbody>
+            {products}
+            <tr style={{borderTop:"1px solid gray"}}>
+              <th scope="row" style={{fontSize:"20px"}}>Total :</th>
+              <td></td>
+              <td></td>
+              <td>$ {this.props.cartState.cartCost}</td>
+            </tr>
+          </tbody>
+        </Table>
+   
+    <h3 style={{fontWeight:"550"}}>Enter Details</h3>
     <br></br>
       <Form>
         <Row form>
@@ -183,6 +233,7 @@ class Payment extends Component{
             <Label for="exampleDate">Date*</Label>
             <Input
               className={this.state.dateError}
+              required
               type="date"
               name="date"
               id="exampleDate"
@@ -229,10 +280,7 @@ class Payment extends Component{
             <Label for="exampleState">State*</Label>
             <Input className={this.state.mystateError} type="select" name="mystate" required id="exampleSelect" value={this.state.mystate} onBlur={this.handleError} onChange={this.handleSelectList}  >
               <option value="none" > --Select-- </option>
-              <option value="NY">NY</option>
-              <option value="MA">MA</option>
-              <option value="CA">CA</option>
-              <option value="TX">TX</option>
+              {usaStates}
           </Input>
           </FormGroup>
         </Col>
@@ -245,18 +293,11 @@ class Payment extends Component{
         </Col>
 
       </Row>
-      {/* <FormGroup check>
-        <Input type="checkbox" name="check" id="exampleCheck"/>
-        <Label for="exampleCheck" required check>Check me out</Label>
-      </FormGroup>
-      <Button>Sign in</Button> */}
     </Form>
       <br></br>
-        <PaypalCheckoutButton order={order} />
-   
-
-      
-
+     
+        { this.state.name!=="" && this.state.number!=="" && this.state.city!=="" && this.state.address1!=="" && this.state.date!="" && this.state.zip!=="" && this.state.mystate!=="none" &&
+          <PaypalCheckoutButton  order={order} />}
 
     </div>
 
@@ -265,4 +306,8 @@ class Payment extends Component{
     }
 }
 
-export default Payment;
+const mapStateToProps = (state) => ({
+  cartState: state.cartState,
+  userState:state.userState
+});
+export default connect(mapStateToProps)(Payment);

@@ -27,18 +27,19 @@ import {
 class NavbarComponent extends Component {
 
     render(){
-
-            const user = this.props.userState.User;
+      console.log(this.props);
+      console.log((sessionStorage.getItem('user')));
+            const user = this.props.userState.user;
 
             let display = <LoggedOut/>;
 
-             if (user.username != null) {
-              display = <LoggedIn user={this.props.userState.User}/>;
+             if (Object.keys(user).length !== 0) {
+              display = <LoggedIn user={this.props.userState.user}/>;
             } else {
               display = <LoggedOut/>;
             }
 
-
+            console.log(this.props);
 
         return(
           
