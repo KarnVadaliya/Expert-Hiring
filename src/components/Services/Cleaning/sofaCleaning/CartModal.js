@@ -43,7 +43,7 @@ import {
                 </CardBody>
             </Card>
         );
-
+            console.log(props.cartState.productsInCart)
      return(
          <div>
             <Modal isOpen={props.cartState.showCart} toggle={props.toggleCartModal} size="md">
@@ -56,7 +56,7 @@ import {
                 </ModalBody>
                 <ModalFooter>
                 {   props.cartState.cartCost!=0 &&
-                    <Link to="/payment"><Button color="primary" onClick={props.toggleCartModal}>CHECKOUT</Button></Link>}{' '}
+                    <Link to={{ pathname: "/payment"}} ><Button color="primary" >CHECKOUT</Button></Link>}{' '}
                 <Button color="secondary" onClick={props.toggleCartModal}>Cancel</Button>
                 </ModalFooter>
             </Modal>
