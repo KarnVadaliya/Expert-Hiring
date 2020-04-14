@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import paypal from 'paypal-checkout';
+import PaymentHistory from './PaymentHistory';
 
 
 const PayPalCheckoutButton = ({ order }) => {
@@ -86,6 +87,7 @@ const PayPalCheckoutButton = ({ order }) => {
         commit
         locale="en_US"
       />
+      <PaymentHistory/>
       </div>
      
   

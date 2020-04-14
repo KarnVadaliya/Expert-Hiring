@@ -14,6 +14,7 @@ import SofaCleaning from './components/Services/Cleaning/sofaCleaning/SofaCleani
 import Careers from './components/Careers';
 import SalonAtHome from './components/Services/SalonAtHome';
 import Payment from './components/Payment';
+import PaymentHistory from './components/PaymentHistory';
 
 function App() {
   return (
@@ -26,7 +27,8 @@ function App() {
                   <Route path="/about" component={AboutUs}></Route>  
                   <Route path="/contact" component={ContactUs}></Route> 
                   <Route path="/makeup" component={MakeUp}></Route> 
-                  <Route path="/payment" component={Payment}></Route> 
+                  <Route path="/payment" component={Payment}></Route>
+                  <Route path="/paymenthistory" component={PaymentHistory}></Route> 
                   <Route path="/salon-at-home" component={SalonAtHome}></Route> 
                   <Route path="/careers" component={Careers}></Route>
                   <Route path="/cleaning/sofaCleaning" exact component={SofaCleaning}></Route>             
