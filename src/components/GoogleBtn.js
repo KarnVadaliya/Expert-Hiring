@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom';
 import { GoogleLogin, GoogleLogout } from 'react-google-login';
-
+import axios from 'axios';
+import { setUser } from '../actions/setUser';
+import { connect } from 'react-redux';
 
 const CLIENT_ID = '93246890964-a6n1q1r82a76fve86fhalu6pmat9tvtf.apps.googleusercontent.com';
 
@@ -23,15 +25,49 @@ class GoogleBtn extends Component {
 
   login (response) {
     console.log(response)
-    if(response.Zi.access_token){
-      this.setState(state => ({
-        isLogined: true,
-        accessToken: response.Zi.access_token
-      }));
-    }
+    if(response.tokenObj.access_token){
+      axios.get('http://localhost:5000/users/findByEmail/'+response.profileObj.email)
+        .then(res=>{
+          if(Object.keys(res.data).length === 0){
+            axios.post('http://localhost:5000/users/add',
+            {
+              name: response.profileObj.name,
+              username: response.profileObj.email,
+              password: response.profileObj.googleId
+            },{
+              "headers": {
+                'Content-Type': 'application/json',
+              }
+            })
+              .then(res=>{
+                const tempUser = {
+                  name: response.profileObj.name,
+                  username: response.profileObj.email
+                }
+                sessionStorage.setItem('user',JSON.stringify(res.data));
+                this.props.setUser(tempUser); 
+                console.log(this.props.userState);
+              })
+              .catch(err=>console.log(err));
+            
+          }
+          else{
+            sessionStorage.setItem('user',JSON.stringify(res.data));
+            this.props.setUser(res.data); 
+          }
+          this.setState(state => ({
+            isLogined: true,
+            accessToken: response.tokenObj.access_token
+          }));
+        })
+        .catch(err=>console.log(err));
+      
+      
+      }
   }
 
   logout (response) {
+    console.log(response)
     this.setState(state => ({
       isLogined: false,
       accessToken: ''
@@ -46,10 +82,14 @@ class GoogleBtn extends Component {
     alert('Failed to log out')
   }
 
+
+
+
   render() {
     return (
     <div>
       { this.state.isLogined ?
+  
         <GoogleLogout
           clientId={ CLIENT_ID }
           buttonText='Logout'
@@ -65,11 +105,14 @@ class GoogleBtn extends Component {
           responseType='code,token'
         />
       }
-      { this.state.accessToken ? <h5>Your Access Token: <br/><br/> { this.state.accessToken }</h5> : null }
-
     </div>
     )
   }
 }
 
-export default GoogleBtn;
+const mapStateToProps = (state) => ({
+  userState: state.userState
+});
+
+
+export default connect(mapStateToProps,{ setUser })(GoogleBtn);

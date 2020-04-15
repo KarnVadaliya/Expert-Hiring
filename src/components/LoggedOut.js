@@ -182,7 +182,7 @@ class LoggedOut extends Component {
 
    
 
-      Axios.get('http://localhost:5000/users/findByEmail/'+newState.username)
+      axios.get('http://localhost:5000/users/findByEmail/'+newState.username)
         .then(res=>{
           if(Object.keys(res.data).length === 0){
 
@@ -211,7 +211,6 @@ class LoggedOut extends Component {
               }
             })
               .then(res => {
-                
                 sessionStorage.setItem('user',JSON.stringify(res.data));
                 this.props.setUser(res.data); 
                 console.log(this.props)
@@ -298,7 +297,7 @@ class LoggedOut extends Component {
       return;
 
 
-      Axios.get('http://localhost:5000/users/findByEmail/'+this.state.username)
+      axios.get('http://localhost:5000/users/findByEmail/'+this.state.username)
         .then(res=>{
           if(Object.keys(res.data).length !== 0){
 
@@ -389,21 +388,6 @@ class LoggedOut extends Component {
                       Login with
                     </div>
                     <div className="btn-wrapper text-center">
-                      
-                      <Button
-                        className="btn-neutral btn-icon"
-                        color="default"
-                        href="#pablo"
-                        onClick={e => e.preventDefault()}
-                      >
-                        <span className="btn-inner--icon">
-                          <img
-                            alt="..."
-                            src={require("../assets/img/icons/common/google.svg")}
-                          />
-                        </span>
-                        <span className="btn-inner--text">Google</span>
-                      </Button>
                       <GoogleBtn/>
                     </div>
                   </CardHeader>
@@ -529,22 +513,8 @@ class LoggedOut extends Component {
                     <div className="text-muted text-center mt-2 mb-3">
                       Sign Up with
                     </div>
-                    <div className="btn-wrapper text-center">
-                      
-                      <Button
-                        className="btn-neutral btn-icon"
-                        color="default"
-                        href="#pablo"
-                        onClick={e => e.preventDefault()}
-                      >
-                        <span className="btn-inner--icon">
-                          <img
-                            alt="..."
-                            src={require("../assets/img/icons/common/google.svg")}
-                          />
-                        </span>
-                        <span className="btn-inner--text">Google</span>
-                      </Button>
+                    <div className="btn-wrapper text-center">     
+                    <GoogleBtn/>
                     </div>
                   </CardHeader>
                   <CardBody className="px-lg-5 py-lg-5">
