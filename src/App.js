@@ -7,6 +7,7 @@ import AboutUs from './components/AboutUs';
 import ContactUs from './components/ContactUs';
 import SofaCleaningCart from './components/Services/Cleaning/SofaCleaning/SofaCleaningCart';
 import MakeUp from './components/Services/make-up/Makeup';
+import Footer from './components/Footer';
 import ScrollToTop from './ScrollToTop';
 import SofaCleaning from './components/Services/Cleaning/SofaCleaning/SofaCleaning';
 import Electrician from './components/Services/Home Service/Electrician/Electrician';
@@ -15,8 +16,8 @@ import Carpenter from './components/Services/Home Service/Carpenter/Carpenter';
 import Careers from './components/Careers';
 import SalonAtHome from './components/Services/SalonAtHome';
 import Payment from './components/Payment';
-import Footer from './components/Footer';
 import ElectricianCart from './components/Services/Home Service/Electrician/ElectricianCart';
+import MakeUpCart from './components/Services/Salon/makeUp/MakeUpCart';
 import MicrowaveRepair  from "./components/Services/ElectronicRepair/microwaveRepair/MicrowaveRepair";
 import MicrowaveRepairCart  from "./components/Services/ElectronicRepair/microwaveRepair/MicrowaveRepairCart";
 import TVRepair  from "./components/Services/ElectronicRepair/tvRepair/TVRepair";
@@ -39,8 +40,7 @@ function App() {
                   <Navbar />
                   <Route path="/" exact component={Home}></Route>  
                   <Route path="/about" component={AboutUs}></Route>  
-                  <Route path="/contact" component={ContactUs}></Route> 
-                  <Route path="/makeup" component={MakeUp}></Route> 
+                  <Route path="/contact" component={ContactUs}></Route>         
                   <Route path="/payment" component={Payment}></Route> 
                   <Route path="/salon-at-home" component={SalonAtHome}></Route> 
                   <Route path="/careers" component={Careers}></Route>
@@ -50,6 +50,8 @@ function App() {
                   <Route path="/homeservice/electrician" exact component={Electrician}></Route>  
                   <Route path="/homeservice/electrician/shop" component={ElectricianCart}></Route>    
                   <Route path="/homeservice/carpenter" exact component={Carpenter}></Route>        
+                  <Route path="/salon/makeup" exact component={MakeUp}></Route>
+                  <Route path="/salon/makeup/shop" component={MakeUpCart}></Route>
                   <Route path="/ElectronicRepair/microwaveRepair" exact component={MicrowaveRepair}></Route>             
                   <Route path="/ElectronicRepair/microwaveRepair/shop" component={MicrowaveRepairCart}></Route> 
                   <Route path="/ElectronicRepair/tvRepair" exact component={TVRepair}></Route>
