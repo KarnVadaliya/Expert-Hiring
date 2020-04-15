@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { setUser } from '../actions/setUser';
+import { connect } from 'react-redux';
 
 import {
     DropdownItem,
@@ -9,6 +11,14 @@ import {
   } from "reactstrap";
 
 class LoggedIn extends Component {
+
+    logOutUser = (e) =>{
+        e.preventDefault();
+        sessionStorage.removeItem('user');
+        // window.location.href('http://localhost:3000/');
+        this.props.setUser({});
+    }
+
     render() {
 
         return (
@@ -34,7 +44,7 @@ class LoggedIn extends Component {
                                 Orders
                                 </DropdownItem>
                                
-                                <DropdownItem>
+                                <DropdownItem onClick={this.logOutUser}>
                                 <i className="ni ni-button-power" />
                                 Logout
                                 </DropdownItem>
@@ -53,4 +63,8 @@ class LoggedIn extends Component {
     }
 }
 
-export default LoggedIn;
+const mapStateToProps = (state) => ({
+    userState: state.userState
+});
+
+export default connect(mapStateToProps,{ setUser })(LoggedIn);

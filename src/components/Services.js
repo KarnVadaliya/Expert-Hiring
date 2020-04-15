@@ -213,34 +213,34 @@ class ServicesComponent extends Component{
                         <h5>Home Service</h5>
                             <div className="serviceContent">
                                     <div className="serviceCell">
-                                    <a href="https://www.youtube.com/">
+                                    <Link to="/homeservice/electrician">
                                             <div>
                                                 <img alt="Electrician" src={require("../assets/img/serviceIcons/home1.jpg")}/>
                                             </div>
                                             <div>
                                                 <h6>Electrician</h6>
                                             </div>
-                                    </a>
+                                    </Link>
                                     </div>
                                     <div className="serviceCell">
-                                    <a href="https://www.youtube.com/">
+                                    <Link to="/homeservice/plumber">
                                             <div>
                                                 <img alt="Plumber" src={require("../assets/img/serviceIcons/home2.jpeg")}/>
                                             </div>
                                             <div>
                                                 <h6>Plumber</h6>
                                             </div>
-                                    </a>
+                                    </Link>
                                     </div>
                                     <div className="serviceCell">
-                                    <a href="https://www.youtube.com/">
+                                    <Link to="/homeservice/carpenter">
                                             <div>
                                                 <img alt="Carpenter" src={require("../assets/img/serviceIcons/home3.jpeg")}/>
                                             </div>
                                             <div>
                                                 <h6>Carpenter</h6>
                                             </div>
-                                    </a>
+                                    </Link>
                                     </div>
                             </div>
                         </section>
