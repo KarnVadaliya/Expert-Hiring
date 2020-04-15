@@ -40,7 +40,7 @@ class ServicesComponent extends Component{
                             link: "#notGiven",                            
                             image: "salon1.jpeg",
                             category: "Massage"
-                        }
+                        }               
                     ]
                 },
                 {
