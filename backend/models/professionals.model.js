@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+var ReviewSchema = require('./reviews.model');
 
 const Schema = mongoose.Schema;
 
@@ -28,10 +29,7 @@ const professionalSchema = new Schema({
         type: Number,
         required: true
     },
-    reviews:{
-        type: Array,
-        required: true
-    },
+    reviews:[ReviewSchema],
     category:{
         type: String,
         required: true

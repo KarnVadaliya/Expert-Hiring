@@ -6,8 +6,6 @@ import Background from '../../../../assets/img/serviceBackgrounds/makeupBg.jpg'
 import '../../services.css'
 import Scrollspy from 'react-scrollspy'
 import Axios from 'axios'
-import { connect } from 'react-redux'
-import { setSearch } from '../../../../actions/setSearch'
 
 
 class SofaCleaning extends Component{
@@ -20,7 +18,6 @@ class SofaCleaning extends Component{
     }
 
     componentDidMount(){
-        this.props.setSearch("");
         Axios.post('http://localhost:5000/professionals/category',
         {
             category: "Sofa Cleaning"
@@ -30,7 +27,7 @@ class SofaCleaning extends Component{
             }
           })
           .then(res=>{
-            
+            //   const userReviews = this.sortReviews(res.data);
               const reviews = [];
               res.data.map(professional=>professional.reviews.map(review=>reviews.push(review)));
               this.setState({
@@ -83,7 +80,7 @@ class SofaCleaning extends Component{
                     <React.Fragment key={professional._id}>
                         <img src={require("../../../../assets/img/serviceBackgrounds/random.jpg")}></img>
                         <div style={{marginLeft:"120px"}}>
-                            <span className="name">{professional.name}</span><br></br>
+                            <span className="name">{professional.name}</span><br></br><br></br>
                             <p>{professional.address}</p>
                             <span style={{marginTop:"-2px"}} className="rating">&#9733; {professional.ratings} <span style={{marginLeft:"2px", marginRight:"5px",color:"black"}}> ({professional.numberOfRatings} ratings) &emsp; &#x25cf; </span>  {professional.rated5Stars} times rated 5 star</span>
                             <br></br>    
@@ -260,9 +257,4 @@ class SofaCleaning extends Component{
         )
     }
 }
-
-const mapStateToProps = (state) => ({
-    mainPageState: state.mainPageState
-});
-
-export default connect(mapStateToProps, { setSearch })(SofaCleaning);
+export default SofaCleaning;
