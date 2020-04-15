@@ -8,3 +8,7 @@ export const ADD_PRODUCT_DB = 'ADD_PRODUCT_DB';
 
 export const SET_PAYMENT = 'SET_PAYMENT';
 export const EMPTY_CART = 'EMPTY_CART';
+
+
+export const SET_CITY = 'SET_CITY';
+export const SET_SEARCH = 'SET_SEARCH';

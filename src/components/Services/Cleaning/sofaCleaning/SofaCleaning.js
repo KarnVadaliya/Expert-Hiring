@@ -6,6 +6,8 @@ import Background from '../../../../assets/img/serviceBackgrounds/makeupBg.jpg'
 import '../../services.css'
 import Scrollspy from 'react-scrollspy'
 import Axios from 'axios'
+import { connect } from 'react-redux'
+import { setSearch } from '../../../../actions/setSearch'
 
 
 class SofaCleaning extends Component{
@@ -18,6 +20,7 @@ class SofaCleaning extends Component{
     }
 
     componentDidMount(){
+        this.props.setSearch("");
         Axios.post('http://localhost:5000/professionals/category',
         {
             category: "Sofa Cleaning"
@@ -257,4 +260,9 @@ class SofaCleaning extends Component{
         )
     }
 }
-export default SofaCleaning;
+
+const mapStateToProps = (state) => ({
+    mainPageState: state.mainPageState
+});
+
+export default connect(mapStateToProps, { setSearch })(SofaCleaning);

@@ -46,14 +46,14 @@ function App() {
                   <Route path="/paymenthistory" component={PaymentHistory}></Route>
                   <Route path="/salon-at-home" component={SalonAtHome}></Route> 
                   <Route path="/careers" component={Careers}></Route>
-                  <Route path="/cleaning/sofaCleaning" exact component={SofaCleaning}></Route>             
-                  <Route path="/cleaning/sofaCleaning/shop" component={SofaCleaningCart}></Route> 
-                  <Route path="/homeservice/plumber" exact component={Plumber}></Route>     
-                  <Route path="/homeservice/electrician" exact component={Electrician}></Route>  
-                  <Route path="/homeservice/electrician/shop" component={ElectricianCart}></Route>    
-                  <Route path="/homeservice/carpenter" exact component={Carpenter}></Route>        
-                  <Route path="/salon/makeup" exact component={MakeUp}></Route>
-                  <Route path="/salon/makeup/shop" component={MakeUpCart}></Route>
+                  <Route path="/Cleaning/sofaCleaning" exact component={SofaCleaning}></Route>             
+                  <Route path="/Cleaning/sofaCleaning/shop" component={SofaCleaningCart}></Route> 
+                  <Route path="/HomeService/plumber" exact component={Plumber}></Route>     
+                  <Route path="/HomeService/electrician" exact component={Electrician}></Route>  
+                  <Route path="/HomeService/electrician/shop" component={ElectricianCart}></Route>    
+                  <Route path="/HomeService/carpenter" exact component={Carpenter}></Route>        
+                  <Route path="/Salon/makeup" exact component={MakeUp}></Route>
+                  <Route path="/Salon/makeup/shop" component={MakeUpCart}></Route>
                   <Route path="/ElectronicRepair/microwaveRepair" exact component={MicrowaveRepair}></Route>             
                   <Route path="/ElectronicRepair/microwaveRepair/shop" component={MicrowaveRepairCart}></Route> 
                   <Route path="/ElectronicRepair/tvRepair" exact component={TVRepair}></Route>
@@ -66,7 +66,7 @@ function App() {
                   <Route path="/ApplianceRepair/washingMachineRepair/shop" component={WMRepairCart}></Route>
                   <Route path="/ApplianceRepair/fridgeRepair" exact component={FridgeRepair}></Route>
                   <Route path="/ApplianceRepair/fridgeRepair/shop" component={FridgeRepairCart}></Route>
-                  <Footer />
+                  <Footer />    
                   
                    
               </div>
