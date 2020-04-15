@@ -64,8 +64,7 @@ function App() {
                   <Route path="/ApplianceRepair/washingMachineRepair/shop" component={WMRepairCart}></Route>
                   <Route path="/ApplianceRepair/fridgeRepair" exact component={FridgeRepair}></Route>
                   <Route path="/ApplianceRepair/fridgeRepair/shop" component={FridgeRepairCart}></Route>
-                  <Footer />
-                  <Footer />
+                  <Footer />    
                   
                    
               </div>
