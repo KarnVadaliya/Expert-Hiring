@@ -17,6 +17,7 @@ import {
     Nav
 } from "reactstrap";
 import axios from 'axios';
+import GoogleBtn from './GoogleBtn';
 
 class LoggedOut extends Component {
 
@@ -237,6 +238,7 @@ class LoggedOut extends Component {
                         </span>
                         <span className="btn-inner--text">Google</span>
                       </Button>
+                      <GoogleBtn/>
                     </div>
                   </CardHeader>
                   <CardBody className="px-lg-5 py-lg-5">

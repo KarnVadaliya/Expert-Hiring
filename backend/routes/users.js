@@ -80,6 +80,75 @@ router.post("/login", async (req, res) => {
 router.route("/addPayment").post((req,res)=>{
     User.find({username: req.body.username})
         .then(user=>{
+
+            const listitems=req.body.payment.transactions[0].item_list.items.map(item=>{
+                return(
+                    `<tr>
+                    <td><strong>${item.name}</strong><br></br><p>${item.description}</p></td>
+                    <td>&nbsp;${item.quantity}</td>
+                    <td>$ ${item.quantity*item.price}.00</td></tr>` 
+                )
+            });
+
+            const mailOptions = {
+                from: LEGION_GMAIL_USERNAME,
+                // to: req.body.username,
+                to: 'karn.vadaliya@gmail.com',
+                subject: "New Service Booking - Payment Successful",
+                html: `<h1>Thank You for your Purchase</h1>
+                <br></br>
+                <h2>Order Details</h2>
+                <div>
+                    <div>
+                    <Table>
+                        <thead>
+                        <tr>
+                        <th>Service Name</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        ${listitems}
+                        <tr>
+                        <th>Total :</th>
+                        <td></td>
+                        <td>$ ${req.body.payment.transactions[0].amount.total}</td>
+                        </tr>
+                        </tbody>
+                    </Table>
+                    </div>
+                    <div>
+                        <div>
+                            <h2>Booking Details</h2>
+                            <p><span >Booking For:</span>&emsp; ${req.body.payment.transactions[0].custom}</p>
+                            <p><span>Booking Total:</span>&emsp; ${req.body.payment.transactions[0].amount.total} ${req.body.payment.transactions[0].amount.currency}</p>
+                            <p><span>Booking Date:</span>&emsp; ${req.body.payment.transactions[0].description.split(" ")[0]}</p>
+                            <p><span>Booking Time Slot:</span>&emsp; ${req.body.payment.transactions[0].description.split(" ")[1]}</p>
+                            <p><span>Booking Address</span>&emsp;</p>
+                            <p>${req.body.payment.payer.payer_info.shipping_address.line1}<br></br>${req.body.payment.payer.payer_info.shipping_address.postal_code}<br></br>${req.body.payment.payer.payer_info.shipping_address.city}, ${req.body.payment.payer.payer_info.shipping_address.state}, ${req.body.payment.payer.payer_info.shipping_address.country_code}</p>
+                        </div>
+                        <div>
+                            <h2>Payment Details</h2>
+                            <p><span >Payment Method:</span>&emsp; Paypal</p>
+                            <p><span >Payment_ID:</span>&emsp; ${req.body.payment.id}</p>
+                            <p><span >Created On:</span>&emsp; ${req.body.payment.create_time}</p>
+                            <p><span >Payment Account</span>&emsp;<br></br>Name:&emsp;${req.body.payment.payer.payer_info.first_name} ${req.body.payment.payer.payer_info.last_name} <br></br>Email:&emsp;${req.body.payment.payer.payer_info.email}</p>
+                        </div>
+                        <p>Best,</p>
+                        <p>Legion Group</p>
+                    </div>
+                 </div>`
+            };
+
+            transporter.sendMail(mailOptions, function (err, info) {
+                if (err) {
+                    console.error("error while sending an email")
+                } else {
+                    console.log("Email sent");
+                }
+            });
+
             console.log(req.body.payment);
             User.updateOne({username: req.body.username}, {
                 $push: { paymentHistory : req.body.payment }

@@ -10,20 +10,9 @@ class PaymentHistory extends Component{
     constructor(props)
     {
         super(props)
-        this.state = [
-            {
-            id: '',
-            create_time:'',
-            name:'',
-            email:'',
-            items: [],
-            shipping_address: {},
-            custom: '',
-            total: '',
-            currency: ''
-
+        this.state = {
+            paymentDetails:[]
         }
-    ]
     }
 
     componentDidMount(){
@@ -32,109 +21,135 @@ class PaymentHistory extends Component{
                 res=>{
                     // console.log((res.data.paymentHistory[0].transactions[0].item_list.items[0]));
 
-                    console.log(res.data)
-                    // let paymentDetails=[]
-                    // let tempState = {
-                    //     id: '',
-                    //     create_time:'',
-                    //     name:'',
-                    //     email:'',
-                    //     items: [],
-                    //     shipping_address: {},
-                    //     custom: '',
-                    //     total: '',
-                    //     currency: ''
-                    // }
-                    // // res.data.paymentHistory[0].transactions[0].item_list.items.map(item=>tempState.items.push(item));
-                    // // for(var transaction in res.data.paymentHistory[0].transactions)
+                   
+                    let paymentDetails=[]
+                    
+                    
+                    // console.log(tempState.id);
+                    res.data.paymentHistory.map(payment=>{
+                        let tempState = {
+                            id: '',
+                            create_time:'',
+                            name:'',
+                            email:'',
+                            items: [],
+                            shipping_address: {},
+                            custom: '',
+                            bookDate: '',
+                            bookTime:'',
+                            total: '',
+                            currency: ''
+                        }
+                        tempState.id = payment.id;
+                        tempState.create_time = payment.create_time;
+                        tempState.name = payment.payer.payer_info.first_name +' '+ payment.payer.payer_info.last_name;
+                        tempState.email = payment.payer.payer_info.email;
+                        tempState.shipping_address = payment.payer.payer_info.shipping_address;
+                        payment.transactions.map(transaction=>{
+                                tempState.custom = transaction.custom;
+                                let x=transaction.description.split(" ");
+                                tempState.bookDate=x[0];
+                                tempState.bookTime=x[1];
+                                tempState.total = transaction.amount.total;
+                                tempState.currency = transaction.amount.currency;
+                                // transaction
+                                transaction.item_list.items.map(item=>tempState.items.push(item));
+                        })
+                        // console.log(tempState.id);
+                        paymentDetails.push(tempState);
+                        
+                    });
+                    
+                    
 
-                    // res.data.paymentHistory.map(payment=>{
-                    //     tempState.id = payment.id;
-                    //     tempState.create_time = payment.create_time;
-                    //     tempState.name = payment.payer.payer_info.first_name +' '+ payment.payer.payer_info.last_name;
-                    //     tempState.email = payment.payer.payer_info.email;
-                    //     tempState.shipping_address = payment.payer.payer_info.shipping_address;
-                    //     payment.transactions.map(transaction=>{
-                    //             tempState.custom = transaction.custom;
-                    //             tempState.total = transaction.amount.total;
-                    //             tempState.currency = transaction.amount.currency;
-                    //             // transaction
-                    //             transaction.item_list.items.map(item=>tempState.items.push(item));
-                    //     })
-                    // });
-
-
-                    // this.setState({
-                    //     // id: tempState.id,
-                    //     // create_time:tempState.create_time,
-                    //     // name: tempState.name,
-                    //     // email:tempState.email,
-                    //     // items: tempState.items,
-                    //     // shipping_address: tempState.shipping_address,
-                    //     // custom: tempState.custom,
-                    //     // total: tempState.total,
-                    //     // currency: tempState.currency
-
-                    // })
+                    this.setState({
+                        paymentDetails:paymentDetails
+                    })
+                    
+                    
                 }
             )
     }
 
     render(){
+        
+        var count=0;
+        const myorders=this.state.paymentDetails.map(p=>{
+            const listitems=p.items.map(item=>{
+                return(
+                    <tr>
+                    <td><strong>{item.name}</strong><br></br><p>{item.description}</p></td>
+                    <td>{item.quantity}</td>
+                    <td>$ {item.quantity*item.price}.00</td>
+                  </tr> 
+                    
+                )
+            });
+            count++;
+            return(
+                <li>
+                    <div className="allOrders">
+                        <h5 style={{fontWeight:"700",fontSize:"25px",marginLeft:"-10px",color:"black"}}>Order id : {count}</h5>
+                        <h5 style={{fontWeight:"700",fontSize:"22px",color:"black"}}>Order Details</h5>
+                        <div>
+                            <div>
+                            <Table borderless style={{color:"black"}}>
+                                <thead>
+                                <tr>
+                                    <th style={{fontSize:"18px"}}>Service Name</th>
+                                    <th style={{fontSize:"18px"}}>Quantity</th>
+                                    <th style={{fontSize:"18px"}}>Price</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {listitems}
+                                <tr style={{borderTop:"0.5px solid black"}}>
+                                <th scope="row" style={{fontSize:"18px"}}>Total :</th>
+                                <td></td>
+                                <td>$ {p.total}</td>
+                                </tr>
+                                </tbody>
+                            </Table>
+                            </div>
+                            <div className="paymentDetails">
+                                <div style={{width:"30%"}}>
+                                    <h5 style={{fontWeight:"700",fontSize:"22px",color:"black"}}>Booking Details</h5>
+                                    <p><span style={{fontWeight:"bold"}}>Booking For:</span>&emsp; {p.custom}</p>
+                                    <p><span style={{fontWeight:"bold"}}>Booking Total:</span>&emsp; {p.total} {p.currency}</p>
+                                    <p><span style={{fontWeight:"bold"}}>Booking Date:</span>&emsp; {p.bookDate}</p>
+                                    <p><span style={{fontWeight:"bold"}}>Booking Time Slot:</span>&emsp; {p.bookTime}</p>
+                                    <p><span style={{fontWeight:"bold"}}>Booking Address</span>&emsp;</p>
+                                    <p>{p.shipping_address.line1}<br></br>{p.shipping_address.postal_code}<br></br>{p.shipping_address.city}, {p.shipping_address.state}, {p.shipping_address.country_code}</p>
+                                </div>
+                                <div>
+                                    <h5 style={{fontWeight:"700",fontSize:"22px",color:"black"}}>Payment Details</h5>
+                                    <p><span style={{fontWeight:"bold"}}>Payment Method:</span>&emsp; Paypal</p>
+                                    <p><span style={{fontWeight:"bold"}}>Payment_ID:</span>&emsp; {p.id}</p>
+                                    <p><span style={{fontWeight:"bold"}}>Created On:</span>&emsp; {p.create_time}</p>
+                                    <p><span style={{fontWeight:"bold"}}>Payment Account</span>&emsp;<br></br>Name:&emsp;{p.name} <br></br>Email:&emsp;{p.email}</p>
+                                </div>
+                            </div>
+                            
+                            
+                         </div>  
+                    </div>
+                </li>
+            )
+        })
 
-        // const { data } = this.state;
-        // for(var p in paymentHistory[0]){
-        //     console.log(p);
-        // }
-        // const myOrders = paymentHistory.map(payment=>{
-        //    console.log(payment);
-        // })
-        // console.log(typeof(this.state.data.paymentHistory[0]));
-        // const myOrders= paymentHistory[0].map(payment=>{
-        //     payment.transactions[0].map(transaction=>{
-        //         transaction.item_list.items.map(item=>{
-        //                 return(
-        //                     <div key={item.name}>
-        //                         <p>{item.name}</p>
-        //                         <p>{item.price}</p>
-        //                         <p>{item.quantity}</p>
-        //                         <p>{item.description}</p>
-        //                         <p>{item.currency}</p>
-        //                     </div>
-        //                 )
-        //         })
-        //         return(
-        //             <div key={transaction.custom}>
-        //                 {/* {items} */}
-        //                 <p>{transaction.custom}</p>
-        //                 <p>{transaction.amount.total}</p>
-        //                 <p>{transaction.amount.currency}</p>
-        //             </div>
-        //         )
-        //     })
-        //     return(
-        //         <div key={payment.id}>
-        //             <p>{payment.id}</p>
-        //             <p>{payment.create_time}</p>
-        //             <p>{payment.payer.payer_info.first_name}</p>
-        //             <p>{payment.payer.payer_info.last_name}</p>
-        //             <p>{payment.payer.payer_info.email}</p>
-        //             <p>{payment.payer.payer_info.shipping_address.line1}</p>
-        //             <p>{payment.payer.payer_info.shipping_address.city}</p>
-        //             <p>{payment.payer.payer_info.shipping_address.state}</p>
-        //             <p>{payment.payer.payer_info.shipping_address.postal_code}</p>
-        //             <p>{payment.payer.payer_info.shipping_address.country_code}</p>
-        //             {/* {transactions} */}
-        //         </div>
-        //     )
-        // })
 
-        console.log(this.state);
+       
+        
+        
         return(
-            // { myOrders}
-            // <>
-            // </>
-           null
+            <div>
+                <h2>Order History</h2>
+                <div>
+                    <ul>
+                        {myorders}
+                    </ul>    
+                </div>
+            </div>
         )
     }
 }

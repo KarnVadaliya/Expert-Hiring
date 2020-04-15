@@ -3,10 +3,12 @@ import { Link } from "react-router-dom";
 import Scrollspy from 'react-scrollspy'
 
 class ServicesComponent extends Component{
+
     render(){
+
+
         return(
             <div>
-
                 <div className="servicesSection">
                     <div className="servicesNav">
                         <h3 style={{fontWeight:"600",color:"black",letterSpacing:"0.8px"}}>All Categories</h3>

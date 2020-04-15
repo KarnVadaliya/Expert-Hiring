@@ -168,6 +168,8 @@ class Payment extends Component{
         customer: this.state.name,
         total: this.props.cartState.cartCost,
         items: itemlist,
+        bookDate:this.state.date,
+        bookTime:this.state.time,
         address: {
           line1: this.state.address1,
           line2: this.state.address2,

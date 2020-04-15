@@ -4,7 +4,7 @@
 
     .col-footer {
         .heading {
-            color: $footer-heading-color;
+            color: $white;
             letter-spacing: 0;
             font-size: $footer-heading-font-size;
             text-transform: uppercase;
@@ -15,21 +15,21 @@
 
     .nav .nav-item .nav-link,
     .footer-link {
-        color: $footer-link-color !important;
+        color: $white !important;
 
         &:hover {
-            color: $footer-link-hover-color !important;
+            color: $white !important;
         }
     }
 
     .list-unstyled li a {
         display: inline-block;
         padding: .125rem 0;
-        color: $footer-link-color;
+        color: $white;
         font-size: $footer-link-font-size;
 
         &:hover {
-            color: $footer-link-hover-color;
+            color: $white;
         }
     }
 
@@ -64,10 +64,10 @@
         position: absolute;
         left: 0;
         right: 0;
-        top: 600px;
+        top: 525px;
         height: 2000px;
-        background: theme-color("secondary");
-        transform: skew(0,-8deg);
+        background: theme-color("dark");
+        
     }
 
     .container {

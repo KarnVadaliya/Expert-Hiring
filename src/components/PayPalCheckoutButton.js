@@ -39,7 +39,7 @@ class PayPalCheckoutButton extends React.Component {
                     total: order.total,
                     currency: paypalConf.currency,
                   },
-                  description: 'My Test App',
+                  description: order.bookDate+" "+order.bookTime,
                   custom: order.customer || '',
                   item_list: {
                     items: order.items,
@@ -84,29 +84,6 @@ class PayPalCheckoutButton extends React.Component {
                 console.log(this.props.userState);
                 // alert(`The payment was processed correctly, ID: ${response.id}`)
 
-
-                var transporter = nodemailer.createTransport({
-                  service: 'gmail',
-                  auth: {
-                    user: 'webdesign.legion.16@gmail.com',
-                    pass: 'Legion@16'
-                  }
-                });
-      
-                var mailOptions = {
-                  from: 'webdesign.legion.16@gmail.com',
-                  to: 'karn.vadaliya@gmail.com',
-                  subject: 'Kantalo aave che',
-                  html: `<p>Payment done ${response.id}</p>`
-                };
-                
-                transporter.sendMail(mailOptions, function(error, info){
-                  if (error) {
-                    console.log(error);
-                  } else {
-                    console.log('Email sent: ' + info.response);
-                  }
-                });
 
               })
               .catch(error => {
