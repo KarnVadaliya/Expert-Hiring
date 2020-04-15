@@ -77,6 +77,12 @@ router.post("/login", async (req, res) => {
     }
 });
 
+router.route('/findByEmail/:email').get((req,res)=>{
+    User.findOne({username:req.params.email})
+    .then(data => res.status(200).send(data))
+    .catch(error => res.status(400).json('Error: ' + error));
+});
+
 router.route("/addPayment").post((req,res)=>{
     User.find({username: req.body.username})
         .then(user=>{

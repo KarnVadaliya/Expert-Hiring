@@ -8,7 +8,7 @@ import Scrollspy from 'react-scrollspy'
 import Axios from 'axios'
 
 
-class SofaCleaning extends Component{
+class FridgeRepair extends Component{
 
     state = {
         professionals: [],
@@ -20,14 +20,14 @@ class SofaCleaning extends Component{
     componentDidMount(){
         Axios.post('http://localhost:5000/professionals/category',
         {
-            category: "Sofa Cleaning"
+            category: "Refrigerator Repair"
         },{
             "headers": {
               'Content-Type': 'application/json',
             }
           })
           .then(res=>{
-            
+            //   const userReviews = this.sortReviews(res.data);
               const reviews = [];
               res.data.map(professional=>professional.reviews.map(review=>reviews.push(review)));
               this.setState({
@@ -80,7 +80,7 @@ class SofaCleaning extends Component{
                     <React.Fragment key={professional._id}>
                         <img src={require("../../../../assets/img/serviceBackgrounds/random.jpg")}></img>
                         <div style={{marginLeft:"120px"}}>
-                            <span className="name">{professional.name}</span><br></br>
+                            <span className="name">{professional.name}</span><br></br><br></br>
                             <p>{professional.address}</p>
                             <span style={{marginTop:"-2px"}} className="rating">&#9733; {professional.ratings} <span style={{marginLeft:"2px", marginRight:"5px",color:"black"}}> ({professional.numberOfRatings} ratings) &emsp; &#x25cf; </span>  {professional.rated5Stars} times rated 5 star</span>
                             <br></br>    
@@ -133,7 +133,7 @@ class SofaCleaning extends Component{
         return(
             <div className="service" style={{backgroundColor:"#F5F5F5"}}>
                 <div className="serviceBg" style={{backgroundImage: `url(${Background})`}}>
-                    <h2>Sofa Cleaning Service in ****** </h2>
+                    <h2>The Best Refrigerator Service & Repair in ****** </h2>
                 </div>
 
                 <div className="info">
@@ -157,8 +157,21 @@ class SofaCleaning extends Component{
                             </div> 
                             <p>&emsp;&emsp;</p>
                             <div>
-                                <h5>Choose a Salon Service</h5>
-                                <p>Choose from various salon packges and services</p>
+                                <h5>Choose the type of Refrigerator</h5>
+                                <p>We service all types of Refrigerator: Single Door, Double Door, Triple Door, Side to Side Door</p>
+                               
+                            </div>
+                            <hr ></hr>
+                        </li>
+                        <li>
+                            <div>
+                                    <img src={require("../../../../assets/img/serviceBackgrounds/icon1.png")}></img>
+                                    <div className="verticalLine"></div>
+                            </div> 
+                            <p>&emsp;&emsp;</p>
+                            <div>
+                                <h5>Choose the service you need</h5>
+                                <p>We provide repairs, installations and servicing</p>
                                
                             </div>
                             <hr ></hr>
@@ -171,7 +184,7 @@ class SofaCleaning extends Component{
                             <p>&emsp;&emsp;</p>
                             <div>
                                 <h5>Choose your time-slot</h5>
-                                <p>Hello There</p>
+                                <p>We service from 9 AM - 9 PM</p>
                                
                             </div>
                             <hr ></hr>
@@ -182,8 +195,8 @@ class SofaCleaning extends Component{
                             </div>
                             <p>&emsp;&emsp;</p>
                             <div>
-                                <h5>Pay</h5>
-                                <p>Hello There</p>
+                                <h5>Hassle-free Service</h5>
+                                <p>Our professional will get in touch with you 1 hour before the service</p>
                             </div>
                             <hr ></hr>
                         </li>
@@ -191,8 +204,8 @@ class SofaCleaning extends Component{
                 </section>
                 <br></br>
                 <section className="info professionals" id="Professionals">
-                    <h4>Cleaning Professionals</h4>
-                    <h6>{this.state.professionals.length} cleaning professionals in Ahmedabad</h6>
+                    <h4>Refrigerator Technicians</h4>
+                    <h6>{this.state.professionals.length} Fridge Service and Repair professionals in Ahmedabad</h6>
                     <hr></hr>
                     <div className="professionalsDetails">
                         
@@ -211,7 +224,7 @@ class SofaCleaning extends Component{
                 <br></br>
                 <section className="info reviews" id="Reviews">
                     <h4>Recent Customer Reviews</h4>
-                    <h6>For Makeup and Hair stylists in Boston</h6>                   
+                    <h6>For Refrigerator Repair and Servicing Professionals in Ahmedabad</h6>                   
                     <div className="crating">
                         <span style={{fontSize:"38px", color:"#5300a5", fontWeight:"650"}}>&#9733; {this.averageUserRatings()}</span><span style={{fontSize:"20px", color:"#5300a5", fontWeight:"600"}}>/5</span> &nbsp;based on {this.state.userReviews.length} ratings
                     </div>
@@ -225,19 +238,22 @@ class SofaCleaning extends Component{
                 </div>
                 <div className="serviceBox">
                     <div className="serviceBoxButtons">
-                        <h4>Need a Cleaning Professional for :</h4>
+                        <h4>Need a Fridge Technician for :</h4>
                         <div className="serviceButtonGroup">
                          
-                            <button onClick={() => this.props.history.push('/cleaning/sofaCleaning/shop/#3SofaSeats')}>
-                                3 Sofa Seats <i style={{textAlign:"right"}} className="fa fa-chevron-right" />
+                            <button onClick={() => this.props.history.push('/ApplianceRepair/fridgeRepair/shop/#Service')}>
+                                Repair/ Service <i style={{textAlign:"right"}} className="fa fa-chevron-right" />
                             </button> 
                        
-                            <button onClick={() => this.props.history.push('/cleaning/sofaCleaning/shop/#4SofaSeats')}>
-                                4 Sofa Seats<i className="fa fa-chevron-right"></i>
+                            <button onClick={() => this.props.history.push('/ApplianceRepair/fridgeRepair/shop/#compressor')}>
+                                Compressor/ Cooling Issue<i className="fa fa-chevron-right"></i>
                             </button>
 
-                            <button onClick={() => this.props.history.push('/cleaning/sofaCleaning/shop/#5SofaSeats')}>
-                                5 Sofa Seats<i className="fa fa-chevron-right"></i>
+                            <button onClick={() => this.props.history.push('/ApplianceRepair/fridgeRepair/shop/#Gas')}>
+                                Gas Filling<i className="fa fa-chevron-right"></i>
+                            </button>
+                            <button onClick={() => this.props.history.push('/ApplianceRepair/fridgeRepair/shop/#OtherIssues')}>
+                                Other Issues<i className="fa fa-chevron-right"></i>
                             </button>
                         </div>
                     </div>
@@ -257,4 +273,4 @@ class SofaCleaning extends Component{
         )
     }
 }
-export default SofaCleaning;
+export default FridgeRepair;

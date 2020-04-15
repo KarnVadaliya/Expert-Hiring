@@ -31,7 +31,14 @@ class LoggedOut extends Component {
         password: '',
         nameState: '',
         emailState: '',
-        passwordState: ''
+        passwordState: '',
+        emailError:'',
+        nameError:'',
+        passwordError:'',
+        loginEmailState:'',
+        loginEmailError:'',
+        loginPasswordState: '',
+        loginPasswordError: ''
       };
     }
 
@@ -43,16 +50,51 @@ class LoggedOut extends Component {
         });
       };
 
-    
+      
+    handleOnChangeLogin = (e, stateName) => {
+
+      let newState = this.state;
+
+      if(stateName === "email"){
+
+        const regexEmail = /([\w\.]+)@([\w\.]+)\.(\w+)/;
+
+        var validateEmail = e.target.value.match(regexEmail);
+        
+
+        if (!validateEmail) {
+          newState["loginEmailState"] = "invalid";
+          newState["loginEmailError"] = "Please enter valid Email Address";
+        } else {
+          newState["loginEmailState"] = "valid";
+        }
+
+      }
+
+      if(stateName === "password"){
+
+        if (newState.password === "") {
+          newState["loginPasswordState"] = "invalid";
+          newState["loginPasswordError"] = "Password cannot be blank";
+        } else {
+          newState["loginPasswordState"] = "valid";
+        }
+
+      }
+      
+
+      const isCheckbox = e.target.type === "checkbox";
+      this.setState({
+        [e.target.name]: isCheckbox ? e.target.checked : e.target.value
+      });
+
+    }
 
     handleOnChange = (e, stateName) =>{
-
 
       let newState = this.state;
 
       if(stateName === "name"){
-
-        
 
         const regexName = /^[A-Za-z][A-Za-z\'\-]+([\A-Za-z][A-Za-z\'\-]+)*/;
 
@@ -60,6 +102,7 @@ class LoggedOut extends Component {
 
         if (!validateName) {
           newState[stateName + "State"] = "invalid";
+          newState[stateName + "Error"] = "Name should have more than 2 Letters";
         } else {
           newState[stateName + "State"] = "valid";
         }
@@ -73,11 +116,18 @@ class LoggedOut extends Component {
 
         var validateEmail = e.target.value.match(regexEmail);
 
+        
+
         if (!validateEmail) {
           newState[stateName + "State"] = "invalid";
-        } else {
+          newState[stateName + "Error"] = "Please enter valid Email Address";
+        } 
+        
+        else {
           newState[stateName + "State"] = "valid";
         }
+
+       
 
       }
 
@@ -89,6 +139,7 @@ class LoggedOut extends Component {
 
         if (!validatePassword) {
           newState[stateName + "State"] = "invalid";
+          newState[stateName + "Error"] = "Password must contain atleast 1 Uppercase Letter, 1 Lowercase Letter, 1 Special Character and 1 Number ";
         } else {
           newState[stateName + "State"] = "valid";
         }
@@ -104,102 +155,217 @@ class LoggedOut extends Component {
 
     handleLoginSubmit = e =>{
       e.preventDefault();
-      
-      const user = {
-        username: this.state.username,
-        password: this.state.password
-      };
 
-      axios.post('http://localhost:5000/users/login',
-      {
-        username: this.state.username,
-        password: this.state.password
-      },{
-        "headers": {
-          'Content-Type': 'application/json',
-        }
+      let newState = this.state;
+
+      if (newState.username === "") {
+        newState["loginEmailState"] = "invalid";
+        newState["loginEmailError"] = "Email cannot be blank"
+      } else {
+        newState["loginEmailState"] = "valid";
+      }
+
+      if (newState.password === "") {
+        newState["loginPasswordState"] = "invalid";
+        newState["loginPasswordError"] = "Password cannot be blank";
+      }
+
+      this.setState({
+        loginPasswordState: newState["loginPasswordState"],
+        loginEmailState: newState["loginEmailState"],
+        loginEmailError: newState["loginEmailError"],
+        loginPasswordError: newState["loginPasswordError"]
       })
-        .then(res => {
-          // console.log(res.data.name);
-          // console.log(JSON.parse(JSON.stringify(res.data)));
-          sessionStorage.setItem('user',JSON.stringify(res.data));
-          this.props.setUser(res.data); 
+
+      if(newState["loginEmailState"] == "invalid" || newState["loginPasswordState"] == "invalid")
+      return;
+
+   
+
+      Axios.get('http://localhost:5000/users/findByEmail/'+newState.username)
+        .then(res=>{
+          if(Object.keys(res.data).length === 0){
+
+            newState["loginEmailState"] = "invalid";
+            newState["loginEmailError"] = "User doesnot exists!" 
+
+            this.setState({            
+              loginEmailState:  newState["loginEmailState"],
+              loginEmailError: newState["loginEmailError"]             
+            })
+           
+          } else {
+
+            const user = {
+              username: this.state.username,
+              password: this.state.password
+            };
+      
+            axios.post('http://localhost:5000/users/login',
+            {
+              username: this.state.username,
+              password: this.state.password
+            },{
+              "headers": {
+                'Content-Type': 'application/json',
+              }
+            })
+              .then(res => {
+                
+                sessionStorage.setItem('user',JSON.stringify(res.data));
+                this.props.setUser(res.data); 
+                console.log(this.props)
+              })
+              .catch(err=>{
+
+                newState["loginPasswordState"] = "invalid";
+                newState["loginPasswordError"] = "Password is Incorrect" 
+
+            this.setState({            
+              loginPasswordState: newState["loginPasswordState"],
+              loginPasswordError: newState["loginPasswordError"]             
+            })
+
+
+              });
+      
+              console.log(user);
+
+          }  
+             
         })
         .catch(err=>console.log(err));
 
-        console.log(user);
-        
     }
 
 
     handleSubmit = e =>{
       e.preventDefault();
 
-      const user = {
-        name: this.state.name,
-        username: this.state.username,
-        password: this.state.password
-      };
+      
+
+      const regexName = /^[A-Za-z][A-Za-z\'\-]+([\A-Za-z][A-Za-z\'\-]+)*/;
+      var validateName = this.state.name.match(regexName);
+
+      const regexEmail = /([\w\.]+)@([\w\.]+)\.(\w+)/;
+      var validateEmail = this.state.username.match(regexEmail);
+
+      const regexPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&_])[A-Za-z\d@$!%*?&]{8,}$/;
+      var validatePassword = this.state.password.match(regexPassword);
 
       let newState = this.state;
 
       if (newState.username === "") {
         newState["emailState"] = "invalid";
-        console.log(newState);
-      } else {
+        newState["emailError"] = "Email cannot be blank"
+      } else if (!validateEmail) {
+          newState["emailState"] = "invalid";
+          newState["emailError"] = "Please enter valid Email Address"
+        } else {
         newState["emailState"] = "valid";
       }
 
       if (newState.password === "") {
         newState["passwordState"] = "invalid";
+        newState["passwordError"] = "Password cannot be blank";
+      } else if (!validatePassword) {
+        newState["passwordState"] = "invalid";
+        newState["passwordError"] = "Password must contain atleast 1 Uppercase Letter, 1 Lowercase Letter, 1 Special Character and 1 Number ";
       } else {
         newState["passwordState"] = "valid";
       }
 
       if (newState.name === "") {
         newState["nameState"] = "invalid";
+        newState["nameError"] = "Name cannot be blank";
+      } else if (!validateName) {
+        newState["nameState"] = "invalid";
+        newState["nameError"] = "Name should have more than 2 Letters";
       } else {
-        newState["emailState"] = "valid";
+        newState["nameState"] = "valid";
       }
 
+      this.setState({
+        nameState: newState["nameState"],
+        passwordState:  newState["passwordState"],
+        emailState:  newState["emailState"],
+        emailError: newState["emailError"],
+        nameError: newState["nameError"],
+        passwordError: newState["passwordError"]
+      })
+
+      if(newState["nameState"] == "invalid" || newState["emailState"] == "invalid" || newState["passwordState"] == "invalid")
+      return;
+
+
+      Axios.get('http://localhost:5000/users/findByEmail/'+this.state.username)
+        .then(res=>{
+          if(Object.keys(res.data).length !== 0){
+
+            
+            console.log("User Exists")
+            newState["emailState"] = "invalid";
+            newState["emailError"] = "User already exists!" 
+      
+            this.setState({            
+              emailState:  newState["emailState"],
+              emailError: newState["emailError"]             
+            })
       
 
-      // axios.post('http://localhost:5000/users/add',
-      // {
-      //   name: this.state.name,
-      //   username: this.state.username,
-      //   password: this.state.password
-      // },{
-      //   "headers": {
-      //     'Content-Type': 'application/json',
-      //   }
-      // })
-      //   .then(res=>{
-      //     console.log(res.data);
+          } else {
+            
+            const user = {
+              name: this.state.name,
+              username: this.state.username,
+              password: this.state.password
+            };
           
-      //   })
-      //   .catch(err=>console.log(err));
-
-      // console.log(user);
-
-      // this.setState({
-      //   defaultModal: false,
-      //   nameState: '',
-      //   emailState: '',
-      //   passwordState: '',
-      //   username: '',
-      //   name: '',
-      //   password: ''
-      // })
-
-      // this.toggleModal("signUpModal");
-      // this.toggleModal("loginSignUpModal");
-
+            axios.post('http://localhost:5000/users/add',
+            {
+              name: this.state.name,
+              username: this.state.username,
+              password: this.state.password
+            },{
+              "headers": {
+                'Content-Type': 'application/json',
+              }
+            })
+              .then(res=>{
+                console.log(res.data);
+                
+              })
+              .catch(err=>console.log(err));
+      
+            console.log(user);
+            
+      
+            this.setState({
+              defaultModal: false,
+              nameState: '',
+              emailState: '',
+              passwordState: '',
+              username: '',
+              name: '',
+              password: '',
+              emailError: '',
+              passwordError: '',
+              nameError: ''
+      
+            })
+      
+            this.toggleModal("signUpModal");
+            this.toggleModal("loginSignUpModal");
+      
+          }
+             
+        })
+        .catch(err=>console.log(err));
     }
 
 
     render() {
-    
+      
         return (
             <div className="ml-lg-auto">
             <Nav navbar>
@@ -246,25 +412,64 @@ class LoggedOut extends Component {
                       <small>Or login with credentials</small>
                     </div>
                     <Form role="form">
-                      <FormGroup className="mb-3">
-                        <InputGroup className="input-group-alternative">
+                      <FormGroup className={classnames(
+                          "mb-3",
+                          { focused: this.state.focusedEmail },
+                          { "has-danger": this.state.loginEmailState === "invalid" },
+                          { "has-success": this.state.loginEmailState === "valid" }
+                        )}>
+                        <InputGroup className={classnames("input-group-merge input-group-alternative", {
+                            "is-invalid": this.state.loginEmailState === "invalid"
+                          })}>
                           <InputGroupAddon addonType="prepend">
-                            <InputGroupText>
-                              <i className="ni ni-email-83" />
+                            <InputGroupText >
+                            <i className={classnames(
+                                  "ni ni-email-83",
+                                  { "text-danger": this.state.loginEmailState === "invalid" },
+                                  { "text-success": this.state.loginEmailState === "valid" }
+                                )}/>
                             </InputGroupText>
                           </InputGroupAddon>
-                          <Input placeholder="Email" type="email" name="username" onChange={this.handleOnChange} />
+                          <Input placeholder="Email" type="email" name="username"
+                          className={classnames(
+                            { "text-danger": this.state.loginEmailState === "invalid" },
+                            { "text-success": this.state.loginEmailState === "valid" }
+                          )}
+                          onFocus={() => this.setState({ focusedEmail: true })}s
+                          onBlur={() => this.setState({ focusedEmail: false })}
+                          onChange={e => this.handleOnChangeLogin(e, "email")} />
                         </InputGroup>
+                        <div className="invalid-feedback">{this.state.loginEmailError}</div>
                       </FormGroup>
-                      <FormGroup>
-                        <InputGroup className="input-group-alternative">
+                      <FormGroup className={classnames(
+                          "mb-3",
+                          { focused: this.state.focusedPassword },
+                          { "has-danger": this.state.loginPasswordState === "invalid" },
+                          { "has-success": this.state.loginPasswordState === "valid" }
+                        )}>
+                        <InputGroup className={classnames("input-group-merge input-group-alternative", {
+                            "is-invalid": this.state.loginPasswordState === "invalid"
+                          })}>
                           <InputGroupAddon addonType="prepend">
                             <InputGroupText>
-                              <i className="ni ni-lock-circle-open" />
+                              <i className={classnames(
+                                  "ni ni-lock-circle-open",
+                                  { "text-danger": this.state.loginPasswordState === "invalid" },
+                                  { "text-success": this.state.loginPasswordState === "valid" }
+                                )} />
                             </InputGroupText>
                           </InputGroupAddon>
-                          <Input placeholder="Password" type="password" name="password" onChange={this.handleOnChange} />
+                          <Input placeholder="Password" type="password" name="password"
+                            className={classnames(
+                            { "text-danger": this.state.loginPasswordState === "invalid" },
+                            { "text-success": this.state.loginPasswordState === "valid" }
+                          )}
+                          onFocus={() => this.setState({ focusedPassword: true })}
+                          onBlur={() => this.setState({ focusedPassword: false })}
+                          onChange={e => this.handleOnChangeLogin(e, "password")}
+                          />
                         </InputGroup>
+                         <div className="invalid-feedback">{this.state.loginPasswordError}</div>
                       </FormGroup>
                       
                       <div className="text-center">
@@ -376,7 +581,7 @@ class LoggedOut extends Component {
                           value={this.state.name} required
                           />
                         </InputGroup>
-                        <div className="invalid-feedback">Name should have more than 2 Letters</div>
+                        <div className="invalid-feedback">{this.state.nameError}</div>
                       </FormGroup>
                       <FormGroup className={classnames(
                           "mb-3",
@@ -401,12 +606,12 @@ class LoggedOut extends Component {
                                     { "text-danger": this.state.emailState === "invalid" },
                                     { "text-success": this.state.emailState === "valid" }
                                   )}
-                                  onFocus={() => this.setState({ focusedEmail: true })}
+                                  onFocus={() => this.setState({ focusedEmail: true })}s
                                   onBlur={() => this.setState({ focusedEmail: false })}
                                   onChange={e => this.handleOnChange(e, "email")} 
                                   value={this.state.username} required/>
                         </InputGroup>
-                        <div className="invalid-feedback">Please enter Valid Email Address</div>
+                        <div className="invalid-feedback">{this.state.emailError}</div>
                       </FormGroup>
                       <FormGroup className={classnames(
                           "mb-3",
@@ -436,31 +641,9 @@ class LoggedOut extends Component {
                                   onChange={e => this.handleOnChange(e, "password")} 
                                   required value={this.state.password}/>
                         </InputGroup>
-                        <div className="invalid-feedback">Password must contain atleast <br/> 1 Uppercase Letter, 1 Lowercase Letter, 1 Special Character and 1 Number </div>
+                        <div className="invalid-feedback">{this.state.passwordError}</div>
                       </FormGroup>
 
-                      <div className="custom-control custom-control-alternative custom-checkbox">
-                          <input
-                            className="custom-control-input"
-                            id="customCheckRegister"
-                            type="checkbox"
-                          />
-                          <label
-                            className="custom-control-label"
-                            htmlFor="customCheckRegister"
-                          >
-                            <span>
-                              I agree with the{" "}
-                              <a
-                                href="#pablo"
-                                onClick={e => e.preventDefault()}
-                              >
-                                Privacy Policy
-                              </a>
-                            </span>
-                          </label>
-                        </div>
-                      
                       <div className="text-center">
                         <Button
                           className="my-4"

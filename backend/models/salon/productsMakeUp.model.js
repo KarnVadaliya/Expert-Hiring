@@ -1,45 +1,48 @@
 const mongoose = require('mongoose');
-var ReviewSchema = require('./reviews.model');
 
 const Schema = mongoose.Schema;
 
 
-const professionalSchema = new Schema({
+const productSchema = new Schema({
     name:{
         type: String,
         required: true,
         trim: true,
         minlength: 3
     },
-    address:{
+    description:{
         type: String,
         required: true,
         trim: true,
         minlength: 3
     },
-    ratings:{
+    price:{
         type: Number,
         required: true
     },
-    numberOfRatings:{
+    quantity:{
         type: Number,
         required: true
     },
-    rated5Stars:{
-        type: Number,
+    inCart:{
+        type: Boolean,
         required: true
     },
-    reviews:[ReviewSchema],
     category:{
         type: String,
-        required: true
+        required: true,
+        trim: true,
+        minlength: 3
     },
-    serviceInCity:{
+    id:{
         type: String,
-        required: true
+        required: true,
+        trim: true,
+        minlength: 3,
+        unique: true
     }
 });
 
-const Professional = mongoose.model('professionals', professionalSchema);
+const Product = mongoose.model('Make Up Products', productSchema);
 
-module.exports = Professional;
+module.exports = Product;

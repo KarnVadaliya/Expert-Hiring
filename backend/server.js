@@ -32,6 +32,12 @@ app.use('/cleaning/sofaCleaning',productsSofaCleaningRouter);
 const professionalRouter = require('./routes/professionals/professionals');
 app.use('/professionals', professionalRouter);
 
+const productsMakeUpRouter = require('./routes/salon/productsMakeUp');
+app.use('/salon/makeup', productsMakeUpRouter);
+
+// const salonRouter = require('./routes/salon/productsMakeUp');
+// app.use('/salon/makeup', salonRouter);
+
 app.use(passport.initialize());
 app.use(passport.session());
 
