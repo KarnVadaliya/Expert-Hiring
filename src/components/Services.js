@@ -77,34 +77,34 @@ class ServicesComponent extends Component{
                         <h5>Appliance Repair</h5>
                             <div className="serviceContent">
                                     <div className="serviceCell">
-                                    <a href="https://www.youtube.com/">
+                                    <Link to="/ApplianceRepair/acRepair">
                                             <div>
                                                 <img alt="AC service" src={require("../assets/img/serviceIcons/appliance1.jpg")}/>
                                             </div>
                                             <div>
                                                 <h6>AC Service &amp; Repair</h6>
                                             </div>
-                                    </a>
+                                    </Link>
                                     </div>
                                     <div className="serviceCell">
-                                    <a href="https://www.youtube.com/">
+                                    <Link to="/ApplianceRepair/washingMachineRepair">
                                             <div>
                                                 <img alt="Washing Machine Service" src={require("../assets/img/serviceIcons/appliance2.png")}/>
                                             </div>
                                             <div>
                                                 <h6>Washing Machine Service &amp; Repair</h6>
                                             </div>
-                                    </a>
+                                    </Link>
                                     </div>
                                     <div className="serviceCell">
-                                    <a href="https://www.youtube.com/">
+                                    <Link to="/ApplianceRepair/fridgeRepair">
                                             <div>
                                                 <img alt="Refrigerator Repair" src={require("../assets/img/serviceIcons/appliance3.png")}/>
                                             </div>
                                             <div>
                                                 <h6>Refrigerator Repair</h6>
                                             </div>
-                                    </a>
+                                    </Link>
                                     </div>
                             </div>
                         </section>
@@ -112,35 +112,35 @@ class ServicesComponent extends Component{
                         <h5>Electronic Repair</h5>
                             <div className="serviceContent">
                                     <div className="serviceCell">
-                                    <a href="https://www.youtube.com/">
+                                    <Link to="/ElectronicRepair/waterRepair">
                                             <div>
                                                 <img alt="Water Purifier Repair" src={require("../assets/img/serviceIcons/electronic1.jpg")}/>
                                             </div>
                                             <div>
                                                 <h6>Water Purifier Repair</h6>
                                             </div>
-                                    </a>
+                                    </Link>
                                     </div>
                                     <div className="serviceCell">
-                                    <a href="https://www.youtube.com/">
+                                    <Link to="/ElectronicRepair/tvRepair">
+                                            <div>
+                                                <img alt="TV Repair" src={require("../assets/img/serviceIcons/electronic3.jpg")}/>
+                                            </div>
+                                            <div>
+                                                <h6>TV Repair &amp; Installation</h6>
+                                            </div>
+                                    </Link>
+                                    </div>
+                                    <div className="serviceCell">
+                                    <Link to="/ElectronicRepair/microwaveRepair">
                                             <div>
                                                 <img alt="Microwave Repair" src={require("../assets/img/serviceIcons/electronic2.jpg")}/>
                                             </div>
                                             <div>
                                                 <h6>Microwave &amp; Oven Repair</h6>
                                             </div>
-                                    </a>
-                                    </div>
-                                    <div className="serviceCell">
-                                    <a href="https://www.youtube.com/">
-                                            <div>
-                                                <img alt="TV Reapir" src={require("../assets/img/serviceIcons/electronic3.jpg")}/>
-                                            </div>
-                                            <div>
-                                                <h6>TV Repair &amp; Installation</h6>
-                                            </div>
-                                    </a>
-                                    </div>
+                                    </Link>
+                                    </div>   
                             </div>
                         </section>
                         
