@@ -36,3 +36,7 @@
     display: block;
 }
 
+.custom-checkbox .custom-control-input:disabled ~ .invalid-feedback {
+    display: block;
+}
+

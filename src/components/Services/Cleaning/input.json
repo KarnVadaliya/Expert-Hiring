@@ -1,0 +1,34 @@
+[
+    {    "name": "Shailesh Kumar",
+        "address": "Abc, Paldi, Ahmedabad",
+        "ratings": 4.7,
+        "numberOfRatings": 382,
+        "rated5Stars": 100,
+        "category": "Sofa Cleaning",
+        "serviceInCity": "Ahmedabad",
+        "reviews": [
+            {
+                "name": "hash",
+                "starsGiven": "4.6",
+                "comment": "Nice!"
+            }
+        ]
+    },
+    {
+        "name": "Shailesh Kumar",
+        "address": "Abc, Paldi, Ahmedabad",
+        "ratings": 4.7,
+        "numberOfRatings": 382,
+        "rated5Stars": 100,
+        "category": "Sofa Cleaning",
+        "serviceInCity": "Ahmedabad",
+        "reviews": [
+            {
+                "name": "hash",
+                "starsGiven": "4.6",
+                "comment": "Nice!",
+                "date": "${= StatementDate = Calendar.instance; StatementDate.format('yyyy-MM-dd')}"
+            }
+        ]
+    }
+]

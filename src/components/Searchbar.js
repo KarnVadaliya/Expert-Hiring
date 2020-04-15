@@ -4,6 +4,7 @@ import {
     DropdownMenu,
     DropdownItem,
     UncontrolledDropdown,
+    Form,
     FormGroup,
     Input,
     InputGroupAddon,
@@ -11,26 +12,43 @@ import {
     InputGroup,
     Col
 } from "reactstrap";
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import { faLocationArrow, faSearch } from '@fortawesome/free-solid-svg-icons';
+import { connect } from 'react-redux';
+import { setSearch } from '../actions/setSearch'
+import { setCity } from '../actions/setCity'
 
-
-export default class Searchbar extends Component {
+class Searchbar extends Component {
 
     state={
         currentCity:'Ahmedabad',
-        cities: ['Boston','Bangalore','New Jersey', 'New York']
+        cities: ['Ahmedabad','Boston','Bangalore','New Jersey', 'New York'],
+        search: ''
     }
 
+    handleOnChange = (e) =>{
+        if(e.target.value === "")
+            this.props.setSearch("");
+        else
+            this.props.setSearch(this.state.search);
+        this.setState({
+            search: e.target.value
+        })
+    }
+
+    handleSubmit = (e) =>{
+        e.preventDefault();
+        console.log(this.state.search);
+        this.props.setSearch(this.state.search);
+    }
 
     render() {
         console.log(this.props);
         const { cities } = this.state;
-        const cityInformation = (cities.length) ? (
-            cities.map(city=>{
+        let filtered = cities.filter(city=> city !== this.props.mainPageState.city);
+        const cityInformation = (filtered.length) ? (
+            filtered.map(city=>{
                 return(
                     <li>
-                    <DropdownItem href="#pablo" onClick={e => e.preventDefault()}>
+                    <DropdownItem onClick={() => this.props.setCity(city)}>
                         {city}
                     </DropdownItem>
                     </li>
@@ -38,7 +56,7 @@ export default class Searchbar extends Component {
             })
         ):(
             <li>
-            <DropdownItem href="#pablo" onClick={e => e.preventDefault()}>
+            <DropdownItem onClick={e => e.preventDefault()}>
                 No cities yet!! We will come soon!!
             </DropdownItem>
             </li>
@@ -47,7 +65,7 @@ export default class Searchbar extends Component {
 
         return (
             <div className="header" style={{marginTop:""}}>
-                <h1 className="display-1" style={{textAlign:"center", color:"white"}}>Your service expert in {this.state.currentCity}</h1>
+                <h1 className="display-1" style={{textAlign:"center", color:"white"}}>Your service expert in {this.props.mainPageState.city}</h1>
                 <br></br>
                 <div id="wrapper" style={{display:"flex"}}>
                     <div style={{flex:"45%", textAlign:"right"}}>
@@ -55,7 +73,7 @@ export default class Searchbar extends Component {
                         <DropdownToggle caret color="white">
                             {/* <FontAwesomeIcon icon={faLocationArrow} style={{paddingRight:"7px"}}></FontAwesomeIcon> */}
                             <i style={{paddingRight:"9px"}}className="fa fa-location-arrow" />
-                            Ahmedabad
+                            {this.props.mainPageState.city}
                         </DropdownToggle>
                         <DropdownMenu>
                             {cityInformation}
@@ -64,16 +82,16 @@ export default class Searchbar extends Component {
                     </div>
                     <div style={{flex:"55%", paddingLeft:"1%"}}> 
                         <Col md="5">
-                        <FormGroup>
+                        <Form onSubmit={this.handleSubmit}>
                             <InputGroup className="mb-4">
                             <InputGroupAddon addonType="prepend">
                                 <InputGroupText>
                                 <i className="fa fa-search" />
                                 </InputGroupText>
                             </InputGroupAddon>
-                            <Input placeholder="Search for a service" type="text" />
+                            <Input placeholder="Search for a service" type="text" onChange={this.handleOnChange}/>
                             </InputGroup>
-                        </FormGroup>
+                        </Form>
                         </Col>                  
                     </div>
                 </div>
@@ -81,3 +99,9 @@ export default class Searchbar extends Component {
         )
     }
 }
+
+const mapStateToProps = (state) => ({
+    mainPageState: state.mainPageState
+});
+
+export default connect(mapStateToProps,{ setSearch, setCity })(Searchbar)
