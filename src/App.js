@@ -16,6 +16,7 @@ import Careers from './components/Careers';
 import SalonAtHome from './components/Services/SalonAtHome';
 import Payment from './components/Payment';
 import Footer from './components/Footer';
+import ElectricianCart from './components/Services/Home Service/Electrician/ElectricianCart';
 
 function App() {
   return (
@@ -34,7 +35,8 @@ function App() {
                   <Route path="/cleaning/sofaCleaning" exact component={SofaCleaning}></Route>             
                   <Route path="/cleaning/sofaCleaning/shop" component={SofaCleaningCart}></Route> 
                   <Route path="/homeservice/plumber" exact component={Plumber}></Route>     
-                  <Route path="/homeservice/electrician" exact component={Electrician}></Route>     
+                  <Route path="/homeservice/electrician" exact component={Electrician}></Route>  
+                  <Route path="/homeservice/electrician/shop" component={ElectricianCart}></Route>    
                   <Route path="/homeservice/carpenter" exact component={Carpenter}></Route>        
                   <Footer />
               </div>

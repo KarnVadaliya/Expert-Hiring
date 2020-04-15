@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from "react-router-dom";
 import {
   Button,
   Modal,
@@ -154,9 +155,15 @@ class ServiceBarComponet extends Component{
                         <p>Massaage</p>
                     </div>
                     <div id="epcModal" style={{display:(this.state.activeModal === "epcModal")? ("block") : ("none")}}>
-                        <p>Electrician</p>
-                        <p>Plumber</p>
-                        <p>Carpenter</p>
+                        <Link to="/homeservice/electrician">
+                            <p>Electrician</p>
+                        </Link>
+                        <Link to="/homeservice/plumber">
+                            <p>Plumber</p>
+                        </Link>
+                        <Link to="/homeservice/carpenter">
+                            <p>Carpenter</p>
+                        </Link>
                     </div>
                     <div id="fitnessModal" style={{display:(this.state.activeModal === "fitnessModal")? ("block") : ("none")}}>
                         <p>Yoga Trainer</p>

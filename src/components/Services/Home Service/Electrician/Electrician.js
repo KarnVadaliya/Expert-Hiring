@@ -20,7 +20,7 @@ class Electrician extends Component{
     componentDidMount(){
         Axios.post('http://localhost:5000/professionals/category',
         {
-            category: "Sofa Cleaning"
+            category: "Electrician"
         },{
             "headers": {
               'Content-Type': 'application/json',
@@ -78,13 +78,13 @@ class Electrician extends Component{
             tempProfessionals.map(professional => {
                 return(
                     <React.Fragment key={professional._id}>
-                        
+                        <img src={require("../../../../assets/img/serviceBackgrounds/random.jpg")}></img>
                         <div style={{marginLeft:"120px"}}>
-                            <span className="name">{professional.name}</span><br></br><br></br>
+                            <span className="name">{professional.name}</span><br></br>
                             <p>{professional.address}</p>
                             <span style={{marginTop:"-2px"}} className="rating">&#9733; {professional.ratings} <span style={{marginLeft:"2px", marginRight:"5px",color:"black"}}> ({professional.numberOfRatings} ratings) &emsp; &#x25cf; </span>  {professional.rated5Stars} times rated 5 star</span>
                             <br></br>    
-                            <br></br>    
+                            <br></br>   
                             {this.getElements(professional.reviews).map(review=>{
                                 return(                        
                                     <div style={{display:"flex",flexDirection:"row"}}>
@@ -171,7 +171,7 @@ class Electrician extends Component{
                             <p>&emsp;&emsp;</p>
                             <div>
                                 <h5>Choose your time-slot</h5>
-                                <p>We service from 9am - 7pm</p>
+                                <p>We service from 9am - 9pm</p>
                                
                             </div>
                             <hr ></hr>
