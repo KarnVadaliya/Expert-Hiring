@@ -5,10 +5,10 @@ import Navbar from './components/Navbar';
 import Home from './components/Home';
 import AboutUs from './components/AboutUs';
 import ContactUs from './components/ContactUs';
-import SofaCleaningCart from './components/Services/Cleaning/SofaCleaning/SofaCleaningCart';
+import SofaCleaningCart from './components/Services/Cleaning/sofaCleaning/SofaCleaningCart';
 import Footer from './components/Footer';
 import ScrollToTop from './ScrollToTop';
-import SofaCleaning from './components/Services/Cleaning/SofaCleaning/SofaCleaning';
+import SofaCleaning from './components/Services/Cleaning/sofaCleaning/SofaCleaning';
 import Electrician from './components/Services/Home Service/Electrician/Electrician';
 import Plumber from './components/Services/Home Service/Plumber/Plumber';
 import Carpenter from './components/Services/Home Service/Carpenter/Carpenter';
@@ -30,6 +30,7 @@ import WMRepair  from "./components/Services/ApplianceRepair/washingMachineRepai
 import WMRepairCart  from "./components/Services/ApplianceRepair/washingMachineRepair/WashingMachineRepairCart";
 import FridgeRepair  from "./components/Services/ApplianceRepair/fridgeRepair/FridgeRepair";
 import FridgeRepairCart  from "./components/Services/ApplianceRepair/fridgeRepair/FridgeRepairCart";
+import PaymentHistory from "./components/PaymentHistory"
 
 function App() {
   return (
@@ -42,6 +43,7 @@ function App() {
                   <Route path="/about" component={AboutUs}></Route>  
                   <Route path="/contact" component={ContactUs}></Route>         
                   <Route path="/payment" component={Payment}></Route> 
+                  <Route path="/paymenthistory" component={PaymentHistory}></Route>
                   <Route path="/salon-at-home" component={SalonAtHome}></Route> 
                   <Route path="/careers" component={Careers}></Route>
                   <Route path="/Cleaning/sofaCleaning" exact component={SofaCleaning}></Route>             

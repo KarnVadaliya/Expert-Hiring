@@ -255,7 +255,6 @@ class ServicesComponent extends Component{
         
         return(
             <div>
-
                 <div className="servicesSection">
                 {console.log(found)}
                     {   notFound !== "notFound" &&
