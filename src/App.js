@@ -30,6 +30,7 @@ import WMRepair  from "./components/Services/ApplianceRepair/washingMachineRepai
 import WMRepairCart  from "./components/Services/ApplianceRepair/washingMachineRepair/WashingMachineRepairCart";
 import FridgeRepair  from "./components/Services/ApplianceRepair/fridgeRepair/FridgeRepair";
 import FridgeRepairCart  from "./components/Services/ApplianceRepair/fridgeRepair/FridgeRepairCart";
+import PaymentHistory from "./components/PaymentHistory"
 
 function App() {
   return (
@@ -42,16 +43,17 @@ function App() {
                   <Route path="/about" component={AboutUs}></Route>  
                   <Route path="/contact" component={ContactUs}></Route>         
                   <Route path="/payment" component={Payment}></Route> 
+                  <Route path="/paymenthistory" component={PaymentHistory}></Route>
                   <Route path="/salon-at-home" component={SalonAtHome}></Route> 
                   <Route path="/careers" component={Careers}></Route>
-                  <Route path="/cleaning/sofaCleaning" exact component={SofaCleaning}></Route>             
-                  <Route path="/cleaning/sofaCleaning/shop" component={SofaCleaningCart}></Route> 
-                  <Route path="/homeservice/plumber" exact component={Plumber}></Route>     
-                  <Route path="/homeservice/electrician" exact component={Electrician}></Route>  
-                  <Route path="/homeservice/electrician/shop" component={ElectricianCart}></Route>    
-                  <Route path="/homeservice/carpenter" exact component={Carpenter}></Route>        
-                  <Route path="/salon/makeup" exact component={MakeUp}></Route>
-                  <Route path="/salon/makeup/shop" component={MakeUpCart}></Route>
+                  <Route path="/Cleaning/sofaCleaning" exact component={SofaCleaning}></Route>             
+                  <Route path="/Cleaning/sofaCleaning/shop" component={SofaCleaningCart}></Route> 
+                  <Route path="/HomeService/plumber" exact component={Plumber}></Route>     
+                  <Route path="/HomeService/electrician" exact component={Electrician}></Route>  
+                  <Route path="/HomeService/electrician/shop" component={ElectricianCart}></Route>    
+                  <Route path="/HomeService/carpenter" exact component={Carpenter}></Route>        
+                  <Route path="/Salon/makeup" exact component={MakeUp}></Route>
+                  <Route path="/Salon/makeup/shop" component={MakeUpCart}></Route>
                   <Route path="/ElectronicRepair/microwaveRepair" exact component={MicrowaveRepair}></Route>             
                   <Route path="/ElectronicRepair/microwaveRepair/shop" component={MicrowaveRepairCart}></Route> 
                   <Route path="/ElectronicRepair/tvRepair" exact component={TVRepair}></Route>

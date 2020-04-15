@@ -12,16 +12,16 @@ import {
   UncontrolledTooltip
 } from "reactstrap";
 
+
 class Footer extends React.Component {
   render() {
     return (
       
-        <footer className="footer has-cards">
-        <BrowserRouter>
+        <footer className="footer has-cards" id="myFooter">
           <Container>
             <Row className="row-grid align-items-center my-md">
               <Col lg="6">
-                <h5 className="text-primary font-weight-bold mb-2">
+                <h5 className="font-weight-bold mb-2" style={{color:"white"}}>
                   Location
                 </h5>
 
@@ -50,7 +50,7 @@ class Footer extends React.Component {
                 <Button
                   className="btn-icon-only rounded-circle"
                   color="twitter"
-                  href="https://twitter.com/creativetim"
+                  href="https://twitter.com/"
                   id="tooltip475038074"
                   target="_blank"
                 >
@@ -64,7 +64,7 @@ class Footer extends React.Component {
                 <Button
                   className="btn-icon-only rounded-circle ml-1"
                   color="facebook"
-                  href="https://www.facebook.com/creativetim"
+                  href="https://www.facebook.com/"
                   id="tooltip837440414"
                   target="_blank"
                 >
@@ -77,13 +77,13 @@ class Footer extends React.Component {
                 </UncontrolledTooltip>
                 <Button
                   className="btn-icon-only rounded-circle ml-1"
-                  color="dribbble"
-                  href="https://dribbble.com/creativetim"
+                  color="instagram"
+                  href="https://www.instagram.com/"
                   id="tooltip829810202"
                   target="_blank"
                 >
                   <span className="btn-inner--icon">
-                    <i className="fa fa-dribbble" />
+                    <i className="fa fa-instagram" />
                   </span>
                 </Button>
                 <UncontrolledTooltip delay={0} target="tooltip829810202">
@@ -91,8 +91,8 @@ class Footer extends React.Component {
                 </UncontrolledTooltip>
                 <Button
                   className="btn-icon-only rounded-circle ml-1"
-                  color="github"
-                  href="https://github.com/creativetimofficial"
+                  color="white"
+                  href="https://github.com/"
                   id="tooltip495507257"
                   target="_blank"
                 >
@@ -108,11 +108,12 @@ class Footer extends React.Component {
             <hr />
             <Row className="align-items-center justify-content-md-between">
               <Col md="6">
-                <div className="copyright">
+                <div className="copyright" >
                   © {new Date().getFullYear()}{" "}
                   <a
-                    href="https://www.creative-tim.com?ref=adsr-footer"
+                    href="https://github.com/DeepGamit/WebDesignProject"
                     target="_blank"
+                    style={{color:"white"}}
                   >
                     LEGION
                   </a>
@@ -122,7 +123,7 @@ class Footer extends React.Component {
               <Col md="6">
                 <Nav className="nav-footer justify-content-end">
                   
-                  <Link to = "/about">
+                  <Link to="/about">
                     <NavItem>
                       <NavLink>
                         About Us
@@ -130,7 +131,7 @@ class Footer extends React.Component {
                     </NavItem>
                   </Link>
 
-                  <Link to = "/contact">
+                  <Link to="/contact">
                     <NavItem>
                       <NavLink>
                         Contact Us
@@ -138,36 +139,26 @@ class Footer extends React.Component {
                     </NavItem>
                   </Link>
                   
+                  <Link to="/careers">
                   <NavItem>
-                    <NavLink
-                      href="https://github.com/creativetimofficial/argon-design-system-react/blob/master/LICENSE.md"
-                      target="_blank"
-                    >
-                      Terms & Condition
+                    <NavLink>
+                      Careers
                     </NavLink>
                   </NavItem>
+                  </Link>
 
                   <NavItem>
                     <NavLink
-                      href="https://github.com/creativetimofficial/argon-design-system-react/blob/master/LICENSE.md"
+                      href="https://github.com/DeepGamit/WebDesignProject"
                       target="_blank"
                     >
                      Blog
-                    </NavLink>
-                  </NavItem>
-                  <NavItem>
-                    <NavLink
-                      href="https://github.com/creativetimofficial/argon-design-system-react/blob/master/LICENSE.md"
-                      target="_blank"
-                    >
-                      Reviews
                     </NavLink>
                   </NavItem>
                 </Nav>
               </Col>
             </Row>
           </Container>
-          </BrowserRouter>
         </footer>
      
     );

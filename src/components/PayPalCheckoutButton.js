@@ -1,11 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import paypal from 'paypal-checkout';
+import PaymentHistory from './PaymentHistory';
 import { connect } from 'react-redux';
 import { setPayment } from '../actions/setPayment';
 import { emptyCart } from '../actions/emptyCart';
+import nodemailer from 'nodemailer';
 import Axios from 'axios';
-
 
 class PayPalCheckoutButton extends React.Component {
 
@@ -38,7 +39,7 @@ class PayPalCheckoutButton extends React.Component {
                     total: order.total,
                     currency: paypalConf.currency,
                   },
-                  description: 'My Test App',
+                  description: order.bookDate+" "+order.bookTime,
                   custom: order.customer || '',
                   item_list: {
                     items: order.items,
@@ -46,7 +47,7 @@ class PayPalCheckoutButton extends React.Component {
                   },
                 },
               ],
-              note_to_payer:'Thank You',
+              note_to_payer:'Thank You For Your Purchase',
               redirect_urls:{
                 return_url:"https://www.youtube.com/",
                 cancel_url:"https://www.google.com/"
@@ -58,7 +59,9 @@ class PayPalCheckoutButton extends React.Component {
               payment,
             });
           };
-        
+          
+
+          
           const onAuthorize = (data, actions) => {
             return actions.payment.execute()
               .then(response => {
@@ -76,8 +79,12 @@ class PayPalCheckoutButton extends React.Component {
                   .then(res=>{console.log(res)})
                   .catch(err=>{console.log(err)})
 
+
                 this.props.setPayment(response);
-                alert(`The payment was processed correctly, ID: ${response.id}`)
+                console.log(this.props.userState);
+                // alert(`The payment was processed correctly, ID: ${response.id}`)
+
+
               })
               .catch(error => {
                 console.log(error);
