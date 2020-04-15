@@ -14,7 +14,7 @@ class ServicesComponent extends Component{
                     subServices: [
                         {
                             name: "Makeup and Hairstyling",
-                            link: "/salon/makeup",                            
+                            link: "/Salon/makeup",                            
                             image: "salon2.jpg",
                             category: "Salon"
                         },
@@ -48,19 +48,19 @@ class ServicesComponent extends Component{
                     subServices: [
                         {
                             name: "AC Service & Repair",
-                            link: "#n",                            
+                            link: "/ApplianceRepair/acRepair",                            
                             image: "appliance1.jpg",
                             category: "Appliance Repair"
                         },
                         {
                             name: "Washing Machine Service & Repair",
-                            link: "#notGiven",
+                            link: "/ApplianceRepair/washingMachineRepair",
                             image: "appliance2.png",
                             category: "Appliance Repair"   
                         },
                         {
                             name: "Refrigerator Repair",
-                            link: "#notGiven",
+                            link: "/ApplianceRepair/fridgeRepair",
                             image: "appliance3.png",
                             category: "Appliance Repair"   
                         }
@@ -71,19 +71,19 @@ class ServicesComponent extends Component{
                     subServices: [
                         {
                             name: "Water Purifier Repair",
-                            link: "#notGiven",                            
+                            link: "/ElectronicRepair/waterRepair",                            
                             image: "electronic1.jpg",
                             category: "Electronic Repair"
                         },
                         {
                             name: "TV Repair & Installation",
-                            link: "#notGiven",
+                            link: "/ElectronicRepair/tvRepair",
                             image: "electronic3.jpg",
                             category: "Electronic Repair"   
                         },
                         {
                             name: "Microwave and Oven Repair",
-                            link: "#notGiven",
+                            link: "/ElectronicRepair/microwaveRepair",
                             image: "electronic2.jpg",
                             category: "Electronic Repair"   
                         }
@@ -100,7 +100,7 @@ class ServicesComponent extends Component{
                         },
                         {
                             name: "Sofa Cleaning",
-                            link: "/cleaning/sofaCleaning",
+                            link: "/Cleaning/sofaCleaning",
                             image: "cleaning2.jpg",
                             category: "Cleaning"   
                         },
@@ -117,19 +117,19 @@ class ServicesComponent extends Component{
                     subServices: [
                         {
                             name: "Electrician",
-                            link: "#notGiven",                            
+                            link: "/HomeService/electrician",                            
                             image: "home1.jpg",
                             category: "Home Services"
                         },
                         {
                             name: "Plumber",
-                            link: "#notGiven",
+                            link: "/HomeService/plumber",
                             image: "home2.jpeg",
                             category: "Home Services"   
                         },
                         {
                             name: "Carpenter",
-                            link: "#notGiven",
+                            link: "/HomeService/carpenter",
                             image: "home3.jpeg",
                             category: "Home Services"   
                         }
