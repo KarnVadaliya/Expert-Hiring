@@ -26,7 +26,7 @@ class ServicesComponent extends Component{
                             <h5>Salon</h5>
                             <div className="serviceContent">
                                 <div className="serviceCell">
-                                        <Link to="/makeup">
+                                        <Link to="/salon/makeup">
                                             <div>
                                                 <img alt="makeup and hairstyling" src={require("../assets/img/serviceIcons/salon2.jpg")}/>
                                             </div>
