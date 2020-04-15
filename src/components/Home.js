@@ -10,24 +10,6 @@ var name = "hello";
 export default class Home extends Component {
 
     render() {
-        const order = {
-            customer: 'FenilShah',
-            total: '100.00',
-            items: [
-              {
-                name: 'Oneplus',
-                price: '60.00',
-                quantity: 1,
-                currency: 'USD'
-              },
-              {
-                name: 'Oneplus cable',
-                price: '20.00',
-                quantity: 2,
-                currency: 'USD'
-              },
-            ],
-          };
         return (
             <div>
                 <Searchbar name={name}></Searchbar>

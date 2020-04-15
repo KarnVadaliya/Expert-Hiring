@@ -1,6 +1,5 @@
-import { ADD_PRODUCT_CART, REMOVE_PRODUCT_CART, ADD_PRODUCT_DB } from "../actions/types";
+import { ADD_PRODUCT_CART, REMOVE_PRODUCT_CART, EMPTY_CART} from "../actions/types";
 import { TOGGLE_CART_MODAL } from '../actions/types';
-
 
 const initialState = {
     cartNumbers: 0,
@@ -66,7 +65,13 @@ export default (state = initialState, action) => {
                     }
                 }
             }
-            
+        case EMPTY_CART:
+            return{
+                cartNumbers: 0,
+                showCart: false,
+                cartCost: 0,
+                productsInCart: {}
+            }
         default:
             return state;
     }
