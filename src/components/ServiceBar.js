@@ -132,9 +132,18 @@ class ServiceBarComponet extends Component{
                   <div>&emsp;&emsp;</div>
                   <div className="serviceModalRight">
                     <div id="salonModal" style={{display:(this.state.activeModal === "salonModal")? ("block") : ("none")}} >
-                        <p>Make up &amp; Hair styling </p>
-                        <p>Salon at Home (Women)</p>
-                        <p>Hair cut</p>
+                    
+                        <Link to="/Salon/makeup">
+                            <p>Make up &amp; Hair styling </p>
+                        </Link>
+                       
+                        <Link to="/Salon/salonAtHomeWomen">
+                            <p>Salon at Home (Women)</p>
+                        </Link>
+
+                        <Link to="/Salon/haircut">
+                            <p>Hair cut</p>
+                        </Link>
                     </div>
                     <div id="applianceModal" style={{display:(this.state.activeModal === "applianceModal")? ("block") : ("none")}}>
                         <Link to="/ApplianceRepair/acRepair">

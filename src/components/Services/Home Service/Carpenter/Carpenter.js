@@ -158,7 +158,7 @@ class Carpenter extends Component{
                             </div> 
                             <p>&emsp;&emsp;</p>
                             <div>
-                            <h5>Choose the type of service</h5>
+                                 <h5>Choose the type of service</h5>
                                
                             </div>
                             <hr ></hr>
@@ -191,7 +191,7 @@ class Carpenter extends Component{
                 </section>
                 <br></br>
                 <section className="info professionals" id="Professionals">
-                    <h4>Cleaning Professionals</h4>
+                    <h4>Carpenters</h4>
                     <h6>{this.state.professionals.length} Carpenters in Ahmedabad</h6>
                     <hr></hr>
                     <div className="professionalsDetails">

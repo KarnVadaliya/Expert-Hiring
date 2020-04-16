@@ -142,7 +142,7 @@ class SalonAtHomeWomen extends Component{
                 <div className="info">
                     <Scrollspy items={ ['How it Works', 'Professionals', 'Customer Reviews'] } currentClassName="is-current">
                                 <li><a active href="#Works">How it Works</a></li>
-                                <li><a href="#Professionals">Professionals</a></li>
+                                <li><a href="#Professionals">Beauticians</a></li>
                                 <li><a href="#Reviews">Customer Reviews</a></li>
                     </Scrollspy>
                 </div>
@@ -161,7 +161,7 @@ class SalonAtHomeWomen extends Component{
                             <p>&emsp;&emsp;</p>
                             <div>
                                 <h5>Choose a Salon Service</h5>
-                                <p>Choose from various salon packages and services</p>
+                                <p>Select from various salon packages and services</p>
                                
                             </div>
                             <hr ></hr>
@@ -174,7 +174,7 @@ class SalonAtHomeWomen extends Component{
                             <p>&emsp;&emsp;</p>
                             <div>
                                 <h5>Choose your time-slot</h5>
-                                <p>Hello There</p>
+                                <p>We service from 9am - 7pm</p>
                                
                             </div>
                             <hr ></hr>
@@ -185,8 +185,8 @@ class SalonAtHomeWomen extends Component{
                             </div>
                             <p>&emsp;&emsp;</p>
                             <div>
-                                <h5>Pay</h5>
-                                <p>Hello There</p>
+                                <h5>Relax and Enjoy Salon service</h5>
+                                <p>Our professionals will get in touch with you an hour before service</p>
                             </div>
                             <hr ></hr>
                         </li>
@@ -194,8 +194,8 @@ class SalonAtHomeWomen extends Component{
                 </section>
                 <br></br>
                 <section className="info professionals" id="Professionals">
-                    <h4>Salon At Home Professionals for Women</h4>
-                    <h6>{this.state.professionals.length} Salon professionals in Ahmedabad</h6>
+                    <h4>Beauticians</h4>
+                    <h6>{this.state.professionals.length} Beauty Service Professionals in Ahmedabad</h6>
                     <hr></hr>
                     <div className="professionalsDetails">
                         
@@ -214,7 +214,7 @@ class SalonAtHomeWomen extends Component{
                 <br></br>
                 <section className="info reviews" id="Reviews">
                     <h4>Recent Customer Reviews</h4>
-                    <h6>For Salon At Home in Boston</h6>                   
+                    <h6>for Beauty Service Professionals in Ahmedabad</h6>                   
                     <div className="crating">
                         <span style={{fontSize:"38px", color:"#5300a5", fontWeight:"650"}}>&#9733; {this.averageUserRatings()}</span><span style={{fontSize:"20px", color:"#5300a5", fontWeight:"600"}}>/5</span> &nbsp;based on {this.state.userReviews.length} ratings
                     </div>
@@ -228,18 +228,18 @@ class SalonAtHomeWomen extends Component{
                 </div>
                 <div className="serviceBox">
                     <div className="serviceBoxButtons">
-                        <h4>Salon At Home Professionals for :</h4>
+                        <h4>View All Beauty Services:</h4>
                         <div className="serviceButtonGroup">
                          
-                            <button onClick={() => this.props.history.push('/Salon/salonAtHomeCart/shop')}>
+                            <button onClick={() => this.props.history.push('/Salon/salonAtHomeWomen/shop')}>
                                 Waxing and Threading<i style={{textAlign:"right"}} className="fa fa-chevron-right" />
                             </button> 
                        
-                            <button onClick={() => this.props.history.push('/Salon/salonAtHomeCart/shop')}>
+                            <button onClick={() => this.props.history.push('/Salon/salonAtHomeWomen/shop')}>
                                 Manicure + Pedicure<i className="fa fa-chevron-right"></i>
                             </button>
 
-                            <button onClick={() => this.props.history.push('/Salon/salonAtHomeCart/shop')}>
+                            <button onClick={() => this.props.history.push('/Salon/salonAtHomeWomen/shop')}>
                                Facials <i className="fa fa-chevron-right"></i>
                             </button>
                         </div>
