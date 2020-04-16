@@ -79,7 +79,7 @@ export default class ContactUs extends Component {
             disabled: true
         });
 
-            Axios.post('http://localhost:3030/', this.state)
+            Axios.post('http://localhost:5000/contact/email', this.state)
             
             .then(res => {
                 if(res.data.success) {
