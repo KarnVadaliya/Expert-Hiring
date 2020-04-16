@@ -134,7 +134,7 @@ class SofaCleaning extends Component{
         return(
             <div className="service" style={{backgroundColor:"#F5F5F5"}}>
                 <div className="serviceBg" style={{backgroundImage: `url(${Background})`}}>
-                    <h2>Plumbers in {this.props.mainPageState.city}  </h2>
+                    <h2>Best Plumbers in {this.props.mainPageState.city}  </h2>
                 </div>
 
                 <div className="info">

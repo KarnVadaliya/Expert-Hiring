@@ -20,7 +20,7 @@ class Searchbar extends Component {
 
     state={
         currentCity:'Ahmedabad',
-        cities: ['Ahmedabad','Boston','Bangalore','New Jersey', 'New York'],
+        cities: ['Ahmedabad','Boston','New Jersey', 'New York', 'San Fransico', 'Mumbai'],
         search: ''
     }
 
