@@ -26,7 +26,7 @@ class FridgeRepairCart extends Component {
     }
 
     componentDidMount(){
-        Axios.get('http://localhost:5000/ApplianceRepair/washingMachineRepair/')
+        Axios.get('http://localhost:5000/appliance/fridge/')
             .then(res=>{
                 console.log(res.data);
                 let tempList = []

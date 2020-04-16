@@ -26,7 +26,7 @@ class WaterRepairCart extends Component {
     }
 
     componentDidMount(){
-        Axios.get('http://localhost:5000/ElectronicRepair/waterRepair/')
+        Axios.get('http://localhost:5000/electronic/water/')
             .then(res=>{
                 console.log(res.data);
                 let tempList = []
