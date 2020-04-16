@@ -43,6 +43,7 @@ import SalonAtHomeWomen  from './components/Services/Salon/SalonAtHome/SalonAtHo
 import SalonAtHomeWomenCart from './components/Services/Salon/SalonAtHome/SalonAtHomeWomenCart';
 import Haircut from './components/Services/Salon/Hair/Haircut';
 import HaircutCart from './components/Services/Salon/Hair/HaircutCart';
+import CartModal from './components/Services/Cleaning/SofaCleaning/CartModal';
 
 
 function App() {
@@ -90,7 +91,7 @@ function App() {
                   <Route path="/ApplianceRepair/washingMachineRepair/shop" component={WMRepairCart}></Route>
                   <Route path="/ApplianceRepair/fridgeRepair" exact component={FridgeRepair}></Route>
                   <Route path="/ApplianceRepair/fridgeRepair/shop" component={FridgeRepairCart}></Route>
-                  
+                  <CartModal />
                   <Footer />                      
                   
                    
