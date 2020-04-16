@@ -23,8 +23,11 @@ class Review extends Component {
         super(props);
         this.state = {
             professionals : [],
-            category: ['Sofa Cleaning', 'Hair Stylist', 'Microwave Repair', 'Makeup', 'TV Repair', 'Water Purifier Repair', 'Washing Machine Repair','Refrigerator Repair','Electrician','Carpenter','Salon At Home','Haircut','Plumber'],
-            categorySelect: 'Sofa Cleaning',
+            cities: [],
+            // category: ['Sofa Cleaning', 'Hair Stylist', 'Microwave Repair', 'Makeup', 'TV Repair', 'Water Purifier Repair', 'Washing Machine Repair','Refrigerator Repair','Electrician','Carpenter','Salon At Home','Haircut','Plumber'],
+            category: [],
+            categorySelect: '',
+            citySelect: 'Ahmedabad',
             rating: 0,
             comment: '',
             ok: false
@@ -32,9 +35,10 @@ class Review extends Component {
     }
 
     componentDidMount(){
-        Axios.post('http://localhost:5000/professionals/category',
+        Axios.post('http://localhost:5000/professionals/city',
         {
-            category: this.state.categorySelect
+            // category: this.state.categorySelect,
+            city: this.state.citySelect
         },{
             "headers": {
               'Content-Type': 'application/json',
@@ -45,8 +49,20 @@ class Review extends Component {
                     console.log("Couldnt fetch data!");
                     return;
                 }
+                let tempCategory = []
+                res.data.map(professional => {
+                    if(tempCategory.indexOf(professional.category) === -1) tempCategory.push(professional.category)
+                });
+                
+                let tempCities = []
+                res.data.map(professional => {
+                    if(tempCities.indexOf(professional.serviceInCity) === -1) tempCities.push(professional.serviceInCity)
+                });
+
                 this.setState({
-                    professionals: res.data
+                    professionals: res.data,
+                    category: tempCategory,
+                    cities: tempCities
                 })
             })
     }
@@ -63,12 +79,45 @@ class Review extends Component {
         })
     }
 
+    handleCitySelect = (e) =>{
+        // this.setState({
+        //     citySelect: e.target.innerHTML
+        // })
+        var cityFromDropdown = e.target.innerHTML;
+        
+        Axios.post('http://localhost:5000/professionals/city',
+        {
+            city: cityFromDropdown
+        },{
+            "headers": {
+              'Content-Type': 'application/json',
+            }
+          })
+            .then(res=>{
+                if(Object.keys(res.data).length === 0){
+                    console.log("Couldnt fetch data!");
+                    return;
+                }
+                let tempCategory = []
+                res.data.map(professional => {
+                    if(tempCategory.indexOf(professional.category) === -1) tempCategory.push(professional.category)
+                });
+                
+                this.setState({
+                    professionals: res.data,
+                    category: tempCategory,
+                    categorySelect: ''
+                })
+            })
+    }
+
     handleCategorySelect = (e) =>{
         var categoryFromDropdown = e.target.innerHTML;
         
         Axios.post('http://localhost:5000/professionals/category',
         {
-            category: categoryFromDropdown
+            category: categoryFromDropdown,
+            city: this.state.citySelect
         },{
             "headers": {
               'Content-Type': 'application/json',
@@ -182,34 +231,71 @@ class Review extends Component {
             </DropdownItem>
             </li>
         );
+
+        const cityInformation = (this.state.cities.length) ? (
+            this.state.cities.sort().map(city=>{
+                return(
+                    <li>
+                    <DropdownItem onClick={this.handleCitySelect}>
+                        {city}
+                    </DropdownItem>
+                    </li>
+                )
+            })
+        ):(
+            <li>
+            <DropdownItem onClick={e => e.preventDefault()}>
+                No cities yet!! We will come soon!!
+            </DropdownItem>
+            </li>
+        );
+
         return (
-            <div style={{marginBottom:"50px"}}>
-                <h1 style={{fontWeight:"bold", letterSpacing:"2px", textAlign:"center"}}>REVIEW US</h1><br></br><br></br>
+            <>
+                <div style={{marginTop:"-100px", paddingTop:"120px", backgroundColor:"#f5f5f5"}}>
+                    <h1 style={{fontWeight:"bold", letterSpacing:"2px", textAlign:"center"}}>REVIEW US</h1><br></br><br></br>
+                </div>
+                <div style={{marginBottom:"50px", paddingTop:"50px"}}>
+
                 <div style={{textAlign:"center"}}>
-                    <h4 style={{display:"inline"}}>Please select a category : &nbsp;&nbsp;</h4><span>{' '}</span>
+                    <h4 style={{display:"inline"}}>Choose a city : &nbsp;&nbsp;</h4><span>{' '}</span>
                     <UncontrolledDropdown>
                         <DropdownToggle caret color="white">                                
-                            <i style={{paddingRight:"9px"}}className="fa fa-list" />
-                           {this.state.categorySelect === '' ? (<i>---Not selected---</i>):(this.state.categorySelect)}
+                            <i style={{paddingRight:"9px"}}className="fa fa-location-arrow" />
+                        {this.state.citySelect === '' ? (<i>---Not selected---</i>):(this.state.citySelect)}
                         </DropdownToggle>
                         <DropdownMenu>
-                            {categoryInformation}
+                            {cityInformation}
                         </DropdownMenu>
                     </UncontrolledDropdown>     
-                </div>      
-                <br>                    
-                </br>
-                <br>                    
-                </br>
-                {   this.state.categorySelect !== '' &&
-                    <div className="container">
-                        <Accordion>
-                            {professionalsList}
-                        </Accordion> 
-                    </div>
-                }
-                               
-            </div>
+                </div>
+                    <br></br><br></br><br></br>
+                    <div style={{textAlign:"center"}}>
+                        <h4 style={{display:"inline"}}>Please select a category : &nbsp;&nbsp;</h4><span>{' '}</span>
+                        <UncontrolledDropdown>
+                            <DropdownToggle caret color="white">                                
+                                <i style={{paddingRight:"9px"}}className="fa fa-list" />
+                            {this.state.categorySelect === '' ? (<i>---Not selected---</i>):(this.state.categorySelect)}
+                            </DropdownToggle>
+                            <DropdownMenu>
+                                {categoryInformation}
+                            </DropdownMenu>
+                        </UncontrolledDropdown>     
+                    </div>      
+                    <br>                    
+                    </br>
+                    <br>                    
+                    </br>
+                    {   this.state.categorySelect !== '' &&
+                        <div className="container">
+                            <Accordion>
+                                {professionalsList}
+                            </Accordion> 
+                        </div>
+                    }
+                                
+                </div>
+            </>
         )
     }
 }
