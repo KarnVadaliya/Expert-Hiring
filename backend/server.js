@@ -35,6 +35,11 @@ app.use('/professionals', professionalRouter);
 const productsMakeUpRouter = require('./routes/salon/productsMakeUp');
 app.use('/salon/makeup', productsMakeUpRouter);
 
+const productsSalonSpaRouter = require('./routes/salon/productsSalonSpa');
+app.use('/salon/salonSpa', productsSalonSpaRouter);
+
+const productsHaircutRouter = require('./routes/salon/productsHair');
+app.use('/salon/haircut', productsHaircutRouter);
 // const salonRouter = require('./routes/salon/productsMakeUp');
 // app.use('/salon/makeup', salonRouter);
 
