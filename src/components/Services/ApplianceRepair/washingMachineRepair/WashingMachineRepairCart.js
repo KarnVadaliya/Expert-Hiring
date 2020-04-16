@@ -26,7 +26,7 @@ class WashingMachineRepairCart extends Component {
     }
 
     componentDidMount(){
-        Axios.get('http://localhost:5000/appliance/washingmachine/')
+        Axios.get('http://localhost:5000/ApplianceRepair/washingMachineRepair/')
             .then(res=>{
                 console.log(res.data);
                 let tempList = []
@@ -91,14 +91,14 @@ class WashingMachineRepairCart extends Component {
 
         const serviceCategory = [];
         for(var product in this.state.products){
-            if(this.state.products[product].category === 'Water Leakage')
+            if(this.state.products[product].category === 'Servicing/Filter')
                 serviceCategory.push(this.state.products[product])
         }
         
 
         const otherCategory = [];
         for(var product in this.state.products){
-            if(this.state.products[product].category === 'Other Issues')
+            if(this.state.products[product].category === 'Cleaning')
                 otherCategory.push(this.state.products[product])
         }
 
