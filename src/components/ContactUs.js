@@ -220,7 +220,7 @@ export default class ContactUs extends Component {
                                 <img src= {require("../assets/img/careers/jobs.jpg")} />
                                 </div>
                                 <div id="careerDetails">
-                                    <div id="content" onClick={() => this.toggleModal("formModal")}>
+                                    <div id="content">
                                         <h3>Ahemdabad, India</h3>
                                         <p><strong>401, Indraprastha Business Park, Ahmedabad, Gujarat, India 380051</strong></p>
                                     </div>
@@ -233,7 +233,7 @@ export default class ContactUs extends Component {
                                 <img src= {require("../assets/img/careers/jobs.jpg")} />
                                 </div>
                                 <div id="careerDetails">
-                                    <div id="content" onClick={() => this.toggleModal("formModal")}>
+                                    <div id="content">
                                         <h3>Boston, US</h3>
                                         <p><strong>123, Northampton Street, Boston, MA, United States  02115</strong></p>
                                     </div>
@@ -246,7 +246,7 @@ export default class ContactUs extends Component {
                                 <img src= {require("../assets/img/careers/jobs.jpg")} />
                                 </div>
                                 <div id="careerDetails">
-                                    <div id="content" onClick={() => this.toggleModal("formModal")}>
+                                    <div id="content">
                                         <h3>New York, US</h3>
                                         <p><strong>C-32 A Cipet Road, Industrial Estate, SIDCO Industrial Estate, New York, United States </strong></p>
                                     </div>
@@ -259,7 +259,7 @@ export default class ContactUs extends Component {
                                 <img src= {require("../assets/img/careers/jobs.jpg")} />
                                 </div>
                                 <div id="careerDetails">
-                                    <div id="content" onClick={() => this.toggleModal("formModal")}>
+                                    <div id="content" >
                                         <h3>New Jersey, US</h3>
                                         <p><strong>Plot No:- 66, Phase-2, Industrial Area, New Jersey, United States </strong></p>
                                     </div>
@@ -272,7 +272,7 @@ export default class ContactUs extends Component {
                                 <img src= {require("../assets/img/careers/jobs.jpg")} />
                                 </div>
                                 <div id="careerDetails">
-                                    <div id="content" onClick={() => this.toggleModal("formModal")}>
+                                    <div id="content" >
                                         <h3>San Francisco, US</h3>
                                         <p><strong>Trendz Enclave, First Floor, Plot No. 44, San Francisco, United States </strong></p>
                                     </div>
@@ -285,7 +285,7 @@ export default class ContactUs extends Component {
                                 <img src= {require("../assets/img/careers/jobs.jpg")} />
                                 </div>
                                 <div id="careerDetails">
-                                    <div id="content" onClick={() => this.toggleModal("formModal")}>
+                                    <div id="content">
                                         <h3>Mumbai, India</h3>
                                         <p><strong>Unit - 1101 & 1102, Godrej Coliseum, Sion (East), Mumbai, India 400022 </strong></p>
                                     </div>

@@ -15,6 +15,7 @@ import CartModal from '../components/Services/Cleaning/SofaCleaning/CartModal'
 
 class LoggedIn extends Component {
 
+
     logOutUser = (e) =>{
         e.preventDefault();
         sessionStorage.removeItem('user');
@@ -65,11 +66,7 @@ class LoggedIn extends Component {
                                 <i className="ni ni-button-power" />
                                 Logout
                                 </DropdownItem>
-
-
-                                
-
-
+               
                             </DropdownMenu>
                         </UncontrolledDropdown>
                     
