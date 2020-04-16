@@ -30,7 +30,8 @@ import WMRepair  from "./components/Services/ApplianceRepair/washingMachineRepai
 import WMRepairCart  from "./components/Services/ApplianceRepair/washingMachineRepair/WashingMachineRepairCart";
 import FridgeRepair  from "./components/Services/ApplianceRepair/fridgeRepair/FridgeRepair";
 import FridgeRepairCart  from "./components/Services/ApplianceRepair/fridgeRepair/FridgeRepairCart";
-import PaymentHistory from "./components/PaymentHistory"
+import PaymentHistory from "./components/PaymentHistory";
+import Review from './components/Review';
 
 function App() {
   return (
@@ -43,7 +44,8 @@ function App() {
                   <Route path="/about" component={AboutUs}></Route>  
                   <Route path="/contact" component={ContactUs}></Route>         
                   <Route path="/payment" component={Payment}></Route> 
-                  <Route path="/paymenthistory" component={PaymentHistory}></Route>
+                  <Route path="/paymenthistory" exact component={PaymentHistory}></Route>
+                  <Route path="/paymenthistory/review" component={Review}></Route>
                   <Route path="/salon-at-home" component={SalonAtHome}></Route> 
                   <Route path="/careers" component={Careers}></Route>
                   <Route path="/Cleaning/sofaCleaning" exact component={SofaCleaning}></Route>             
@@ -65,7 +67,7 @@ function App() {
                   <Route path="/ApplianceRepair/washingMachineRepair" exact component={WMRepair}></Route>
                   <Route path="/ApplianceRepair/washingMachineRepair/shop" component={WMRepairCart}></Route>
                   <Route path="/ApplianceRepair/fridgeRepair" exact component={FridgeRepair}></Route>
-                  <Route path="/ApplianceRepair/fridgeRepair/shop" component={FridgeRepairCart}></Route>
+                  <Route path="/ApplianceRepair/fridgeRepair/shop" component={FridgeRepairCart}></Route>                  
                   <Footer />    
                   
                    
