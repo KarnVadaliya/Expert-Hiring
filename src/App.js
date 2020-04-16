@@ -31,6 +31,10 @@ import WMRepairCart  from "./components/Services/ApplianceRepair/washingMachineR
 import FridgeRepair  from "./components/Services/ApplianceRepair/fridgeRepair/FridgeRepair";
 import FridgeRepairCart  from "./components/Services/ApplianceRepair/fridgeRepair/FridgeRepairCart";
 import PaymentHistory from "./components/PaymentHistory"
+import SalonAtHomeWomen  from './components/Services/Salon/SalonAtHome/SalonAtHomeWomen';
+import SalonAtHomeWomenCart from './components/Services/Salon/SalonAtHome/SalonAtHomeWomenCart';
+import Haircut from './components/Services/Salon/Hair/Haircut';
+import HaircutCart from './components/Services/Salon/Hair/HaircutCart';
 
 function App() {
   return (
@@ -53,6 +57,7 @@ function App() {
                   <Route path="/HomeService/electrician/shop" component={ElectricianCart}></Route>    
                   <Route path="/HomeService/carpenter" exact component={Carpenter}></Route>        
                   <Route path="/Salon/makeup" exact component={MakeUp}></Route>
+                  
                   <Route path="/Salon/makeup/shop" component={MakeUpCart}></Route>
                   <Route path="/ElectronicRepair/microwaveRepair" exact component={MicrowaveRepair}></Route>             
                   <Route path="/ElectronicRepair/microwaveRepair/shop" component={MicrowaveRepairCart}></Route> 
@@ -66,6 +71,10 @@ function App() {
                   <Route path="/ApplianceRepair/washingMachineRepair/shop" component={WMRepairCart}></Route>
                   <Route path="/ApplianceRepair/fridgeRepair" exact component={FridgeRepair}></Route>
                   <Route path="/ApplianceRepair/fridgeRepair/shop" component={FridgeRepairCart}></Route>
+                  <Route path="/Salon/salonAtHomeWomen" exact component={SalonAtHomeWomen}></Route>
+                  <Route path="/Salon/salonAtHomeCart/shop" exact component={SalonAtHomeWomenCart}></Route>
+                  <Route path="/Salon/haircut" exact component={Haircut}></Route>
+                  <Route path="/Salon/haircutcart" exact component={HaircutCart}></Route>
                   <Footer />    
                   
                    
