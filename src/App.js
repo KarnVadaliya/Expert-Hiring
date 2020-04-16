@@ -35,6 +35,7 @@ import WMRepair  from "./components/Services/ApplianceRepair/washingMachineRepai
 import WMRepairCart  from "./components/Services/ApplianceRepair/washingMachineRepair/WashingMachineRepairCart";
 import FridgeRepair  from "./components/Services/ApplianceRepair/fridgeRepair/FridgeRepair";
 import FridgeRepairCart  from "./components/Services/ApplianceRepair/fridgeRepair/FridgeRepairCart";
+import Review from './components/Review';
 
 import MakeUp from './components/Services/Salon/makeUp/MakeUp';
 import MakeUpCart from './components/Services/Salon/makeUp/MakeUpCart';
@@ -55,7 +56,9 @@ function App() {
                   <Route path="/about" component={AboutUs}></Route>  
                   <Route path="/contact" component={ContactUs}></Route>         
                   <Route path="/payment" component={Payment}></Route> 
-                  <Route path="/paymenthistory" component={PaymentHistory}></Route>
+                  <Route path="/paymenthistory" exact component={PaymentHistory}></Route>
+                  <Route path="/paymenthistory/review" component={Review}></Route>
+
                   <Route path="/careers" component={Careers}></Route>
 
                   <Route path="/Cleaning/sofaCleaning" exact component={SofaCleaning}></Route>             

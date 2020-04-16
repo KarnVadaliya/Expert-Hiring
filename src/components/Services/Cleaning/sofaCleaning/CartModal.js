@@ -9,30 +9,33 @@ import {
   } from "reactstrap";
   import { removeProductFromCart } from '../../../../actions/removeProduct';
   import { addProductToCart } from '../../../../actions/addProduct';
-  import { Link } from 'react-router-dom';
+  import { Link, Redirect } from 'react-router-dom';
 
 
  class CartModal extends React.Component {
         constructor(props){
             super(props);
-            this.state = {
-                user: '',
-                error: 'false',
-                errorObject: ''
+            this.state = {                
+                error: true               
             }
         }
 
         handleOnClick = (e) =>{
-            console.log(e);
+            
             if(Object.keys(this.props.userState.user).length === 0){
                 alert("Please login to checkout");
             }else{
-                this.props.history.push("/payment");
+                this.setState({
+                    error: false
+                })
             }
         }
     
         render(){
-            console.log(this.state);
+            
+            if(!this.state.error)
+               return <Redirect to="/payment"/>
+            console.log(this.props);
 
             const productsList = [];
             for(var product in this.props.cartState.productsInCart){

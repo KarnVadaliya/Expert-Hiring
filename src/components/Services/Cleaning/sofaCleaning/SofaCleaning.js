@@ -19,7 +19,7 @@ class SofaCleaning extends Component{
     }
 
     componentDidMount(){
-        this.props.setSearch("");
+        
         Axios.post('http://localhost:5000/professionals/category',
         {
             category: "Sofa Cleaning"
@@ -29,7 +29,6 @@ class SofaCleaning extends Component{
             }
           })
           .then(res=>{
-            
               const reviews = [];
               res.data.map(professional=>professional.reviews.map(review=>reviews.push(review)));
               this.setState({
@@ -56,7 +55,7 @@ class SofaCleaning extends Component{
         return reviewList;
     }
 
-    getElements = (array) => array.slice(0,2);
+    getElements = (array) => array.slice(-2);
 
     seeMoreOnClick = (e) => {
         this.setState({
@@ -82,7 +81,7 @@ class SofaCleaning extends Component{
                     <React.Fragment key={professional._id}>
                         <img src={require("../../../../assets/img/serviceBackgrounds/random.jpg")}></img>
                         <div style={{marginLeft:"120px"}}>
-                            <span className="name">{professional.name}</span><br></br>
+                            <span className="name">{professional.name}</span><br></br><br></br>
                             <p>{professional.address}</p>
                             <span style={{marginTop:"-2px"}} className="rating">&#9733; {professional.ratings} <span style={{marginLeft:"2px", marginRight:"5px",color:"black"}}> ({professional.numberOfRatings} ratings) &emsp; &#x25cf; </span>  {professional.rated5Stars} times rated 5 star</span>
                             <br></br>    

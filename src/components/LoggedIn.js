@@ -34,10 +34,12 @@ class LoggedIn extends Component {
                                 left
                             >
                                
+                               <Link to="/paymenthistory/review">
                                 <DropdownItem>
-                                <i className="ni ni-circle-08" />
-                                My Profile
-                                </DropdownItem>
+                                    <i className="fa fa-comment" />
+                                    Add a review
+                                    </DropdownItem>
+                                </Link>
                                
                                 <Link to='/paymentHistory'>
                                     <DropdownItem>
