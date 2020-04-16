@@ -115,7 +115,7 @@ export default class Careers extends Component {
     return (
       <>
       <div className = "image_container">
-      <img className = "fixed_img" src= {require("../assets/img/careers/banner.jpg")} />
+      <img className = "fixed_img" alt="banner" src= {require("../assets/img/careers/banner.jpg")} />
       <h1 className= "text-center"><strong> Drive Your Career.</strong></h1>
       <p className= "text-center"><strong>Legion's track record of talented professionals working together startes early last century and we've built our leading global success on collaborative talents dedicated to being the best team in the business. Explore below to learn what motivates greatness.</strong></p>
       </div>
