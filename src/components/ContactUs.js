@@ -14,6 +14,7 @@ import {
     Button,
     UncontrolledCarousel
   } from "reactstrap";
+import { response } from 'express';
 
 
   const items = [
@@ -71,13 +72,13 @@ export default class ContactUs extends Component {
     handleOnSubmit = e =>{
         e.preventDefault();
         // console.log(this.state);
-        console.log(e.target);
+        // console.log(e.target);
 
         this.setState({
             disabled: true
         });
 
-            Axios.post('http://localhost:3030/', this.state)
+            Axios.post('http://localhost:5000/contact/email', this.state)
             
             .then(res => {
                 if(res.data.success) {
