@@ -113,15 +113,14 @@ export default class Careers extends Component {
 
   render() {
     return (
-      <>
+      <div style={{marginTop:"-25px"}}>
       <div className = "image_container">
       <img className = "fixed_img" src= {require("../assets/img/careers/banner.jpg")} />
-      <h1 className= "text-center"><strong> Drive Your Career.</strong></h1>
+      <h1 className= "text-center" style={{marginTop:"25px"}}><strong> Drive Your Career.</strong></h1>
       <p className= "text-center"><strong>Legion's track record of talented professionals working together startes early last century and we've built our leading global success on collaborative talents dedicated to being the best team in the business. Explore below to learn what motivates greatness.</strong></p>
       </div>
       <br></br>
-      <br></br>
-      <br></br>
+      
       
 
       <section className="bg-light-gray why-bn">
@@ -216,8 +215,8 @@ export default class Careers extends Component {
         <br></br>
         <br></br>
         <h1 className= "text-center"><strong> Open Positions</strong></h1>
-        <section className = "my-3">
-            <div className= "container"> 
+        <section className = "my-3" >
+            <div className= "container" style={{marginBottom:"100px"}}> 
                 <div className = "well well-sm">
                     <div className = "row">
                         <div className = "col-md-4">
@@ -440,7 +439,7 @@ export default class Careers extends Component {
                 </Card>
               </div>
             </Modal>
-      </>
+      </div>
     );
   }
 }
