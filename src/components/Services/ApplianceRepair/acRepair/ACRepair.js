@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import "../../../../assets/vendor/nucleo/css/nucleo.css";
 import "../../../../assets/vendor/font-awesome/css/font-awesome.min.css";
 import "../../../../assets/scss/argon-design-system-react.scss";
-import Background from '../../../../assets/img/serviceBackgrounds/makeupBg.jpg'
+import Background from '../../../../assets/img/serviceBackgrounds/ac.jpg'
 import '../../services.css'
 import Scrollspy from 'react-scrollspy'
 import Axios from 'axios'
-
+import { connect } from 'react-redux';
+import { setSearch } from '../../../../actions/setSearch';
 
 class ACRepair extends Component{
 
@@ -133,7 +134,7 @@ class ACRepair extends Component{
         return(
             <div className="service" style={{backgroundColor:"#F5F5F5"}}>
                 <div className="serviceBg" style={{backgroundImage: `url(${Background})`}}>
-                    <h2>AC Service & Repair in ****** </h2>
+                    <h2>AC Service & Repair in {this.props.mainPageState.city} </h2>
                 </div>
 
                 <div className="info">
@@ -270,4 +271,10 @@ class ACRepair extends Component{
         )
     }
 }
-export default ACRepair;
+
+
+const mapStateToProps = (state) => ({
+    mainPageState: state.mainPageState
+});
+
+export default connect(mapStateToProps, { setSearch })(ACRepair);

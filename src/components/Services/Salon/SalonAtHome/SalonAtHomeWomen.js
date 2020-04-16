@@ -2,13 +2,15 @@ import React, { Component } from 'react';
 import "../../../../assets/vendor/nucleo/css/nucleo.css";
 import "../../../../assets/vendor/font-awesome/css/font-awesome.min.css";
 import "../../../../assets/scss/argon-design-system-react.scss";
-import Background from '../../../../assets/img/serviceBackgrounds/mk.png'
+import Background from '../../../../assets/img/serviceBackgrounds/makeupBg.jpg'
 import '../../services.css'
 import Scrollspy from 'react-scrollspy'
 import Axios from 'axios'
 import { connect } from 'react-redux'
-import { setSearch } from '../../../../actions/setSearch';
-class MakeUp extends Component{
+import { setSearch } from '../../../../actions/setSearch'
+
+
+class SalonAtHomeWomen extends Component{
 
     state = {
         professionals: [],
@@ -18,16 +20,17 @@ class MakeUp extends Component{
     }
 
     componentDidMount(){
+        this.props.setSearch("");
         Axios.post('http://localhost:5000/professionals/category',
         {
-            category: "Makeup"
+            category: "Salon At Home"
         },{
             "headers": {
               'Content-Type': 'application/json',
             }
           })
           .then(res=>{
-            //   const userReviews = this.sortReviews(res.data);
+            
               const reviews = [];
               res.data.map(professional=>professional.reviews.map(review=>reviews.push(review)));
               this.setState({
@@ -80,7 +83,7 @@ class MakeUp extends Component{
                     <React.Fragment key={professional._id}>
                         <img src={require("../../../../assets/img/serviceBackgrounds/random.jpg")}></img>
                         <div style={{marginLeft:"120px"}}>
-                            <span className="name">{professional.name}</span><br></br><br></br>
+                            <span className="name">{professional.name}</span><br></br>
                             <p>{professional.address}</p>
                             <span style={{marginTop:"-2px"}} className="rating">&#9733; {professional.ratings} <span style={{marginLeft:"2px", marginRight:"5px",color:"black"}}> ({professional.numberOfRatings} ratings) &emsp; &#x25cf; </span>  {professional.rated5Stars} times rated 5 star</span>
                             <br></br>    
@@ -133,7 +136,7 @@ class MakeUp extends Component{
         return(
             <div className="service" style={{backgroundColor:"#F5F5F5"}}>
                 <div className="serviceBg" style={{backgroundImage: `url(${Background})`}}>
-                    <h2>Make Up Service in {this.props.mainPageState.city} </h2>
+                    <h2>Salon At Home Service in ****** </h2>
                 </div>
 
                 <div className="info">
@@ -157,8 +160,8 @@ class MakeUp extends Component{
                             </div> 
                             <p>&emsp;&emsp;</p>
                             <div>
-                                <h5>Choose a Make Up Service</h5>
-                                <p>Choose from various salon packges and services</p>
+                                <h5>Choose a Salon Service</h5>
+                                <p>Choose from various salon packages and services</p>
                                
                             </div>
                             <hr ></hr>
@@ -191,8 +194,8 @@ class MakeUp extends Component{
                 </section>
                 <br></br>
                 <section className="info professionals" id="Professionals">
-                    <h4>Make Up Professionals</h4>
-                    <h6>{this.state.professionals.length} make up professionals in Ahmedabad</h6>
+                    <h4>Salon At Home Professionals for Women</h4>
+                    <h6>{this.state.professionals.length} Salon professionals in Ahmedabad</h6>
                     <hr></hr>
                     <div className="professionalsDetails">
                         
@@ -211,7 +214,7 @@ class MakeUp extends Component{
                 <br></br>
                 <section className="info reviews" id="Reviews">
                     <h4>Recent Customer Reviews</h4>
-                    <h6>For Makeup and Hair stylists in {this.props.mainPageState.city} </h6>                   
+                    <h6>For Salon At Home in Boston</h6>                   
                     <div className="crating">
                         <span style={{fontSize:"38px", color:"#5300a5", fontWeight:"650"}}>&#9733; {this.averageUserRatings()}</span><span style={{fontSize:"20px", color:"#5300a5", fontWeight:"600"}}>/5</span> &nbsp;based on {this.state.userReviews.length} ratings
                     </div>
@@ -225,15 +228,20 @@ class MakeUp extends Component{
                 </div>
                 <div className="serviceBox">
                     <div className="serviceBoxButtons">
-                        <h4>Need a Make-up Professional for :</h4>
+                        <h4>Salon At Home Professionals for :</h4>
                         <div className="serviceButtonGroup">
                          
-                            <button onClick={() => this.props.history.push('/salon/makeup/shop')}>
-                                Hair Spa <i style={{textAlign:"right"}} className="fa fa-chevron-right" />
+                            <button onClick={() => this.props.history.push('/Salon/salonAtHomeCart/shop')}>
+                                Waxing and Threading<i style={{textAlign:"right"}} className="fa fa-chevron-right" />
                             </button> 
-                            <button onClick={() => this.props.history.push('/salon/makeup/shop')}>
-                                Facial<i className="fa fa-chevron-right"></i>
-                            </button>                    
+                       
+                            <button onClick={() => this.props.history.push('/Salon/salonAtHomeCart/shop')}>
+                                Manicure + Pedicure<i className="fa fa-chevron-right"></i>
+                            </button>
+
+                            <button onClick={() => this.props.history.push('/Salon/salonAtHomeCart/shop')}>
+                               Facials <i className="fa fa-chevron-right"></i>
+                            </button>
                         </div>
                     </div>
                     <div className="serviceBoxRatings" >
@@ -252,8 +260,9 @@ class MakeUp extends Component{
         )
     }
 }
+
 const mapStateToProps = (state) => ({
     mainPageState: state.mainPageState
 });
 
-export default connect(mapStateToProps, { setSearch })(MakeUp);
+export default connect(mapStateToProps, { setSearch })(SalonAtHomeWomen);

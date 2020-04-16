@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import "../../../../assets/vendor/nucleo/css/nucleo.css";
 import "../../../../assets/vendor/font-awesome/css/font-awesome.min.css";
 import "../../../../assets/scss/argon-design-system-react.scss";
-import Background from '../../../../assets/img/serviceBackgrounds/mk.png'
+import Background from '../../../../assets/img/serviceBackgrounds/makeupBg.jpg'
 import '../../services.css'
 import Scrollspy from 'react-scrollspy'
 import Axios from 'axios'
-import { connect } from 'react-redux'
-import { setSearch } from '../../../../actions/setSearch';
-class MakeUp extends Component{
+
+
+class SofaCleaning extends Component{
 
     state = {
         professionals: [],
@@ -20,7 +20,7 @@ class MakeUp extends Component{
     componentDidMount(){
         Axios.post('http://localhost:5000/professionals/category',
         {
-            category: "Makeup"
+            category: "Sofa Cleaning"
         },{
             "headers": {
               'Content-Type': 'application/json',
@@ -133,7 +133,7 @@ class MakeUp extends Component{
         return(
             <div className="service" style={{backgroundColor:"#F5F5F5"}}>
                 <div className="serviceBg" style={{backgroundImage: `url(${Background})`}}>
-                    <h2>Make Up Service in {this.props.mainPageState.city} </h2>
+                    <h2>Sofa Cleaning Service in ****** </h2>
                 </div>
 
                 <div className="info">
@@ -157,7 +157,7 @@ class MakeUp extends Component{
                             </div> 
                             <p>&emsp;&emsp;</p>
                             <div>
-                                <h5>Choose a Make Up Service</h5>
+                                <h5>Choose a Salon Service</h5>
                                 <p>Choose from various salon packges and services</p>
                                
                             </div>
@@ -191,8 +191,8 @@ class MakeUp extends Component{
                 </section>
                 <br></br>
                 <section className="info professionals" id="Professionals">
-                    <h4>Make Up Professionals</h4>
-                    <h6>{this.state.professionals.length} make up professionals in Ahmedabad</h6>
+                    <h4>Cleaning Professionals</h4>
+                    <h6>{this.state.professionals.length} cleaning professionals in Ahmedabad</h6>
                     <hr></hr>
                     <div className="professionalsDetails">
                         
@@ -211,7 +211,7 @@ class MakeUp extends Component{
                 <br></br>
                 <section className="info reviews" id="Reviews">
                     <h4>Recent Customer Reviews</h4>
-                    <h6>For Makeup and Hair stylists in {this.props.mainPageState.city} </h6>                   
+                    <h6>For Makeup and Hair stylists in Boston</h6>                   
                     <div className="crating">
                         <span style={{fontSize:"38px", color:"#5300a5", fontWeight:"650"}}>&#9733; {this.averageUserRatings()}</span><span style={{fontSize:"20px", color:"#5300a5", fontWeight:"600"}}>/5</span> &nbsp;based on {this.state.userReviews.length} ratings
                     </div>
@@ -225,15 +225,20 @@ class MakeUp extends Component{
                 </div>
                 <div className="serviceBox">
                     <div className="serviceBoxButtons">
-                        <h4>Need a Make-up Professional for :</h4>
+                        <h4>Need a Cleaning Professional for :</h4>
                         <div className="serviceButtonGroup">
                          
-                            <button onClick={() => this.props.history.push('/salon/makeup/shop')}>
-                                Hair Spa <i style={{textAlign:"right"}} className="fa fa-chevron-right" />
+                            <button onClick={() => this.props.history.push('/cleaning/sofaCleaning/shop/#3SofaSeats')}>
+                                3 Sofa Seats <i style={{textAlign:"right"}} className="fa fa-chevron-right" />
                             </button> 
-                            <button onClick={() => this.props.history.push('/salon/makeup/shop')}>
-                                Facial<i className="fa fa-chevron-right"></i>
-                            </button>                    
+                       
+                            <button onClick={() => this.props.history.push('/cleaning/sofaCleaning/shop/#4SofaSeats')}>
+                                4 Sofa Seats<i className="fa fa-chevron-right"></i>
+                            </button>
+
+                            <button onClick={() => this.props.history.push('/cleaning/sofaCleaning/shop/#5SofaSeats')}>
+                                5 Sofa Seats<i className="fa fa-chevron-right"></i>
+                            </button>
                         </div>
                     </div>
                     <div className="serviceBoxRatings" >
@@ -252,8 +257,4 @@ class MakeUp extends Component{
         )
     }
 }
-const mapStateToProps = (state) => ({
-    mainPageState: state.mainPageState
-});
-
-export default connect(mapStateToProps, { setSearch })(MakeUp);
+export default SofaCleaning;

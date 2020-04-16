@@ -20,13 +20,13 @@ class ServicesComponent extends Component{
                         },
                         {
                             name: "Salon at Home (Women)",
-                            link: "#notGiven",
+                            link: "/Salon/salonAtHomeWomen",
                             image: "salon1.jpg",
                             category: "Salon"                             
                         },
                         {
                             name: "Hair-Cut",
-                            link: "#notGiven",
+                            link: "/Salon/haircut",
                             image: "salon3.jpg", 
                             category: "Salon"  
                         }
