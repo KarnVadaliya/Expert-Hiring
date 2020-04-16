@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { setUser } from '../actions/setUser';
 import { connect } from 'react-redux';
 import { Link } from "react-router-dom";
+import { Redirect } from 'react-router-dom'; 
 
 import {
     DropdownItem,
@@ -13,11 +14,11 @@ import {
 
 class LoggedIn extends Component {
 
+
     logOutUser = (e) =>{
         e.preventDefault();
         sessionStorage.removeItem('user');
-        // window.location.href('http://localhost:3000/');
-        this.props.setUser({});
+        this.props.setUser({}); 
     }
 
     render() {
@@ -53,11 +54,7 @@ class LoggedIn extends Component {
                                 <i className="ni ni-button-power" />
                                 Logout
                                 </DropdownItem>
-
-
-                                
-
-
+               
                             </DropdownMenu>
                         </UncontrolledDropdown>
                     
