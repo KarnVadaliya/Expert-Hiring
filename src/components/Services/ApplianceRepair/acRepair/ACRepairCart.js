@@ -26,7 +26,7 @@ class ACRepairCart extends Component {
     }
 
     componentDidMount(){
-        Axios.get('http://localhost:5000/appliance/AC/')
+        Axios.get('http://localhost:5000/ApplianceRepair/acRepair/')
             .then(res=>{
                 console.log(res.data);
                 let tempList = []
