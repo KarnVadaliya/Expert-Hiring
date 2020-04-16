@@ -27,13 +27,16 @@ app.use('/users',userRouter);
 
 
 const productsSofaCleaningRouter = require('./routes/cleaning/productsSofaCleaning');
-app.use('/cleaning/sofaCleaning',productsSofaCleaningRouter);
+app.use('/Cleaning/sofaCleaning',productsSofaCleaningRouter);
 
 const professionalRouter = require('./routes/professionals/professionals');
 app.use('/professionals', professionalRouter);
 
 const productsMakeUpRouter = require('./routes/salon/productsMakeUp');
-app.use('/salon/makeup', productsMakeUpRouter);
+app.use('/Salon/makeup', productsMakeUpRouter);
+
+const productsElectricianRouter = require('./routes/homeservice/productsElectrician');
+app.use('/HomeService/electrician', productsElectricianRouter);
 
 // const salonRouter = require('./routes/salon/productsMakeUp');
 // app.use('/salon/makeup', salonRouter);

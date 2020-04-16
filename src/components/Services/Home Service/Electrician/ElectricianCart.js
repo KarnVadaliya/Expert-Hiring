@@ -20,7 +20,7 @@ class ElectricianCart extends Component {
         super(props);
   
         this.state = {
-          services: ['3 Sofa Seats','4 Sofa Seats','5 Sofa Seats','6 Sofa Seats'],
+          services: ['Quick Book','Switch and Socket','Appliance','Wiring'],
           products: []
         };
     }

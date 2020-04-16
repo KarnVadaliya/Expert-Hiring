@@ -44,7 +44,6 @@ function App() {
                   <Route path="/contact" component={ContactUs}></Route>         
                   <Route path="/payment" component={Payment}></Route> 
                   <Route path="/paymenthistory" component={PaymentHistory}></Route>
-                  <Route path="/salon-at-home" component={SalonAtHome}></Route> 
                   <Route path="/careers" component={Careers}></Route>
                   <Route path="/Cleaning/sofaCleaning" exact component={SofaCleaning}></Route>             
                   <Route path="/Cleaning/sofaCleaning/shop" component={SofaCleaningCart}></Route> 
