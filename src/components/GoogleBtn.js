@@ -40,13 +40,13 @@ class GoogleBtn extends Component {
               }
             })
               .then(res=>{
+               
                 const tempUser = {
                   name: response.profileObj.name,
                   username: response.profileObj.email
                 }
-                sessionStorage.setItem('user',JSON.stringify(res.data));
-                this.props.setUser(tempUser); 
-                console.log(this.props.userState);
+                sessionStorage.setItem('user',JSON.stringify(tempUser));
+                this.props.setUser(tempUser);           
               })
               .catch(err=>console.log(err));
             

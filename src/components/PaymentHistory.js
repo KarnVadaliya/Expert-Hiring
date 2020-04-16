@@ -16,11 +16,9 @@ class PaymentHistory extends Component{
     }
     
     componentDidMount(){
-        Axios.get('http://localhost:5000/users/findByID/'+this.props.userState.user._id)
+        Axios.get('http://localhost:5000/users/findByEmail/'+this.props.userState.user.username)
             .then(
-                res=>{
-                    
-                    
+                res=>{              
                     let paymentDetails=[]
                     // console.log(tempState.id);
                     res.data.paymentHistory.map(payment=>{

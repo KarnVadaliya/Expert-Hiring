@@ -66,12 +66,11 @@ class Searchbar extends Component {
         return (
             <div className="header" style={{marginTop:""}}>
                 <h1 className="display-1" style={{textAlign:"center", color:"white"}}>Your service expert in {this.props.mainPageState.city}</h1>
-                <br></br>
+                <br></br>                
                 <div id="wrapper" style={{display:"flex"}}>
                     <div style={{flex:"45%", textAlign:"right"}}>
                         <UncontrolledDropdown>
-                        <DropdownToggle caret color="white">
-                            {/* <FontAwesomeIcon icon={faLocationArrow} style={{paddingRight:"7px"}}></FontAwesomeIcon> */}
+                        <DropdownToggle caret color="white">                           
                             <i style={{paddingRight:"9px"}}className="fa fa-location-arrow" />
                             {this.props.mainPageState.city}
                         </DropdownToggle>
