@@ -15,18 +15,18 @@ import { Link } from "react-router-dom";
 
   
 
-class SofaCleaningCart extends Component {
+class PlumberCart extends Component {
     constructor(props){
         super(props);
   
         this.state = {
-          services: ['3 Sofa Seats','4 Sofa Seats','5 Sofa Seats','6 Sofa Seats'],
+          services: ['Quick Book','Basin & Sink','Bath Fitting','Blockage', 'Tap & Mixer', 'Toilet'],
           products: []
         };
     }
 
     componentDidMount(){
-        Axios.get('http://localhost:5000/cleaning/sofaCleaning/')
+        Axios.get('http://localhost:5000/homeservice/plumber/')
             .then(res=>{
                 console.log(res.data);
                 let tempList = [];
@@ -42,14 +42,18 @@ class SofaCleaningCart extends Component {
 
     getList = (name) =>{
         switch (name) {
-            case '3 Sofa Seats':
-                return global.threeList;
-            case '4 Sofa Seats':
-                return global.fourList;
-            case '5 Sofa Seats':
-                return global.fiveList;
-            case '6 Sofa Seats':
-                return global.sixList;
+            case 'Quick Book':
+                return global.quickBook;
+            case 'Basin & Sink':
+                return global.basinSink;
+            case 'Bath Fitting':
+                return global.bathFitting;
+            case 'Blockage':
+                return global.blockage;
+            case 'Tap & Mixer':
+                return global.tapMixer;
+            case 'Toilet':
+                return global.toilet;
             default:
                 break;
         }
@@ -86,35 +90,47 @@ class SofaCleaningCart extends Component {
         );
 
         
-        const threeSeatsCategory = [];
+        const quickBookCategory = [];
         tempList.map(product=>{
-            if(product.category === '3 Sofa Seat')
-                threeSeatsCategory.push(product);
+            if(product.category === 'Quick Book')
+            quickBookCategory.push(product);
         });
       
 
-        const fiveSeatsCategory = [];
+        const basinSinkCategory = [];
         tempList.map(product=>{
-            if(product.category === '5 Sofa Seat')
-                fiveSeatsCategory.push(product);
+            if(product.category === 'Basin & Sink')
+                basinSinkCategory.push(product);
         });
         
 
-        const fourSeatsCategory = [];
+        const bathFittingCategory = [];
         tempList.map(product=>{
-            if(product.category === '4 Sofa Seat')
-                fourSeatsCategory.push(product);
+            if(product.category === 'Bath Fitting')
+                 bathFittingCategory.push(product);
         });
 
-        const sixSeatsCategory = [];
+        const tapMixerCategory = [];
         tempList.map(product=>{
-            if(product.category === '6 Sofa Seat')
-                sixSeatsCategory.push(product);
+            if(product.category === 'Tap & Mixer')
+                tapMixerCategory.push(product);
+        });
+
+        const toiletCategory = [];
+        tempList.map(product=>{
+            if(product.category === 'Toilet')
+                toiletCategory.push(product);
+        });
+
+        const blockageCategory = [];
+        tempList.map(product=>{
+            if(product.category === 'Blockage')
+                blockageCategory.push(product);
         });
         
 
-        global.threeList = (threeSeatsCategory.length) ? (
-            threeSeatsCategory.map(product => {
+        global.quickBook = (quickBookCategory.length) ? (
+            quickBookCategory.map(product => {
                 return(                    
                     <ProductCard product={product}/>
                 ) 
@@ -123,8 +139,8 @@ class SofaCleaningCart extends Component {
             <LoadingCard />
         );
 
-        global.fourList = (fourSeatsCategory.length) ? (
-            fourSeatsCategory.map(product => {
+        global.basinSink = (basinSinkCategory.length) ? (
+            basinSinkCategory.map(product => {
                 return(
                     <ProductCard product={product}/>
                 ) 
@@ -133,8 +149,8 @@ class SofaCleaningCart extends Component {
             <LoadingCard />
         );
 
-        global.fiveList = (fiveSeatsCategory.length) ? (
-            fiveSeatsCategory.map(product => {
+        global.bathFitting = (bathFittingCategory.length) ? (
+            bathFittingCategory.map(product => {
                 return(
                    <ProductCard product={product}/>
                 ) 
@@ -143,8 +159,28 @@ class SofaCleaningCart extends Component {
             <LoadingCard />
         );
 
-        global.sixList = (sixSeatsCategory.length) ? (
-            sixSeatsCategory.map(product => {
+        global.tapMixer = (tapMixerCategory.length) ? (
+            tapMixerCategory.map(product => {
+                return(
+                    <ProductCard product={product}/>
+                ) 
+            })
+        ) : (
+            <LoadingCard />
+        );
+
+        global.toilet = (toiletCategory.length) ? (
+            toiletCategory.map(product => {
+                return(
+                   <ProductCard product={product}/>
+                ) 
+            })
+        ) : (
+            <LoadingCard />
+        );
+
+        global.blockage = (blockageCategory.length) ? (
+            blockageCategory.map(product => {
                 return(
                     <ProductCard product={product}/>
                 ) 
@@ -181,9 +217,9 @@ class SofaCleaningCart extends Component {
                     </Button>
                 </div>
 
-                <Link to="/Cleaning/sofaCleaning"><i className="fa fa-chevron-left" style={{fontSize:"50px", marginLeft:"10%", position:"absolute", top:"9%"}}/></Link>
+                <Link to="/HomeService/electrician"><i className="fa fa-chevron-left" style={{fontSize:"50px", marginLeft:"10%", position:"absolute", top:"9%"}}/></Link>
 
-                <h1 style={{fontWeight:"bold", letterSpacing:"2px", textTransform:"uppercase", textAlign:"center"}}>Sofa Cleaning</h1>
+                <h1 style={{fontWeight:"bold", letterSpacing:"2px", textTransform:"uppercase", textAlign:"center"}}>Plumber</h1>
                 <br></br><br></br>
                 <div className="servicesSection">
                     <div className="servicesNav">
@@ -206,4 +242,4 @@ const mapStateToProps = (state) => ({
     cartState: state.cartState
 });
 
-export default connect(mapStateToProps,{ toggleCartModal, addProductFromDB })(SofaCleaningCart);
+export default connect(mapStateToProps,{ toggleCartModal, addProductFromDB })(PlumberCart);

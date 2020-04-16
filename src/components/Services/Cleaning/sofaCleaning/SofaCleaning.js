@@ -133,7 +133,8 @@ class SofaCleaning extends Component{
 
         return(
             <div className="service" style={{backgroundColor:"#F5F5F5"}}>
-                <div className="serviceBg" style={{backgroundImage: `url(${Background})`}}>
+                 <div className="serviceBg" style={{backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3),
+                       rgba(0, 0, 0, 0.4)),url(${Background})`}}>
                     <h2>Sofa Cleaning Service in {this.props.mainPageState.city}</h2>
                 </div>
 
@@ -229,11 +230,11 @@ class SofaCleaning extends Component{
                         <h4>Need a Cleaning Professional for :</h4>
                         <div className="serviceButtonGroup">
                          
-                            <button onClick={() => this.props.history.push('/cleaning/sofaCleaning/shop/#3SofaSeats')}>
+                            <button onClick={() => this.props.history.push('/Cleaning/sofaCleaning/shop/#3SofaSeats')}>
                                 3 Sofa Seats <i style={{textAlign:"right"}} className="fa fa-chevron-right" />
                             </button> 
                        
-                            <button onClick={() => this.props.history.push('/cleaning/sofaCleaning/shop/#4SofaSeats')}>
+                            <button onClick={() => this.props.history.push('/Cleaning/sofaCleaning/shop/#4SofaSeats')}>
                                 4 Sofa Seats<i className="fa fa-chevron-right"></i>
                             </button>
 

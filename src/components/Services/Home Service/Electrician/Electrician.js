@@ -133,7 +133,8 @@ class Electrician extends Component{
 
         return(
             <div className="service" style={{backgroundColor:"#F5F5F5"}}>
-                <div className="serviceBg" style={{backgroundImage: `url(${Background})`}}>
+                 <div className="serviceBg" style={{backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3),
+                       rgba(0, 0, 0, 0.4)),url(${Background})`}}>
                     <h2>Get Electricians in {this.props.mainPageState.city}  </h2>
                 </div>
 
@@ -193,7 +194,7 @@ class Electrician extends Component{
                 <br></br>
                 <section className="info professionals" id="Professionals">
                     <h4>Electricians</h4>
-                    <h6>{this.state.professionals.length} Electricians in Ahmedabad</h6>
+                    <h6>{this.state.professionals.length} Electricians in {this.props.mainPageState.city}</h6>
                     <hr></hr>
                     <div className="professionalsDetails">
                         
@@ -212,7 +213,7 @@ class Electrician extends Component{
                 <br></br>
                 <section className="info reviews" id="Reviews">
                     <h4>Recent Customer Reviews</h4>
-                    <h6>of Electricians in Ahmedabad</h6>                   
+                    <h6>of Electricians in {this.props.mainPageState.city}</h6>                   
                     <div className="crating">
                         <span style={{fontSize:"38px", color:"#5300a5", fontWeight:"650"}}>&#9733; {this.averageUserRatings()}</span><span style={{fontSize:"20px", color:"#5300a5", fontWeight:"600"}}>/5</span> &nbsp;based on {this.state.userReviews.length} ratings
                     </div>
@@ -229,15 +230,15 @@ class Electrician extends Component{
                         <h4>Need an Electrician for :</h4>
                         <div className="serviceButtonGroup">
                          
-                            <button onClick={() => this.props.history.push('/cleaning/sofaCleaning/shop/#3SofaSeats')}>
+                            <button onClick={() => this.props.history.push('/HomeService/electrician/shop/')}>
                                 Repair & Fixes <i style={{textAlign:"right"}} className="fa fa-chevron-right" />
                             </button> 
                        
-                            <button onClick={() => this.props.history.push('/cleaning/sofaCleaning/shop/#4SofaSeats')}>
+                            <button onClick={() => this.props.history.push('/HomeService/electrician/shop/')}>
                                 Electrical Wiring <i className="fa fa-chevron-right"></i>
                             </button>
 
-                            <button onClick={() => this.props.history.push('/cleaning/sofaCleaning/shop/#5SofaSeats')}>
+                            <button onClick={() => this.props.history.push('/homeservice/electrician/shop/')}>
                                 Installation Service <i className="fa fa-chevron-right"></i>
                             </button>
                         </div>

@@ -133,7 +133,8 @@ class Carpenter extends Component{
 
         return(
             <div className="service" style={{backgroundColor:"#F5F5F5"}}>
-                <div className="serviceBg" style={{backgroundImage: `url(${Background})`}}>
+                <div className="serviceBg" style={{backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4),
+                       rgba(0, 0, 0, 0.3)),url(${Background})`}}>
                     <h2>Best Carpenters in {this.props.mainPageState.city}  </h2>
                 </div>
 
@@ -158,7 +159,7 @@ class Carpenter extends Component{
                             </div> 
                             <p>&emsp;&emsp;</p>
                             <div>
-                            <h5>Choose the type of service</h5>
+                                 <h5>Choose the type of service</h5>
                                
                             </div>
                             <hr ></hr>
@@ -191,8 +192,8 @@ class Carpenter extends Component{
                 </section>
                 <br></br>
                 <section className="info professionals" id="Professionals">
-                    <h4>Cleaning Professionals</h4>
-                    <h6>{this.state.professionals.length} Carpenters in Ahmedabad</h6>
+                    <h4>Carpenters</h4>
+                    <h6>{this.state.professionals.length} Carpenters in {this.props.mainPageState.city}</h6>
                     <hr></hr>
                     <div className="professionalsDetails">
                         
@@ -211,7 +212,7 @@ class Carpenter extends Component{
                 <br></br>
                 <section className="info reviews" id="Reviews">
                     <h4>Recent Customer Reviews</h4>
-                    <h6>of Carpenters in Ahmedabad</h6>                   
+                    <h6>of Carpenters in {this.props.mainPageState.city}</h6>                   
                     <div className="crating">
                         <span style={{fontSize:"38px", color:"#5300a5", fontWeight:"650"}}>&#9733; {this.averageUserRatings()}</span><span style={{fontSize:"20px", color:"#5300a5", fontWeight:"600"}}>/5</span> &nbsp;based on {this.state.userReviews.length} ratings
                     </div>

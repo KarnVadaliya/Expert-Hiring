@@ -235,7 +235,7 @@ class SalonAtHomeWomenCart extends Component {
 
                 {/* <Link to="/cleaning/sofaCleaning"><i className="fa fa-chevron-left" style={{ fontSize: "50px", marginLeft: "10%", position: "absolute", top: "9%" }} /></Link> */}
 
-                <h1 style={{ fontWeight: "bold", letterSpacing: "2px", textTransform: "uppercase", textAlign: "center" }}>Waxing and Threading</h1>
+                <h1 style={{ fontWeight: "bold", letterSpacing: "2px", textTransform: "uppercase", textAlign: "center" }}>Salon at Home (Women)</h1>
                 <br></br><br></br>
                 <div className="servicesSection">
                     <div className="servicesNav">

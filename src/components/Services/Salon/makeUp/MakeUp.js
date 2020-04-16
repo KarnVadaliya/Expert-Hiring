@@ -192,7 +192,7 @@ class MakeUp extends Component{
                 <br></br>
                 <section className="info professionals" id="Professionals">
                     <h4>Make Up Professionals</h4>
-                    <h6>{this.state.professionals.length} make up professionals in Ahmedabad</h6>
+                    <h6>{this.state.professionals.length} make up professionals in {this.props.mainPageState.city}</h6>
                     <hr></hr>
                     <div className="professionalsDetails">
                         
@@ -228,10 +228,10 @@ class MakeUp extends Component{
                         <h4>Need a Make-up Professional for :</h4>
                         <div className="serviceButtonGroup">
                          
-                            <button onClick={() => this.props.history.push('/salon/makeup/shop')}>
+                            <button onClick={() => this.props.history.push('/Salon/makeup/shop')}>
                                 Hair Spa <i style={{textAlign:"right"}} className="fa fa-chevron-right" />
                             </button> 
-                            <button onClick={() => this.props.history.push('/salon/makeup/shop')}>
+                            <button onClick={() => this.props.history.push('/Salon/makeup/shop')}>
                                 Facial<i className="fa fa-chevron-right"></i>
                             </button>                    
                         </div>

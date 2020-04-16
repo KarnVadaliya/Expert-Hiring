@@ -8,6 +8,7 @@ import {
     FormGroup,
     Form,
     Input,
+
     Row,
     Col,
     Button,
@@ -124,7 +125,7 @@ export default class ContactUs extends Component {
                                      border: '0',
                                      width: '100%',
                                      height: '370px',
-                                     frameborder: '0'
+                                     frameborder: '0',
                                 }}  allowFullScreen></iframe>
                             </div>
                             <div className = "col-md-4">

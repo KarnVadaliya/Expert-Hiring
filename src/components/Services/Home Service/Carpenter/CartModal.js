@@ -1,14 +1,14 @@
 import React from 'react';
 import { Button, Modal, ModalBody, ModalFooter } from 'reactstrap';
 import { connect } from 'react-redux';
-import { toggleCartModal } from '../../../actions/toggleCartModal';
+import { toggleCartModal } from '../../../../actions/toggleCartModal';
 import {
     Card,
     CardBody,
     CardTitle, CardText
   } from "reactstrap";
-  import { removeProductFromCart } from '../../../actions/removeProduct';
-  import { addProductToCart } from '../../../actions/addProduct';
+  import { removeProductFromCart } from '../../../../actions/removeProduct';
+  import { addProductToCart } from '../../../../actions/addProduct';
   import { Link } from 'react-router-dom';
 
 
