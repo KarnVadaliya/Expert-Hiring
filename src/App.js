@@ -75,9 +75,7 @@ function App() {
                   <Route path="/Salon/salonAtHomeCart/shop" exact component={SalonAtHomeWomenCart}></Route>
                   <Route path="/Salon/haircut" exact component={Haircut}></Route>
                   <Route path="/Salon/haircutcart" exact component={HaircutCart}></Route>
-                  <Footer />    
-                  
-                   
+                  <Footer />   
               </div>
             </ScrollToTop>
           </Switch>

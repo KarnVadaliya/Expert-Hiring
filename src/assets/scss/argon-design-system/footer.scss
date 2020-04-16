@@ -54,17 +54,18 @@
 .footer.has-cards {
     overflow: hidden;
     padding-top: 500px;
-    margin-top: -420px;
+    margin-top: -540px;
     position: relative;
     background: transparent;
     pointer-events: none;
-
+    
     &:before {
         content: "";
         position: absolute;
         left: 0;
         right: 0;
-        top: 525px;
+        top: 520px;
+        bottom: 100px;
         height: 2000px;
         background: theme-color("dark");
         

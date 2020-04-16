@@ -133,7 +133,8 @@ class FridgeRepair extends Component{
 
         return(
             <div className="service" style={{backgroundColor:"#F5F5F5"}}>
-                <div className="serviceBg" style={{backgroundImage: `url(${Background})`}}>
+                <div className="serviceBg" style={{backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3),
+                       rgba(0, 0, 0, 0.4)),url(${Background})`}}>
                     <h2>The Best Refrigerator Service & Repair in {this.props.mainPageState.city}</h2>
                 </div>
 
