@@ -57,8 +57,6 @@ export default class Careers extends Component {
     };
 
    
-
-
     onFormSubmit(e){
         e.preventDefault(); 
         if(this.state.nameError === "" && this.state.emailError === ""){
