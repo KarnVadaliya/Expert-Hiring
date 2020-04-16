@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { setUser } from '../actions/setUser';
 import { connect } from 'react-redux';
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
 import {
     DropdownItem,
@@ -10,17 +10,21 @@ import {
     UncontrolledDropdown,
     Nav
   } from "reactstrap";
+import { toggleCartModal } from '../actions/toggleCartModal';
+import CartModal from '../components/Services/Cleaning/SofaCleaning/CartModal'
 
 class LoggedIn extends Component {
+
 
     logOutUser = (e) =>{
         e.preventDefault();
         sessionStorage.removeItem('user');
         // window.location.href('http://localhost:3000/');
         this.props.setUser({});
+        window.location = "/";
     }
 
-    render() {
+    render() {        
 
         return (
             <div className="ml-lg-auto">
@@ -34,10 +38,12 @@ class LoggedIn extends Component {
                                 left
                             >
                                
+                               <Link to="/paymenthistory/review">
                                 <DropdownItem>
-                                <i className="ni ni-circle-08" />
-                                My Profile
-                                </DropdownItem>
+                                    <i className="fa fa-comment" />
+                                    Add a review
+                                    </DropdownItem>
+                                </Link>
                                
                                 <Link to='/paymentHistory'>
                                     <DropdownItem>
@@ -47,15 +53,20 @@ class LoggedIn extends Component {
                                 </Link>
                                
                                
+                                
+                                <DropdownItem onClick={this.props.toggleCartModal}>
+                                    <i className="fa fa-cart-arrow-down" />
+                                    Cart
+                                </DropdownItem>
+
+                                <CartModal/>
+
+                               
                                 <DropdownItem onClick={this.logOutUser}>
                                 <i className="ni ni-button-power" />
                                 Logout
                                 </DropdownItem>
-
-
-                                
-
-
+               
                             </DropdownMenu>
                         </UncontrolledDropdown>
                     
@@ -74,4 +85,4 @@ const mapStateToProps = (state) => ({
     userState: state.userState
 });
 
-export default connect(mapStateToProps,{ setUser })(LoggedIn);
+export default connect(mapStateToProps,{ setUser, toggleCartModal })(LoggedIn);

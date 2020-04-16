@@ -20,13 +20,13 @@ class PlumberCart extends Component {
         super(props);
   
         this.state = {
-          services: ['Quick Book','Switch and Socket','Appliance','Wiring'],
+          services: ['Quick Book','Basin & Sink','Bath Fitting','Blockage', 'Tap & Mixer', 'Toilet'],
           products: []
         };
     }
 
     componentDidMount(){
-        Axios.get('http://localhost:5000/homeservice/electrician/')
+        Axios.get('http://localhost:5000/homeservice/plumber/')
             .then(res=>{
                 console.log(res.data);
                 let tempList = [];
@@ -44,12 +44,16 @@ class PlumberCart extends Component {
         switch (name) {
             case 'Quick Book':
                 return global.quickBook;
-            case 'Switch and Socket':
-                return global.switchSocket;
-            case 'Appliance':
-                return global.appliance;
-            case 'Wiring':
-                return global.wiring;
+            case 'Basin & Sink':
+                return global.basinSink;
+            case 'Bath Fitting':
+                return global.bathFitting;
+            case 'Blockage':
+                return global.blockage;
+            case 'Tap & Mixer':
+                return global.tapMixer;
+            case 'Toilet':
+                return global.toilet;
             default:
                 break;
         }
@@ -93,23 +97,35 @@ class PlumberCart extends Component {
         });
       
 
-        const switchSocketCategory = [];
+        const basinSinkCategory = [];
         tempList.map(product=>{
-            if(product.category === 'Switch and Socket')
-                switchSocketCategory.push(product);
+            if(product.category === 'Basin & Sink')
+                basinSinkCategory.push(product);
         });
         
 
-        const applianceCategory = [];
+        const bathFittingCategory = [];
         tempList.map(product=>{
-            if(product.category === 'Appliance')
-                applianceCategory.push(product);
+            if(product.category === 'Bath Fitting')
+                 bathFittingCategory.push(product);
         });
 
-        const wiringCategory = [];
+        const tapMixerCategory = [];
         tempList.map(product=>{
-            if(product.category === 'Wiring')
-                wiringCategory.push(product);
+            if(product.category === 'Tap & Mixer')
+                tapMixerCategory.push(product);
+        });
+
+        const toiletCategory = [];
+        tempList.map(product=>{
+            if(product.category === 'Toilet')
+                toiletCategory.push(product);
+        });
+
+        const blockageCategory = [];
+        tempList.map(product=>{
+            if(product.category === 'Blockage')
+                blockageCategory.push(product);
         });
         
 
@@ -123,8 +139,8 @@ class PlumberCart extends Component {
             <LoadingCard />
         );
 
-        global.switchSocket = (switchSocketCategory.length) ? (
-            switchSocketCategory.map(product => {
+        global.basinSink = (basinSinkCategory.length) ? (
+            basinSinkCategory.map(product => {
                 return(
                     <ProductCard product={product}/>
                 ) 
@@ -133,8 +149,8 @@ class PlumberCart extends Component {
             <LoadingCard />
         );
 
-        global.appliance = (applianceCategory.length) ? (
-            applianceCategory.map(product => {
+        global.bathFitting = (bathFittingCategory.length) ? (
+            bathFittingCategory.map(product => {
                 return(
                    <ProductCard product={product}/>
                 ) 
@@ -143,8 +159,28 @@ class PlumberCart extends Component {
             <LoadingCard />
         );
 
-        global.wiring = (wiringCategory.length) ? (
-            wiringCategory.map(product => {
+        global.tapMixer = (tapMixerCategory.length) ? (
+            tapMixerCategory.map(product => {
+                return(
+                    <ProductCard product={product}/>
+                ) 
+            })
+        ) : (
+            <LoadingCard />
+        );
+
+        global.toilet = (toiletCategory.length) ? (
+            toiletCategory.map(product => {
+                return(
+                   <ProductCard product={product}/>
+                ) 
+            })
+        ) : (
+            <LoadingCard />
+        );
+
+        global.blockage = (blockageCategory.length) ? (
+            blockageCategory.map(product => {
                 return(
                     <ProductCard product={product}/>
                 ) 
@@ -183,7 +219,7 @@ class PlumberCart extends Component {
 
                 <Link to="/HomeService/electrician"><i className="fa fa-chevron-left" style={{fontSize:"50px", marginLeft:"10%", position:"absolute", top:"9%"}}/></Link>
 
-                <h1 style={{fontWeight:"bold", letterSpacing:"2px", textTransform:"uppercase", textAlign:"center"}}>Electrician</h1>
+                <h1 style={{fontWeight:"bold", letterSpacing:"2px", textTransform:"uppercase", textAlign:"center"}}>Plumber</h1>
                 <br></br><br></br>
                 <div className="servicesSection">
                     <div className="servicesNav">

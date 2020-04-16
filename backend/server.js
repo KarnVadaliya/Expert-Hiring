@@ -32,11 +32,36 @@ app.use('/Cleaning/sofaCleaning',productsSofaCleaningRouter);
 const professionalRouter = require('./routes/professionals/professionals');
 app.use('/professionals', professionalRouter);
 
+const applicationRouter = require('./routes/application/application');
+app.use('/application', applicationRouter);
+
+//Appliance Routers
+const productsACRouter = require('./routes/appliance/productsAC');
+app.use('/appliance/ac',productsACRouter);
+const productsFridgeRouter = require('./routes/appliance/productsFridge');
+app.use('/appliance/fridge',productsFridgeRouter);
+const productsWahingMachineRouter = require('./routes/appliance/productsWashingMachine');
+app.use('/appliance/washingmachine',productsWahingMachineRouter);
+
+//Electronic Routers
+const productsMicrowaveRouter = require('./routes/electronic/productsMicrowave');
+app.use('/electronic/microwave',productsMicrowaveRouter);
+const productsTVRouter = require('./routes/electronic/productsTV');
+app.use('/electronic/TV',productsTVRouter);
+const productsWaterPurifierRouter = require('./routes/electronic/productsWaterPurifier');
+app.use('/electronic/water',productsWaterPurifierRouter);
+
 const productsMakeUpRouter = require('./routes/salon/productsMakeUp');
 app.use('/Salon/makeup', productsMakeUpRouter);
 
 const productsElectricianRouter = require('./routes/homeservice/productsElectrician');
 app.use('/HomeService/electrician', productsElectricianRouter);
+
+const productsPlumberRouter = require('./routes/homeservice/productsPlumber');
+app.use('/HomeService/plumber', productsPlumberRouter);
+
+const productsCarpenterRouter = require('./routes/homeservice/productsCarpenter');
+app.use('/HomeService/carpenter', productsCarpenterRouter);
 
 const productsSalonSpaRouter = require('./routes/salon/productsSalonSpa');
 app.use('/Salon/salonSpa', productsSalonSpaRouter);

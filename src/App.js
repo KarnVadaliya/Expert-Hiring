@@ -35,6 +35,7 @@ import WMRepair  from "./components/Services/ApplianceRepair/washingMachineRepai
 import WMRepairCart  from "./components/Services/ApplianceRepair/washingMachineRepair/WashingMachineRepairCart";
 import FridgeRepair  from "./components/Services/ApplianceRepair/fridgeRepair/FridgeRepair";
 import FridgeRepairCart  from "./components/Services/ApplianceRepair/fridgeRepair/FridgeRepairCart";
+import Review from './components/Review';
 
 import MakeUp from './components/Services/Salon/makeUp/MakeUp';
 import MakeUpCart from './components/Services/Salon/makeUp/MakeUpCart';
@@ -42,6 +43,7 @@ import SalonAtHomeWomen  from './components/Services/Salon/SalonAtHome/SalonAtHo
 import SalonAtHomeWomenCart from './components/Services/Salon/SalonAtHome/SalonAtHomeWomenCart';
 import Haircut from './components/Services/Salon/Hair/Haircut';
 import HaircutCart from './components/Services/Salon/Hair/HaircutCart';
+import CartModal from './components/Services/Cleaning/SofaCleaning/CartModal';
 
 
 function App() {
@@ -55,7 +57,9 @@ function App() {
                   <Route path="/about" component={AboutUs}></Route>  
                   <Route path="/contact" component={ContactUs}></Route>         
                   <Route path="/payment" component={Payment}></Route> 
-                  <Route path="/paymenthistory" component={PaymentHistory}></Route>
+                  <Route path="/paymenthistory" exact component={PaymentHistory}></Route>
+                  <Route path="/paymenthistory/review" component={Review}></Route>
+
                   <Route path="/careers" component={Careers}></Route>
 
                   <Route path="/Cleaning/sofaCleaning" exact component={SofaCleaning}></Route>             
@@ -87,8 +91,8 @@ function App() {
                   <Route path="/ApplianceRepair/washingMachineRepair/shop" component={WMRepairCart}></Route>
                   <Route path="/ApplianceRepair/fridgeRepair" exact component={FridgeRepair}></Route>
                   <Route path="/ApplianceRepair/fridgeRepair/shop" component={FridgeRepairCart}></Route>
-                  
-                  <Footer />    
+                  <CartModal />
+                  <Footer />                      
                   
                    
               </div>

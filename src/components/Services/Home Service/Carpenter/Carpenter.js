@@ -55,7 +55,7 @@ class Carpenter extends Component{
         return reviewList;
     }
 
-    getElements = (array) => array.slice(0,2);
+    getElements = (array) => array.slice(-2);
 
     seeMoreOnClick = (e) => {
         this.setState({
@@ -193,7 +193,7 @@ class Carpenter extends Component{
                 <br></br>
                 <section className="info professionals" id="Professionals">
                     <h4>Carpenters</h4>
-                    <h6>{this.state.professionals.length} Carpenters in Ahmedabad</h6>
+                    <h6>{this.state.professionals.length} Carpenters in {this.props.mainPageState.city}</h6>
                     <hr></hr>
                     <div className="professionalsDetails">
                         
@@ -212,7 +212,7 @@ class Carpenter extends Component{
                 <br></br>
                 <section className="info reviews" id="Reviews">
                     <h4>Recent Customer Reviews</h4>
-                    <h6>of Carpenters in Ahmedabad</h6>                   
+                    <h6>of Carpenters in {this.props.mainPageState.city}</h6>                   
                     <div className="crating">
                         <span style={{fontSize:"38px", color:"#5300a5", fontWeight:"650"}}>&#9733; {this.averageUserRatings()}</span><span style={{fontSize:"20px", color:"#5300a5", fontWeight:"600"}}>/5</span> &nbsp;based on {this.state.userReviews.length} ratings
                     </div>

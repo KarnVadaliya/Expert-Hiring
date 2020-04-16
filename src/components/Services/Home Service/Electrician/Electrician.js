@@ -194,7 +194,7 @@ class Electrician extends Component{
                 <br></br>
                 <section className="info professionals" id="Professionals">
                     <h4>Electricians</h4>
-                    <h6>{this.state.professionals.length} Electricians in Ahmedabad</h6>
+                    <h6>{this.state.professionals.length} Electricians in {this.props.mainPageState.city}</h6>
                     <hr></hr>
                     <div className="professionalsDetails">
                         
@@ -213,7 +213,7 @@ class Electrician extends Component{
                 <br></br>
                 <section className="info reviews" id="Reviews">
                     <h4>Recent Customer Reviews</h4>
-                    <h6>of Electricians in Ahmedabad</h6>                   
+                    <h6>of Electricians in {this.props.mainPageState.city}</h6>                   
                     <div className="crating">
                         <span style={{fontSize:"38px", color:"#5300a5", fontWeight:"650"}}>&#9733; {this.averageUserRatings()}</span><span style={{fontSize:"20px", color:"#5300a5", fontWeight:"600"}}>/5</span> &nbsp;based on {this.state.userReviews.length} ratings
                     </div>
