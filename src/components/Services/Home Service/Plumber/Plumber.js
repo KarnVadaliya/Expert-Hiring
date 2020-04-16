@@ -193,7 +193,7 @@ class SofaCleaning extends Component{
                 <br></br>
                 <section className="info professionals" id="Professionals">
                     <h4>Plumbers</h4>
-                    <h6>{this.state.professionals.length} Plumbers in Ahmedabad</h6>
+                    <h6>{this.state.professionals.length} Plumbers in {this.props.mainPageState.city}</h6>
                     <hr></hr>
                     <div className="professionalsDetails">
                         
@@ -212,7 +212,7 @@ class SofaCleaning extends Component{
                 <br></br>
                 <section className="info reviews" id="Reviews">
                     <h4>Recent Customer Reviews</h4>
-                    <h6>of Plumbers in Ahmedabad</h6>                   
+                    <h6>of Plumbers in {this.props.mainPageState.city}</h6>                   
                     <div className="crating">
                         <span style={{fontSize:"38px", color:"#5300a5", fontWeight:"650"}}>&#9733; {this.averageUserRatings()}</span><span style={{fontSize:"20px", color:"#5300a5", fontWeight:"600"}}>/5</span> &nbsp;based on {this.state.userReviews.length} ratings
                     </div>
@@ -229,15 +229,15 @@ class SofaCleaning extends Component{
                         <h4>Need a Plumber for :</h4>
                         <div className="serviceButtonGroup">
                          
-                            <button onClick={() => this.props.history.push('/cleaning/sofaCleaning/shop/#3SofaSeats')}>
+                            <button onClick={() => this.props.history.push('/HomeService/plumber/shop')}>
                                 Pipe/Tap Fitting <i style={{textAlign:"right"}} className="fa fa-chevron-right" />
                             </button> 
                        
-                            <button onClick={() => this.props.history.push('/cleaning/sofaCleaning/shop/#4SofaSeats')}>
+                            <button onClick={() => this.props.history.push('/HomeService/plumber/shop')}>
                                 Water Leakages<i className="fa fa-chevron-right"></i>
                             </button>
 
-                            <button onClick={() => this.props.history.push('/cleaning/sofaCleaning/shop/#5SofaSeats')}>
+                            <button onClick={() => this.props.history.push('/HomeService/plumber/shop')}>
                                 Repair & Fixes<i className="fa fa-chevron-right"></i>
                             </button>
                         </div>

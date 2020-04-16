@@ -141,7 +141,7 @@ class TVRepair extends Component{
                 <div className="info">
                     <Scrollspy items={ ['How it Works', 'Professionals', 'Customer Reviews'] } currentClassName="is-current">
                                 <li><a active href="#Works">How it Works</a></li>
-                                <li><a href="#Professionals">Professionals</a></li>
+                                <li><a href="#Professionals">Technicians</a></li>
                                 <li><a href="#Reviews">Customer Reviews</a></li>
                     </Scrollspy>
                 </div>
@@ -193,8 +193,8 @@ class TVRepair extends Component{
                 </section>
                 <br></br>
                 <section className="info professionals" id="Professionals">
-                    <h4>TV Repair & Installation Professionals</h4>
-                    <h6>{this.state.professionals.length} TV repair & installation professionals in Ahmedabad</h6>
+                    <h4>Technicians</h4>
+                    <h6>{this.state.professionals.length} TV Repair Service Professionals in {this.props.mainPageState.city}</h6>
                     <hr></hr>
                     <div className="professionalsDetails">
                         
@@ -213,7 +213,7 @@ class TVRepair extends Component{
                 <br></br>
                 <section className="info reviews" id="Reviews">
                     <h4>Recent Customer Reviews</h4>
-                    <h6>For TV Services</h6>                   
+                    <h6>of TV Repair Service Professionals in {this.props.mainPageState.city}</h6>                   
                     <div className="crating">
                         <span style={{fontSize:"38px", color:"#5300a5", fontWeight:"650"}}>&#9733; {this.averageUserRatings()}</span><span style={{fontSize:"20px", color:"#5300a5", fontWeight:"600"}}>/5</span> &nbsp;based on {this.state.userReviews.length} ratings
                     </div>

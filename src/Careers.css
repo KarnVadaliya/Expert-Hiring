@@ -1,5 +1,4 @@
 
-
  #box{
 	position: relative;
 	width: 225px;
@@ -82,7 +81,8 @@
   }
 
   .image_container h2{
-      text-align: center;
+	  text-align: center;
+	  
   }
   .image_container p{
     text-align: center;
@@ -120,7 +120,7 @@
     padding-right: 15px;
     padding-left: 15px;
     margin-right: auto;
-    margin-left: auto;
+	margin-left: auto;
 }
 
 

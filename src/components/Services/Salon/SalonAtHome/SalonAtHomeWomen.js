@@ -136,7 +136,7 @@ class SalonAtHomeWomen extends Component{
         return(
             <div className="service" style={{backgroundColor:"#F5F5F5"}}>
                 <div className="serviceBg" style={{backgroundImage: `url(${Background})`}}>
-                    <h2>Salon At Home Service in ****** </h2>
+                    <h2>Salon At Home Service in {this.props.mainPageState.city}</h2>
                 </div>
 
                 <div className="info">
@@ -195,7 +195,7 @@ class SalonAtHomeWomen extends Component{
                 <br></br>
                 <section className="info professionals" id="Professionals">
                     <h4>Beauticians</h4>
-                    <h6>{this.state.professionals.length} Beauty Service Professionals in Ahmedabad</h6>
+                    <h6>{this.state.professionals.length} Beauty Service Professionals in {this.props.mainPageState.city}</h6>
                     <hr></hr>
                     <div className="professionalsDetails">
                         
@@ -214,7 +214,7 @@ class SalonAtHomeWomen extends Component{
                 <br></br>
                 <section className="info reviews" id="Reviews">
                     <h4>Recent Customer Reviews</h4>
-                    <h6>for Beauty Service Professionals in Ahmedabad</h6>                   
+                    <h6>for Beauty Service Professionals in {this.props.mainPageState.city}</h6>                   
                     <div className="crating">
                         <span style={{fontSize:"38px", color:"#5300a5", fontWeight:"650"}}>&#9733; {this.averageUserRatings()}</span><span style={{fontSize:"20px", color:"#5300a5", fontWeight:"600"}}>/5</span> &nbsp;based on {this.state.userReviews.length} ratings
                     </div>
