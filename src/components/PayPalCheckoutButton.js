@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import paypal from 'paypal-checkout';
+import PaymentHistory from './PaymentHistory';
 import { connect } from 'react-redux';
 import { setPayment } from '../actions/setPayment';
 import { emptyCart } from '../actions/emptyCart';
@@ -38,15 +39,14 @@ class PayPalCheckoutButton extends React.Component {
                     total: order.total,
                     currency: paypalConf.currency,
                   },
-                  description: 'My Test App',
-                  custom: order.customer || '',
+                  custom: order.customer + ' ' + order.bookDate + ' ' + order.bookTime,
                   item_list: {
                     items: order.items,
                     shipping_address:order.address
                   },
                 },
               ],
-              note_to_payer:'Thank You',
+              note_to_payer:'Thank You For Your Purchase',
               redirect_urls:{
                 return_url:"https://www.youtube.com/",
                 cancel_url:"https://www.google.com/"
@@ -58,7 +58,9 @@ class PayPalCheckoutButton extends React.Component {
               payment,
             });
           };
-        
+          
+
+          
           const onAuthorize = (data, actions) => {
             return actions.payment.execute()
               .then(response => {
@@ -76,13 +78,19 @@ class PayPalCheckoutButton extends React.Component {
                   .then(res=>{console.log(res)})
                   .catch(err=>{console.log(err)})
 
+
                 this.props.setPayment(response);
-                alert(`The payment was processed correctly, ID: ${response.id}`)
+                console.log(this.props.userState);
+                
+                alert(`Thank You ! The payment was processed correctly, ID: ${response.id}`)
+
+
               })
               .catch(error => {
                 console.log(error);
                   alert('Something went wrong while processing the payment');
               });
+              
           };
         
           const onError = (error) => {
@@ -110,7 +118,7 @@ class PayPalCheckoutButton extends React.Component {
             />
             </div>
           
-        
+            
           );
         }
 

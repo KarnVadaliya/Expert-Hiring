@@ -14,7 +14,7 @@ code {
 }
 
 .header{
-  background-image: url('header.png');
+  background-image: url('h4.png');
   background-position:center;
   background-repeat:no-repeat;
   background-size:cover;
@@ -41,7 +41,9 @@ code {
 
 .service{
   height: auto;
-  margin: 5px;
+  /* margin: 5px 0 5px 5px; */
+  margin-top: 5px;
+  margin-bottom: 0;
   top : 10px;
   padding: 30px;
 }
@@ -123,8 +125,10 @@ transform: scale(1.2);
 
 
 .serviceBg{
+  background-position:center;
+  background-repeat:no-repeat;
+  background-size:cover; 
   height: 300px;
-  opacity: 90%;
   margin-top: -25px;
 }
 .serviceBg h2{
@@ -301,4 +305,32 @@ transform: scale(1.2);
   /* border-radius: 1%; */
   overflow: hidden;
   z-index: 20;
+}
+
+
+.allOrders{
+  box-shadow: 0 1px 2px rgba(0,0,0,0.07), 
+  0 2px 4px rgba(0,0,0,0.07), 
+  0 4px 8px rgba(0,0,0,0.07), 
+  0 8px 16px rgba(0,0,0,0.07),
+  0 16px 32px rgba(0,0,0,0.07), 
+  0 32px 64px rgba(0,0,0,0.07);
+  margin-top: 4%;
+  margin-bottom: 4%;
+  margin-right: 160px;
+  margin-left: 120px;
+  border: 1px solid white;
+  padding: 4%;
+  /* color:black; */
+}
+.paymentDetails{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+
+}
+
+#myFooter{
+  color:white;
 }

@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import "../../../../assets/vendor/nucleo/css/nucleo.css";
 import "../../../../assets/vendor/font-awesome/css/font-awesome.min.css";
 import "../../../../assets/scss/argon-design-system-react.scss";
-import Background from '../../../../assets/img/serviceBackgrounds/makeupBg.jpg'
+import Background from '../../../../assets/img/serviceBackgrounds/tv.jpg'
 import '../../services.css'
 import Scrollspy from 'react-scrollspy'
 import Axios from 'axios'
-
+import { connect } from 'react-redux'
+import { setSearch } from '../../../../actions/setSearch';
 
 class TVRepair extends Component{
 
@@ -80,7 +81,7 @@ class TVRepair extends Component{
                     <React.Fragment key={professional._id}>
                         <img src={require("../../../../assets/img/serviceBackgrounds/random.jpg")}></img>
                         <div style={{marginLeft:"120px"}}>
-                            <span className="name">{professional.name}</span><br></br><br></br>
+                            <span className="name">{professional.name}</span><br></br>
                             <p>{professional.address}</p>
                             <span style={{marginTop:"-2px"}} className="rating">&#9733; {professional.ratings} <span style={{marginLeft:"2px", marginRight:"5px",color:"black"}}> ({professional.numberOfRatings} ratings) &emsp; &#x25cf; </span>  {professional.rated5Stars} times rated 5 star</span>
                             <br></br>    
@@ -132,14 +133,15 @@ class TVRepair extends Component{
 
         return(
             <div className="service" style={{backgroundColor:"#F5F5F5"}}>
-                <div className="serviceBg" style={{backgroundImage: `url(${Background})`}}>
-                    <h2>TV Repair & Installation Service in ****** </h2>
+                 <div className="serviceBg" style={{backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3),
+                       rgba(0, 0, 0, 0.4)),url(${Background})`}}>
+                    <h2>TV Repair & Installation Service in {this.props.mainPageState.city}</h2>
                 </div>
 
                 <div className="info">
                     <Scrollspy items={ ['How it Works', 'Professionals', 'Customer Reviews'] } currentClassName="is-current">
                                 <li><a active href="#Works">How it Works</a></li>
-                                <li><a href="#Professionals">Professionals</a></li>
+                                <li><a href="#Professionals">Technicians</a></li>
                                 <li><a href="#Reviews">Customer Reviews</a></li>
                     </Scrollspy>
                 </div>
@@ -191,8 +193,8 @@ class TVRepair extends Component{
                 </section>
                 <br></br>
                 <section className="info professionals" id="Professionals">
-                    <h4>TV Repair & Installation Professionals</h4>
-                    <h6>{this.state.professionals.length} TV repair & installation professionals in Ahmedabad</h6>
+                    <h4>Technicians</h4>
+                    <h6>{this.state.professionals.length} TV Repair Service Professionals in {this.props.mainPageState.city}</h6>
                     <hr></hr>
                     <div className="professionalsDetails">
                         
@@ -211,7 +213,7 @@ class TVRepair extends Component{
                 <br></br>
                 <section className="info reviews" id="Reviews">
                     <h4>Recent Customer Reviews</h4>
-                    <h6>For TV Services</h6>                   
+                    <h6>of TV Repair Service Professionals in {this.props.mainPageState.city}</h6>                   
                     <div className="crating">
                         <span style={{fontSize:"38px", color:"#5300a5", fontWeight:"650"}}>&#9733; {this.averageUserRatings()}</span><span style={{fontSize:"20px", color:"#5300a5", fontWeight:"600"}}>/5</span> &nbsp;based on {this.state.userReviews.length} ratings
                     </div>
@@ -225,7 +227,7 @@ class TVRepair extends Component{
                 </div>
                 <div className="serviceBox">
                     <div className="serviceBoxButtons">
-                        <h4>Need a TV Technician for :</h4>
+                        <h4>Need a TV Technician for:</h4>
                         <div className="serviceButtonGroup">
                          
                             <button onClick={() => this.props.history.push('/ElectronicRepair/tvRepair/shop/#Repair')}>
@@ -257,4 +259,8 @@ class TVRepair extends Component{
         )
     }
 }
-export default TVRepair;
+const mapStateToProps = (state) => ({
+    mainPageState: state.mainPageState
+});
+
+export default connect(mapStateToProps, { setSearch })(TVRepair);

@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import "../../../../assets/vendor/nucleo/css/nucleo.css";
 import "../../../../assets/vendor/font-awesome/css/font-awesome.min.css";
 import "../../../../assets/scss/argon-design-system-react.scss";
-import Background from '../../../../assets/img/serviceBackgrounds/makeupBg.jpg'
+import Background from '../../../../assets/img/serviceBackgrounds/wm.jpg'
 import '../../services.css'
 import Scrollspy from 'react-scrollspy'
 import Axios from 'axios'
-
+import { connect } from 'react-redux';
+import { setSearch } from '../../../../actions/setSearch';
 
 class WashingMachineRepair extends Component{
 
@@ -80,7 +81,7 @@ class WashingMachineRepair extends Component{
                     <React.Fragment key={professional._id}>
                         <img src={require("../../../../assets/img/serviceBackgrounds/random.jpg")}></img>
                         <div style={{marginLeft:"120px"}}>
-                            <span className="name">{professional.name}</span><br></br><br></br>
+                            <span className="name">{professional.name}</span><br></br>
                             <p>{professional.address}</p>
                             <span style={{marginTop:"-2px"}} className="rating">&#9733; {professional.ratings} <span style={{marginLeft:"2px", marginRight:"5px",color:"black"}}> ({professional.numberOfRatings} ratings) &emsp; &#x25cf; </span>  {professional.rated5Stars} times rated 5 star</span>
                             <br></br>    
@@ -132,14 +133,15 @@ class WashingMachineRepair extends Component{
 
         return(
             <div className="service" style={{backgroundColor:"#F5F5F5"}}>
-                <div className="serviceBg" style={{backgroundImage: `url(${Background})`}}>
-                    <h2>The Best Washing Machine Service & Repair in ****** </h2>
+                <div className="serviceBg" style={{backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3),
+                       rgba(0, 0, 0, 0.4)),url(${Background})`}}>
+                    <h2>Best Washing Machine Repair Service in {this.props.mainPageState.city}</h2>
                 </div>
 
                 <div className="info">
                     <Scrollspy items={ ['How it Works', 'Professionals', 'Customer Reviews'] } currentClassName="is-current">
                                 <li><a active href="#Works">How it Works</a></li>
-                                <li><a href="#Professionals">Professionals</a></li>
+                                <li><a href="#Professionals">Technicians</a></li>
                                 <li><a href="#Reviews">Customer Reviews</a></li>
                     </Scrollspy>
                 </div>
@@ -196,7 +198,7 @@ class WashingMachineRepair extends Component{
                             <p>&emsp;&emsp;</p>
                             <div>
                                 <h5>Hassle-free Service</h5>
-                                <p>Our professional will get in touch with you 1 hour before the service</p>
+                                <p>Our professional will get in touch with you one hour before the service</p>
                             </div>
                             <hr ></hr>
                         </li>
@@ -205,7 +207,7 @@ class WashingMachineRepair extends Component{
                 <br></br>
                 <section className="info professionals" id="Professionals">
                     <h4>Technicians</h4>
-                    <h6>{this.state.professionals.length} Washing Machine Service and Repair professionals in Ahmedabad</h6>
+                    <h6>{this.state.professionals.length} Washing Machine Repair Professionals in {this.props.mainPageState.city}</h6>
                     <hr></hr>
                     <div className="professionalsDetails">
                         
@@ -224,7 +226,7 @@ class WashingMachineRepair extends Component{
                 <br></br>
                 <section className="info reviews" id="Reviews">
                     <h4>Recent Customer Reviews</h4>
-                    <h6>For Washing Machines Repair and Servicing Professionals in Ahmedabad</h6>                   
+                    <h6>of Washing Machine Repair Professionals in {this.props.mainPageState.city}</h6>                   
                     <div className="crating">
                         <span style={{fontSize:"38px", color:"#5300a5", fontWeight:"650"}}>&#9733; {this.averageUserRatings()}</span><span style={{fontSize:"20px", color:"#5300a5", fontWeight:"600"}}>/5</span> &nbsp;based on {this.state.userReviews.length} ratings
                     </div>
@@ -238,7 +240,7 @@ class WashingMachineRepair extends Component{
                 </div>
                 <div className="serviceBox">
                     <div className="serviceBoxButtons">
-                        <h4>Need a Washing Machine Technician for :</h4>
+                        <h4>Need a Washing Machine Technician for:</h4>
                         <div className="serviceButtonGroup">
                          
                             <button onClick={() => this.props.history.push('/ApplianceRepair/washingMachineRepair/shop/#Service')}>
@@ -273,4 +275,8 @@ class WashingMachineRepair extends Component{
         )
     }
 }
-export default WashingMachineRepair;
+const mapStateToProps = (state) => ({
+    mainPageState: state.mainPageState
+});
+
+export default connect(mapStateToProps, { setSearch })(WashingMachineRepair);

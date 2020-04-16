@@ -29,7 +29,7 @@ app.use('/users',userRouter);
 
 
 const productsSofaCleaningRouter = require('./routes/cleaning/productsSofaCleaning');
-app.use('/cleaning/sofaCleaning',productsSofaCleaningRouter);
+app.use('/Cleaning/sofaCleaning',productsSofaCleaningRouter);
 
 const professionalRouter = require('./routes/professionals/professionals');
 app.use('/professionals', professionalRouter);
@@ -50,6 +50,26 @@ app.use('/electronic/TV',productsTVRouter);
 const productsWaterPurifierRouter = require('./routes/electronic/productsWaterPurifier');
 app.use('/electronic/water',productsWaterPurifierRouter);
 
+const productsMakeUpRouter = require('./routes/salon/productsMakeUp');
+app.use('/Salon/makeup', productsMakeUpRouter);
+
+const productsElectricianRouter = require('./routes/homeservice/productsElectrician');
+app.use('/HomeService/electrician', productsElectricianRouter);
+
+const productsPlumberRouter = require('./routes/homeservice/productsPlumber');
+app.use('/HomeService/plumber', productsPlumberRouter);
+
+const productsCarpenterRouter = require('./routes/homeservice/productsCarpenter');
+app.use('/HomeService/carpenter', productsCarpenterRouter);
+
+const productsSalonSpaRouter = require('./routes/salon/productsSalonSpa');
+app.use('/Salon/salonSpa', productsSalonSpaRouter);
+
+const productsHaircutRouter = require('./routes/salon/productsHair');
+app.use('/Salon/haircut', productsHaircutRouter);
+
+// const salonRouter = require('./routes/salon/productsMakeUp');
+// app.use('/salon/makeup', salonRouter);
 
 app.use(passport.initialize());
 app.use(passport.session());

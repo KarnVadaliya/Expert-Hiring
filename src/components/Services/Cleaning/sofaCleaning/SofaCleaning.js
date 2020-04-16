@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import "../../../../assets/vendor/nucleo/css/nucleo.css";
 import "../../../../assets/vendor/font-awesome/css/font-awesome.min.css";
 import "../../../../assets/scss/argon-design-system-react.scss";
-import Background from '../../../../assets/img/serviceBackgrounds/makeupBg.jpg'
+import Background from '../../../../assets/img/serviceBackgrounds/sf.jpg'
 import '../../services.css'
 import Scrollspy from 'react-scrollspy'
 import Axios from 'axios'
-
+import { connect } from 'react-redux'
+import { setSearch } from '../../../../actions/setSearch';
 
 class SofaCleaning extends Component{
 
@@ -18,6 +19,7 @@ class SofaCleaning extends Component{
     }
 
     componentDidMount(){
+        
         Axios.post('http://localhost:5000/professionals/category',
         {
             category: "Sofa Cleaning"
@@ -27,7 +29,6 @@ class SofaCleaning extends Component{
             }
           })
           .then(res=>{
-            //   const userReviews = this.sortReviews(res.data);
               const reviews = [];
               res.data.map(professional=>professional.reviews.map(review=>reviews.push(review)));
               this.setState({
@@ -54,7 +55,7 @@ class SofaCleaning extends Component{
         return reviewList;
     }
 
-    getElements = (array) => array.slice(0,2);
+    getElements = (array) => array.slice(-2);
 
     seeMoreOnClick = (e) => {
         this.setState({
@@ -132,8 +133,9 @@ class SofaCleaning extends Component{
 
         return(
             <div className="service" style={{backgroundColor:"#F5F5F5"}}>
-                <div className="serviceBg" style={{backgroundImage: `url(${Background})`}}>
-                    <h2>Sofa Cleaning Service in ****** </h2>
+                 <div className="serviceBg" style={{backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3),
+                       rgba(0, 0, 0, 0.4)),url(${Background})`}}>
+                    <h2>Sofa Cleaning Service in {this.props.mainPageState.city}</h2>
                 </div>
 
                 <div className="info">
@@ -228,11 +230,11 @@ class SofaCleaning extends Component{
                         <h4>Need a Cleaning Professional for :</h4>
                         <div className="serviceButtonGroup">
                          
-                            <button onClick={() => this.props.history.push('/cleaning/sofaCleaning/shop/#3SofaSeats')}>
+                            <button onClick={() => this.props.history.push('/Cleaning/sofaCleaning/shop/#3SofaSeats')}>
                                 3 Sofa Seats <i style={{textAlign:"right"}} className="fa fa-chevron-right" />
                             </button> 
                        
-                            <button onClick={() => this.props.history.push('/cleaning/sofaCleaning/shop/#4SofaSeats')}>
+                            <button onClick={() => this.props.history.push('/Cleaning/sofaCleaning/shop/#4SofaSeats')}>
                                 4 Sofa Seats<i className="fa fa-chevron-right"></i>
                             </button>
 
@@ -257,4 +259,9 @@ class SofaCleaning extends Component{
         )
     }
 }
-export default SofaCleaning;
+
+const mapStateToProps = (state) => ({
+    mainPageState: state.mainPageState
+});
+
+export default connect(mapStateToProps, { setSearch })(SofaCleaning);

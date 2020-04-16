@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from "react-router-dom";
 import {
   Button,
   Modal,
@@ -131,32 +132,58 @@ class ServiceBarComponet extends Component{
                   <div>&emsp;&emsp;</div>
                   <div className="serviceModalRight">
                     <div id="salonModal" style={{display:(this.state.activeModal === "salonModal")? ("block") : ("none")}} >
-                        <p>Make up &amp; Hair styling </p>
-                        <p>Hair cut</p>
+                    
+                        <Link to="/Salon/makeup">
+                            <p>Make up &amp; Hair styling </p>
+                        </Link>
+                       
+                        <Link to="/Salon/salonAtHomeWomen">
+                            <p>Salon at Home (Women)</p>
+                        </Link>
+
+                        <Link to="/Salon/haircut">
+                            <p>Hair cut</p>
+                        </Link>
                     </div>
                     <div id="applianceModal" style={{display:(this.state.activeModal === "applianceModal")? ("block") : ("none")}}>
-                        <p>AC Service &amp; Repair</p>
-                        <p>Washing Machine Service &amp; Repair</p>
-                        <p>Refrigerator Repair</p>
-                        <p>Water Purifier Repair</p>
-                        <p>Microwave &amp; Oven Repair</p>
-                        <p>TV Repair &amp; Installation</p>
+                        <Link to="/ApplianceRepair/acRepair">
+                            <p>AC Service &amp; Repair</p>
+                        </Link>
+                        <Link to="/ApplianceRepair/washingMachineRepair">
+                            <p>Washing Machine Service &amp; Repair</p>
+                        </Link>
+                        <Link to="/ApplianceRepair/fridgeRepair">
+                            <p>Refrigerator Repair</p>
+                        </Link>
+                        <Link to="/ElectronicRepair/waterRepair">
+                            <p>Water Purifier Repair</p>
+                        </Link>
+                        <Link to="/ElectronicRepair/microwaveRepair">
+                            <p>Microwave &amp; Oven Repair</p>
+                        </Link>
+                        <Link to="/ElectronicRepair/tvRepair">
+                            <p>TV Repair &amp; Installation</p>
+                        </Link>
+     
                     </div>
                     <div id="cleanModal" style={{display:(this.state.activeModal === "cleanModal")? ("block") : ("none")}}>
                         <p>Bathroom Deep Cleaning</p>
                         <p>Sofa Cleaning</p>
                         <p>Kitchen Deep Cleaning</p>
-                        <p>Home Deep Cleaning</p>
-                        <p>Carpet Cleaning</p>
-                        <p>Car Cleaning</p>
                     </div>
                     <div id="massageModal" style={{display:(this.state.activeModal === "massageModal")? ("block") : ("none")}}>
                         <p>Massaage</p>
                     </div>
                     <div id="epcModal" style={{display:(this.state.activeModal === "epcModal")? ("block") : ("none")}}>
-                        <p>Electrician</p>
-                        <p>Plumber</p>
-                        <p>Carpenter</p>
+                        <Link to="/Homeservice/electrician">
+                            <p>Electrician</p>
+                        </Link>
+                        <Link to="/Homeservice/plumber">
+                            <p>Plumber</p>
+                        </Link>
+                        <Link to="/Homeservice/carpenter">
+                            <p>Carpenter</p>
+                        </Link>
                     </div>
                     <div id="fitnessModal" style={{display:(this.state.activeModal === "fitnessModal")? ("block") : ("none")}}>
                         <p>Yoga Trainer</p>
