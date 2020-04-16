@@ -1,8 +1,6 @@
 #DIV_1 {
     box-sizing: border-box;
     color: rgb(51, 71, 91);
-    float: left;
-    height: 872.933px;
     text-decoration: none solid rgb(51, 71, 91);
     width: 1081.14px;
     column-rule-color: rgb(51, 71, 91);
@@ -34,40 +32,11 @@
     outline: rgb(51, 71, 91) none 0px;
 }/*#DIV_1:before*/
 
-#DIV_2, #DIV_5 {
-    box-sizing: border-box;
-    color: rgb(51, 71, 91);
-    height: 365.826px;
-    text-decoration: none solid rgb(51, 71, 91);
-    width: 1081.14px;
-    column-rule-color: rgb(51, 71, 91);
-    perspective-origin: 540.571px 182.911px;
-    transform-origin: 540.571px 182.913px;
-    caret-color: rgb(51, 71, 91);
-    border: 0px none rgb(51, 71, 91);
-    font: 18px / 28.998px AvenirNext, "Helvetica Neue", Helvetica, Arial, sans-serif;
-    outline: rgb(51, 71, 91) none 0px;
-}/*#DIV_2, #DIV_5*/
 
-#DIV_2:after, #DIV_5:after {
-    color: rgb(51, 71, 91);
-    text-decoration: none solid rgb(51, 71, 91);
-    column-rule-color: rgb(51, 71, 91);
-    caret-color: rgb(51, 71, 91);
-    border: 0px none rgb(51, 71, 91);
-    font: 18px / 28.998px AvenirNext, "Helvetica Neue", Helvetica, Arial, sans-serif;
-    outline: rgb(51, 71, 91) none 0px;
-}/*#DIV_2:after, #DIV_5:after*/
 
-#DIV_2:before, #DIV_5:before {
-    color: rgb(51, 71, 91);
-    text-decoration: none solid rgb(51, 71, 91);
-    column-rule-color: rgb(51, 71, 91);
-    caret-color: rgb(51, 71, 91);
-    border: 0px none rgb(51, 71, 91);
-    font: 18px / 28.998px AvenirNext, "Helvetica Neue", Helvetica, Arial, sans-serif;
-    outline: rgb(51, 71, 91) none 0px;
-}/*#DIV_2:before, #DIV_5:before*/
+
+
+
 
 #DIV_3 {
     box-sizing: border-box;
@@ -84,40 +53,7 @@
     outline: rgb(51, 71, 91) none 0px;
 }/*#DIV_3*/
 
-/* #DIV_3:after {
-    clear: both;
-    color: rgb(51, 71, 91);
-    content: '""';
-    display: table;
-    height: 0px;
-    text-decoration: none solid rgb(51, 71, 91);
-    width: 0px;
-    column-rule-color: rgb(51, 71, 91);
-    perspective-origin: 0px 0px;
-    transform-origin: 0px 0px;
-    caret-color: rgb(51, 71, 91);
-    border: 0px none rgb(51, 71, 91);
-    font: 18px / 28.998px AvenirNext, "Helvetica Neue", Helvetica, Arial, sans-serif;
-    outline: rgb(51, 71, 91) none 0px;
-} */
 
-/*#DIV_3:after*/
-
-/* #DIV_3:before {
-    color: rgb(51, 71, 91);
-    content: '""';
-    display: table;
-    height: 0px;
-    text-decoration: none solid rgb(51, 71, 91);
-    width: 0px;
-    column-rule-color: rgb(51, 71, 91);
-    perspective-origin: 0px 0px;
-    transform-origin: 0px 0px;
-    caret-color: rgb(51, 71, 91);
-    border: 0px none rgb(51, 71, 91);
-    font: 18px / 28.998px AvenirNext, "Helvetica Neue", Helvetica, Arial, sans-serif;
-    outline: rgb(51, 71, 91) none 0px;
-}#DIV_3:before */
 
 #DIV_4 {
     box-sizing: border-box;
@@ -243,17 +179,7 @@
 
 /*#DIV_7*/
 
-/* #DIV_7:after {
-    color: rgb(255, 255, 255);
-    text-decoration: none solid rgb(255, 255, 255);
-    column-rule-color: rgb(255, 255, 255);
-    caret-color: rgb(255, 255, 255);
-    border: 0px none rgb(255, 255, 255);
-    font: 18px / 28.998px AvenirNext, "Helvetica Neue", Helvetica, Arial, sans-serif;
-    outline: rgb(255, 255, 255) none 0px;
-} */
 
-/*#DIV_7:after*/
 
 #DIV_7:before {
     color: rgb(255, 255, 255);
@@ -265,41 +191,7 @@
     outline: rgb(255, 255, 255) none 0px;
 }/*#DIV_7:before*/
 
-#DIV_8 {
-    color: rgb(255, 255, 255);
-    height: 59.7143px;
-    max-width: 1080px;
-    text-decoration: none solid rgb(255, 255, 255);
-    width: 1009.14px;
-    column-rule-color: rgb(255, 255, 255);
-    perspective-origin: 540.571px 29.8571px;
-    transform-origin: 540.571px 29.8571px;
-    caret-color: rgb(255, 255, 255);
-    border: 0px none rgb(255, 255, 255);
-    font: 18px / 28.998px AvenirNext, "Helvetica Neue", Helvetica, Arial, sans-serif;
-    outline: rgb(255, 255, 255) none 0px;
-    padding: 0px 36px;
-}/*#DIV_8*/
 
-#DIV_8:after {
-    color: rgb(255, 255, 255);
-    text-decoration: none solid rgb(255, 255, 255);
-    column-rule-color: rgb(255, 255, 255);
-    caret-color: rgb(255, 255, 255);
-    border: 0px none rgb(255, 255, 255);
-    font: 18px / 28.998px AvenirNext, "Helvetica Neue", Helvetica, Arial, sans-serif;
-    outline: rgb(255, 255, 255) none 0px;
-}/*#DIV_8:after*/
-
-#DIV_8:before {
-    color: rgb(255, 255, 255);
-    text-decoration: none solid rgb(255, 255, 255);
-    column-rule-color: rgb(255, 255, 255);
-    caret-color: rgb(255, 255, 255);
-    border: 0px none rgb(255, 255, 255);
-    font: 18px / 28.998px AvenirNext, "Helvetica Neue", Helvetica, Arial, sans-serif;
-    outline: rgb(255, 255, 255) none 0px;
-}/*#DIV_8:before*/
 
 #DIV_9 {
     box-sizing: border-box;
@@ -379,6 +271,12 @@
     font: 700 45.99px / 59.971px AvenirNext, "Helvetica Neue", Helvetica, Arial, sans-serif;
     outline: rgb(255, 255, 255) none 0px;
 }/*#H1_10:before*/
+
+
+
+
+
+
 
 #DIV_11 {
     bottom: 0px;
@@ -495,7 +393,7 @@
     outline: rgb(255, 255, 255) none 0px;
 }/*#path_13:before*/
 
-#DIV_14, #DIV_17 {
+/* #DIV_14, #DIV_17 {
     box-sizing: border-box;
     color: rgb(51, 71, 91);
     height: 507.107px;
@@ -508,9 +406,9 @@
     border: 0px none rgb(51, 71, 91);
     font: 18px / 28.998px AvenirNext, "Helvetica Neue", Helvetica, Arial, sans-serif;
     outline: rgb(51, 71, 91) none 0px;
-}/*#DIV_14, #DIV_17*/
+}#DIV_14, #DIV_17 */
 
-#DIV_14:after, #DIV_17:after {
+/* #DIV_14:after, #DIV_17:after {
     color: rgb(51, 71, 91);
     text-decoration: none solid rgb(51, 71, 91);
     column-rule-color: rgb(51, 71, 91);
@@ -520,7 +418,7 @@
     outline: rgb(51, 71, 91) none 0px;
 }/*#DIV_14:after, #DIV_17:after*/
 
-#DIV_14:before, #DIV_17:before {
+/* #DIV_14:before, #DIV_17:before {
     color: rgb(51, 71, 91);
     text-decoration: none solid rgb(51, 71, 91);
     column-rule-color: rgb(51, 71, 91);
@@ -528,7 +426,7 @@
     border: 0px none rgb(51, 71, 91);
     font: 18px / 28.998px AvenirNext, "Helvetica Neue", Helvetica, Arial, sans-serif;
     outline: rgb(51, 71, 91) none 0px;
-}/*#DIV_14:before, #DIV_17:before*/
+}#DIV_14:before, #DIV_17:before */ */
 
 #DIV_15 {
     box-sizing: border-box;
@@ -543,7 +441,7 @@
     border: 0px none rgb(51, 71, 91);
     font: 18px / 28.998px AvenirNext, "Helvetica Neue", Helvetica, Arial, sans-serif;
     outline: rgb(51, 71, 91) none 0px;
-}/*#DIV_15*/
+}#DIV_15
 
 /* #DIV_15:after {
     clear: both;
@@ -744,7 +642,6 @@
 #H2_21 {
     box-sizing: border-box;
     color: rgb(51, 71, 91);
-    height: 41.7143px;
     text-align: center;
     text-decoration: none solid rgb(51, 71, 91);
     width: 432.571px;
@@ -945,7 +842,6 @@
 h2 {
     box-sizing: border-box;
     color: rgb(51, 71, 91);
-    height: 41.7143px;
     text-align: center;
     text-decoration: none solid rgb(51, 71, 91);
     column-rule-color: rgb(51, 71, 91);
