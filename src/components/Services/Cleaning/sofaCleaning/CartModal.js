@@ -25,6 +25,7 @@ import {
             if(Object.keys(this.props.userState.user).length === 0){
                 alert("Please login to checkout");
             }else{
+                this.props.toggleCartModal();
                 this.setState({
                     error: false
                 })
