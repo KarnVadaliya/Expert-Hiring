@@ -9,7 +9,13 @@ router.route('/').get((req,res)=>{
 
 
 router.route('/category').post((req,res)=>{
-    Professional.find({category: req.body.category})
+    Professional.find({category: req.body.category, serviceInCity: req.body.city})
+        .then(professionals=>res.json(professionals))
+        .catch(error=>res.status(400).json('Error: '+error));
+});
+
+router.route('/city').post((req,res)=>{
+    Professional.find({serviceInCity: req.body.city})
         .then(professionals=>res.json(professionals))
         .catch(error=>res.status(400).json('Error: '+error));
 });
