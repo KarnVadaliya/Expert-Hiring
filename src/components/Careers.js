@@ -57,12 +57,34 @@ export default class Careers extends Component {
     };
 
    
-    onFormSubmit(e){
+
+
+    onFormSubmit = applicationID => e => {
         e.preventDefault(); 
         if(this.state.nameError === "" && this.state.emailError === ""){
             this.fileUpload(this.state.file);
             this.resetForm();
         }
+
+        axios.post('http://localhost:5000/application/submit/'+applicationID,
+        {
+            name: this.state.name,
+            email: this.state.email,
+            skills: this.state.skills,
+            location: this.state.location,
+            position: this.state.jobPosition
+        },{
+            "headers": {
+              'Content-Type': 'application/json',
+            }
+          })
+          .then(res=>{
+              console.log(res);
+              // alert('Your application is submitted! Thank you!');
+                            
+                           
+          })
+          .catch(err=>console.log(err));
 
         
         

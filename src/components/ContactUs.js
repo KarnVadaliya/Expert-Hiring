@@ -79,32 +79,32 @@ export default class ContactUs extends Component {
 
             Axios.post('http://localhost:3030/', this.state)
             
-            .then(res => {
-                if(res.data.success) {
-                    this.setState({
-                        disabled: false,
-                        emailSent: true
-                    });
-                } else {
-                    this.setState({
-                        disabled: false,
-                        emailSent: false
-                    });
-                }
-            })
-            .catch(err => {
-                console.log(err);
+            // .then(res => {
+            //     if(res.data.success) {
+            //         this.setState({
+            //             disabled: false,
+            //             emailSent: true
+            //         });
+            //     } else {
+            //         this.setState({
+            //             disabled: false,
+            //             emailSent: false
+            //         });
+            //     }
+            // })
+            // .catch(err => {
+            //     console.log(err);
 
-                this.setState({
-                    disabled: false,
-                    emailSent: false
-                });
-            })
-            this.resetForm();
-     }   
+            //     this.setState({
+            //         disabled: false,
+            //         emailSent: false
+            //     });
+            // })
+    //         this.resetForm();
+    //  }   
 
-    resetForm = () => {
-        document.getElementById("myForm").reset();
+    // resetForm = () => {
+    //     document.getElementById("myForm").reset();
     }
 
 
