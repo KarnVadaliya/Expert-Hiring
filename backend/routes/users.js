@@ -95,11 +95,15 @@ router.route("/addPayment").post((req,res)=>{
                     <td>$ ${item.quantity*item.price}.00</td></tr>` 
                 )
             });
+            var bookTime='';
+            if(req.body.payment.transactions[0].custom.split(" ").length===4)
+            {
+                bookTime=req.body.payment.transactions[0].custom.split(" ")[3];
+            }
 
             const mailOptions = {
                 from: LEGION_GMAIL_USERNAME,
-                // to: req.body.username,
-                to: 'karn.vadaliya@gmail.com',
+                to: req.body.username,
                 subject: "New Service Booking - Payment Successful",
                 html: `<h1>Thank You for your Purchase</h1>
                 <br></br>
@@ -127,12 +131,12 @@ router.route("/addPayment").post((req,res)=>{
                     <div>
                         <div>
                             <h2>Booking Details</h2>
-                            <p><span >Booking For:</span>&emsp; ${req.body.payment.transactions[0].custom}</p>
+                            <p><span >Booking For:</span>&emsp; ${req.body.payment.transactions[0].custom.split(" ")[0]}&nbsp;${req.body.payment.transactions[0].custom.split(" ")[1]}</p>
                             <p><span>Booking Total:</span>&emsp; ${req.body.payment.transactions[0].amount.total} ${req.body.payment.transactions[0].amount.currency}</p>
-                            <p><span>Booking Date:</span>&emsp; ${req.body.payment.transactions[0].description.split(" ")[0]}</p>
-                            <p><span>Booking Time Slot:</span>&emsp; ${req.body.payment.transactions[0].description.split(" ")[1]}</p>
+                            <p><span>Booking Date:</span>&emsp; ${req.body.payment.transactions[0].custom.split(" ")[2]}</p>
+                            <p><span>Booking Time Slot:</span>&emsp; ${bookTime}</p>
                             <p><span>Booking Address</span>&emsp;</p>
-                            <p>${req.body.payment.payer.payer_info.shipping_address.line1}<br></br>${req.body.payment.payer.payer_info.shipping_address.postal_code}<br></br>${req.body.payment.payer.payer_info.shipping_address.city}, ${req.body.payment.payer.payer_info.shipping_address.state}, ${req.body.payment.payer.payer_info.shipping_address.country_code}</p>
+                            <p>${req.body.payment.payer.payer_info.shipping_address.line1}<br></br>${req.body.payment.payer.payer_info.shipping_address.line2}<br></br>${req.body.payment.payer.payer_info.shipping_address.postal_code}<br></br>${req.body.payment.payer.payer_info.shipping_address.city}, ${req.body.payment.payer.payer_info.shipping_address.state}, ${req.body.payment.payer.payer_info.shipping_address.country_code}</p>
                         </div>
                         <div>
                             <h2>Payment Details</h2>

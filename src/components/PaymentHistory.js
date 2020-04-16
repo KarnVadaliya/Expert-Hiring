@@ -14,17 +14,14 @@ class PaymentHistory extends Component{
             paymentDetails:[]
         }
     }
-
+    
     componentDidMount(){
         Axios.get('http://localhost:5000/users/findByID/'+this.props.userState.user._id)
             .then(
                 res=>{
-                    // console.log((res.data.paymentHistory[0].transactions[0].item_list.items[0]));
-
-                   
+                    
+                    
                     let paymentDetails=[]
-                    
-                    
                     // console.log(tempState.id);
                     res.data.paymentHistory.map(payment=>{
                         let tempState = {
@@ -46,10 +43,18 @@ class PaymentHistory extends Component{
                         tempState.email = payment.payer.payer_info.email;
                         tempState.shipping_address = payment.payer.payer_info.shipping_address;
                         payment.transactions.map(transaction=>{
-                                tempState.custom = transaction.custom;
-                                let x=transaction.description.split(" ");
-                                tempState.bookDate=x[0];
-                                tempState.bookTime=x[1];
+                                let x=transaction.custom.split(" ");
+                                if(x.length === 4)
+                                {
+                                    tempState.custom = x[0]+" "+x[1];
+                                    tempState.bookDate=x[2];
+                                    tempState.bookTime=x[3];
+                                }
+                                else
+                                {
+                                    tempState.custom = x[0]+" "+x[1];
+                                    tempState.bookDate=x[2];
+                                }
                                 tempState.total = transaction.amount.total;
                                 tempState.currency = transaction.amount.currency;
                                 // transaction
@@ -59,9 +64,6 @@ class PaymentHistory extends Component{
                         paymentDetails.push(tempState);
                         
                     });
-                    
-                    
-
                     this.setState({
                         paymentDetails:paymentDetails
                     })
@@ -76,7 +78,7 @@ class PaymentHistory extends Component{
         var count=0;
         const myorders=this.state.paymentDetails.map(p=>{
             const listitems=p.items.map(item=>{
-                return(
+                return( 
                     <tr>
                     <td><strong>{item.name}</strong><br></br><p>{item.description}</p></td>
                     <td>{item.quantity}</td>
@@ -89,11 +91,11 @@ class PaymentHistory extends Component{
             return(
                 <li>
                     <div className="allOrders">
-                        <h5 style={{fontWeight:"700",fontSize:"25px",marginLeft:"-10px",color:"black"}}>Order id : {count}</h5>
-                        <h5 style={{fontWeight:"700",fontSize:"22px",color:"black"}}>Order Details</h5>
+                        <h5 style={{fontWeight:"700",fontSize:"25px",marginLeft:"-10px"}}>Order id : {count}</h5>
+                        <h5 style={{fontWeight:"700",fontSize:"22px"}}>Order Details</h5>
                         <div>
                             <div>
-                            <Table borderless style={{color:"black"}}>
+                            <Table borderless>
                                 <thead>
                                 <tr>
                                     <th style={{fontSize:"18px"}}>Service Name</th>
@@ -113,16 +115,16 @@ class PaymentHistory extends Component{
                             </div>
                             <div className="paymentDetails">
                                 <div style={{width:"30%"}}>
-                                    <h5 style={{fontWeight:"700",fontSize:"22px",color:"black"}}>Booking Details</h5>
+                                    <h5 style={{fontWeight:"700",fontSize:"22px"}}>Booking Details</h5>
                                     <p><span style={{fontWeight:"bold"}}>Booking For:</span>&emsp; {p.custom}</p>
                                     <p><span style={{fontWeight:"bold"}}>Booking Total:</span>&emsp; {p.total} {p.currency}</p>
                                     <p><span style={{fontWeight:"bold"}}>Booking Date:</span>&emsp; {p.bookDate}</p>
                                     <p><span style={{fontWeight:"bold"}}>Booking Time Slot:</span>&emsp; {p.bookTime}</p>
                                     <p><span style={{fontWeight:"bold"}}>Booking Address</span>&emsp;</p>
-                                    <p>{p.shipping_address.line1}<br></br>{p.shipping_address.postal_code}<br></br>{p.shipping_address.city}, {p.shipping_address.state}, {p.shipping_address.country_code}</p>
+                                    <p>{p.shipping_address.line1}<br></br>{p.shipping_address.line2}<br></br>{p.shipping_address.postal_code}<br></br>{p.shipping_address.city}, {p.shipping_address.state}, {p.shipping_address.country_code}</p>
                                 </div>
                                 <div>
-                                    <h5 style={{fontWeight:"700",fontSize:"22px",color:"black"}}>Payment Details</h5>
+                                    <h5 style={{fontWeight:"700",fontSize:"22px"}}>Payment Details</h5>
                                     <p><span style={{fontWeight:"bold"}}>Payment Method:</span>&emsp; Paypal</p>
                                     <p><span style={{fontWeight:"bold"}}>Payment_ID:</span>&emsp; {p.id}</p>
                                     <p><span style={{fontWeight:"bold"}}>Created On:</span>&emsp; {p.create_time}</p>
@@ -143,12 +145,27 @@ class PaymentHistory extends Component{
         
         return(
             <div>
-                <h2>Order History</h2>
+                <h2 >Order History</h2>
                 <div>
+                { this.state.paymentDetails.length === 0 ? 
+                    <h3 style={{fontWeight:"bold",textAlign:"center",height:"400px"}}>No Orders</h3>
+                :
                     <ul>
                         {myorders}
                     </ul>    
+                } 
+                <div style={{textAlign:"center"}}>
+                    <Button className="btn-icon btn-3" color="dark" type="button" >
+                        <span className="btn-inner--icon">
+                            <i className="fa fa-lg fa-comments" />
+                        </span>
+                        <span className="btn-inner--text">Add Review</span>
+                    </Button>
                 </div>
+                
+                </div>
+               
+                
             </div>
         )
     }

@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import "../../../../assets/vendor/nucleo/css/nucleo.css";
 import "../../../../assets/vendor/font-awesome/css/font-awesome.min.css";
 import "../../../../assets/scss/argon-design-system-react.scss";
-import Background from '../../../../assets/img/serviceBackgrounds/carpenterBg.jpg'
+import Background from '../../../../assets/img/serviceBackgrounds/cp.jpg'
 import '../../services.css'
 import Scrollspy from 'react-scrollspy'
 import Axios from 'axios'
-
+import { connect } from 'react-redux';
+import { setSearch } from '../../../../actions/setSearch';
 
 class Carpenter extends Component{
 
@@ -133,7 +134,7 @@ class Carpenter extends Component{
         return(
             <div className="service" style={{backgroundColor:"#F5F5F5"}}>
                 <div className="serviceBg" style={{backgroundImage: `url(${Background})`}}>
-                    <h2>Best Carpenters in ****** </h2>
+                    <h2>Best Carpenters in {this.props.mainPageState.city}  </h2>
                 </div>
 
                 <div className="info">
@@ -256,4 +257,8 @@ class Carpenter extends Component{
         )
     }
 }
-export default Carpenter;
+const mapStateToProps = (state) => ({
+    mainPageState: state.mainPageState
+});
+
+export default connect(mapStateToProps, { setSearch })(Carpenter);

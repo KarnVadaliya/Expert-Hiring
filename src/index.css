@@ -317,7 +317,7 @@ transform: scale(1.2);
   margin-left: 120px;
   border: 1px solid white;
   padding: 4%;
-  color:black;
+  /* color:black; */
 }
 .paymentDetails{
   display: flex;
