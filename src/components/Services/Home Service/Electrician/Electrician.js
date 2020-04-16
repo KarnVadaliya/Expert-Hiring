@@ -230,15 +230,15 @@ class Electrician extends Component{
                         <h4>Need an Electrician for :</h4>
                         <div className="serviceButtonGroup">
                          
-                            <button onClick={() => this.props.history.push('/cleaning/sofaCleaning/shop/#3SofaSeats')}>
+                            <button onClick={() => this.props.history.push('/HomeService/electrician/shop/')}>
                                 Repair & Fixes <i style={{textAlign:"right"}} className="fa fa-chevron-right" />
                             </button> 
                        
-                            <button onClick={() => this.props.history.push('/cleaning/sofaCleaning/shop/#4SofaSeats')}>
+                            <button onClick={() => this.props.history.push('/HomeService/electrician/shop/')}>
                                 Electrical Wiring <i className="fa fa-chevron-right"></i>
                             </button>
 
-                            <button onClick={() => this.props.history.push('/cleaning/sofaCleaning/shop/#5SofaSeats')}>
+                            <button onClick={() => this.props.history.push('/homeservice/electrician/shop/')}>
                                 Installation Service <i className="fa fa-chevron-right"></i>
                             </button>
                         </div>

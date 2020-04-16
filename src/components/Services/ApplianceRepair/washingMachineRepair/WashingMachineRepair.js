@@ -81,7 +81,7 @@ class WashingMachineRepair extends Component{
                     <React.Fragment key={professional._id}>
                         <img src={require("../../../../assets/img/serviceBackgrounds/random.jpg")}></img>
                         <div style={{marginLeft:"120px"}}>
-                            <span className="name">{professional.name}</span><br></br><br></br>
+                            <span className="name">{professional.name}</span><br></br>
                             <p>{professional.address}</p>
                             <span style={{marginTop:"-2px"}} className="rating">&#9733; {professional.ratings} <span style={{marginLeft:"2px", marginRight:"5px",color:"black"}}> ({professional.numberOfRatings} ratings) &emsp; &#x25cf; </span>  {professional.rated5Stars} times rated 5 star</span>
                             <br></br>    
@@ -133,9 +133,9 @@ class WashingMachineRepair extends Component{
 
         return(
             <div className="service" style={{backgroundColor:"#F5F5F5"}}>
-                 <div className="serviceBg" style={{backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3),
+                <div className="serviceBg" style={{backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3),
                        rgba(0, 0, 0, 0.4)),url(${Background})`}}>
-                    <h2>The Best Washing Machine Service & Repair in {this.props.mainPageState.city}</h2>
+                    <h2>Best Washing Machine Service & Repair in {this.props.mainPageState.city}</h2>
                 </div>
 
                 <div className="info">
@@ -206,7 +206,7 @@ class WashingMachineRepair extends Component{
                 </section>
                 <br></br>
                 <section className="info professionals" id="Professionals">
-                    <h4>Technicians</h4>
+                    <h4>Washing Machine Technicians</h4>
                     <h6>{this.state.professionals.length} Washing Machine Service and Repair professionals in Ahmedabad</h6>
                     <hr></hr>
                     <div className="professionalsDetails">
