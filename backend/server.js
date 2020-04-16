@@ -8,7 +8,7 @@ require('dotenv').config({path: __dirname + '/.env'})
 const uri = process.env.DB_CONNECTION;
 const app = express();
 
-const sendGrid = require('@sendGrid/mail');
+// const sendGrid = require('@sendGrid/mail');
 
 mongoose.Promise = global.Promise;
 
@@ -33,6 +33,9 @@ app.use('/Cleaning/sofaCleaning',productsSofaCleaningRouter);
 
 const professionalRouter = require('./routes/professionals/professionals');
 app.use('/professionals', professionalRouter);
+
+const applicationRouter = require('./routes/application/application');
+app.use('/application', applicationRouter);
 
 //Appliance Routers
 const productsACRouter = require('./routes/appliance/productsAC');
@@ -89,48 +92,48 @@ passport.deserializeUser((user, cb) => {
 
 
 //ContactUs Mail send
-app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', '*'); 
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-  next();
-});
+// app.use((req, res, next) => {
+//   res.setHeader('Access-Control-Allow-Origin', '*'); 
+//   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE');
+//   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+//   next();
+// });
 
 
-app.get('/api', (req, res, next) => {
-  res.send('API Status: I\'m awesome')
-});
+// app.get('/api', (req, res, next) => {
+//   res.send('API Status: I\'m awesome')
+// });
 
 
-app.post('/contact/email', ( req, res, next) => {
+// app.post('/contact/email', ( req, res, next) => {
 
-  console.log(req.body);
+//   console.log(req.body);
 
-  sendGrid.setApiKey('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');
-  const msg = {
-      to: 'webdesign.legion.16@gmail.com',
-      from: req.body.email,
-      subject: 'Website Contact',
-      // text: req.body.comments
-  }
+//   sendGrid.setApiKey('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');
+//   const msg = {
+//       to: 'webdesign.legion.16@gmail.com',
+//       from: req.body.email,
+//       subject: 'Website Contact',
+//       // text: req.body.comments
+//   }
 
-  sendGrid.send(msg)
-      .then(result => {
+//   sendGrid.send(msg)
+//       .then(result => {
 
-          res.status(200).json({
-              success: true
-          });
+//           res.status(200).json({
+//               success: true
+//           });
 
-      })
-      .catch(err => {
+//       })
+//       .catch(err => {
 
-          console.log('error: ', err);
-          res.status(401).json({
-              success: false
-          });
+//           console.log('error: ', err);
+//           res.status(401).json({
+//               success: false
+//           });
 
-      });
-});
+//       });
+// });
 
 app.listen(PORT, () => {
   console.log(`app running on port ${PORT}`)
