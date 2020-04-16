@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import "../../../../assets/vendor/nucleo/css/nucleo.css";
 import "../../../../assets/vendor/font-awesome/css/font-awesome.min.css";
 import "../../../../assets/scss/argon-design-system-react.scss";
-import Background from '../../../../assets/img/serviceBackgrounds/makeupBg.jpg'
+import Background from '../../../../assets/img/serviceBackgrounds/mk.png'
 import '../../services.css'
 import Scrollspy from 'react-scrollspy'
 import Axios from 'axios'
-
-
+import { connect } from 'react-redux'
+import { setSearch } from '../../../../actions/setSearch';
 class MakeUp extends Component{
 
     state = {
@@ -133,7 +133,7 @@ class MakeUp extends Component{
         return(
             <div className="service" style={{backgroundColor:"#F5F5F5"}}>
                 <div className="serviceBg" style={{backgroundImage: `url(${Background})`}}>
-                    <h2>Make Up Service in ****** </h2>
+                    <h2>Make Up Service in {this.props.mainPageState.city} </h2>
                 </div>
 
                 <div className="info">
@@ -211,7 +211,7 @@ class MakeUp extends Component{
                 <br></br>
                 <section className="info reviews" id="Reviews">
                     <h4>Recent Customer Reviews</h4>
-                    <h6>For Makeup and Hair stylists in *****</h6>                   
+                    <h6>For Makeup and Hair stylists in {this.props.mainPageState.city} </h6>                   
                     <div className="crating">
                         <span style={{fontSize:"38px", color:"#5300a5", fontWeight:"650"}}>&#9733; {this.averageUserRatings()}</span><span style={{fontSize:"20px", color:"#5300a5", fontWeight:"600"}}>/5</span> &nbsp;based on {this.state.userReviews.length} ratings
                     </div>
@@ -252,4 +252,8 @@ class MakeUp extends Component{
         )
     }
 }
-export default MakeUp;
+const mapStateToProps = (state) => ({
+    mainPageState: state.mainPageState
+});
+
+export default connect(mapStateToProps, { setSearch })(MakeUp);
