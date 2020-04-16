@@ -26,7 +26,7 @@ class ElectricianCart extends Component {
     }
 
     componentDidMount(){
-        Axios.get('http://localhost:5000/cleaning/sofaCleaning/')
+        Axios.get('http://localhost:5000/homeservice/electrician/')
             .then(res=>{
                 console.log(res.data);
                 let tempList = [];
@@ -42,14 +42,14 @@ class ElectricianCart extends Component {
 
     getList = (name) =>{
         switch (name) {
-            case '3 Sofa Seats':
-                return global.threeList;
-            case '4 Sofa Seats':
-                return global.fourList;
-            case '5 Sofa Seats':
-                return global.fiveList;
-            case '6 Sofa Seats':
-                return global.sixList;
+            case 'Quick Book':
+                return global.quickBook;
+            case 'Switch and Socket':
+                return global.switchSocket;
+            case 'Appliance':
+                return global.appliance;
+            case 'Wiring':
+                return global.wiring;
             default:
                 break;
         }
@@ -86,35 +86,35 @@ class ElectricianCart extends Component {
         );
 
         
-        const threeSeatsCategory = [];
+        const quickBookCategory = [];
         tempList.map(product=>{
-            if(product.category === '3 Sofa Seat')
-                threeSeatsCategory.push(product);
+            if(product.category === 'Quick Book')
+            quickBookCategory.push(product);
         });
       
 
-        const fiveSeatsCategory = [];
+        const switchSocketCategory = [];
         tempList.map(product=>{
-            if(product.category === '5 Sofa Seat')
-                fiveSeatsCategory.push(product);
+            if(product.category === 'Switch and Socket')
+                switchSocketCategory.push(product);
         });
         
 
-        const fourSeatsCategory = [];
+        const applianceCategory = [];
         tempList.map(product=>{
-            if(product.category === '4 Sofa Seat')
-                fourSeatsCategory.push(product);
+            if(product.category === 'Appliance')
+                applianceCategory.push(product);
         });
 
-        const sixSeatsCategory = [];
+        const wiringCategory = [];
         tempList.map(product=>{
-            if(product.category === '6 Sofa Seat')
-                sixSeatsCategory.push(product);
+            if(product.category === 'Wiring')
+                wiringCategory.push(product);
         });
         
 
-        global.threeList = (threeSeatsCategory.length) ? (
-            threeSeatsCategory.map(product => {
+        global.quickBook = (quickBookCategory.length) ? (
+            quickBookCategory.map(product => {
                 return(                    
                     <ProductCard product={product}/>
                 ) 
@@ -123,8 +123,8 @@ class ElectricianCart extends Component {
             <LoadingCard />
         );
 
-        global.fourList = (fourSeatsCategory.length) ? (
-            fourSeatsCategory.map(product => {
+        global.switchSocket = (switchSocketCategory.length) ? (
+            switchSocketCategory.map(product => {
                 return(
                     <ProductCard product={product}/>
                 ) 
@@ -133,8 +133,8 @@ class ElectricianCart extends Component {
             <LoadingCard />
         );
 
-        global.fiveList = (fiveSeatsCategory.length) ? (
-            fiveSeatsCategory.map(product => {
+        global.appliance = (applianceCategory.length) ? (
+            applianceCategory.map(product => {
                 return(
                    <ProductCard product={product}/>
                 ) 
@@ -143,8 +143,8 @@ class ElectricianCart extends Component {
             <LoadingCard />
         );
 
-        global.sixList = (sixSeatsCategory.length) ? (
-            sixSeatsCategory.map(product => {
+        global.wiring = (wiringCategory.length) ? (
+            wiringCategory.map(product => {
                 return(
                     <ProductCard product={product}/>
                 ) 
@@ -181,9 +181,9 @@ class ElectricianCart extends Component {
                     </Button>
                 </div>
 
-                <Link to="/cleaning/sofaCleaning"><i className="fa fa-chevron-left" style={{fontSize:"50px", marginLeft:"10%", position:"absolute", top:"9%"}}/></Link>
+                <Link to="/HomeService/electrician"><i className="fa fa-chevron-left" style={{fontSize:"50px", marginLeft:"10%", position:"absolute", top:"9%"}}/></Link>
 
-                <h1 style={{fontWeight:"bold", letterSpacing:"2px", textTransform:"uppercase", textAlign:"center"}}>Professional Sofa Cleaning</h1>
+                <h1 style={{fontWeight:"bold", letterSpacing:"2px", textTransform:"uppercase", textAlign:"center"}}>Electrician</h1>
                 <br></br><br></br>
                 <div className="servicesSection">
                     <div className="servicesNav">

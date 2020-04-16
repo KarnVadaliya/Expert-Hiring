@@ -39,10 +39,11 @@ const productsElectricianRouter = require('./routes/homeservice/productsElectric
 app.use('/HomeService/electrician', productsElectricianRouter);
 
 const productsSalonSpaRouter = require('./routes/salon/productsSalonSpa');
-app.use('/salon/salonSpa', productsSalonSpaRouter);
+app.use('/Salon/salonSpa', productsSalonSpaRouter);
 
 const productsHaircutRouter = require('./routes/salon/productsHair');
-app.use('/salon/haircut', productsHaircutRouter);
+app.use('/Salon/haircut', productsHaircutRouter);
+
 // const salonRouter = require('./routes/salon/productsMakeUp');
 // app.use('/salon/makeup', salonRouter);
 

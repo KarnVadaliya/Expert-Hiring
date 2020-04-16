@@ -225,7 +225,7 @@ class TVRepair extends Component{
                 </div>
                 <div className="serviceBox">
                     <div className="serviceBoxButtons">
-                        <h4>Need a TV Technician for :</h4>
+                        <h4>Need a TV Technician for:</h4>
                         <div className="serviceButtonGroup">
                          
                             <button onClick={() => this.props.history.push('/ElectronicRepair/tvRepair/shop/#Repair')}>
