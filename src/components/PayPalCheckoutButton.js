@@ -5,8 +5,8 @@ import PaymentHistory from './PaymentHistory';
 import { connect } from 'react-redux';
 import { setPayment } from '../actions/setPayment';
 import { emptyCart } from '../actions/emptyCart';
-import nodemailer from 'nodemailer';
 import Axios from 'axios';
+
 
 class PayPalCheckoutButton extends React.Component {
 
@@ -39,8 +39,7 @@ class PayPalCheckoutButton extends React.Component {
                     total: order.total,
                     currency: paypalConf.currency,
                   },
-                  description: order.bookDate+" "+order.bookTime,
-                  custom: order.customer || '',
+                  custom: order.customer + ' ' + order.bookDate + ' ' + order.bookTime,
                   item_list: {
                     items: order.items,
                     shipping_address:order.address
@@ -82,7 +81,8 @@ class PayPalCheckoutButton extends React.Component {
 
                 this.props.setPayment(response);
                 console.log(this.props.userState);
-                // alert(`The payment was processed correctly, ID: ${response.id}`)
+                
+                alert(`Thank You ! The payment was processed correctly, ID: ${response.id}`)
 
 
               })
@@ -90,6 +90,7 @@ class PayPalCheckoutButton extends React.Component {
                 console.log(error);
                   alert('Something went wrong while processing the payment');
               });
+              
           };
         
           const onError = (error) => {
@@ -117,7 +118,7 @@ class PayPalCheckoutButton extends React.Component {
             />
             </div>
           
-        
+            
           );
         }
 

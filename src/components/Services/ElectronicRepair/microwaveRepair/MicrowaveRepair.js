@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import "../../../../assets/vendor/nucleo/css/nucleo.css";
 import "../../../../assets/vendor/font-awesome/css/font-awesome.min.css";
 import "../../../../assets/scss/argon-design-system-react.scss";
-import Background from '../../../../assets/img/serviceBackgrounds/makeupBg.jpg'
+import Background from '../../../../assets/img/serviceBackgrounds/mw.jpg'
 import '../../services.css'
 import Scrollspy from 'react-scrollspy'
 import Axios from 'axios'
-
+import { connect } from 'react-redux'
+import { setSearch } from '../../../../actions/setSearch';
 
 class MicrowaveRepair extends Component{
 
@@ -133,7 +134,7 @@ class MicrowaveRepair extends Component{
         return(
             <div className="service" style={{backgroundColor:"#F5F5F5"}}>
                 <div className="serviceBg" style={{backgroundImage: `url(${Background})`}}>
-                    <h2>Microwave & Oven Repair Service in ****** </h2>
+                    <h2>Microwave & Oven Repair Service in {this.props.mainPageState.city}</h2>
                 </div>
 
                 <div className="info">
@@ -257,4 +258,8 @@ class MicrowaveRepair extends Component{
         )
     }
 }
-export default MicrowaveRepair;
+const mapStateToProps = (state) => ({
+    mainPageState: state.mainPageState
+});
+
+export default connect(mapStateToProps, { setSearch })(MicrowaveRepair);

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { setUser } from '../actions/setUser';
 import { connect } from 'react-redux';
+import { Link } from "react-router-dom";
 
 import {
     DropdownItem,
@@ -38,11 +39,13 @@ class LoggedIn extends Component {
                                 My Profile
                                 </DropdownItem>
                                
-                                
-                                <DropdownItem>
-                                <i className="ni ni-archive-2" />
-                                Orders
-                                </DropdownItem>
+                                <Link to='/paymentHistory'>
+                                    <DropdownItem>
+                                    <i className="ni ni-archive-2" />
+                                    My Orders
+                                    </DropdownItem>
+                                </Link>
+                               
                                
                                 <DropdownItem onClick={this.logOutUser}>
                                 <i className="ni ni-button-power" />
