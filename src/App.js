@@ -36,7 +36,6 @@ import WMRepairCart  from "./components/Services/ApplianceRepair/washingMachineR
 import FridgeRepair  from "./components/Services/ApplianceRepair/fridgeRepair/FridgeRepair";
 import FridgeRepairCart  from "./components/Services/ApplianceRepair/fridgeRepair/FridgeRepairCart";
 import Review from './components/Review';
-import PaymentHistory from "./components/PaymentHistory"
 
 import MakeUp from './components/Services/Salon/makeUp/MakeUp';
 import MakeUpCart from './components/Services/Salon/makeUp/MakeUpCart';

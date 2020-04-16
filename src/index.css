@@ -41,7 +41,9 @@ code {
 
 .service{
   height: auto;
-  margin: 5px;
+  /* margin: 5px 0 5px 5px; */
+  margin-top: 5px;
+  margin-bottom: 0;
   top : 10px;
   padding: 30px;
 }

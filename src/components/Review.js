@@ -120,7 +120,7 @@ class Review extends Component {
     render() {
         if(this.state.ok)
             return <Redirect to="/"/>
-            
+
         console.log(this.state);
         const professionalsList = this.state.professionals.length ? (
             this.state.professionals.map(professional=>{
@@ -183,7 +183,7 @@ class Review extends Component {
             </li>
         );
         return (
-            <div>
+            <div style={{marginBottom:"50px"}}>
                 <h1 style={{fontWeight:"bold", letterSpacing:"2px", textAlign:"center"}}>REVIEW US</h1><br></br><br></br>
                 <div style={{textAlign:"center"}}>
                     <h4 style={{display:"inline"}}>Please select a category : &nbsp;&nbsp;</h4><span>{' '}</span>

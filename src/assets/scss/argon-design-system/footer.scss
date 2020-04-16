@@ -1,6 +1,7 @@
 .footer {
     background: $secondary;
     padding: 1.5rem 0;
+    margin-top:0;
 
     .col-footer {
         .heading {
@@ -54,9 +55,13 @@
 .footer.has-cards {
     overflow: hidden;
     padding-top: 500px;
-    margin-top: -540px;
+    margin-top: -100px;
+    // position: relative;
     position: relative;
-    background: transparent;
+    margin: auto;
+    width: 100%;
+    bottom: 0;
+    background: #f5f5f5;
     pointer-events: none;
     
     &:before {
@@ -66,7 +71,7 @@
         right: 0;
         top: 520px;
         bottom: 100px;
-        height: 2000px;
+        height: 500px;
         background: theme-color("dark");
         
     }
