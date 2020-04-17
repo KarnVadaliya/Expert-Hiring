@@ -83,6 +83,36 @@ router.route('/findByEmail/:email').get((req,res)=>{
     .catch(error => res.status(400).json('Error: ' + error));
 });
 
+
+
+router.route("/sendQuery").post((req,res)=>{
+
+    const mailOptions = {
+        from: LEGION_GMAIL_USERNAME,
+        to: LEGION_GMAIL_USERNAME,
+        subject: "New Query Recieved",
+        html: `<div><p>From: ${req.body.email}</p><p>${req.body.message}</p><br></br>
+        <p>${req.body.fullName}</p><p>${req.body.phone}</p></div>`
+    };
+
+
+    transporter.sendMail(mailOptions, function (err, info) {
+        if (err) {
+            console.log("error while sending an email");
+            //  res.status(200);
+        } else {
+            console.log("Email sent");
+            //  res.status(400);
+        }
+    });
+    
+    res.json("Query Send")
+});
+
+
+
+
+
 router.route("/addPayment").post((req,res)=>{
     User.find({username: req.body.username})
         .then(user=>{

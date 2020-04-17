@@ -136,6 +136,7 @@ class Payment extends Component{
 
 
     render(){
+    
 
       const productsList = [];
         for(var product in this.props.cartState.productsInCart){
