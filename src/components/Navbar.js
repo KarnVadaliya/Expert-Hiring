@@ -42,7 +42,6 @@ class NavbarComponent extends Component {
             console.log(this.props);
 
         return(
-          
             <Navbar
           className="navbar-horizontal navbar-dark bg-dark mt-4"
           expand="lg"
@@ -50,7 +49,8 @@ class NavbarComponent extends Component {
           <Container>
           <Link to="/" style={{color:"white"}}>
             <NavbarBrand>
-              <img src={require('../logo.png')} style={{width:"170px", height:"170px"}}></img>
+            <img id="logo" src={require('../logo.png')} style={{width:"170px", height:"170px"}}></img>
+            <h3 id="smallLogo">LEGION</h3>
             </NavbarBrand>
           </Link>
             <button

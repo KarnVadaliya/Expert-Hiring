@@ -336,8 +336,14 @@ transform: scale(1.2);
 }
 
 
+#smallLogo{
+  display: none;
+}
+#bookNow{
+  display: none;
+}
 
-@media only screen and (max-width: 600px){
+@media only screen and (max-width: 600px) {
   .paymentDetails{
     flex-direction: column;
   }
@@ -369,5 +375,75 @@ transform: scale(1.2);
     margin-right: 0px;
     padding: 8%;
     margin-top: 8%;
+  }
+
+  .servicesSection .servicesNav{
+    display: none;
+  }
+
+  .servicesSection .servicesDescription{
+    margin-left: 0;
+  }
+
+  .footer .has-cards{
+    padding-top: 0px;    
+  }
+
+  nav .container a a img{
+    width: 10px;
+  }
+
+  #logo{
+    display: none;
+  }
+
+  #smallLogo{
+    display: block;
+    color: white;
+    font-size: medium;
+    font-weight: bold;
+    letter-spacing: 2px;;
+  }
+
+
+  #Works, #Professionals, #Reviews{
+    width: 100%;
+    margin: auto;
+  }
+
+  #Works ul{
+    padding-left: 0;
+  }
+
+  #bookNow{
+    display: block;
+  }
+
+  #scrollspy{
+    display: none;
+  }
+
+  #h2{
+    padding-top: 100px;
+    margin-right: 0px;
+    text-align: center;
+  }
+
+  #bottom{
+    text-align: center;
+    margin-right: 45px;
+  }
+
+  .serviceBox{
+    display: none;
+  }
+
+  #back{
+    display: none;
+  }
+
+  .cartAtBottom{
+    background-color: transparent;
+    width: 300px;
   }
 }

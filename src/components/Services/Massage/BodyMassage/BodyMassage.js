@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import "../../../../assets/vendor/nucleo/css/nucleo.css";
 import "../../../../assets/vendor/font-awesome/css/font-awesome.min.css";
 import "../../../../assets/scss/argon-design-system-react.scss";
-import Background from '../../../../assets/img/serviceBackgrounds/ac.jpg'
+import Background from '../../../../assets/img/serviceBackgrounds/sf.jpg'
 import '../../services.css'
 import Scrollspy from 'react-scrollspy'
 import Axios from 'axios'
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'
 import { setSearch } from '../../../../actions/setSearch';
 
-class ACRepair extends Component{
+class BodyMassage extends Component{
 
     state = {
         professionals: [],
@@ -19,16 +19,17 @@ class ACRepair extends Component{
     }
 
     componentDidMount(){
+        this.props.setSearch("");
         Axios.post('http://localhost:5000/professionals/category',
         {
-            category: "AC Repair"
+            category: "Body Massage"
         },{
             "headers": {
               'Content-Type': 'application/json',
             }
           })
           .then(res=>{
-            //   const userReviews = this.sortReviews(res.data);
+            
               const reviews = [];
               res.data.map(professional=>professional.reviews.map(review=>reviews.push(review)));
               this.setState({
@@ -133,15 +134,15 @@ class ACRepair extends Component{
 
         return(
             <div className="service" style={{backgroundColor:"#F5F5F5"}}>
-                <div className="serviceBg" style={{backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3),
+                 <div className="serviceBg" style={{backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3),
                        rgba(0, 0, 0, 0.4)),url(${Background})`}}>
-                    <h2>Best AC Repair Service in {this.props.mainPageState.city} </h2>
+                    <h2>Massage Service in {this.props.mainPageState.city}</h2>
                 </div>
 
-                <div className="info" id="scrollspy">
+                <div className="info">
                     <Scrollspy items={ ['How it Works', 'Professionals', 'Customer Reviews'] } currentClassName="is-current">
                                 <li><a active href="#Works">How it Works</a></li>
-                                <li><a href="#Professionals">Technicians</a></li>
+                                <li><a href="#Professionals">Professionals</a></li>
                                 <li><a href="#Reviews">Customer Reviews</a></li>
                     </Scrollspy>
                 </div>
@@ -159,21 +160,8 @@ class ACRepair extends Component{
                             </div> 
                             <p>&emsp;&emsp;</p>
                             <div>
-                                <h5>Choose the type of AC</h5>
-                                <p>We service all types of ACs: Split, Window, Central</p>
-                               
-                            </div>
-                            <hr ></hr>
-                        </li>
-                        <li>
-                            <div>
-                                    <img src={require("../../../../assets/img/serviceBackgrounds/icon1.png")}></img>
-                                    <div className="verticalLine"></div>
-                            </div> 
-                            <p>&emsp;&emsp;</p>
-                            <div>
-                                <h5>Choose the service you need</h5>
-                                <p>We provide repairs, installations and servicing</p>
+                                <h5>Choose a Salon Service</h5>
+                                <p>Choose from various salon packages and services</p>
                                
                             </div>
                             <hr ></hr>
@@ -186,7 +174,7 @@ class ACRepair extends Component{
                             <p>&emsp;&emsp;</p>
                             <div>
                                 <h5>Choose your time-slot</h5>
-                                <p>We service from 9 AM - 9 PM</p>
+                                <p>Hello There</p>
                                
                             </div>
                             <hr ></hr>
@@ -197,8 +185,8 @@ class ACRepair extends Component{
                             </div>
                             <p>&emsp;&emsp;</p>
                             <div>
-                                <h5>Hassle-free Service</h5>
-                                <p>Our professional will get in touch with you 1 hour before the service</p>
+                                <h5>Pay</h5>
+                                <p>Hello There</p>
                             </div>
                             <hr ></hr>
                         </li>
@@ -206,8 +194,8 @@ class ACRepair extends Component{
                 </section>
                 <br></br>
                 <section className="info professionals" id="Professionals">
-                    <h4>Technicians</h4>
-                    <h6>{this.state.professionals.length} AC Repair Service Professionals in {this.props.mainPageState.city}</h6>
+                    <h4>Massage Professionals</h4>
+                    <h6>{this.state.professionals.length} cleaning professionals in Ahmedabad</h6>
                     <hr></hr>
                     <div className="professionalsDetails">
                         
@@ -226,7 +214,7 @@ class ACRepair extends Component{
                 <br></br>
                 <section className="info reviews" id="Reviews">
                     <h4>Recent Customer Reviews</h4>
-                    <h6>of AC Repair Service Professionals in {this.props.mainPageState.city}</h6>                   
+                    <h6>For Massage Professionals in Boston</h6>                   
                     <div className="crating">
                         <span style={{fontSize:"38px", color:"#5300a5", fontWeight:"650"}}>&#9733; {this.averageUserRatings()}</span><span style={{fontSize:"20px", color:"#5300a5", fontWeight:"600"}}>/5</span> &nbsp;based on {this.state.userReviews.length} ratings
                     </div>
@@ -240,19 +228,19 @@ class ACRepair extends Component{
                 </div>
                 <div className="serviceBox">
                     <div className="serviceBoxButtons">
-                        <h4>Need an AC Expert for :</h4>
+                        <h4>Need a Massage Professional for :</h4>
                         <div className="serviceButtonGroup">
                          
-                            <button onClick={() => this.props.history.push('/ApplianceRepair/acRepair/shop/#Service')}>
-                                AC Servicing <i style={{textAlign:"right"}} className="fa fa-chevron-right" />
+                            <button onClick={() => this.props.history.push('/Massage/BodyMassageCart/shop')}>
+                                Body Pain relief <i style={{textAlign:"right"}} className="fa fa-chevron-right" />
                             </button> 
                        
-                            <button onClick={() => this.props.history.push('/ApplianceRepair/acRepair/shop/#Repair')}>
-                                AC not cooling/Repair<i className="fa fa-chevron-right"></i>
+                            <button onClick={() => this.props.history.push('/Massage/BodyMassageCart/shop')}>
+                                Detoxify<i className="fa fa-chevron-right"></i>
                             </button>
 
-                            <button onClick={() => this.props.history.push('/ApplianceRepair/acRepair/shop/#Install')}>
-                                AC installation/ Un-installation<i className="fa fa-chevron-right"></i>
+                            <button onClick={() => this.props.history.push('/Massage/BodyMassageCart/shop')}>
+                                Stress relief<i className="fa fa-chevron-right"></i>
                             </button>
                         </div>
                     </div>
@@ -273,9 +261,8 @@ class ACRepair extends Component{
     }
 }
 
-
 const mapStateToProps = (state) => ({
     mainPageState: state.mainPageState
 });
 
-export default connect(mapStateToProps, { setSearch })(ACRepair);
+export default connect(mapStateToProps, { setSearch })(BodyMassage);
