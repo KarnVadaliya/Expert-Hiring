@@ -9,7 +9,7 @@ import Axios from 'axios';
 
 
 class PayPalCheckoutButton extends React.Component {
-
+    
     render(){
           const order  = this.props.order;
           // console.log(this.props);
@@ -80,10 +80,10 @@ class PayPalCheckoutButton extends React.Component {
 
 
                 this.props.setPayment(response);
+               
                 console.log(this.props.userState);
-                
                 alert(`Thank You ! The payment was processed correctly, ID: ${response.id}`)
-
+                window.location = "/";
 
               })
               .catch(error => {
@@ -100,9 +100,8 @@ class PayPalCheckoutButton extends React.Component {
           const onCancel = (data, actions) => {
             alert( 'Payment cancelled by the user' );
           };
-          // console.log(order);
-          // console.log(this.props);
-        
+          
+         
           return (
             <div style={{textAlign:"left"}}>
                 <PayPalButton
