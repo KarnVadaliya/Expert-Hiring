@@ -1,11 +1,13 @@
 #DIV_1 {
+    margin-top: -25px;
     box-sizing: border-box;
     color: rgb(51, 71, 91);
     text-decoration: none solid rgb(51, 71, 91);
-    width: 1081.14px;
+    height: auto;
+    /* width: 1081.14px; */
     column-rule-color: rgb(51, 71, 91);
-    perspective-origin: 540.571px 436.464px;
-    transform-origin: 540.571px 436.467px;
+    /* perspective-origin: 540.571px 436.464px; */
+    /* transform-origin: 540.571px 436.467px; */
     caret-color: rgb(51, 71, 91);
     border: 0px none rgb(51, 71, 91);
     font: 18px / 28.998px AvenirNext, "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -43,11 +45,11 @@
     color: rgb(51, 71, 91);
     height: 365.826px;
     text-decoration: none solid rgb(51, 71, 91);
-    width: 1081.14px;
+    /* width: 1081.14px; */
     column-rule-color: rgb(51, 71, 91);
-    perspective-origin: 540.571px 182.911px;
-    transform-origin: 540.571px 182.913px;
-    caret-color: rgb(51, 71, 91);
+    /* perspective-origin: 540.571px 182.911px;
+    transform-origin: 540.571px 182.913px; */
+    /* caret-color: rgb(51, 71, 91); */
     border: 0px none rgb(51, 71, 91);
     font: 18px / 28.998px AvenirNext, "Helvetica Neue", Helvetica, Arial, sans-serif;
     outline: rgb(51, 71, 91) none 0px;
@@ -61,11 +63,11 @@
     float: left;
     height: 365.826px;
     text-decoration: none solid rgb(51, 71, 91);
-    width: 1081.14px;
+    /* width: 1081.14px; */
     column-rule-color: rgb(51, 71, 91);
-    perspective-origin: 540.571px 182.911px;
+    /* perspective-origin: 540.571px 182.911px;
     transform-origin: 540.571px 182.913px;
-    caret-color: rgb(51, 71, 91);
+    caret-color: rgb(51, 71, 91); */
     border: 0px none rgb(51, 71, 91);
     font: 18px / 28.998px AvenirNext, "Helvetica Neue", Helvetica, Arial, sans-serif;
     outline: rgb(51, 71, 91) none 0px;}
@@ -102,12 +104,12 @@
     right: 0px;
     text-decoration: none solid rgb(255, 255, 255);
     top: 0px;
-    width: 1081.14px;
-    z-index: 0;
+    /* width: 1081.14px; */
+    /* z-index: 0; */
     column-rule-color: rgb(255, 255, 255);
-    perspective-origin: 540.571px 182.911px;
+    /* perspective-origin: 540.571px 182.911px;
     transform-origin: 540.571px 182.913px;
-    caret-color: rgb(255, 255, 255);
+    caret-color: rgb(255, 255, 255); */
     background: rgba(0, 0, 0, 0) linear-gradient(45deg, rgb(0, 164, 189), rgb(0, 189, 165)) repeat scroll 0% 0% / auto padding-box border-box;
     border: 0px none rgb(255, 255, 255);
     font: 18px / 28.998px AvenirNext, "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -128,12 +130,12 @@
     right: 0px;
     text-decoration: none solid rgb(255, 255, 255);
     top: 0px;
-    width: 1081.14px;
+    /* width: 1081.14px; */
     z-index: -1;
     column-rule-color: rgb(255, 255, 255);
-    perspective-origin: 540.571px 182.911px;
+    /* perspective-origin: 540.571px 182.911px;
     transform-origin: 540.571px 182.913px;
-    caret-color: rgb(255, 255, 255);
+    caret-color: rgb(255, 255, 255); */
     background: rgba(0, 0, 0, 0) linear-gradient(45deg, rgb(0, 164, 189), rgb(0, 189, 165)) repeat scroll 0% 0% / auto padding-box border-box;
     border: 0px none rgb(255, 255, 255);
     font: 18px / 28.998px AvenirNext, "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -162,11 +164,11 @@
     right: 0px;
     text-decoration: none solid rgb(255, 255, 255);
     top: 0px;
-    width: 1081.14px;
+    /* width: 1081.14px; */
     column-rule-color: rgb(255, 255, 255);
-    perspective-origin: 540.571px 128.857px;
+    /* perspective-origin: 540.571px 128.857px;
     transform-origin: 540.571px 128.857px;
-    caret-color: rgb(255, 255, 255);
+    caret-color: rgb(255, 255, 255); */
     border: 0px none rgb(255, 255, 255);
     font: 18px / 28.998px AvenirNext, "Helvetica Neue", Helvetica, Arial, sans-serif;
     outline: rgb(255, 255, 255) none 0px;
@@ -200,11 +202,11 @@
     max-width: 710px;
     text-align: center;
     text-decoration: none solid rgb(255, 255, 255);
-    width: 710px;
+    /* width: 710px; */
     column-rule-color: rgb(255, 255, 255);
-    perspective-origin: 355px 29.8571px;
+    /* perspective-origin: 355px 29.8571px;
     transform-origin: 355px 29.8571px;
-    caret-color: rgb(255, 255, 255);
+    caret-color: rgb(255, 255, 255); */
     border: 0px none rgb(255, 255, 255);
     font: 18px / 28.998px AvenirNext, "Helvetica Neue", Helvetica, Arial, sans-serif;
     margin: 0px 149.571px;
@@ -239,11 +241,11 @@
     height: 59.7143px;
     text-align: center;
     text-decoration: none solid rgb(255, 255, 255);
-    width: 710px;
+    /* width: 710px; */
     column-rule-color: rgb(255, 255, 255);
-    perspective-origin: 355px 29.8571px;
+    /* perspective-origin: 355px 29.8571px;
     transform-origin: 355px 29.8571px;
-    caret-color: rgb(255, 255, 255);
+    caret-color: rgb(255, 255, 255); */
     border: 0px none rgb(255, 255, 255);
     font: 700 45.99px / 59.971px AvenirNext, "Helvetica Neue", Helvetica, Arial, sans-serif;
     margin: 0px;
@@ -279,7 +281,7 @@
 
 
 #DIV_11 {
-    bottom: 0px;
+    bottom: 50px;
     box-sizing: border-box;
     color: rgb(255, 255, 255);
     height: 90px;
@@ -287,12 +289,12 @@
     position: absolute;
     right: 0px;
     text-decoration: none solid rgb(255, 255, 255);
-    top: 257.714px;
-    width: 1081.14px;
+    /* top: 0px; */
+    /* width: 1081.14px; */
     column-rule-color: rgb(255, 255, 255);
-    perspective-origin: 540.571px 54.0536px;
+    /* perspective-origin: 540.571px 54.0536px;
     transform-origin: 540.571px 54.0558px;
-    caret-color: rgb(255, 255, 255);
+    caret-color: rgb(255, 255, 255); */
     border: 0px none rgb(255, 255, 255);
     font: 18px / 28.998px AvenirNext, "Helvetica Neue", Helvetica, Arial, sans-serif;
     outline: rgb(255, 255, 255) none 0px;
@@ -325,11 +327,11 @@
     display: block;
     height: 108.112px;
     text-decoration: none solid rgb(255, 255, 255);
-    width: 1081.14px;
+    /* width: 1081.14px; */
     column-rule-color: rgb(255, 255, 255);
-    perspective-origin: 540.571px 54.0536px;
+    /* perspective-origin: 540.571px 54.0536px;
     transform-origin: 540.571px 54.0558px;
-    caret-color: rgb(255, 255, 255);
+    caret-color: rgb(255, 255, 255); */
     border: 0px none rgb(255, 255, 255);
     font: 18px / 28.998px AvenirNext, "Helvetica Neue", Helvetica, Arial, sans-serif;
     outline: rgb(255, 255, 255) none 0px;
@@ -361,10 +363,10 @@
     color: rgb(255, 255, 255);
     text-decoration: none solid rgb(255, 255, 255);
     column-rule-color: rgb(255, 255, 255);
-    perspective-origin: 0px 0px;
-    transform-origin: 0px 0px;
+    /* perspective-origin: 0px 0px;
+    transform-origin: 0px 0px; */
     fill: rgb(255, 255, 255);
-    d: path("M 0 50 L 0 4 C 95 -23 285 115 500 2 L 500 50 L 0 50 Z");
+    /* d: path("M 0 50 L 0 4 C 95 -23 285 115 500 2 L 500 50 L 0 50 Z"); */
     caret-color: rgb(255, 255, 255);
     border: 0px none rgb(255, 255, 255);
     font: 18px / 28.998px AvenirNext, "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -433,11 +435,11 @@
     color: rgb(51, 71, 91);
     height: 507.107px;
     text-decoration: none solid rgb(51, 71, 91);
-    width: 1081.14px;
+    /* width: 1081.14px; */
     column-rule-color: rgb(51, 71, 91);
-    perspective-origin: 540.571px 253.554px;
+    /* perspective-origin: 540.571px 253.554px;
     transform-origin: 540.571px 253.554px;
-    caret-color: rgb(51, 71, 91);
+    caret-color: rgb(51, 71, 91); */
     border: 0px none rgb(51, 71, 91);
     font: 18px / 28.998px AvenirNext, "Helvetica Neue", Helvetica, Arial, sans-serif;
     outline: rgb(51, 71, 91) none 0px;
@@ -491,11 +493,11 @@
     right: 0px;
     text-decoration: none solid rgb(51, 71, 91);
     top: -90px;
-    width: 1081.14px;
+    /* width: 1081.14px; */
     column-rule-color: rgb(51, 71, 91);
-    perspective-origin: 540.571px 253.554px;
+    /* perspective-origin: 540.571px 253.554px;
     transform-origin: 540.571px 253.554px;
-    caret-color: rgb(51, 71, 91);
+    caret-color: rgb(51, 71, 91); */
     border: 0px none rgb(51, 71, 91);
     font: 18px / 28.998px AvenirNext, "Helvetica Neue", Helvetica, Arial, sans-serif;
     outline: rgb(51, 71, 91) none 0px;
@@ -526,13 +528,13 @@
 #DIV_18 {
     color: rgb(51, 71, 91);
     height: 507.107px;
-    max-width: 1080px;
+    /* max-width: 1080px; */
     text-decoration: none solid rgb(51, 71, 91);
-    width: 1009.14px;
+    /* width: 1009.14px; */
     column-rule-color: rgb(51, 71, 91);
-    perspective-origin: 540.571px 253.554px;
+    /* perspective-origin: 540.571px 253.554px;
     transform-origin: 540.571px 253.554px;
-    caret-color: rgb(51, 71, 91);
+    caret-color: rgb(51, 71, 91); */
     border: 0px none rgb(51, 71, 91);
     font: 18px / 28.998px AvenirNext, "Helvetica Neue", Helvetica, Arial, sans-serif;
     outline: rgb(51, 71, 91) none 0px;
@@ -565,11 +567,11 @@
     display: flex;
     height: 507.107px;
     text-decoration: none solid rgb(51, 71, 91);
-    width: 1009.14px;
+    /* width: 1009.14px; */
     column-rule-color: rgb(51, 71, 91);
-    perspective-origin: 504.571px 253.554px;
+    /* perspective-origin: 504.571px 253.554px;
     transform-origin: 504.571px 253.554px;
-    caret-color: rgb(51, 71, 91);
+    caret-color: rgb(51, 71, 91); */
     border: 0px none rgb(51, 71, 91);
     font: 18px / 28.998px AvenirNext, "Helvetica Neue", Helvetica, Arial, sans-serif;
     outline: rgb(51, 71, 91) none 0px;
@@ -606,12 +608,12 @@
     position: relative;
     right: 0px;
     text-decoration: none solid rgb(51, 71, 91);
-    top: 0px;
-    width: 504.571px;
+    top: 10px;
+    /* width: 504.571px; */
     column-rule-color: rgb(51, 71, 91);
-    perspective-origin: 252.286px 253.554px;
+    /* perspective-origin: 252.286px 253.554px;
     transform-origin: 252.286px 253.554px;
-    caret-color: rgb(51, 71, 91);
+    caret-color: rgb(51, 71, 91); */
     border: 0px none rgb(51, 71, 91);
     flex: 0 1 50%;
     font: 18px / 28.998px AvenirNext, "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -644,11 +646,11 @@
     color: rgb(51, 71, 91);
     text-align: center;
     text-decoration: none solid rgb(51, 71, 91);
-    width: 432.571px;
+    /* width: 432.571px; */
     column-rule-color: rgb(51, 71, 91);
-    perspective-origin: 216.286px 20.8571px;
+    /* perspective-origin: 216.286px 20.8571px;
     transform-origin: 216.286px 20.8571px;
-    caret-color: rgb(51, 71, 91);
+    caret-color: rgb(51, 71, 91); */
     border: 0px none rgb(51, 71, 91);
     font: 700 31.986px / 41.9816px AvenirNext, "Helvetica Neue", Helvetica, Arial, sans-serif;
     margin: 72px 0px 36px;
@@ -682,11 +684,11 @@
     color: rgb(51, 71, 91);
     height: 337.143px;
     text-decoration: none solid rgb(51, 71, 91);
-    width: 432.571px;
+    /* width: 432.571px; */
     column-rule-color: rgb(51, 71, 91);
-    perspective-origin: 216.286px 168.571px;
+    /* perspective-origin: 216.286px 168.571px;
     transform-origin: 216.286px 168.571px;
-    caret-color: rgb(51, 71, 91);
+    caret-color: rgb(51, 71, 91); */
     border: 0px none rgb(51, 71, 91);
     font: 20.25px / 33.75px AvenirNext, "Helvetica Neue", Helvetica, Arial, sans-serif;
     margin: 20.25px 0px;
@@ -723,11 +725,11 @@
     right: 0px;
     text-decoration: none solid rgb(51, 71, 91);
     top: 90px;
-    width: 432.571px;
+    /* width: 432.571px; */
     column-rule-color: rgb(51, 71, 91);
-    perspective-origin: 216.286px 171.438px;
+    /* perspective-origin: 216.286px 171.438px;
     transform-origin: 216.286px 171.44px;
-    caret-color: rgb(51, 71, 91);
+    caret-color: rgb(51, 71, 91); */
     border: 0px none rgb(51, 71, 91);
     font: 18px / 28.998px AvenirNext, "Helvetica Neue", Helvetica, Arial, sans-serif;
     outline: rgb(51, 71, 91) none 0px;
@@ -766,12 +768,12 @@
     right: 0px;
     text-decoration: none solid rgb(51, 71, 91);
     top: 0px;
-    width: 432.571px;
+    /* width: 432.571px; */
     z-index: 10;
     column-rule-color: rgb(51, 71, 91);
-    perspective-origin: 216.286px 171.438px;
+    /* perspective-origin: 216.286px 171.438px;
     transform-origin: 216.286px 171.44px;
-    caret-color: rgb(51, 71, 91);
+    caret-color: rgb(51, 71, 91); */
     border: 0px none rgb(51, 71, 91);
     font: 18px / 28.998px AvenirNext, "Helvetica Neue", Helvetica, Arial, sans-serif;
     outline: rgb(51, 71, 91) none 0px;
@@ -781,7 +783,7 @@
     color: rgb(51, 71, 91);
     text-decoration: none solid rgb(51, 71, 91);
     column-rule-color: rgb(51, 71, 91);
-    caret-color: rgb(51, 71, 91);
+    /* caret-color: rgb(51, 71, 91); */
     border: 0px none rgb(51, 71, 91);
     font: 18px / 28.998px AvenirNext, "Helvetica Neue", Helvetica, Arial, sans-serif;
     outline: rgb(51, 71, 91) none 0px;
@@ -809,11 +811,11 @@
     right: 129.772px;
     text-decoration: none solid rgb(51, 71, 91);
     top: 164.83px;
-    width: 302.799px;
+    /* width: 302.799px; */
     column-rule-color: rgb(51, 71, 91);
-    perspective-origin: 151.397px 116.022px;
+    /* perspective-origin: 151.397px 116.022px;
     transform-origin: 151.4px 116.025px;
-    caret-color: rgb(51, 71, 91);
+    caret-color: rgb(51, 71, 91); */
     border: 0px none rgb(51, 71, 91);
     font: 18px / 28.998px AvenirNext, "Helvetica Neue", Helvetica, Arial, sans-serif;
     outline: rgb(51, 71, 91) none 0px;
@@ -845,9 +847,9 @@ h2 {
     text-align: center;
     text-decoration: none solid rgb(51, 71, 91);
     column-rule-color: rgb(51, 71, 91);
-    perspective-origin: 355px 20.8571px;
+    /* perspective-origin: 355px 20.8571px;
     transform-origin: 355px 20.8571px;
-    caret-color: rgb(51, 71, 91);
+    caret-color: rgb(51, 71, 91); */
     border: 0px none rgb(51, 71, 91);
     font: 700 31.986px / 41.9816px AvenirNext, "Helvetica Neue", Helvetica, Arial, sans-serif;
     margin: 15.993px 0px;
@@ -865,8 +867,9 @@ h2 {
 }
 
 #DIV_27 {
-    width: 100%;
+    /* width: 100%; */
     height: 100%;
+    text-align: center;
     object-fit: cover;
     padding-left: 75px;
 }

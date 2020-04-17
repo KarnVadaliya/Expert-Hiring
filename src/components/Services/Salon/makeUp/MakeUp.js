@@ -192,7 +192,7 @@ class MakeUp extends Component{
                 <br></br>
                 <section className="info professionals" id="Professionals">
                     <h4>Make Up Professionals</h4>
-                    <h6>{this.state.professionals.length} make up professionals in Ahmedabad</h6>
+                    <h6>{this.state.professionals.length} make up professionals in {this.props.mainPageState.city}</h6>
                     <hr></hr>
                     <div className="professionalsDetails">
                         

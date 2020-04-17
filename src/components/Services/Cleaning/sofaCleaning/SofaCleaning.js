@@ -19,17 +19,17 @@ class SofaCleaning extends Component{
     }
 
     componentDidMount(){
-        this.props.setSearch("");
+        
         Axios.post('http://localhost:5000/professionals/category',
         {
-            category: "Sofa Cleaning"
+            category: "Sofa Cleaning",
+            city: this.props.mainPageState.city
         },{
             "headers": {
               'Content-Type': 'application/json',
             }
           })
           .then(res=>{
-            
               const reviews = [];
               res.data.map(professional=>professional.reviews.map(review=>reviews.push(review)));
               this.setState({
@@ -56,7 +56,7 @@ class SofaCleaning extends Component{
         return reviewList;
     }
 
-    getElements = (array) => array.slice(0,2);
+    getElements = (array) => array.slice(-2);
 
     seeMoreOnClick = (e) => {
         this.setState({
@@ -67,6 +67,18 @@ class SofaCleaning extends Component{
     seeMoreReviews = (e) =>{
         this.setState({
             seeMoreReviews: true
+        })
+    }
+
+    seeLessOnClick = (e) =>{
+        this.setState({
+            seeMore: false
+        })
+    }
+     
+    seeLessReviews = (e) => {
+        this.setState({
+            seeMoreReviews: false
         })
     }
 
@@ -82,7 +94,7 @@ class SofaCleaning extends Component{
                     <React.Fragment key={professional._id}>
                         <img src={require("../../../../assets/img/serviceBackgrounds/random.jpg")}></img>
                         <div style={{marginLeft:"120px"}}>
-                            <span className="name">{professional.name}</span><br></br>
+                            <span className="name">{professional.name}</span><br></br><br></br>
                             <p>{professional.address}</p>
                             <span style={{marginTop:"-2px"}} className="rating">&#9733; {professional.ratings} <span style={{marginLeft:"2px", marginRight:"5px",color:"black"}}> ({professional.numberOfRatings} ratings) &emsp; &#x25cf; </span>  {professional.rated5Stars} times rated 5 star</span>
                             <br></br>    
@@ -206,6 +218,11 @@ class SofaCleaning extends Component{
                                 <button onClick={this.seeMoreOnClick}><i className="fa fa-arrow-down"></i>&nbsp;&nbsp;See more</button>
                             </div>
                         }
+                        { this.state.seeMore &&
+                            <div style={{textAlign:"center",padding:"20px"}}>
+                                <button onClick={this.seeLessOnClick}><i className="fa fa-arrow-up"></i>&nbsp;&nbsp;View less</button>
+                            </div>
+                        }
                         
                     </div>
                     <div >
@@ -221,9 +238,16 @@ class SofaCleaning extends Component{
                     <hr></hr>
                     {reviewsList}          
 
-                    <div style={{textAlign:"center",padding:"20px"}}>
+                   { !this.state.seeMoreReviews &&
+                       <div style={{textAlign:"center",padding:"20px"}}>
                         <button onClick={this.seeMoreReviews}><i className="fa fa-arrow-down"></i>&nbsp;&nbsp;View more</button>
-                    </div>          
+                    </div> }  
+
+                    { this.state.seeMoreReviews &&
+                       <div style={{textAlign:"center",padding:"20px"}}>
+                        <button onClick={this.seeLessReviews}><i className="fa fa-arrow-up"></i>&nbsp;&nbsp;View less</button>
+                    </div> }   
+
                 </section>
                 </div>
                 <div className="serviceBox">

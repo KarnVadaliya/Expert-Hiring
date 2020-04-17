@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import '../index.css'
 import '../Careers.css';
-import  Axios, * as others  from "axios";
+import  Axios  from "axios";
 
 
 import {
     FormGroup,
     Form,
     Input,
-
     Row,
     Col,
     Button,
@@ -43,9 +42,30 @@ export default class ContactUs extends Component {
             phone: '',
             message: '',
             disabled: false,
+            regExEmail : /^[^@]+@[^\.]+\..+$/,
+            regExPhone : /^\d{10}$/,
             emailSent: null
         }
       }
+    
+
+      handleEmailError = e =>{
+        if(!this.state.email.match(this.state.regExEmail)){
+            this.setState({
+                email:""
+            })
+        }
+      }
+
+      handlePhoneError = e =>{
+        if(!this.state.phone.match(this.state.regExPhone)){
+            this.setState({
+              phone:""
+            })
+        }
+      }
+
+
 
     handleOnChangeEmail = e =>{
         this.setState({
@@ -77,20 +97,19 @@ export default class ContactUs extends Component {
             disabled: true
         });
 
-            Axios.post('http://localhost:3030/', this.state)
-            
-            .then(res => {
-                if(res.data.success) {
-                    this.setState({
-                        disabled: false,
-                        emailSent: true
-                    });
-                } else {
-                    this.setState({
-                        disabled: false,
-                        emailSent: false
-                    });
+            Axios.post('http://localhost:5000/users/sendQuery', 
+            this.state,
+            {
+                "headers": {
+                  'Content-Type': 'application/json',
                 }
+              })
+            .then(res => {
+                this.setState({
+                    disabled: false,
+                    emailSent: true
+                });
+                
             })
             .catch(err => {
                 console.log(err);
@@ -100,11 +119,20 @@ export default class ContactUs extends Component {
                     emailSent: false
                 });
             })
+
+
+            
+
             this.resetForm();
      }   
 
     resetForm = () => {
-        document.getElementById("myForm").reset();
+        this.setState({
+            email: '',
+            fullName: '',
+            phone: '',
+            message: ''
+        })
     }
 
 
@@ -113,7 +141,7 @@ export default class ContactUs extends Component {
         
         return (
             <section className = "my-5">
-                <div className= "container">
+                <div className= "container" style={{marginTop:"-25px"}}>
                 <UncontrolledCarousel items={items} />
                 <br></br>
                     <div className = "well well-sm">
@@ -125,7 +153,7 @@ export default class ContactUs extends Component {
                                      border: '0',
                                      width: '100%',
                                      height: '370px',
-                                     frameborder: '0'
+                                     frameborder: '0',
                                 }}  allowFullScreen></iframe>
                             </div>
                             <div className = "col-md-4">
@@ -139,7 +167,14 @@ export default class ContactUs extends Component {
                                                     id="exampleFormControlInput1"
                                                     placeholder="name@example.com"
                                                     type="email"
+                                                    required
                                                     value={this.state.email}
+                                                    onFocus={()=>{
+                                                        this.setState({
+                                                            emailSent: null
+                                                        })
+                                                    }}
+                                                    onBlur={this.handleEmailError}
                                                     onChange={this.handleOnChangeEmail}
                                                 />
                                             </FormGroup>
@@ -152,7 +187,13 @@ export default class ContactUs extends Component {
                                                 <Input  
                                                     placeholder="Full Name" 
                                                     type="text" 
+                                                    required
                                                     value={this.state.fullName}
+                                                    onFocus={()=>{
+                                                        this.setState({
+                                                            emailSent: null
+                                                        })
+                                                    }}
                                                     onChange={this.handleOnChangeName}
                                                 />
                                             </FormGroup>
@@ -165,7 +206,14 @@ export default class ContactUs extends Component {
                                                 <Input  
                                                     placeholder="Phone" 
                                                     type="text" 
+                                                    required
                                                     value={this.state.phone}
+                                                    onFocus={()=>{
+                                                        this.setState({
+                                                            emailSent: null
+                                                        })
+                                                    }}
+                                                    onBlur={this.handlePhoneError}
                                                     onChange={this.handleOnChangePhone}
                                                 />
                                             </FormGroup>
@@ -180,7 +228,13 @@ export default class ContactUs extends Component {
                                                     placeholder="Write your message here ..."
                                                     rows="3"
                                                     type="textarea"
+                                                    required
                                                     value={this.state.message}
+                                                    onFocus={()=>{
+                                                        this.setState({
+                                                            emailSent: null
+                                                        })
+                                                    }}
                                                     onChange={this.handleOnChangeComments}
                                                 />
                                             </FormGroup>
@@ -211,7 +265,7 @@ export default class ContactUs extends Component {
                 <br></br>
                 <br></br>
                 <h1 className= "text-center"><strong> Our Main Offices</strong></h1>
-            <div className= "container"> 
+            <div className= "container" style={{marginBottom:"100px"}}> 
                 <div className = "well well-sm">
                     <div className = "row">
                         <div className = "col-md-4">
@@ -220,7 +274,7 @@ export default class ContactUs extends Component {
                                 <img src= {require("../assets/img/careers/jobs.jpg")} />
                                 </div>
                                 <div id="careerDetails">
-                                    <div id="content" onClick={() => this.toggleModal("formModal")}>
+                                    <div id="content">
                                         <h3>Ahemdabad, India</h3>
                                         <p><strong>401, Indraprastha Business Park, Ahmedabad, Gujarat, India 380051</strong></p>
                                     </div>
@@ -233,7 +287,7 @@ export default class ContactUs extends Component {
                                 <img src= {require("../assets/img/careers/jobs.jpg")} />
                                 </div>
                                 <div id="careerDetails">
-                                    <div id="content" onClick={() => this.toggleModal("formModal")}>
+                                    <div id="content">
                                         <h3>Boston, US</h3>
                                         <p><strong>123, Northampton Street, Boston, MA, United States  02115</strong></p>
                                     </div>
@@ -246,7 +300,7 @@ export default class ContactUs extends Component {
                                 <img src= {require("../assets/img/careers/jobs.jpg")} />
                                 </div>
                                 <div id="careerDetails">
-                                    <div id="content" onClick={() => this.toggleModal("formModal")}>
+                                    <div id="content">
                                         <h3>New York, US</h3>
                                         <p><strong>C-32 A Cipet Road, Industrial Estate, SIDCO Industrial Estate, New York, United States </strong></p>
                                     </div>
@@ -259,7 +313,7 @@ export default class ContactUs extends Component {
                                 <img src= {require("../assets/img/careers/jobs.jpg")} />
                                 </div>
                                 <div id="careerDetails">
-                                    <div id="content" onClick={() => this.toggleModal("formModal")}>
+                                    <div id="content" >
                                         <h3>New Jersey, US</h3>
                                         <p><strong>Plot No:- 66, Phase-2, Industrial Area, New Jersey, United States </strong></p>
                                     </div>
@@ -272,7 +326,7 @@ export default class ContactUs extends Component {
                                 <img src= {require("../assets/img/careers/jobs.jpg")} />
                                 </div>
                                 <div id="careerDetails">
-                                    <div id="content" onClick={() => this.toggleModal("formModal")}>
+                                    <div id="content" >
                                         <h3>San Francisco, US</h3>
                                         <p><strong>Trendz Enclave, First Floor, Plot No. 44, San Francisco, United States </strong></p>
                                     </div>
@@ -285,7 +339,7 @@ export default class ContactUs extends Component {
                                 <img src= {require("../assets/img/careers/jobs.jpg")} />
                                 </div>
                                 <div id="careerDetails">
-                                    <div id="content" onClick={() => this.toggleModal("formModal")}>
+                                    <div id="content">
                                         <h3>Mumbai, India</h3>
                                         <p><strong>Unit - 1101 & 1102, Godrej Coliseum, Sion (East), Mumbai, India 400022 </strong></p>
                                     </div>

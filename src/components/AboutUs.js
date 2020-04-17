@@ -82,7 +82,7 @@ export default class AboutUs extends Component {
 
                 <div id="DIV_29">
                     <p>
-                        Urban Company provides a platform that allows skilled and experienced professionals to connect with users looking for specific services. All the professionals, though experienced and skilled, undergo intensive training modules before being allowed to list their services on the platform. Once on the platform, our match-making algorithm identifies professionals who are closest to the users’ requirements and available at the requested time and date.
+                        We provide a platform that allows skilled and experienced professionals to connect with users looking for specific services. All the professionals, though experienced and skilled, undergo intensive training modules before being allowed to list their services on the platform. Once on the platform, our match-making algorithm identifies professionals who are closest to the users’ requirements and available at the requested time and date.
                 </p>
                 </div>
 
@@ -91,31 +91,31 @@ export default class AboutUs extends Component {
                     <h2>Our Leadership Team</h2>
                 </div>
 
-
+                <div style={{height:"500px"}}>
                 <div className="superbox">
                     <div className="box">
-                        <img className="person" src={require("../assets/img/about/profile.jpg")}></img>
+                        <img className="person" src={require("../assets/img/about/profile1.jpeg")}></img>
                         <br></br>
-                        <p className="leaderName">Aishwarya Mane<a href="https://www.linkedin.com/in/aishwaryamane/" target="_blank"><img className="linkedin" src="icon-linkedin.png" /></a></p>
-                        <p>Marketing Head<br></br>Mumbai, India.</p>
-                        <br></br>
-                    </div>
-                    <div className="box">
-                        <img className="person" src={require("../assets/img/about/profile.jpg")}></img>
-                        <br></br>
-                        <p className="leaderName">Aishwarya Mane<a href="https://www.linkedin.com/in/aishwaryamane/" target="_blank"><img className="linkedin" src="icon-linkedin.png" /></a></p>
-                        <p>Technology Head<br></br>Mumbai, India.</p>
+                        <p className="leaderName">Deep Gamit<a href="https://www.linkedin.com/in/deepgamit2105/" target="_blank"><img className="linkedin" src={require("../assets/img/about/ic.png")} style={{width:"30px",height:"20px"}} /></a></p>
+                        <p>Marketing Head<br></br>Ahmedabad, India.</p>
                         <br></br>
                     </div>
                     <div className="box">
-                        <img className="person" src={require("../assets/img/about/profile.jpg")}></img>
+                        <img className="person" src={require("../assets/img/about/profile2.jpeg")}></img>
                         <br></br>
-                        <p className="leaderName">Aishwarya Mane<a href="https://www.linkedin.com/in/aishwaryamane/" target="_blank"><img className="linkedin" src="icon-linkedin.png" /></a></p>
-                        <p>Marketing Head<br></br>Mumbai, India.</p>
+                        <p className="leaderName">Karn Vadaliya<a href="https://www.linkedin.com/in/karn-vadaliya/" target="_blank"><img className="linkedin" src={require("../assets/img/about/ic.png")} style={{width:"30px",height:"20px"}} /></a></p>
+                        <p>Operations Head<br></br>Ahmedabad, India.</p>
+                        <br></br>
+                    </div>
+                    <div className="box">
+                        <img className="person" src={require("../assets/img/about/profile3.jpeg")}></img>
+                        <br></br>
+                        <p className="leaderName">Priyam Suthar<a href="https://www.linkedin.com/in/pdsuthar10/" target="_blank"><img className="linkedin" src={require("../assets/img/about/ic.png")} style={{width:"30px",height:"20px"}} /></a></p>
+                        <p>Technology Head<br></br>Ahmedabad, India.</p>
                         <br></br>
                     </div>
                 </div>
-
+                </div>
             </div>
         )
     }

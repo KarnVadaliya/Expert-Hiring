@@ -16,11 +16,9 @@ class PaymentHistory extends Component{
     }
     
     componentDidMount(){
-        Axios.get('http://localhost:5000/users/findByID/'+this.props.userState.user._id)
+        Axios.get('http://localhost:5000/users/findByEmail/'+this.props.userState.user.username)
             .then(
-                res=>{
-                    
-                    
+                res=>{              
                     let paymentDetails=[]
                     // console.log(tempState.id);
                     res.data.paymentHistory.map(payment=>{
@@ -144,8 +142,10 @@ class PaymentHistory extends Component{
         
         
         return(
-            <div>
-                <h2 >Order History</h2>
+            <>
+                <div style={{marginTop:"-100px", paddingTop:"120px", backgroundColor:"#f5f5f5", paddingBottom:"50px"}}>
+                    <h2 >Order History</h2>
+                </div>               
                 <div>
                 { this.state.paymentDetails.length === 0 ? 
                     <h3 style={{fontWeight:"bold",textAlign:"center",height:"400px"}}>No Orders</h3>
@@ -153,20 +153,13 @@ class PaymentHistory extends Component{
                     <ul>
                         {myorders}
                     </ul>    
-                } 
-                <div style={{textAlign:"center"}}>
-                    <Button className="btn-icon btn-3" color="dark" type="button" >
-                        <span className="btn-inner--icon">
-                            <i className="fa fa-lg fa-comments" />
-                        </span>
-                        <span className="btn-inner--text">Add Review</span>
-                    </Button>
-                </div>
+                }                 
                 
                 </div>
                
                 
-            </div>
+           
+            </>
         )
     }
 }

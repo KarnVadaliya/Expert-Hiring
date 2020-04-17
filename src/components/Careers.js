@@ -14,10 +14,7 @@ import {
   InputGroupAddon,
   InputGroupText,
   InputGroup,
-  Modal,
-  Alert,
-  Row,
-  Col
+  Modal
 } from "reactstrap";
 
 const errorStyle = {
@@ -36,6 +33,9 @@ export default class Careers extends Component {
             file: null,
             name: "",
             email: "",
+            skills: "",
+            jobPosition: "",
+            location: "",
             regExName : /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/,
             regExEmail : /([\w\.]+)@([\w\.]+)\.(\w+)/,
             nameError: "",
@@ -46,19 +46,47 @@ export default class Careers extends Component {
         this.fileUpload = this.fileUpload.bind(this)
       }
     
-    toggleModal = state => {
+    toggleModal = (state, JobPosition, Location) => {
         this.setState({
-        [state]: !this.state[state]
+        [state]: !this.state[state],
+        location: Location,
+        jobPosition: JobPosition
         });
+
+       
     };
 
+   
 
-    onFormSubmit(e){
+
+    onFormSubmit = applicationID => e => {
         e.preventDefault(); 
         if(this.state.nameError === "" && this.state.emailError === ""){
             this.fileUpload(this.state.file);
             this.resetForm();
         }
+
+        axios.post('http://localhost:5000/application/submit/'+applicationID,
+        {
+            name: this.state.name,
+            email: this.state.email,
+            skills: this.state.skills,
+            location: this.state.location,
+            position: this.state.jobPosition
+        },{
+            "headers": {
+              'Content-Type': 'application/json',
+            }
+          })
+          .then(res=>{
+              console.log(res);
+              // alert('Your application is submitted! Thank you!');
+                            
+                           
+          })
+          .catch(err=>console.log(err));
+
+        
         
     }
     
@@ -112,16 +140,16 @@ export default class Careers extends Component {
     }
 
   render() {
+    console.log(this.state.location)
     return (
-      <>
+      <div style={{marginTop:"-25px"}}>
       <div className = "image_container">
       <img className = "fixed_img" src= {require("../assets/img/careers/banner.jpg")} />
-      <h1 className= "text-center"><strong> Drive Your Career.</strong></h1>
+      <h1 className= "text-center" style={{marginTop:"25px"}}><strong> Drive Your Career.</strong></h1>
       <p className= "text-center"><strong>Legion's track record of talented professionals working together startes early last century and we've built our leading global success on collaborative talents dedicated to being the best team in the business. Explore below to learn what motivates greatness.</strong></p>
       </div>
       <br></br>
-      <br></br>
-      <br></br>
+      
       
 
       <section className="bg-light-gray why-bn">
@@ -216,8 +244,8 @@ export default class Careers extends Component {
         <br></br>
         <br></br>
         <h1 className= "text-center"><strong> Open Positions</strong></h1>
-        <section className = "my-3">
-            <div className= "container"> 
+        <section className = "my-3" >
+            <div className= "container" style={{marginBottom:"100px"}}> 
                 <div className = "well well-sm">
                     <div className = "row">
                         <div className = "col-md-4">
@@ -226,7 +254,7 @@ export default class Careers extends Component {
                                 <img src= {require("../assets/img/careers/jobs.jpg")} />
                                 </div>
                                 <div id="careerDetails">
-                                    <div id="content" onClick={() => this.toggleModal("formModal")}>
+                                    <div id="content" onClick={() => this.toggleModal("formModal", "Admin Assistant", "Boston")}>
                                         <h3>Admin Assistant</h3>
                                         <p><strong>Legion</strong></p>
                                         <p><strong>Boston, MA, USA </strong></p>
@@ -240,7 +268,7 @@ export default class Careers extends Component {
                                 <img src= {require("../assets/img/careers/jobs.jpg")} />
                                 </div>
                                 <div id="careerDetails">
-                                    <div id="content" onClick={() => this.toggleModal("formModal")}>
+                                    <div id="content" onClick={() => this.toggleModal("formModal", "Brand & PR Manager", "Ahmedabad")}>
                                         <h3>Brand & PR Manager</h3>
                                         <p><strong>Legion</strong></p>
                                         <p><strong>Ahemdabad, India </strong></p>
@@ -254,7 +282,7 @@ export default class Careers extends Component {
                                 <img src= {require("../assets/img/careers/jobs.jpg")} />
                                 </div>
                                 <div id="careerDetails">
-                                    <div id="content" onClick={() => this.toggleModal("formModal")}>
+                                    <div id="content" onClick={() => this.toggleModal("formModal", "Business Analyst", "New York")}>
                                         <h3>Business Analyst</h3>
                                         <p><strong>Legion</strong></p>
                                         <p><strong>New York, USA </strong></p>
@@ -268,7 +296,7 @@ export default class Careers extends Component {
                                 <img src= {require("../assets/img/careers/jobs.jpg")} />
                                 </div>
                                 <div id="careerDetails">
-                                    <div id="content" onClick={() => this.toggleModal("formModal")}>
+                                    <div id="content" onClick={() => this.toggleModal("formModal", "Product Engineer", "Sydney")}>
                                         <h3>Product Engineer</h3>
                                         <p><strong>Legion</strong></p>
                                         <p><strong>Sydney, AUS </strong></p>
@@ -282,7 +310,7 @@ export default class Careers extends Component {
                                 <img src= {require("../assets/img/careers/jobs.jpg")} />
                                 </div>
                                 <div id="careerDetails">
-                                    <div id="content" onClick={() => this.toggleModal("formModal")}>
+                                    <div id="content" onClick={() => this.toggleModal("formModal", "Human Resource", "Lucknow")}>
                                         <h3>Human Resource</h3>
                                         <p><strong>Legion</strong></p>
                                         <p><strong>Lucknow, India </strong></p>
@@ -296,7 +324,7 @@ export default class Careers extends Component {
                                 <img src= {require("../assets/img/careers/jobs.jpg")} />
                                 </div>
                                 <div id="careerDetails">
-                                    <div id="content" onClick={() => this.toggleModal("formModal")}>
+                                    <div id="content" onClick={() => this.toggleModal("formModal", "Customer Experience", "Dubai")}>
                                         <h3>Customer Experience</h3>
                                         <p><strong>Legion</strong></p>
                                         <p><strong>Dubai </strong></p>
@@ -310,7 +338,7 @@ export default class Careers extends Component {
                                 <img src= {require("../assets/img/careers/jobs.jpg")} />
                                 </div>
                                 <div id="careerDetails">
-                                    <div id="content" onClick={() => this.toggleModal("formModal")}>
+                                    <div id="content" onClick={() => this.toggleModal("formModal", "Finance Analyst", "San Francisco")}>
                                         <h3>Finance Analyst</h3>
                                         <p><strong>Legion</strong></p>
                                         <p><strong>San Francisco </strong></p>
@@ -324,7 +352,7 @@ export default class Careers extends Component {
                                 <img src= {require("../assets/img/careers/jobs.jpg")} />
                                 </div>
                                 <div id="careerDetails">
-                                    <div id="content" onClick={() => this.toggleModal("formModal")}>
+                                    <div id="content" onClick={() => this.toggleModal("formModal", "Product Design", "Portland")}>
                                         <h3>Product Design</h3>
                                         <p><strong>Legion</strong></p>
                                         <p><strong>Portland, Maine </strong></p>
@@ -338,7 +366,7 @@ export default class Careers extends Component {
                                 <img src= {require("../assets/img/careers/jobs.jpg")} />
                                 </div>
                                 <div id="careerDetails">
-                                    <div id="content" onClick={() => this.toggleModal("formModal")}>
+                                    <div id="content" onClick={() => this.toggleModal("formModal", "Software Engineer", "Seattle")}>
                                         <h3>Software Engineer</h3>
                                         <p><strong>Legion</strong></p>
                                         <p><strong>Seattle, WA, US </strong></p>
@@ -440,7 +468,7 @@ export default class Careers extends Component {
                 </Card>
               </div>
             </Modal>
-      </>
+      </div>
     );
   }
 }

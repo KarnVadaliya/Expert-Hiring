@@ -135,13 +135,13 @@ class WashingMachineRepair extends Component{
             <div className="service" style={{backgroundColor:"#F5F5F5"}}>
                 <div className="serviceBg" style={{backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3),
                        rgba(0, 0, 0, 0.4)),url(${Background})`}}>
-                    <h2>Best Washing Machine Service & Repair in {this.props.mainPageState.city}</h2>
+                    <h2>Best Washing Machine Repair Service in {this.props.mainPageState.city}</h2>
                 </div>
 
                 <div className="info">
                     <Scrollspy items={ ['How it Works', 'Professionals', 'Customer Reviews'] } currentClassName="is-current">
                                 <li><a active href="#Works">How it Works</a></li>
-                                <li><a href="#Professionals">Professionals</a></li>
+                                <li><a href="#Professionals">Technicians</a></li>
                                 <li><a href="#Reviews">Customer Reviews</a></li>
                     </Scrollspy>
                 </div>
@@ -198,7 +198,7 @@ class WashingMachineRepair extends Component{
                             <p>&emsp;&emsp;</p>
                             <div>
                                 <h5>Hassle-free Service</h5>
-                                <p>Our professional will get in touch with you 1 hour before the service</p>
+                                <p>Our professional will get in touch with you one hour before the service</p>
                             </div>
                             <hr ></hr>
                         </li>
@@ -206,8 +206,8 @@ class WashingMachineRepair extends Component{
                 </section>
                 <br></br>
                 <section className="info professionals" id="Professionals">
-                    <h4>Washing Machine Technicians</h4>
-                    <h6>{this.state.professionals.length} Washing Machine Service and Repair professionals in Ahmedabad</h6>
+                    <h4>Technicians</h4>
+                    <h6>{this.state.professionals.length} Washing Machine Repair Professionals in {this.props.mainPageState.city}</h6>
                     <hr></hr>
                     <div className="professionalsDetails">
                         
@@ -226,7 +226,7 @@ class WashingMachineRepair extends Component{
                 <br></br>
                 <section className="info reviews" id="Reviews">
                     <h4>Recent Customer Reviews</h4>
-                    <h6>For Washing Machines Repair and Servicing Professionals in Ahmedabad</h6>                   
+                    <h6>of Washing Machine Repair Professionals in {this.props.mainPageState.city}</h6>                   
                     <div className="crating">
                         <span style={{fontSize:"38px", color:"#5300a5", fontWeight:"650"}}>&#9733; {this.averageUserRatings()}</span><span style={{fontSize:"20px", color:"#5300a5", fontWeight:"600"}}>/5</span> &nbsp;based on {this.state.userReviews.length} ratings
                     </div>
@@ -240,7 +240,7 @@ class WashingMachineRepair extends Component{
                 </div>
                 <div className="serviceBox">
                     <div className="serviceBoxButtons">
-                        <h4>Need a Washing Machine Technician for :</h4>
+                        <h4>Need a Washing Machine Technician for:</h4>
                         <div className="serviceButtonGroup">
                          
                             <button onClick={() => this.props.history.push('/ApplianceRepair/washingMachineRepair/shop/#Service')}>
