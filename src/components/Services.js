@@ -120,7 +120,7 @@ class ServicesComponent extends Component{
                     subServices: [
                         {
                             name: "Bathroom Deep Cleaning",
-                            link: "/Cleaning/BathroomCleaning",                            
+                            link: "/Cleaning/bathroomCleaning",                            
                             image: "cleaning1.jpeg",
                             category: "Cleaning"
                         },
@@ -132,7 +132,7 @@ class ServicesComponent extends Component{
                         },
                         {
                             name: "Kitchen Deep Cleaning",
-                            link: "/Cleaning/KitchenCleaning",
+                            link: "/Cleaning/kitchenCleaning",
                             image: "cleaning3.jpeg",
                             category: "Cleaning"   
                         }
@@ -169,8 +169,7 @@ class ServicesComponent extends Component{
         this.props.setSearch("");
     }
     render(){
-        console.log(this.props);
-        console.log(this.state);
+        
         var found = false;
         var notFound = "";
         const displayList = this.state.services.map(service=>{

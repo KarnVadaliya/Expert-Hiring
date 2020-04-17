@@ -26,7 +26,7 @@ class KitchenCleaningCart extends Component {
     }
 
     componentDidMount(){
-        Axios.get('http://localhost:5000/cleaning/sofaCleaning/')
+        Axios.get('http://localhost:5000/Cleaning/kitchenCleaning/')
             .then(res=>{
                 console.log(res.data);
                 let tempList = [];
@@ -42,7 +42,7 @@ class KitchenCleaningCart extends Component {
 
     getList = (name) =>{
         switch (name) {
-            case 'Gas Stove':
+            case 'Gas Stoves':
                 return global.threeList;
             case 'Shelves & Slabs':
                 return global.fourList;
@@ -88,7 +88,7 @@ class KitchenCleaningCart extends Component {
         
         const threeSeatsCategory = [];
         tempList.map(product=>{
-            if(product.category === 'Gas Stove')
+            if(product.category === 'Gas Stoves')
                 threeSeatsCategory.push(product);
         });
       

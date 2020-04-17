@@ -255,19 +255,19 @@ class KitchenCleaning extends Component{
                         <h4>Need Kitchen Deep Cleaning for :</h4>
                         <div className="serviceButtonGroup">
                          
-                            <button onClick={() => this.props.history.push('/Cleaning/KitchenCleaning/shop/#Gas')}>
+                            <button onClick={() => this.props.history.push('/Cleaning/kitchenCleaning/shop')}>
                                 Gas Stove Cleaning <i style={{textAlign:"right"}} className="fa fa-chevron-right" />
                             </button> 
                        
-                            <button onClick={() => this.props.history.push('/Cleaning/KitchenCleaning/shop/#Shelves')}>
+                            <button onClick={() => this.props.history.push('/Cleaning/kitchenCleaning/shop')}>
                                 Shelves & Slabs/Tiles <i className="fa fa-chevron-right"></i>
                             </button>
 
-                            <button onClick={() => this.props.history.push('/cleaning/KitchenCleaning/shop/#Chimney')}>
+                            <button onClick={() => this.props.history.push('/cleaning/kitchenCleaning/shop')}>
                                 Chimney Cleaning<i className="fa fa-chevron-right"></i>
                             </button>
 
-                            <button onClick={() => this.props.history.push('/cleaning/KitchenCleaning/shop/#Floor')}>
+                            <button onClick={() => this.props.history.push('/cleaning/kitchenCleaning/shop')}>
                                 Floor<i className="fa fa-chevron-right"></i>
                             </button>
                         </div>

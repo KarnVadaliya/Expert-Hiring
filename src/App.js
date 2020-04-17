@@ -71,10 +71,10 @@ function App() {
 
                   <Route path="/Cleaning/sofaCleaning" exact component={SofaCleaning}></Route>             
                   <Route path="/Cleaning/sofaCleaning/shop" component={SofaCleaningCart}></Route>
-                  <Route path="/Cleaning/BathroomCleaning" exact component={BathroomCleaning}></Route>             
-                  <Route path="/Cleaning/BathroomCleaning/shop" component={BathroomCleaningCart}></Route> 
-                  <Route path="/Cleaning/KitchenCleaning" exact component={KitchenCleaning}></Route>             
-                  <Route path="/Cleaning/KitchenCleaning/shop" component={KitchenCleaningCart}></Route> 
+                  <Route path="/Cleaning/bathroomCleaning" exact component={BathroomCleaning}></Route>             
+                  <Route path="/Cleaning/bathroomCleaning/shop" component={BathroomCleaningCart}></Route> 
+                  <Route path="/Cleaning/kitchenCleaning" exact component={KitchenCleaning}></Route>             
+                  <Route path="/Cleaning/kitchenCleaning/shop" component={KitchenCleaningCart}></Route> 
                   
                   <Route path="/HomeService/plumber" exact component={Plumber}></Route>  
                   <Route path="/HomeService/plumber/shop" component={PlumberCart}></Route>    

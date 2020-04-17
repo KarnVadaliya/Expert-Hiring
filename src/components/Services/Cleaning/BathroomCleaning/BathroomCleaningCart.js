@@ -26,7 +26,7 @@ class BathroomCleaningCart extends Component {
     }
 
     componentDidMount(){
-        Axios.get('http://localhost:5000/cleaning/sofaCleaning/')
+        Axios.get('http://localhost:5000/Cleaning/bathroomCleaning/')
             .then(res=>{
                 console.log(res.data);
                 let tempList = [];
