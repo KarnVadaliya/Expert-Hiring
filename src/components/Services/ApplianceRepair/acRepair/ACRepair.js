@@ -8,6 +8,8 @@ import Scrollspy from 'react-scrollspy'
 import Axios from 'axios'
 import { connect } from 'react-redux';
 import { setSearch } from '../../../../actions/setSearch';
+import { Button } from 'react-bootstrap';
+
 
 class ACRepair extends Component{
 
@@ -135,7 +137,7 @@ class ACRepair extends Component{
             <div className="service" style={{backgroundColor:"#F5F5F5"}}>
                 <div className="serviceBg" style={{backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3),
                        rgba(0, 0, 0, 0.4)),url(${Background})`}}>
-                    <h2>Best AC Repair Service in {this.props.mainPageState.city} </h2>
+                    <h2 id="h2">Best AC Repair Service in {this.props.mainPageState.city} </h2>
                 </div>
 
                 <div className="info" id="scrollspy">
@@ -202,6 +204,8 @@ class ACRepair extends Component{
                             </div>
                             <hr ></hr>
                         </li>
+                        <Button id="bookNow" style={{width:"100%", margin:"auto"}} onClick={() => this.props.history.push('/ApplianceRepair/acRepair/shop/#Service')}>Book Now!</Button>
+
                     </ul>
                 </section>
                 <br></br>
