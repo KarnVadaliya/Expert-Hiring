@@ -260,13 +260,13 @@ class ServicesComponent extends Component{
                     {   notFound !== "notFound" &&
                         <div className="servicesNav">
                         <h3 style={{fontWeight:"600",color:"black",letterSpacing:"0.8px"}}>All Categories</h3>
-                        <Scrollspy items={ ['Salon', 'Massage', 'Appliance','Electronic','Cleaning','Home-Service','Fitness'] } currentClassName="is-current">
+                        <Scrollspy items={ ['Salon', 'Massage', 'ApplianceRepair','ElectronicRepair','Cleaning','HomeServices','Fitness'] } currentClassName="is-current">
                             <li><a href="#Salon">Salon</a></li>
                             <li><a href="#Massage">Massage</a></li>
                             <li><a href="#ApplianceRepair">Appliance Repair</a></li>
                             <li><a href="#ElectronicRepair">Electronic Repair</a></li>
                             <li><a href="#Cleaning">Cleaning</a></li>
-                            <li><a href="#HomeService">Home Services</a></li>
+                            <li><a href="#HomeServices">Home Services</a></li>
                             <li><a href="#Fitness">Fitness</a></li>
                         </Scrollspy>
                     </div>}

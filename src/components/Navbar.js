@@ -50,7 +50,7 @@ class NavbarComponent extends Component {
           <Container>
           <Link to="/" style={{color:"white"}}>
             <NavbarBrand>
-            <img src={require('../logo.png')} style={{width:"170px", height:"170px"}}></img>
+              <img src={require('../logo.png')} style={{width:"170px", height:"170px"}}></img>
             </NavbarBrand>
           </Link>
             <button
