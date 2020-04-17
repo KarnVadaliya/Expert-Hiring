@@ -26,22 +26,22 @@ class Footer extends React.Component {
                 </h5>
 
                 <Row>
-                    <Col md="4" xs="3">
+                    <Col md="4" sm="6">
                         <span>Ahmedabad</span>
                     </Col>
-                    <Col md="4" xs="3">
+                    <Col md="4" sm="6">
                         <span>Boston</span>
                     </Col>
-                    <Col md="4" xs="3">
+                    <Col md="4" sm="6">
                         <span>New York</span>
                     </Col>
-                    <Col md="4" xs="3">
+                    <Col md="4" sm="6">
                         <span>New Jersey</span>
                     </Col>
-                    <Col md="4" xs="3">
+                    <Col md="4" sm="6">
                         <span>San Fransico</span>
                     </Col>
-                    <Col md="4" xs="3">
+                    <Col md="4" sm="6">
                         <span>Mumbai</span>
                     </Col>
                 </Row>
@@ -120,8 +120,8 @@ class Footer extends React.Component {
                   .
                 </div>
               </Col>
-              <Col md="6">
-                <Nav className="nav-footer justify-content-end">
+              <Col md="6" sm="1">
+                <Nav className="nav-footer justify-content-end" id="bottom">
                   
                   <Link to="/about">
                     <NavItem>
