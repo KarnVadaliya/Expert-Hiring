@@ -145,7 +145,7 @@ class MakeUpCart extends Component {
                     </Button>
                 </div>
 
-                <Link to="/salon/makeup"><i className="fa fa-chevron-left" style={{fontSize:"50px", marginLeft:"10%", position:"absolute", top:"9%"}}/></Link>
+                {/* <Link to="/salon/makeup"><i className="fa fa-chevron-left" style={{fontSize:"50px", marginLeft:"10%", position:"absolute", top:"9%"}}/></Link> */}
 
                 <h1 style={{fontWeight:"bold", letterSpacing:"2px", textTransform:"uppercase", textAlign:"center"}}>Make Up</h1>
                 <br></br><br></br>
