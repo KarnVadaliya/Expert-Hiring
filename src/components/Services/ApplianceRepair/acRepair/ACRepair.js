@@ -138,7 +138,7 @@ class ACRepair extends Component{
                     <h2>Best AC Repair Service in {this.props.mainPageState.city} </h2>
                 </div>
 
-                <div className="info">
+                <div className="info" id="scrollspy">
                     <Scrollspy items={ ['How it Works', 'Professionals', 'Customer Reviews'] } currentClassName="is-current">
                                 <li><a active href="#Works">How it Works</a></li>
                                 <li><a href="#Professionals">Technicians</a></li>

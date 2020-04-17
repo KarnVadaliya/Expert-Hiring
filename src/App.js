@@ -12,8 +12,8 @@ import Careers from './components/Careers';
 import Payment from './components/Payment';
 import PaymentHistory from "./components/PaymentHistory";
 
-import SofaCleaning from './components/Services/Cleaning/sofaCleaning/SofaCleaning';
-import SofaCleaningCart from './components/Services/Cleaning/sofaCleaning/SofaCleaningCart';
+import SofaCleaning from './components/Services/Cleaning/SofaCleaning/SofaCleaning';
+import SofaCleaningCart from './components/Services/Cleaning/SofaCleaning/SofaCleaningCart';
 
 import Electrician from './components/Services/Home Service/Electrician/Electrician';
 import ElectricianCart from './components/Services/Home Service/Electrician/ElectricianCart';

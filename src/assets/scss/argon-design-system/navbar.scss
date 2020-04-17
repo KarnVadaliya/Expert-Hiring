@@ -34,7 +34,7 @@
     letter-spacing: .05px;
 
     img {
-        height: 30px;
+        height: 10px;
     }
 }
 
@@ -400,5 +400,12 @@
     to {
         opacity: 0;
         transform: translate(0, 10px);
+    }
+}
+
+
+@media only screen and (max-width: 600px){
+    .navbar img{
+        width: 30px;
     }
 }
