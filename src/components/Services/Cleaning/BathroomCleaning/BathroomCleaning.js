@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import "../../../../assets/vendor/nucleo/css/nucleo.css";
 import "../../../../assets/vendor/font-awesome/css/font-awesome.min.css";
 import "../../../../assets/scss/argon-design-system-react.scss";
-import Background from '../../../../assets/img/serviceBackgrounds/wm.jpg'
+import Background from '../../../../assets/img/serviceBackgrounds/sf.jpg'
 import '../../services.css'
 import Scrollspy from 'react-scrollspy'
 import Axios from 'axios'
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'
 import { setSearch } from '../../../../actions/setSearch';
 
-class WashingMachineRepair extends Component{
+class BathroomCleaning extends Component{
 
     state = {
         professionals: [],
@@ -19,9 +19,10 @@ class WashingMachineRepair extends Component{
     }
 
     componentDidMount(){
+        
         Axios.post('http://localhost:5000/professionals/category',
         {
-            category: "Washing Machine Repair",
+            category: "Bathroom Cleaning",
             city: this.props.mainPageState.city
         },{
             "headers": {
@@ -29,7 +30,6 @@ class WashingMachineRepair extends Component{
             }
           })
           .then(res=>{
-            //   const userReviews = this.sortReviews(res.data);
               const reviews = [];
               res.data.map(professional=>professional.reviews.map(review=>reviews.push(review)));
               this.setState({
@@ -56,7 +56,7 @@ class WashingMachineRepair extends Component{
         return reviewList;
     }
 
-    getElements = (array) => array.slice(0,2);
+    getElements = (array) => array.slice(-2);
 
     seeMoreOnClick = (e) => {
         this.setState({
@@ -67,6 +67,18 @@ class WashingMachineRepair extends Component{
     seeMoreReviews = (e) =>{
         this.setState({
             seeMoreReviews: true
+        })
+    }
+
+    seeLessOnClick = (e) =>{
+        this.setState({
+            seeMore: false
+        })
+    }
+     
+    seeLessReviews = (e) => {
+        this.setState({
+            seeMoreReviews: false
         })
     }
 
@@ -82,7 +94,7 @@ class WashingMachineRepair extends Component{
                     <React.Fragment key={professional._id}>
                         <img src={require("../../../../assets/img/serviceBackgrounds/random.jpg")}></img>
                         <div style={{marginLeft:"120px"}}>
-                            <span className="name">{professional.name}</span><br></br>
+                            <span className="name">{professional.name}</span><br></br><br></br>
                             <p>{professional.address}</p>
                             <span style={{marginTop:"-2px"}} className="rating">&#9733; {professional.ratings} <span style={{marginLeft:"2px", marginRight:"5px",color:"black"}}> ({professional.numberOfRatings} ratings) &emsp; &#x25cf; </span>  {professional.rated5Stars} times rated 5 star</span>
                             <br></br>    
@@ -134,15 +146,15 @@ class WashingMachineRepair extends Component{
 
         return(
             <div className="service" style={{backgroundColor:"#F5F5F5"}}>
-                <div className="serviceBg" style={{backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3),
+                 <div className="serviceBg" style={{backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3),
                        rgba(0, 0, 0, 0.4)),url(${Background})`}}>
-                    <h2>Best Washing Machine Repair Service in {this.props.mainPageState.city}</h2>
+                    <h2>Bathroom Cleaning Service in {this.props.mainPageState.city}</h2>
                 </div>
 
                 <div className="info">
                     <Scrollspy items={ ['How it Works', 'Professionals', 'Customer Reviews'] } currentClassName="is-current">
                                 <li><a active href="#Works">How it Works</a></li>
-                                <li><a href="#Professionals">Technicians</a></li>
+                                <li><a href="#Professionals">Professionals</a></li>
                                 <li><a href="#Reviews">Customer Reviews</a></li>
                     </Scrollspy>
                 </div>
@@ -160,21 +172,8 @@ class WashingMachineRepair extends Component{
                             </div> 
                             <p>&emsp;&emsp;</p>
                             <div>
-                                <h5>Choose the type of Washing Machine</h5>
-                                <p>We service all types of Washing Machines: Front Load, Top Load</p>
-                               
-                            </div>
-                            <hr ></hr>
-                        </li>
-                        <li>
-                            <div>
-                                    <img src={require("../../../../assets/img/serviceBackgrounds/icon1.png")}></img>
-                                    <div className="verticalLine"></div>
-                            </div> 
-                            <p>&emsp;&emsp;</p>
-                            <div>
-                                <h5>Choose the service you need</h5>
-                                <p>We provide repairs, installations and servicing</p>
+                                <h5>Select size of you bathroom</h5>
+                                <p>Browse through various packages and services</p>
                                
                             </div>
                             <hr ></hr>
@@ -187,7 +186,7 @@ class WashingMachineRepair extends Component{
                             <p>&emsp;&emsp;</p>
                             <div>
                                 <h5>Choose your time-slot</h5>
-                                <p>We service from 9 AM - 9 PM</p>
+                                <p>Pick time as per you convenience</p>
                                
                             </div>
                             <hr ></hr>
@@ -198,8 +197,8 @@ class WashingMachineRepair extends Component{
                             </div>
                             <p>&emsp;&emsp;</p>
                             <div>
-                                <h5>Hassle-free Service</h5>
-                                <p>Our professional will get in touch with you one hour before the service</p>
+                                <h5>Hassle-free service</h5>
+                                <p>Our Professionals will get in touch with you an hour before the service</p>
                             </div>
                             <hr ></hr>
                         </li>
@@ -207,8 +206,8 @@ class WashingMachineRepair extends Component{
                 </section>
                 <br></br>
                 <section className="info professionals" id="Professionals">
-                    <h4>Technicians</h4>
-                    <h6>{this.state.professionals.length} Washing Machine Repair Professionals in {this.props.mainPageState.city}</h6>
+                    <h4>Cleaning Experts</h4>
+                    <h6>{this.state.professionals.length} bathroom cleaning professionals in Ahmedabad</h6>
                     <hr></hr>
                     <div className="professionalsDetails">
                         
@@ -219,6 +218,11 @@ class WashingMachineRepair extends Component{
                                 <button onClick={this.seeMoreOnClick}><i className="fa fa-arrow-down"></i>&nbsp;&nbsp;See more</button>
                             </div>
                         }
+                        { this.state.seeMore &&
+                            <div style={{textAlign:"center",padding:"20px"}}>
+                                <button onClick={this.seeLessOnClick}><i className="fa fa-arrow-up"></i>&nbsp;&nbsp;View less</button>
+                            </div>
+                        }
                         
                     </div>
                     <div >
@@ -227,36 +231,44 @@ class WashingMachineRepair extends Component{
                 <br></br>
                 <section className="info reviews" id="Reviews">
                     <h4>Recent Customer Reviews</h4>
-                    <h6>of Washing Machine Repair Professionals in {this.props.mainPageState.city}</h6>                   
+                    <h6>For Bathroom Cleaning Service Professionals in Ahmedabad</h6>                   
                     <div className="crating">
                         <span style={{fontSize:"38px", color:"#5300a5", fontWeight:"650"}}>&#9733; {this.averageUserRatings()}</span><span style={{fontSize:"20px", color:"#5300a5", fontWeight:"600"}}>/5</span> &nbsp;based on {this.state.userReviews.length} ratings
                     </div>
                     <hr></hr>
                     {reviewsList}          
 
-                    <div style={{textAlign:"center",padding:"20px"}}>
+                   { !this.state.seeMoreReviews &&
+                       <div style={{textAlign:"center",padding:"20px"}}>
                         <button onClick={this.seeMoreReviews}><i className="fa fa-arrow-down"></i>&nbsp;&nbsp;View more</button>
-                    </div>          
+                    </div> }  
+
+                    { this.state.seeMoreReviews &&
+                       <div style={{textAlign:"center",padding:"20px"}}>
+                        <button onClick={this.seeLessReviews}><i className="fa fa-arrow-up"></i>&nbsp;&nbsp;View less</button>
+                    </div> }   
+
                 </section>
                 </div>
                 <div className="serviceBox">
                     <div className="serviceBoxButtons">
-                        <h4>Need a Washing Machine Technician for:</h4>
+                        <h4>Need Bathroom Deep Cleaning for :</h4>
                         <div className="serviceButtonGroup">
                          
-                            <button onClick={() => this.props.history.push('/ApplianceRepair/washingMachineRepair/shop/#Service')}>
-                                Repair/ Service <i style={{textAlign:"right"}} className="fa fa-chevron-right" />
+                            <button onClick={() => this.props.history.push('/Cleaning/BathroomCleaning/shop/#Floor')}>
+                                Floor <i style={{textAlign:"right"}} className="fa fa-chevron-right" />
                             </button> 
                        
-                            <button onClick={() => this.props.history.push('/ApplianceRepair/washingMachineRepair/shop/#Leakage')}>
-                                Water Leakage<i className="fa fa-chevron-right"></i>
+                            <button onClick={() => this.props.history.push('/Cleaning/BathroomCleaning/shop/#Toilets')}>
+                                Toilet & Washbasin <i className="fa fa-chevron-right"></i>
                             </button>
 
-                            <button onClick={() => this.props.history.push('/ApplianceRepair/washingMachineRepair/shop/#Install')}>
-                                AC installation/ Un-installation<i className="fa fa-chevron-right"></i>
+                            <button onClick={() => this.props.history.push('/cleaning/BathroomCleaning/shop/#Tiles')}>
+                                Tiles, Mirror, Windows<i className="fa fa-chevron-right"></i>
                             </button>
-                            <button onClick={() => this.props.history.push('/ApplianceRepair/washingMachineRepair/shop/#OtherIssues')}>
-                                Other Issues<i className="fa fa-chevron-right"></i>
+
+                            <button onClick={() => this.props.history.push('/cleaning/BathroomCleaning/shop/#All')}>
+                                All the Above<i className="fa fa-chevron-right"></i>
                             </button>
                         </div>
                     </div>
@@ -276,8 +288,9 @@ class WashingMachineRepair extends Component{
         )
     }
 }
+
 const mapStateToProps = (state) => ({
     mainPageState: state.mainPageState
 });
 
-export default connect(mapStateToProps, { setSearch })(WashingMachineRepair);
+export default connect(mapStateToProps, { setSearch })(BathroomCleaning);

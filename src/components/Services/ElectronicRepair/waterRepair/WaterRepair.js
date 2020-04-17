@@ -21,7 +21,8 @@ class WaterRepair extends Component{
     componentDidMount(){
         Axios.post('http://localhost:5000/professionals/category',
         {
-            category: "Water Purifier Repair"
+            category: "Water Purifier Repair",
+            city: this.props.mainPageState.city
         },{
             "headers": {
               'Content-Type': 'application/json',

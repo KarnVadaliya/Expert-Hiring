@@ -19,7 +19,6 @@ class SofaCleaning extends Component{
     }
 
     componentDidMount(){
-        
         Axios.post('http://localhost:5000/professionals/category',
         {
             category: "Sofa Cleaning",
@@ -186,7 +185,7 @@ class SofaCleaning extends Component{
                             <p>&emsp;&emsp;</p>
                             <div>
                                 <h5>Choose your time-slot</h5>
-                                <p>Hello There</p>
+                                <p>Pick time as per you convenience</p>
                                
                             </div>
                             <hr ></hr>
@@ -197,8 +196,8 @@ class SofaCleaning extends Component{
                             </div>
                             <p>&emsp;&emsp;</p>
                             <div>
-                                <h5>Pay</h5>
-                                <p>Hello There</p>
+                            <h5>Hassle-free service</h5>
+                                <p>Our Professionals will get in touch with you an hour before the service</p>
                             </div>
                             <hr ></hr>
                         </li>
@@ -207,7 +206,7 @@ class SofaCleaning extends Component{
                 <br></br>
                 <section className="info professionals" id="Professionals">
                     <h4>Cleaning Professionals</h4>
-                    <h6>{this.state.professionals.length} cleaning professionals in Ahmedabad</h6>
+                    <h6>{this.state.professionals.length} Sofa cleaning professionals in Ahmedabad</h6>
                     <hr></hr>
                     <div className="professionalsDetails">
                         
@@ -231,7 +230,7 @@ class SofaCleaning extends Component{
                 <br></br>
                 <section className="info reviews" id="Reviews">
                     <h4>Recent Customer Reviews</h4>
-                    <h6>For Makeup and Hair stylists in Boston</h6>                   
+                    <h6>For Sofa Cleaning Professionals in Ahmedabad</h6>                   
                     <div className="crating">
                         <span style={{fontSize:"38px", color:"#5300a5", fontWeight:"650"}}>&#9733; {this.averageUserRatings()}</span><span style={{fontSize:"20px", color:"#5300a5", fontWeight:"600"}}>/5</span> &nbsp;based on {this.state.userReviews.length} ratings
                     </div>
@@ -252,7 +251,7 @@ class SofaCleaning extends Component{
                 </div>
                 <div className="serviceBox">
                     <div className="serviceBoxButtons">
-                        <h4>Need a Cleaning Professional for :</h4>
+                        <h4>Need Sofa Cleaning for :</h4>
                         <div className="serviceButtonGroup">
                          
                             <button onClick={() => this.props.history.push('/Cleaning/sofaCleaning/shop/#3SofaSeats')}>

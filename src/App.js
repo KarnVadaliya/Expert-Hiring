@@ -14,6 +14,11 @@ import PaymentHistory from "./components/PaymentHistory";
 
 import SofaCleaning from './components/Services/Cleaning/SofaCleaning/SofaCleaning';
 import SofaCleaningCart from './components/Services/Cleaning/SofaCleaning/SofaCleaningCart';
+import BathroomCleaning from './components/Services/Cleaning/BathroomCleaning/BathroomCleaning';
+import BathroomCleaningCart from './components/Services/Cleaning/BathroomCleaning/BathroomCleaningCart';
+import KitchenCleaning from './components/Services/Cleaning/KitchenCleaning/KitchenCleaning';
+import KitchenCleaningCart from './components/Services/Cleaning/KitchenCleaning/KitchenCleaningCart';
+
 
 import Electrician from './components/Services/Home Service/Electrician/Electrician';
 import ElectricianCart from './components/Services/Home Service/Electrician/ElectricianCart';
@@ -63,8 +68,12 @@ function App() {
                   <Route path="/careers" component={Careers}></Route>
 
                   <Route path="/Cleaning/sofaCleaning" exact component={SofaCleaning}></Route>             
-                  <Route path="/Cleaning/sofaCleaning/shop" component={SofaCleaningCart}></Route> 
-
+                  <Route path="/Cleaning/sofaCleaning/shop" component={SofaCleaningCart}></Route>
+                  <Route path="/Cleaning/BathroomCleaning" exact component={BathroomCleaning}></Route>             
+                  <Route path="/Cleaning/BathroomCleaning/shop" component={BathroomCleaningCart}></Route> 
+                  <Route path="/Cleaning/KitchenCleaning" exact component={KitchenCleaning}></Route>             
+                  <Route path="/Cleaning/KitchenCleaning/shop" component={KitchenCleaningCart}></Route> 
+                  
                   <Route path="/HomeService/plumber" exact component={Plumber}></Route>  
                   <Route path="/HomeService/plumber/shop" component={PlumberCart}></Route>    
                   <Route path="/HomeService/electrician" exact component={Electrician}></Route>  
