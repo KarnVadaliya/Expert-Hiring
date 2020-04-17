@@ -46,7 +46,20 @@ class LoggedOut extends Component {
 
     toggleModal = state => {
         this.setState({
-          [state]: !this.state[state]
+          [state]: !this.state[state],
+          name: '',
+          username: '',
+          password: '',
+          nameState: '',
+          emailState: '',
+          passwordState: '',
+          emailError:'',
+          nameError:'',
+          passwordError:'',
+          loginEmailState:'',
+          loginEmailError:'',
+          loginPasswordState: '',
+          loginPasswordError: ''
         });
       };
 
