@@ -11,6 +11,7 @@ router.route('/').get((req,res)=>{
 router.route('/add').post((req,res)=>{
     const name = req.body.name;
     const email = req.body.email;
+    const phone = req.body.phone;
     const skills = req.body.skills;
     const location = req.body.location;
     const position = req.body.position;
@@ -19,6 +20,7 @@ router.route('/add').post((req,res)=>{
     const newSubmission = new Application({
         name,
         email,
+        phone,
         skills,
         location,
         position
