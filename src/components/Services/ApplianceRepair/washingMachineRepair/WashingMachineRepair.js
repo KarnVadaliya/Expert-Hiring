@@ -256,18 +256,18 @@ class WashingMachineRepair extends Component{
                         <h4>Need a Washing Machine Technician for:</h4>
                         <div className="serviceButtonGroup">
                          
-                            <button onClick={() => this.props.history.push('/ApplianceRepair/washingMachineRepair/shop/#Service')}>
+                            <button onClick={() => this.props.history.push('/ApplianceRepair/washingMachineRepair/shop')}>
                                 Repair/ Service <i style={{textAlign:"right"}} className="fa fa-chevron-right" />
                             </button> 
                        
-                            <button onClick={() => this.props.history.push('/ApplianceRepair/washingMachineRepair/shop/#Leakage')}>
+                            <button onClick={() => this.props.history.push('/ApplianceRepair/washingMachineRepair/shop')}>
                                 Water Leakage<i className="fa fa-chevron-right"></i>
                             </button>
 
-                            <button onClick={() => this.props.history.push('/ApplianceRepair/washingMachineRepair/shop/#Install')}>
+                            <button onClick={() => this.props.history.push('/ApplianceRepair/washingMachineRepair/shop')}>
                                 AC installation/ Un-installation<i className="fa fa-chevron-right"></i>
                             </button>
-                            <button onClick={() => this.props.history.push('/ApplianceRepair/washingMachineRepair/shop/#OtherIssues')}>
+                            <button onClick={() => this.props.history.push('/ApplianceRepair/washingMachineRepair/shop')}>
                                 Other Issues<i className="fa fa-chevron-right"></i>
                             </button>
                         </div>

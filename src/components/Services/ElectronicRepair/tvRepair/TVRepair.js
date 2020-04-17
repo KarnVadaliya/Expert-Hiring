@@ -255,15 +255,15 @@ class TVRepair extends Component{
                         <h4>Need a TV Technician for:</h4>
                         <div className="serviceButtonGroup">
                          
-                            <button onClick={() => this.props.history.push('/ElectronicRepair/tvRepair/shop/#Repair')}>
+                            <button onClick={() => this.props.history.push('/ElectronicRepair/tvRepair/shop')}>
                                 Repair <i style={{textAlign:"right"}} className="fa fa-chevron-right" />
                             </button> 
                        
-                            <button onClick={() => this.props.history.push('/ElectronicRepair/tvRepair/shop/#Installation')}>
+                            <button onClick={() => this.props.history.push('/ElectronicRepair/tvRepair/shop')}>
                                 Installation<i className="fa fa-chevron-right"></i>
                             </button>
 
-                            <button onClick={() => this.props.history.push('/ElectronicRepair/tvRepair/shop/#OtherIssues')}>
+                            <button onClick={() => this.props.history.push('/ElectronicRepair/tvRepair/shop')}>
                                 Other Issues<i className="fa fa-chevron-right"></i>
                             </button>
                         </div>

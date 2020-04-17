@@ -26,7 +26,7 @@ class TVRepairCart extends Component {
     }
 
     componentDidMount(){
-        Axios.get('http://localhost:5000/ElectronicRepair/tvRepair/')
+        Axios.get('http://localhost:5000/ElectronicRepair/tv')
             .then(res=>{
                 console.log(res.data);
                 let tempList = []

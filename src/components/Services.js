@@ -108,7 +108,7 @@ class ServicesComponent extends Component{
                     subServices: [
                         {
                             name: "Body Massage",
-                            link: "/Massage/massages",                            
+                            link: "/Massage/bodyMassage",                            
                             image: "salon1.jpeg",
                             category: "Massage"
                         }               

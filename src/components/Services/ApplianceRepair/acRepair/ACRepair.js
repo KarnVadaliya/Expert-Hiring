@@ -269,15 +269,15 @@ class ACRepair extends Component{
                         <h4>Need an AC Expert for :</h4>
                         <div className="serviceButtonGroup">
                          
-                            <button onClick={() => this.props.history.push('/ApplianceRepair/acRepair/shop/#Service')}>
+                            <button onClick={() => this.props.history.push('/ApplianceRepair/acRepair/shop')}>
                                 AC Servicing <i style={{textAlign:"right"}} className="fa fa-chevron-right" />
                             </button> 
                        
-                            <button onClick={() => this.props.history.push('/ApplianceRepair/acRepair/shop/#Repair')}>
+                            <button onClick={() => this.props.history.push('/ApplianceRepair/acRepair/shop')}>
                                 AC not cooling/Repair<i className="fa fa-chevron-right"></i>
                             </button>
 
-                            <button onClick={() => this.props.history.push('/ApplianceRepair/acRepair/shop/#Install')}>
+                            <button onClick={() => this.props.history.push('/ApplianceRepair/acRepair/shop')}>
                                 AC installation/ Un-installation<i className="fa fa-chevron-right"></i>
                             </button>
                         </div>

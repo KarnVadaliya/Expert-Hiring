@@ -269,19 +269,19 @@ class WaterRepair extends Component{
                         <h4>Need a RO Technician for:</h4>
                         <div className="serviceButtonGroup">
                          
-                            <button onClick={() => this.props.history.push('/ElectronicRepair/waterRepair/shop/#Repair')}>
+                            <button onClick={() => this.props.history.push('/ElectronicRepair/waterRepair/shop')}>
                                 Repair <i style={{textAlign:"right"}} className="fa fa-chevron-right" />
                             </button> 
 
-                            <button onClick={() => this.props.history.push('/ElectronicRepair/waterRepair/shop/#Install')}>
+                            <button onClick={() => this.props.history.push('/ElectronicRepair/waterRepair/shop')}>
                                 Installation/Fitting<i className="fa fa-chevron-right"></i>
                             </button>
                        
-                            <button onClick={() => this.props.history.push('/ElectronicRepair/waterRepair/shop/#Service')}>
+                            <button onClick={() => this.props.history.push('/ElectronicRepair/waterRepair/shop')}>
                                 Servicing/Filter Change<i className="fa fa-chevron-right"></i>
                             </button>
 
-                            <button onClick={() => this.props.history.push('/ElectronicRepair/waterRepair/shop/#Cleaning')}>
+                            <button onClick={() => this.props.history.push('/ElectronicRepair/waterRepair/shop')}>
                                 Cleaning<i className="fa fa-chevron-right"></i>
                             </button>
                         </div>

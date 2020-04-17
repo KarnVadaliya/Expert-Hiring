@@ -268,18 +268,18 @@ class FridgeRepair extends Component{
                         <h4>Need a Fridge Technician for:</h4>
                         <div className="serviceButtonGroup">
                          
-                            <button onClick={() => this.props.history.push('/ApplianceRepair/fridgeRepair/shop/#Service')}>
+                            <button onClick={() => this.props.history.push('/ApplianceRepair/fridgeRepair/shop')}>
                                 Repair/ Service <i style={{textAlign:"right"}} className="fa fa-chevron-right" />
                             </button> 
                        
-                            <button onClick={() => this.props.history.push('/ApplianceRepair/fridgeRepair/shop/#compressor')}>
+                            <button onClick={() => this.props.history.push('/ApplianceRepair/fridgeRepair/shop')}>
                                 Compressor/ Cooling Issue<i className="fa fa-chevron-right"></i>
                             </button>
 
-                            <button onClick={() => this.props.history.push('/ApplianceRepair/fridgeRepair/shop/#Gas')}>
+                            <button onClick={() => this.props.history.push('/ApplianceRepair/fridgeRepair/shop')}>
                                 Gas Filling<i className="fa fa-chevron-right"></i>
                             </button>
-                            <button onClick={() => this.props.history.push('/ApplianceRepair/fridgeRepair/shop/#OtherIssues')}>
+                            <button onClick={() => this.props.history.push('/ApplianceRepair/fridgeRepair/shop')}>
                                 Other Issues<i className="fa fa-chevron-right"></i>
                             </button>
                         </div>

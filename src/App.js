@@ -12,8 +12,8 @@ import Careers from './components/Careers';
 import Payment from './components/Payment';
 import PaymentHistory from "./components/PaymentHistory";
 
-import SofaCleaning from './components/Services/Cleaning/sofaCleaning/SofaCleaning';
-import SofaCleaningCart from './components/Services/Cleaning/sofaCleaning/SofaCleaningCart';
+import SofaCleaning from './components/Services/Cleaning/SofaCleaning/SofaCleaning';
+import SofaCleaningCart from './components/Services/Cleaning/SofaCleaning/SofaCleaningCart';
 
 import Electrician from './components/Services/Home Service/Electrician/Electrician';
 import ElectricianCart from './components/Services/Home Service/Electrician/ElectricianCart';
@@ -95,8 +95,8 @@ function App() {
                   <Route path="/ApplianceRepair/fridgeRepair/shop" component={FridgeRepairCart}></Route>
 
                   
-                  <Route path="/Massage/massages" exact component={BodyMassage}></Route>
-                  <Route path="/Massage/BodyMassageCart/shop" exact component={BodyMassageCart}></Route>
+                  <Route path="/Massage/bodyMassage" exact component={BodyMassage}></Route>
+                  <Route path="/Massage/bodyMassage/shop" component={BodyMassageCart}></Route>
 
                   <CartModal />
                   <Footer />    

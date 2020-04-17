@@ -255,15 +255,15 @@ class MicrowaveRepair extends Component{
                         <h4>Need a Microwave Technician for:</h4>
                         <div className="serviceButtonGroup">
                          
-                            <button onClick={() => this.props.history.push('/ElectronicRepair/microwaveRepair/shop/#Repair')}>
+                            <button onClick={() => this.props.history.push('/ElectronicRepair/microwaveRepair/shop')}>
                                 Repair <i style={{textAlign:"right"}} className="fa fa-chevron-right" />
                             </button> 
                        
-                            <button onClick={() => this.props.history.push('/ElectronicRepair/microwaveRepair/shop/#Service')}>
+                            <button onClick={() => this.props.history.push('/ElectronicRepair/microwaveRepair/shop')}>
                                 Service<i className="fa fa-chevron-right"></i>
                             </button>
 
-                            <button onClick={() => this.props.history.push('/ElectronicRepair/microwaveRepair/shop/#OtherIssues')}>
+                            <button onClick={() => this.props.history.push('/ElectronicRepair/microwaveRepair/shop')}>
                                 Other Issues<i className="fa fa-chevron-right"></i>
                             </button>
                         </div>
