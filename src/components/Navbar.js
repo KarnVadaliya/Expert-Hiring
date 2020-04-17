@@ -72,7 +72,8 @@ class NavbarComponent extends Component {
                     
                       <img
                         alt="..."
-                        src={require("../assets/img/brand/blue.png")}
+                        src={require("../logo.png")}
+                        style={{width:"120px", height:"120px", marginTop:"-47px"}}
                       />
                     
                   </Col>
