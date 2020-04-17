@@ -50,6 +50,8 @@ import Haircut from './components/Services/Salon/Hair/Haircut';
 import HaircutCart from './components/Services/Salon/Hair/HaircutCart';
 import CartModal from './components/Services/Cleaning/SofaCleaning/CartModal';
 
+import BodyMassage from './components/Services/Massage/BodyMassage/BodyMassage';
+import BodyMassageCart from './components/Services/Massage/BodyMassage/BodyMassageCart';
 
 function App() {
   return (
@@ -100,8 +102,14 @@ function App() {
                   <Route path="/ApplianceRepair/washingMachineRepair/shop" component={WMRepairCart}></Route>
                   <Route path="/ApplianceRepair/fridgeRepair" exact component={FridgeRepair}></Route>
                   <Route path="/ApplianceRepair/fridgeRepair/shop" component={FridgeRepairCart}></Route>
+
+                  
+                  <Route path="/Massage/massages" exact component={BodyMassage}></Route>
+                  <Route path="/Massage/BodyMassageCart/shop" exact component={BodyMassageCart}></Route>
+
                   <CartModal />
-                  <Footer />                      
+                  <Footer />    
+
                   
                    
               </div>

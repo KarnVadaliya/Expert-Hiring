@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import '../index.css'
 import '../Careers.css';
-import  Axios, * as others  from "axios";
+import  Axios  from "axios";
 
 
 import {
     FormGroup,
     Form,
     Input,
-
     Row,
     Col,
     Button,
@@ -43,9 +42,30 @@ export default class ContactUs extends Component {
             phone: '',
             message: '',
             disabled: false,
+            regExEmail : /^[^@]+@[^\.]+\..+$/,
+            regExPhone : /^\d{10}$/,
             emailSent: null
         }
       }
+    
+
+      handleEmailError = e =>{
+        if(!this.state.email.match(this.state.regExEmail)){
+            this.setState({
+                email:""
+            })
+        }
+      }
+
+      handlePhoneError = e =>{
+        if(!this.state.phone.match(this.state.regExPhone)){
+            this.setState({
+              phone:""
+            })
+        }
+      }
+
+
 
     handleOnChangeEmail = e =>{
         this.setState({
@@ -77,34 +97,42 @@ export default class ContactUs extends Component {
             disabled: true
         });
 
-            Axios.post('http://localhost:3030/', this.state)
+            Axios.post('http://localhost:5000/users/sendQuery', 
+            this.state,
+            {
+                "headers": {
+                  'Content-Type': 'application/json',
+                }
+              })
+            .then(res => {
+                this.setState({
+                    disabled: false,
+                    emailSent: true
+                });
+                
+            })
+            .catch(err => {
+                console.log(err);
+
+                this.setState({
+                    disabled: false,
+                    emailSent: false
+                });
+            })
+
+
             
-            // .then(res => {
-            //     if(res.data.success) {
-            //         this.setState({
-            //             disabled: false,
-            //             emailSent: true
-            //         });
-            //     } else {
-            //         this.setState({
-            //             disabled: false,
-            //             emailSent: false
-            //         });
-            //     }
-            // })
-            // .catch(err => {
-            //     console.log(err);
 
-            //     this.setState({
-            //         disabled: false,
-            //         emailSent: false
-            //     });
-            // })
-    //         this.resetForm();
-    //  }   
+            this.resetForm();
+     }   
 
-    // resetForm = () => {
-    //     document.getElementById("myForm").reset();
+    resetForm = () => {
+        this.setState({
+            email: '',
+            fullName: '',
+            phone: '',
+            message: ''
+        })
     }
 
 
@@ -113,7 +141,7 @@ export default class ContactUs extends Component {
         
         return (
             <section className = "my-5">
-                <div className= "container">
+                <div className= "container" style={{marginTop:"-25px"}}>
                 <UncontrolledCarousel items={items} />
                 <br></br>
                     <div className = "well well-sm">
@@ -139,7 +167,14 @@ export default class ContactUs extends Component {
                                                     id="exampleFormControlInput1"
                                                     placeholder="name@example.com"
                                                     type="email"
+                                                    required
                                                     value={this.state.email}
+                                                    onFocus={()=>{
+                                                        this.setState({
+                                                            emailSent: null
+                                                        })
+                                                    }}
+                                                    onBlur={this.handleEmailError}
                                                     onChange={this.handleOnChangeEmail}
                                                 />
                                             </FormGroup>
@@ -152,7 +187,13 @@ export default class ContactUs extends Component {
                                                 <Input  
                                                     placeholder="Full Name" 
                                                     type="text" 
+                                                    required
                                                     value={this.state.fullName}
+                                                    onFocus={()=>{
+                                                        this.setState({
+                                                            emailSent: null
+                                                        })
+                                                    }}
                                                     onChange={this.handleOnChangeName}
                                                 />
                                             </FormGroup>
@@ -165,7 +206,14 @@ export default class ContactUs extends Component {
                                                 <Input  
                                                     placeholder="Phone" 
                                                     type="text" 
+                                                    required
                                                     value={this.state.phone}
+                                                    onFocus={()=>{
+                                                        this.setState({
+                                                            emailSent: null
+                                                        })
+                                                    }}
+                                                    onBlur={this.handlePhoneError}
                                                     onChange={this.handleOnChangePhone}
                                                 />
                                             </FormGroup>
@@ -180,7 +228,13 @@ export default class ContactUs extends Component {
                                                     placeholder="Write your message here ..."
                                                     rows="3"
                                                     type="textarea"
+                                                    required
                                                     value={this.state.message}
+                                                    onFocus={()=>{
+                                                        this.setState({
+                                                            emailSent: null
+                                                        })
+                                                    }}
                                                     onChange={this.handleOnChangeComments}
                                                 />
                                             </FormGroup>
@@ -211,7 +265,7 @@ export default class ContactUs extends Component {
                 <br></br>
                 <br></br>
                 <h1 className= "text-center"><strong> Our Main Offices</strong></h1>
-            <div className= "container"> 
+            <div className= "container" style={{marginBottom:"100px"}}> 
                 <div className = "well well-sm">
                     <div className = "row">
                         <div className = "col-md-4">

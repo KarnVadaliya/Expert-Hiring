@@ -8,9 +8,8 @@ import Scrollspy from 'react-scrollspy'
 import Axios from 'axios'
 import { connect } from 'react-redux'
 import { setSearch } from '../../../../actions/setSearch';
-import { Button } from 'react-bootstrap';
 
-class SofaCleaning extends Component{
+class BodyMassage extends Component{
 
     state = {
         professionals: [],
@@ -20,16 +19,17 @@ class SofaCleaning extends Component{
     }
 
     componentDidMount(){
+        this.props.setSearch("");
         Axios.post('http://localhost:5000/professionals/category',
         {
-            category: "Sofa Cleaning",
-            city: this.props.mainPageState.city
+            category: "Body Massage"
         },{
             "headers": {
               'Content-Type': 'application/json',
             }
           })
           .then(res=>{
+            
               const reviews = [];
               res.data.map(professional=>professional.reviews.map(review=>reviews.push(review)));
               this.setState({
@@ -56,7 +56,7 @@ class SofaCleaning extends Component{
         return reviewList;
     }
 
-    getElements = (array) => array.slice(-2);
+    getElements = (array) => array.slice(0,2);
 
     seeMoreOnClick = (e) => {
         this.setState({
@@ -67,18 +67,6 @@ class SofaCleaning extends Component{
     seeMoreReviews = (e) =>{
         this.setState({
             seeMoreReviews: true
-        })
-    }
-
-    seeLessOnClick = (e) =>{
-        this.setState({
-            seeMore: false
-        })
-    }
-     
-    seeLessReviews = (e) => {
-        this.setState({
-            seeMoreReviews: false
         })
     }
 
@@ -94,7 +82,7 @@ class SofaCleaning extends Component{
                     <React.Fragment key={professional._id}>
                         <img src={require("../../../../assets/img/serviceBackgrounds/random.jpg")}></img>
                         <div style={{marginLeft:"120px"}}>
-                            <span className="name">{professional.name}</span><br></br><br></br>
+                            <span className="name">{professional.name}</span><br></br>
                             <p>{professional.address}</p>
                             <span style={{marginTop:"-2px"}} className="rating">&#9733; {professional.ratings} <span style={{marginLeft:"2px", marginRight:"5px",color:"black"}}> ({professional.numberOfRatings} ratings) &emsp; &#x25cf; </span>  {professional.rated5Stars} times rated 5 star</span>
                             <br></br>    
@@ -148,10 +136,10 @@ class SofaCleaning extends Component{
             <div className="service" style={{backgroundColor:"#F5F5F5"}}>
                  <div className="serviceBg" style={{backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3),
                        rgba(0, 0, 0, 0.4)),url(${Background})`}}>
-                    <h2 id="h2">Sofa Cleaning Service in {this.props.mainPageState.city}</h2>
+                    <h2>Massage Service in {this.props.mainPageState.city}</h2>
                 </div>
 
-                <div className="info" id="scrollspy">
+                <div className="info">
                     <Scrollspy items={ ['How it Works', 'Professionals', 'Customer Reviews'] } currentClassName="is-current">
                                 <li><a active href="#Works">How it Works</a></li>
                                 <li><a href="#Professionals">Professionals</a></li>
@@ -173,7 +161,7 @@ class SofaCleaning extends Component{
                             <p>&emsp;&emsp;</p>
                             <div>
                                 <h5>Choose a Salon Service</h5>
-                                <p>Choose from various salon packges and services</p>
+                                <p>Choose from various salon packages and services</p>
                                
                             </div>
                             <hr ></hr>
@@ -186,10 +174,10 @@ class SofaCleaning extends Component{
                             <p>&emsp;&emsp;</p>
                             <div>
                                 <h5>Choose your time-slot</h5>
-                                <p>Pick time as per you convenience</p>
+                                <p>Hello There</p>
                                
                             </div>
-                            <hr ></hr>                            
+                            <hr ></hr>
                         </li>
                         <li>
                             <div>
@@ -197,50 +185,17 @@ class SofaCleaning extends Component{
                             </div>
                             <p>&emsp;&emsp;</p>
                             <div>
-                            <h5>Hassle-free service</h5>
-                                <p>Our Professionals will get in touch with you an hour before the service</p>
+                                <h5>Pay</h5>
+                                <p>Hello There</p>
                             </div>
                             <hr ></hr>
                         </li>
-                        
-                            <Button id="bookNow" style={{width:"100%", margin:"auto"}} onClick={() => this.props.history.push('/Cleaning/sofaCleaning/shop/#3SofaSeats')}>Book Now!</Button>
-                        
                     </ul>
                 </section>
                 <br></br>
-                <div className="serviceBox">
-                    <div className="serviceBoxButtons">
-                        <h4>Need a Cleaning Professional for :</h4>
-                        <div className="serviceButtonGroup">
-                         
-                            <button onClick={() => this.props.history.push('/Cleaning/sofaCleaning/shop/#3SofaSeats')}>
-                                3 Sofa Seats <i style={{textAlign:"right"}} className="fa fa-chevron-right" />
-                            </button> 
-                       
-                            <button onClick={() => this.props.history.push('/Cleaning/sofaCleaning/shop/#4SofaSeats')}>
-                                4 Sofa Seats<i className="fa fa-chevron-right"></i>
-                            </button>
-
-                            <button onClick={() => this.props.history.push('/cleaning/sofaCleaning/shop/#5SofaSeats')}>
-                                5 Sofa Seats<i className="fa fa-chevron-right"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div className="serviceBoxRatings" >
-                        <div className="ratings"> 
-                            <span style={{fontSize:"26px", color:"#5300a5", fontWeight:"580"}}>&#9733; {this.averageUserRatings()}</span><span style={{fontSize:"20px", color:"#5300a5", fontWeight:"580"}}>/5</span>
-                            <p>based on {this.state.userReviews.length} ratings</p>
-                        </div>
-                        
-                       <div className="bookings">   
-                           <span style={{fontSize:"25px", color:"black", fontWeight:"580"}}>7,483</span>
-                           <p>Bookings done in past month</p>
-                       </div>
-                    </div>
-                </div>
                 <section className="info professionals" id="Professionals">
-                    <h4>Cleaning Professionals</h4>
-                    <h6>{this.state.professionals.length} Sofa cleaning professionals in Ahmedabad</h6>
+                    <h4>Massage Professionals</h4>
+                    <h6>{this.state.professionals.length} cleaning professionals in Ahmedabad</h6>
                     <hr></hr>
                     <div className="professionalsDetails">
                         
@@ -251,11 +206,6 @@ class SofaCleaning extends Component{
                                 <button onClick={this.seeMoreOnClick}><i className="fa fa-arrow-down"></i>&nbsp;&nbsp;See more</button>
                             </div>
                         }
-                        { this.state.seeMore &&
-                            <div style={{textAlign:"center",padding:"20px"}}>
-                                <button onClick={this.seeLessOnClick}><i className="fa fa-arrow-up"></i>&nbsp;&nbsp;View less</button>
-                            </div>
-                        }
                         
                     </div>
                     <div >
@@ -264,40 +214,33 @@ class SofaCleaning extends Component{
                 <br></br>
                 <section className="info reviews" id="Reviews">
                     <h4>Recent Customer Reviews</h4>
-                    <h6>For Sofa Cleaning Professionals in Ahmedabad</h6>                   
+                    <h6>For Massage Professionals in Boston</h6>                   
                     <div className="crating">
                         <span style={{fontSize:"38px", color:"#5300a5", fontWeight:"650"}}>&#9733; {this.averageUserRatings()}</span><span style={{fontSize:"20px", color:"#5300a5", fontWeight:"600"}}>/5</span> &nbsp;based on {this.state.userReviews.length} ratings
                     </div>
                     <hr></hr>
                     {reviewsList}          
 
-                   { !this.state.seeMoreReviews &&
-                       <div style={{textAlign:"center",padding:"20px"}}>
+                    <div style={{textAlign:"center",padding:"20px"}}>
                         <button onClick={this.seeMoreReviews}><i className="fa fa-arrow-down"></i>&nbsp;&nbsp;View more</button>
-                    </div> }  
-
-                    { this.state.seeMoreReviews &&
-                       <div style={{textAlign:"center",padding:"20px"}}>
-                        <button onClick={this.seeLessReviews}><i className="fa fa-arrow-up"></i>&nbsp;&nbsp;View less</button>
-                    </div> }   
-
+                    </div>          
                 </section>
                 </div>
                 <div className="serviceBox">
                     <div className="serviceBoxButtons">
-                        <h4>Need Sofa Cleaning for :</h4>
+                        <h4>Need a Massage Professional for :</h4>
                         <div className="serviceButtonGroup">
                          
-                            <button onClick={() => this.props.history.push('/Cleaning/sofaCleaning/shop/#3SofaSeats')}>
-                                3 Sofa Seats <i style={{textAlign:"right"}} className="fa fa-chevron-right" />
+                            <button onClick={() => this.props.history.push('/Massage/BodyMassageCart/shop')}>
+                                Body Pain relief <i style={{textAlign:"right"}} className="fa fa-chevron-right" />
                             </button> 
                        
-                            <button onClick={() => this.props.history.push('/Cleaning/sofaCleaning/shop/#4SofaSeats')}>
-                                4 Sofa Seats<i className="fa fa-chevron-right"></i>
+                            <button onClick={() => this.props.history.push('/Massage/BodyMassageCart/shop')}>
+                                Detoxify<i className="fa fa-chevron-right"></i>
                             </button>
 
-                            <button onClick={() => this.props.history.push('/cleaning/sofaCleaning/shop/#5SofaSeats')}>
-                                5 Sofa Seats<i className="fa fa-chevron-right"></i>
+                            <button onClick={() => this.props.history.push('/Massage/BodyMassageCart/shop')}>
+                                Stress relief<i className="fa fa-chevron-right"></i>
                             </button>
                         </div>
                     </div>
@@ -313,7 +256,6 @@ class SofaCleaning extends Component{
                        </div>
                     </div>
                 </div>
-                
             </div>
         )
     }
@@ -323,4 +265,4 @@ const mapStateToProps = (state) => ({
     mainPageState: state.mainPageState
 });
 
-export default connect(mapStateToProps, { setSearch })(SofaCleaning);
+export default connect(mapStateToProps, { setSearch })(BodyMassage);

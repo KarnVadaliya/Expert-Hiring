@@ -74,6 +74,9 @@ app.use('/Salon/salonSpa', productsSalonSpaRouter);
 const productsHaircutRouter = require('./routes/salon/productsHair');
 app.use('/Salon/haircut', productsHaircutRouter);
 
+const productsMassageRouter = require('./routes/massage/productsMassage');
+app.use('/Massage/BodyMassage', productsMassageRouter);
+
 // const salonRouter = require('./routes/salon/productsMakeUp');
 // app.use('/salon/makeup', salonRouter);
 
