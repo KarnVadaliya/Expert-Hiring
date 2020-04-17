@@ -15,21 +15,21 @@ import { Link } from "react-router-dom";
 
   
 
-class ACRepairCart extends Component {
+class KitchenCleaningCart extends Component {
     constructor(props){
         super(props);
   
         this.state = {
-          services: ['Servicing','Repairing','Installation'],
+          services: ['Gas Stoves','Shelves & Slabs','Chimney Cleaning','Floor'],
           products: []
         };
     }
 
     componentDidMount(){
-        Axios.get('http://localhost:5000/ApplianceRepair/acRepair/')
+        Axios.get('http://localhost:5000/cleaning/sofaCleaning/')
             .then(res=>{
                 console.log(res.data);
-                let tempList = []
+                let tempList = [];
                 res.data.map(product => tempList.push(product));
                 this.setState({
                     products: tempList
@@ -42,12 +42,14 @@ class ACRepairCart extends Component {
 
     getList = (name) =>{
         switch (name) {
-            case 'Repairing':
-                return global.aRepairList;
-            case 'Servicing':
-                return global.aServiceList;
-            case 'Installation':
-                return global.aInstallList;
+            case 'Gas Stove':
+                return global.threeList;
+            case 'Shelves & Slabs':
+                return global.fourList;
+            case 'Chimney Cleaning':
+                return global.fiveList;
+            case 'Floor':
+                return global.sixList;
             default:
                 break;
         }
@@ -67,6 +69,7 @@ class ACRepairCart extends Component {
                 product.inCart = false;
             }
         });
+
         console.log(this.state);
         const { services } = this.state;
 
@@ -83,30 +86,35 @@ class ACRepairCart extends Component {
         );
 
         
-        const repairCategory = [];
-        for(var product in this.state.products){
-            if(this.state.products[product].category === 'Repairing')
-                repairCategory.push(this.state.products[product])
-        }
+        const threeSeatsCategory = [];
+        tempList.map(product=>{
+            if(product.category === 'Gas Stove')
+                threeSeatsCategory.push(product);
+        });
       
 
-        const serviceCategory = [];
-        for(var product in this.state.products){
-            if(this.state.products[product].category === 'Servicing')
-                serviceCategory.push(this.state.products[product])
-        }
+        const fiveSeatsCategory = [];
+        tempList.map(product=>{
+            if(product.category === 'Chimney Cleaning')
+                fiveSeatsCategory.push(product);
+        });
         
 
-        const installCategory = [];
-        for(var product in this.state.products){
-            if(this.state.products[product].category === 'Installation')
-                installCategory.push(this.state.products[product])
-        }
+        const fourSeatsCategory = [];
+        tempList.map(product=>{
+            if(product.category === 'Shelves & Slabs')
+                fourSeatsCategory.push(product);
+        });
 
+        const sixSeatsCategory = [];
+        tempList.map(product=>{
+            if(product.category === 'Floor')
+                sixSeatsCategory.push(product);
+        });
         
 
-        global.aRepairList = (repairCategory.length) ? (
-            repairCategory.map(product => {
+        global.threeList = (threeSeatsCategory.length) ? (
+            threeSeatsCategory.map(product => {
                 return(                    
                     <ProductCard product={product}/>
                 ) 
@@ -115,8 +123,8 @@ class ACRepairCart extends Component {
             <LoadingCard />
         );
 
-        global.aServiceList = (serviceCategory.length) ? (
-            serviceCategory.map(product => {
+        global.fourList = (fourSeatsCategory.length) ? (
+            fourSeatsCategory.map(product => {
                 return(
                     <ProductCard product={product}/>
                 ) 
@@ -125,8 +133,8 @@ class ACRepairCart extends Component {
             <LoadingCard />
         );
 
-        global.aInstallList = (installCategory.length) ? (
-            installCategory.map(product => {
+        global.fiveList = (fiveSeatsCategory.length) ? (
+            fiveSeatsCategory.map(product => {
                 return(
                    <ProductCard product={product}/>
                 ) 
@@ -134,6 +142,17 @@ class ACRepairCart extends Component {
         ) : (
             <LoadingCard />
         );
+
+        global.sixList = (sixSeatsCategory.length) ? (
+            sixSeatsCategory.map(product => {
+                return(
+                    <ProductCard product={product}/>
+                ) 
+            })
+        ) : (
+            <LoadingCard />
+        );
+
 
         const sectionList = this.state.services.map(service =>{
             return(
@@ -162,9 +181,9 @@ class ACRepairCart extends Component {
                     </Button>
                 </div>
 
-                <Link id="back" to="/ApplianceRepair/acRepair"><i className="fa fa-chevron-left" style={{fontSize:"50px", marginLeft:"10%", position:"absolute", top:"9%"}}/></Link>
+                <Link to="/Cleaning/KitchenCleaning"><i className="fa fa-chevron-left" style={{fontSize:"50px", marginLeft:"10%", position:"absolute", top:"9%"}}/></Link>
 
-                <h1 style={{fontWeight:"bold", letterSpacing:"2px", textTransform:"uppercase", textAlign:"center"}}>Professional AC Repairing</h1>
+                <h1 style={{fontWeight:"bold", letterSpacing:"2px", textTransform:"uppercase", textAlign:"center"}}>Kitchen Cleaning</h1>
                 <br></br><br></br>
                 <div className="servicesSection">
                     <div className="servicesNav">
@@ -187,4 +206,4 @@ const mapStateToProps = (state) => ({
     cartState: state.cartState
 });
 
-export default connect(mapStateToProps,{ toggleCartModal, addProductFromDB })(ACRepairCart);
+export default connect(mapStateToProps,{ toggleCartModal, addProductFromDB })(KitchenCleaningCart);

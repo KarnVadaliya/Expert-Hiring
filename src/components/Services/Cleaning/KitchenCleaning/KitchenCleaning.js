@@ -2,16 +2,14 @@ import React, { Component } from 'react';
 import "../../../../assets/vendor/nucleo/css/nucleo.css";
 import "../../../../assets/vendor/font-awesome/css/font-awesome.min.css";
 import "../../../../assets/scss/argon-design-system-react.scss";
-import Background from '../../../../assets/img/serviceBackgrounds/wp.jpg'
+import Background from '../../../../assets/img/serviceBackgrounds/sf.jpg'
 import '../../services.css'
 import Scrollspy from 'react-scrollspy'
 import Axios from 'axios'
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'
 import { setSearch } from '../../../../actions/setSearch';
-import { Button } from 'react-bootstrap';
 
-
-class WaterRepair extends Component{
+class KitchenCleaning extends Component{
 
     state = {
         professionals: [],
@@ -21,9 +19,10 @@ class WaterRepair extends Component{
     }
 
     componentDidMount(){
+        
         Axios.post('http://localhost:5000/professionals/category',
         {
-            category: "Water Purifier Repair",
+            category: "Kitchen Cleaning",
             city: this.props.mainPageState.city
         },{
             "headers": {
@@ -31,7 +30,6 @@ class WaterRepair extends Component{
             }
           })
           .then(res=>{
-            //   const userReviews = this.sortReviews(res.data);
               const reviews = [];
               res.data.map(professional=>professional.reviews.map(review=>reviews.push(review)));
               this.setState({
@@ -58,7 +56,7 @@ class WaterRepair extends Component{
         return reviewList;
     }
 
-    getElements = (array) => array.slice(0,2);
+    getElements = (array) => array.slice(-2);
 
     seeMoreOnClick = (e) => {
         this.setState({
@@ -69,6 +67,18 @@ class WaterRepair extends Component{
     seeMoreReviews = (e) =>{
         this.setState({
             seeMoreReviews: true
+        })
+    }
+
+    seeLessOnClick = (e) =>{
+        this.setState({
+            seeMore: false
+        })
+    }
+     
+    seeLessReviews = (e) => {
+        this.setState({
+            seeMoreReviews: false
         })
     }
 
@@ -84,7 +94,7 @@ class WaterRepair extends Component{
                     <React.Fragment key={professional._id}>
                         <img src={require("../../../../assets/img/serviceBackgrounds/random.jpg")}></img>
                         <div style={{marginLeft:"120px"}}>
-                            <span className="name">{professional.name}</span><br></br>
+                            <span className="name">{professional.name}</span><br></br><br></br>
                             <p>{professional.address}</p>
                             <span style={{marginTop:"-2px"}} className="rating">&#9733; {professional.ratings} <span style={{marginLeft:"2px", marginRight:"5px",color:"black"}}> ({professional.numberOfRatings} ratings) &emsp; &#x25cf; </span>  {professional.rated5Stars} times rated 5 star</span>
                             <br></br>    
@@ -138,13 +148,13 @@ class WaterRepair extends Component{
             <div className="service" style={{backgroundColor:"#F5F5F5"}}>
                  <div className="serviceBg" style={{backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3),
                        rgba(0, 0, 0, 0.4)),url(${Background})`}}>
-                    <h2 id="h2">Water Purifier Repair Service in {this.props.mainPageState.city}</h2>
+                    <h2>Kitchen Cleaning Service in {this.props.mainPageState.city}</h2>
                 </div>
 
-                <div className="info" id="scrollspy">
+                <div className="info">
                     <Scrollspy items={ ['How it Works', 'Professionals', 'Customer Reviews'] } currentClassName="is-current">
                                 <li><a active href="#Works">How it Works</a></li>
-                                <li><a href="#Professionals">Technicians</a></li>
+                                <li><a href="#Professionals">Professionals</a></li>
                                 <li><a href="#Reviews">Customer Reviews</a></li>
                     </Scrollspy>
                 </div>
@@ -162,21 +172,8 @@ class WaterRepair extends Component{
                             </div> 
                             <p>&emsp;&emsp;</p>
                             <div>
-                                <h5>Choose the types of RO</h5>
-                                <p>We Service All typed of RO</p>
-                               
-                            </div>
-                            <hr ></hr>
-                        </li>
-                        <li>
-                            <div>
-                                    <img src={require("../../../../assets/img/serviceBackgrounds/icon1.png")}></img>
-                                    <div className="verticalLine"></div>
-                            </div> 
-                            <p>&emsp;&emsp;</p>
-                            <div>
-                                <h5>Choose the service you need</h5>
-                                <p>We provide repairs and Servicing</p>
+                            <h5>Select size of you kitchen</h5>
+                                <p>Browse through various packages and services</p>
                                
                             </div>
                             <hr ></hr>
@@ -189,7 +186,7 @@ class WaterRepair extends Component{
                             <p>&emsp;&emsp;</p>
                             <div>
                                 <h5>Choose your time-slot</h5>
-                                <p>we Service from 9am-9pm</p>
+                                <p>Pick time as per you convenience</p>
                                
                             </div>
                             <hr ></hr>
@@ -200,19 +197,17 @@ class WaterRepair extends Component{
                             </div>
                             <p>&emsp;&emsp;</p>
                             <div>
-                                <h5>Hassle-free service</h5>
-                                <p>Our professional will get in touch with you one hour before the service</p>
+                            <h5>Hassle-free service</h5>
+                                <p>Our Professionals will get in touch with you an hour before the service</p>
                             </div>
                             <hr ></hr>
                         </li>
-                        <Button id="bookNow" style={{width:"100%", margin:"auto"}} onClick={() => this.props.history.push('/ElectronicRepair/waterRepair/shop/#Repair')}>Book Now!</Button>
-
                     </ul>
                 </section>
                 <br></br>
                 <section className="info professionals" id="Professionals">
-                    <h4>Technicians</h4>
-                    <h6>{this.state.professionals.length} RO and Water Purifier Repair Service Professionals in {this.props.mainPageState.city}</h6>
+                    <h4>Cleaning Professionals</h4>
+                    <h6>{this.state.professionals.length} Kitchen cleaning professionals in Ahmedabad</h6>
                     <hr></hr>
                     <div className="professionalsDetails">
                         
@@ -223,6 +218,11 @@ class WaterRepair extends Component{
                                 <button onClick={this.seeMoreOnClick}><i className="fa fa-arrow-down"></i>&nbsp;&nbsp;See more</button>
                             </div>
                         }
+                        { this.state.seeMore &&
+                            <div style={{textAlign:"center",padding:"20px"}}>
+                                <button onClick={this.seeLessOnClick}><i className="fa fa-arrow-up"></i>&nbsp;&nbsp;View less</button>
+                            </div>
+                        }
                         
                     </div>
                     <div >
@@ -231,37 +231,44 @@ class WaterRepair extends Component{
                 <br></br>
                 <section className="info reviews" id="Reviews">
                     <h4>Recent Customer Reviews</h4>
-                    <h6>of RO and Water Purifier Repair Service Professionals in {this.props.mainPageState.city}</h6>                   
+                    <h6>For Kitchen Cleaning Service Professionals in Ahmedabad</h6>                   
                     <div className="crating">
                         <span style={{fontSize:"38px", color:"#5300a5", fontWeight:"650"}}>&#9733; {this.averageUserRatings()}</span><span style={{fontSize:"20px", color:"#5300a5", fontWeight:"600"}}>/5</span> &nbsp;based on {this.state.userReviews.length} ratings
                     </div>
                     <hr></hr>
                     {reviewsList}          
 
-                    <div style={{textAlign:"center",padding:"20px"}}>
+                   { !this.state.seeMoreReviews &&
+                       <div style={{textAlign:"center",padding:"20px"}}>
                         <button onClick={this.seeMoreReviews}><i className="fa fa-arrow-down"></i>&nbsp;&nbsp;View more</button>
-                    </div>          
+                    </div> }  
+
+                    { this.state.seeMoreReviews &&
+                       <div style={{textAlign:"center",padding:"20px"}}>
+                        <button onClick={this.seeLessReviews}><i className="fa fa-arrow-up"></i>&nbsp;&nbsp;View less</button>
+                    </div> }   
+
                 </section>
                 </div>
                 <div className="serviceBox">
                     <div className="serviceBoxButtons">
-                        <h4>Need a RO Technician for:</h4>
+                        <h4>Need Kitchen Deep Cleaning for :</h4>
                         <div className="serviceButtonGroup">
                          
-                            <button onClick={() => this.props.history.push('/ElectronicRepair/waterRepair/shop/#Repair')}>
-                                Repair <i style={{textAlign:"right"}} className="fa fa-chevron-right" />
+                            <button onClick={() => this.props.history.push('/Cleaning/KitchenCleaning/shop/#Gas')}>
+                                Gas Stove Cleaning <i style={{textAlign:"right"}} className="fa fa-chevron-right" />
                             </button> 
-
-                            <button onClick={() => this.props.history.push('/ElectronicRepair/waterRepair/shop/#Install')}>
-                                Installation/Fitting<i className="fa fa-chevron-right"></i>
-                            </button>
                        
-                            <button onClick={() => this.props.history.push('/ElectronicRepair/waterRepair/shop/#Service')}>
-                                Servicing/Filter Change<i className="fa fa-chevron-right"></i>
+                            <button onClick={() => this.props.history.push('/Cleaning/KitchenCleaning/shop/#Shelves')}>
+                                Shelves & Slabs/Tiles <i className="fa fa-chevron-right"></i>
                             </button>
 
-                            <button onClick={() => this.props.history.push('/ElectronicRepair/waterRepair/shop/#Cleaning')}>
-                                Cleaning<i className="fa fa-chevron-right"></i>
+                            <button onClick={() => this.props.history.push('/cleaning/KitchenCleaning/shop/#Chimney')}>
+                                Chimney Cleaning<i className="fa fa-chevron-right"></i>
+                            </button>
+
+                            <button onClick={() => this.props.history.push('/cleaning/KitchenCleaning/shop/#Floor')}>
+                                Floor<i className="fa fa-chevron-right"></i>
                             </button>
                         </div>
                     </div>
@@ -281,8 +288,9 @@ class WaterRepair extends Component{
         )
     }
 }
+
 const mapStateToProps = (state) => ({
     mainPageState: state.mainPageState
 });
 
-export default connect(mapStateToProps, { setSearch })(WaterRepair);
+export default connect(mapStateToProps, { setSearch })(KitchenCleaning);

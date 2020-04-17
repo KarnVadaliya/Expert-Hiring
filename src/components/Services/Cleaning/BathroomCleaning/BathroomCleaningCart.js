@@ -15,21 +15,21 @@ import { Link } from "react-router-dom";
 
   
 
-class ACRepairCart extends Component {
+class BathroomCleaningCart extends Component {
     constructor(props){
         super(props);
   
         this.state = {
-          services: ['Servicing','Repairing','Installation'],
+          services: ['1 Bathroom','2 Bathroom','3 Bathroom','4 Bathroom'],
           products: []
         };
     }
 
     componentDidMount(){
-        Axios.get('http://localhost:5000/ApplianceRepair/acRepair/')
+        Axios.get('http://localhost:5000/cleaning/sofaCleaning/')
             .then(res=>{
                 console.log(res.data);
-                let tempList = []
+                let tempList = [];
                 res.data.map(product => tempList.push(product));
                 this.setState({
                     products: tempList
@@ -42,12 +42,14 @@ class ACRepairCart extends Component {
 
     getList = (name) =>{
         switch (name) {
-            case 'Repairing':
-                return global.aRepairList;
-            case 'Servicing':
-                return global.aServiceList;
-            case 'Installation':
-                return global.aInstallList;
+            case '1 Bathroom':
+                return global.oneList;
+            case '2 Bathroom':
+                return global.twoList;
+            case '3 Bathroom':
+                return global.threeList;
+            case '4 Bathroom':
+                return global.fourList;
             default:
                 break;
         }
@@ -67,6 +69,7 @@ class ACRepairCart extends Component {
                 product.inCart = false;
             }
         });
+
         console.log(this.state);
         const { services } = this.state;
 
@@ -83,30 +86,35 @@ class ACRepairCart extends Component {
         );
 
         
-        const repairCategory = [];
-        for(var product in this.state.products){
-            if(this.state.products[product].category === 'Repairing')
-                repairCategory.push(this.state.products[product])
-        }
+        const oneBathroomCategory = [];
+        tempList.map(product=>{
+            if(product.category === '1 Bathroom')
+                oneBathroomCategory.push(product);
+        });
       
 
-        const serviceCategory = [];
-        for(var product in this.state.products){
-            if(this.state.products[product].category === 'Servicing')
-                serviceCategory.push(this.state.products[product])
-        }
+        const twoBathroomCategory = [];
+        tempList.map(product=>{
+            if(product.category === '2 Bathroom')
+                twoBathroomCategory.push(product);
+        });
         
 
-        const installCategory = [];
-        for(var product in this.state.products){
-            if(this.state.products[product].category === 'Installation')
-                installCategory.push(this.state.products[product])
-        }
+        const threeBathroomCategory = [];
+        tempList.map(product=>{
+            if(product.category === '3 Bathroom')
+                threeBathroomCategory.push(product);
+        });
 
+        const fourBathroomCategory = [];
+        tempList.map(product=>{
+            if(product.category === '4 Bathroom')
+                fourBathroomCategory.push(product);
+        });
         
 
-        global.aRepairList = (repairCategory.length) ? (
-            repairCategory.map(product => {
+        global.oneList = (oneBathroomCategory.length) ? (
+            oneBathroomCategory.map(product => {
                 return(                    
                     <ProductCard product={product}/>
                 ) 
@@ -115,8 +123,8 @@ class ACRepairCart extends Component {
             <LoadingCard />
         );
 
-        global.aServiceList = (serviceCategory.length) ? (
-            serviceCategory.map(product => {
+        global.twoList = (threeBathroomCategory.length) ? (
+            threeBathroomCategory.map(product => {
                 return(
                     <ProductCard product={product}/>
                 ) 
@@ -125,8 +133,8 @@ class ACRepairCart extends Component {
             <LoadingCard />
         );
 
-        global.aInstallList = (installCategory.length) ? (
-            installCategory.map(product => {
+        global.threeList = (twoBathroomCategory.length) ? (
+            twoBathroomCategory.map(product => {
                 return(
                    <ProductCard product={product}/>
                 ) 
@@ -134,6 +142,17 @@ class ACRepairCart extends Component {
         ) : (
             <LoadingCard />
         );
+
+        global.fourList = (fourBathroomCategory.length) ? (
+            fourBathroomCategory.map(product => {
+                return(
+                    <ProductCard product={product}/>
+                ) 
+            })
+        ) : (
+            <LoadingCard />
+        );
+
 
         const sectionList = this.state.services.map(service =>{
             return(
@@ -162,9 +181,9 @@ class ACRepairCart extends Component {
                     </Button>
                 </div>
 
-                <Link id="back" to="/ApplianceRepair/acRepair"><i className="fa fa-chevron-left" style={{fontSize:"50px", marginLeft:"10%", position:"absolute", top:"9%"}}/></Link>
+                <Link to="/Cleaning/BathroomCleaning"><i className="fa fa-chevron-left" style={{fontSize:"50px", marginLeft:"10%", position:"absolute", top:"9%"}}/></Link>
 
-                <h1 style={{fontWeight:"bold", letterSpacing:"2px", textTransform:"uppercase", textAlign:"center"}}>Professional AC Repairing</h1>
+                <h1 style={{fontWeight:"bold", letterSpacing:"2px", textTransform:"uppercase", textAlign:"center"}}>Bathroom Cleaning</h1>
                 <br></br><br></br>
                 <div className="servicesSection">
                     <div className="servicesNav">
@@ -187,4 +206,4 @@ const mapStateToProps = (state) => ({
     cartState: state.cartState
 });
 
-export default connect(mapStateToProps,{ toggleCartModal, addProductFromDB })(ACRepairCart);
+export default connect(mapStateToProps,{ toggleCartModal, addProductFromDB })(BathroomCleaningCart);

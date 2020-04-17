@@ -26,8 +26,13 @@ app.use('/users',userRouter);
 //localhost:5000/users => userRouter
 
 
+// Cleaning Routers
 const productsSofaCleaningRouter = require('./routes/cleaning/productsSofaCleaning');
 app.use('/Cleaning/sofaCleaning',productsSofaCleaningRouter);
+const productsBathroomRouter = require('./routes/cleaning/productsBathroom');
+app.use('/Cleaning/bathroomCleaning',productsBathroomRouter);
+const productsKitchenRouter = require('./routes/cleaning/productsKitchen');
+app.use('/Cleaning/kitchenCleaning',productsKitchenRouter);
 
 const professionalRouter = require('./routes/professionals/professionals');
 app.use('/professionals', professionalRouter);

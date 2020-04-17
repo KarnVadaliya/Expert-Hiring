@@ -23,7 +23,8 @@ class WashingMachineRepair extends Component{
     componentDidMount(){
         Axios.post('http://localhost:5000/professionals/category',
         {
-            category: "Washing Machine Repair"
+            category: "Washing Machine Repair",
+            city: this.props.mainPageState.city
         },{
             "headers": {
               'Content-Type': 'application/json',

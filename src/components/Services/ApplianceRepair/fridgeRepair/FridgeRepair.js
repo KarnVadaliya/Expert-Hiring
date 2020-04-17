@@ -22,7 +22,8 @@ class FridgeRepair extends Component{
     componentDidMount(){
         Axios.post('http://localhost:5000/professionals/category',
         {
-            category: "Refrigerator Repair"
+            category: "Refrigerator Repair",
+            city: this.props.mainPageState.city
         },{
             "headers": {
               'Content-Type': 'application/json',
