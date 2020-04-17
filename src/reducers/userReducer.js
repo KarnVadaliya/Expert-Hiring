@@ -1,4 +1,4 @@
-import { SET_USER, SET_PAYMENT } from '../actions/types';
+import { SET_USER, SET_PAYMENT, SET_OK } from '../actions/types';
 
 const initialState = {
     user : JSON.parse(sessionStorage.getItem('user')) == null ? {} : JSON.parse(sessionStorage.getItem('user'))
@@ -14,7 +14,7 @@ export default (state = initialState, action) => {
             console.log(action.payload.name);
             return{
                 ...state,
-                user: action.payload
+                user: action.payload,
             }
         case SET_PAYMENT :
             console.log(action.payload);
