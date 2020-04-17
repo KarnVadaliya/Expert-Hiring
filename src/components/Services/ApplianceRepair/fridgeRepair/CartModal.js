@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Modal, ModalBody, ModalFooter } from 'reactstrap';
+import { Button, Modal, ModalBody, ModalFooter, UncontrolledAlert } from 'reactstrap';
 import { connect } from 'react-redux';
 import { toggleCartModal } from '../../../../actions/toggleCartModal';
 import {
@@ -9,63 +9,93 @@ import {
   } from "reactstrap";
   import { removeProductFromCart } from '../../../../actions/removeProduct';
   import { addProductToCart } from '../../../../actions/addProduct';
-  import { Link } from 'react-router-dom';
+  import { Link, Redirect } from 'react-router-dom';
 
 
- const CartModal = (props) => {
-    
-        console.log(props);
-        const productsList = [];
-        for(var product in props.cartState.productsInCart){
-            productsList.push(props.cartState.productsInCart[product])
+ class CartModal extends React.Component {
+        constructor(props){
+            super(props);
+            this.state = {                
+                error: true               
+            }
         }
-        console.log(productsList);
 
-        const productsInCart = productsList.length ? (
-            productsList.map(product=>{
-                return (
-                    <Card key={product.id} body outline color="default" className="text-center" style={{marginTop:"20px"}}>
-                        <CardBody>
-                            <CardTitle style={{fontWeight:"bold"}}>{product.name}</CardTitle>
-                            <CardText>{product.description}</CardText>
-                            <CardText>Price: ${product.price}</CardText>
-                            <p>Added: {product.quantity}</p>
-                            <Button color="success" onClick={() => props.addProductToCart(product)}>Add{" "}<i className="fa fa-plus"></i></Button>
-                            <Button color="danger" onClick={()=>props.removeProductFromCart(product)}>Remove{" "}<i className="fa fa-minus"></i></Button>
-                        </CardBody>
-                    </Card>
-                );
-            })
-        ):(
-            <Card body outline color="default" className="text-center" style={{marginTop:"40px"}}>
-                <CardBody>                       
-                    <CardText>Your Cart is Empty!</CardText>
-                </CardBody>
-            </Card>
+        handleOnClick = (e) =>{
+            
+            if(Object.keys(this.props.userState.user).length === 0){
+                alert("Please login to checkout");
+            }else{
+                this.props.toggleCartModal();
+                this.setState({
+                    error: false
+                })
+            }
+        }
+    
+        render(){
+            
+            if(!this.state.error)
+               return <Redirect to="/payment"/>
+            console.log(this.props);
+
+            const productsList = [];
+            for(var product in this.props.cartState.productsInCart){
+                productsList.push(this.props.cartState.productsInCart[product])
+            }
+            console.log(productsList);
+
+            const productsInCart = productsList.length ? (
+                productsList.map(product=>{
+                    return (
+                        <Card key={product.id} body outline color="default" className="text-center" style={{marginTop:"20px"}}>
+                            <CardBody>
+                                <CardTitle style={{fontWeight:"bold"}}>{product.name}</CardTitle>
+                                <CardText>{product.description}</CardText>
+                                <CardText>Price: ${product.price}</CardText>
+                                <p>Added: {product.quantity}</p>
+                                <Button color="success" onClick={() => this.props.addProductToCart(product)}>Add{" "}<i className="fa fa-plus"></i></Button>
+                                <Button color="danger" onClick={()=>this.props.removeProductFromCart(product)}>Remove{" "}<i className="fa fa-minus"></i></Button>
+                            </CardBody>
+                        </Card>
+                    );
+                })
+            ):(
+                <Card body outline color="default" className="text-center" style={{marginTop:"40px"}}>
+                    <CardBody>                       
+                        <CardText>Your Cart is Empty!</CardText>
+                    </CardBody>
+                </Card>
+            );
+                console.log(this.props.cartState.productsInCart)
+            
+              
+       
+            
+        return(
+            <div>
+                <Modal isOpen={this.props.cartState.showCart} toggle={this.props.toggleCartModal} size="md">
+                    <ModalBody>
+                        <h3 style={{textAlign:"center", fontWeight:"bold"}}>Your Shopping Cart</h3>
+                        {productsInCart}
+                        <br></br>
+                        <br></br>
+                        <h5 style={{fontWeight:"bold", textAlign:"center"}}>TOTAL: $ {this.props.cartState.cartCost}</h5>
+                    </ModalBody>
+                    <ModalFooter>
+                    {   this.props.cartState.cartCost!=0 && <Button color="primary" onClick={this.handleOnClick}>CHECKOUT</Button> }                        
+                    <Button color="secondary" onClick={this.props.toggleCartModal}>Cancel</Button>                    
+                    </ModalFooter>                   
+                </Modal>
+                
+            </div>
         );
-            console.log(props.cartState.productsInCart)
-     return(
-         <div>
-            <Modal isOpen={props.cartState.showCart} toggle={props.toggleCartModal} size="md">
-                <ModalBody>
-                    <h3 style={{textAlign:"center", fontWeight:"bold"}}>Your Shopping Cart</h3>
-                    {productsInCart}
-                    <br></br>
-                    <br></br>
-                    <h5 style={{fontWeight:"bold", textAlign:"center"}}>TOTAL: $ {props.cartState.cartCost}</h5>
-                </ModalBody>
-                <ModalFooter>
-                {   props.cartState.cartCost!=0 &&
-                    <Link to={{ pathname: "/payment"}} ><Button color="primary" >CHECKOUT</Button></Link>}{' '}
-                <Button color="secondary" onClick={props.toggleCartModal}>Cancel</Button>
-                </ModalFooter>
-            </Modal>
-         </div>
-     );
+        }
+        
  }
 
  const mapStateToProps = state =>({
-    cartState: state.cartState
+    cartState: state.cartState,
+    userState: state.userState
  });
 
  export default connect(mapStateToProps, { toggleCartModal, removeProductFromCart, addProductToCart })(CartModal);

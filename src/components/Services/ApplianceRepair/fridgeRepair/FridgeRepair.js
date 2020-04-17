@@ -8,6 +8,7 @@ import Scrollspy from 'react-scrollspy'
 import Axios from 'axios'
 import { connect } from 'react-redux';
 import { setSearch } from '../../../../actions/setSearch';
+import { Button } from 'react-bootstrap';
 
 class FridgeRepair extends Component{
 
@@ -21,7 +22,8 @@ class FridgeRepair extends Component{
     componentDidMount(){
         Axios.post('http://localhost:5000/professionals/category',
         {
-            category: "Refrigerator Repair"
+            category: "Refrigerator Repair",
+            city: this.props.mainPageState.city
         },{
             "headers": {
               'Content-Type': 'application/json',
@@ -55,7 +57,7 @@ class FridgeRepair extends Component{
         return reviewList;
     }
 
-    getElements = (array) => array.slice(0,2);
+    getElements = (array) => array.slice(-2);
 
     seeMoreOnClick = (e) => {
         this.setState({
@@ -66,6 +68,18 @@ class FridgeRepair extends Component{
     seeMoreReviews = (e) =>{
         this.setState({
             seeMoreReviews: true
+        })
+    }
+
+    seeLessOnClick = (e) =>{
+        this.setState({
+            seeMore: false
+        })
+    }
+     
+    seeLessReviews = (e) => {
+        this.setState({
+            seeMoreReviews: false
         })
     }
 
@@ -135,10 +149,10 @@ class FridgeRepair extends Component{
             <div className="service" style={{backgroundColor:"#F5F5F5"}}>
                 <div className="serviceBg" style={{backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3),
                        rgba(0, 0, 0, 0.4)),url(${Background})`}}>
-                    <h2>Best Refrigerator Repair Service in {this.props.mainPageState.city}</h2>
+                    <h2 id="h2">Best Refrigerator Repair Service in {this.props.mainPageState.city}</h2>
                 </div>
 
-                <div className="info">
+                <div className="info" id="scrollspy">
                     <Scrollspy items={ ['How it Works', 'Professionals', 'Customer Reviews'] } currentClassName="is-current">
                                 <li><a active href="#Works">How it Works</a></li>
                                 <li><a href="#Professionals">Technicians</a></li>
@@ -202,6 +216,8 @@ class FridgeRepair extends Component{
                             </div>
                             <hr ></hr>
                         </li>
+                        <Button id="bookNow" style={{width:"100%", margin:"auto"}} onClick={() => this.props.history.push('/ApplianceRepair/fridgeRepair/shop/#Service')}>Book Now!</Button>
+
                     </ul>
                 </section>
                 <br></br>
@@ -215,10 +231,15 @@ class FridgeRepair extends Component{
                        
                         { !this.state.seeMore &&
                             <div style={{textAlign:"center",padding:"20px"}}>
-                                <button onClick={this.seeMoreOnClick}><i className="fa fa-arrow-down"></i>&nbsp;&nbsp;See more</button>
+                                <button onClick={this.seeMoreOnClick}><i className="fa fa-arrow-down"></i>&nbsp;&nbsp;View more</button>
                             </div>
                         }
-                        
+                        { this.state.seeMore &&
+                            <div style={{textAlign:"center",padding:"20px"}}>
+                                <button onClick={this.seeLessOnClick}><i className="fa fa-arrow-up"></i>&nbsp;&nbsp;View less</button>
+                            </div>
+                        }
+
                     </div>
                     <div >
                     </div>
@@ -233,9 +254,16 @@ class FridgeRepair extends Component{
                     <hr></hr>
                     {reviewsList}          
 
-                    <div style={{textAlign:"center",padding:"20px"}}>
+                    { !this.state.seeMoreReviews &&
+                       <div style={{textAlign:"center",padding:"20px"}}>
                         <button onClick={this.seeMoreReviews}><i className="fa fa-arrow-down"></i>&nbsp;&nbsp;View more</button>
-                    </div>          
+                    </div> }  
+
+                    { this.state.seeMoreReviews &&
+                       <div style={{textAlign:"center",padding:"20px"}}>
+                        <button onClick={this.seeLessReviews}><i className="fa fa-arrow-up"></i>&nbsp;&nbsp;View less</button>
+                    </div> }   
+
                 </section>
                 </div>
                 <div className="serviceBox">
@@ -243,18 +271,18 @@ class FridgeRepair extends Component{
                         <h4>Need a Fridge Technician for:</h4>
                         <div className="serviceButtonGroup">
                          
-                            <button onClick={() => this.props.history.push('/ApplianceRepair/fridgeRepair/shop/#Service')}>
+                            <button onClick={() => this.props.history.push('/ApplianceRepair/fridgeRepair/shop')}>
                                 Repair/ Service <i style={{textAlign:"right"}} className="fa fa-chevron-right" />
                             </button> 
                        
-                            <button onClick={() => this.props.history.push('/ApplianceRepair/fridgeRepair/shop/#compressor')}>
+                            <button onClick={() => this.props.history.push('/ApplianceRepair/fridgeRepair/shop')}>
                                 Compressor/ Cooling Issue<i className="fa fa-chevron-right"></i>
                             </button>
 
-                            <button onClick={() => this.props.history.push('/ApplianceRepair/fridgeRepair/shop/#Gas')}>
+                            <button onClick={() => this.props.history.push('/ApplianceRepair/fridgeRepair/shop')}>
                                 Gas Filling<i className="fa fa-chevron-right"></i>
                             </button>
-                            <button onClick={() => this.props.history.push('/ApplianceRepair/fridgeRepair/shop/#OtherIssues')}>
+                            <button onClick={() => this.props.history.push('/ApplianceRepair/fridgeRepair/shop')}>
                                 Other Issues<i className="fa fa-chevron-right"></i>
                             </button>
                         </div>

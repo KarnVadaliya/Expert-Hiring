@@ -8,6 +8,8 @@ import Scrollspy from 'react-scrollspy'
 import Axios from 'axios'
 import { connect } from 'react-redux';
 import { setSearch } from '../../../../actions/setSearch';
+import { Button } from 'react-bootstrap';
+
 
 class WashingMachineRepair extends Component{
 
@@ -21,7 +23,8 @@ class WashingMachineRepair extends Component{
     componentDidMount(){
         Axios.post('http://localhost:5000/professionals/category',
         {
-            category: "Washing Machine Repair"
+            category: "Washing Machine Repair",
+            city: this.props.mainPageState.city
         },{
             "headers": {
               'Content-Type': 'application/json',
@@ -55,7 +58,7 @@ class WashingMachineRepair extends Component{
         return reviewList;
     }
 
-    getElements = (array) => array.slice(0,2);
+    getElements = (array) => array.slice(-2);
 
     seeMoreOnClick = (e) => {
         this.setState({
@@ -66,6 +69,18 @@ class WashingMachineRepair extends Component{
     seeMoreReviews = (e) =>{
         this.setState({
             seeMoreReviews: true
+        })
+    }
+
+    seeLessOnClick = (e) =>{
+        this.setState({
+            seeMore: false
+        })
+    }
+     
+    seeLessReviews = (e) => {
+        this.setState({
+            seeMoreReviews: false
         })
     }
 
@@ -135,10 +150,10 @@ class WashingMachineRepair extends Component{
             <div className="service" style={{backgroundColor:"#F5F5F5"}}>
                 <div className="serviceBg" style={{backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3),
                        rgba(0, 0, 0, 0.4)),url(${Background})`}}>
-                    <h2>Best Washing Machine Repair Service in {this.props.mainPageState.city}</h2>
+                    <h2 id="h2">Best Washing Machine Repair Service in {this.props.mainPageState.city}</h2>
                 </div>
 
-                <div className="info">
+                <div className="info" id="scrollspy">
                     <Scrollspy items={ ['How it Works', 'Professionals', 'Customer Reviews'] } currentClassName="is-current">
                                 <li><a active href="#Works">How it Works</a></li>
                                 <li><a href="#Professionals">Technicians</a></li>
@@ -202,6 +217,8 @@ class WashingMachineRepair extends Component{
                             </div>
                             <hr ></hr>
                         </li>
+                        <Button id="bookNow" style={{width:"100%", margin:"auto"}} onClick={() => this.props.history.push('/ApplianceRepair/washingMachineRepair/shop/#Service')}>Book Now!</Button>
+
                     </ul>
                 </section>
                 <br></br>
@@ -243,18 +260,18 @@ class WashingMachineRepair extends Component{
                         <h4>Need a Washing Machine Technician for:</h4>
                         <div className="serviceButtonGroup">
                          
-                            <button onClick={() => this.props.history.push('/ApplianceRepair/washingMachineRepair/shop/#Service')}>
+                            <button onClick={() => this.props.history.push('/ApplianceRepair/washingMachineRepair/shop')}>
                                 Repair/ Service <i style={{textAlign:"right"}} className="fa fa-chevron-right" />
                             </button> 
                        
-                            <button onClick={() => this.props.history.push('/ApplianceRepair/washingMachineRepair/shop/#Leakage')}>
+                            <button onClick={() => this.props.history.push('/ApplianceRepair/washingMachineRepair/shop')}>
                                 Water Leakage<i className="fa fa-chevron-right"></i>
                             </button>
 
-                            <button onClick={() => this.props.history.push('/ApplianceRepair/washingMachineRepair/shop/#Install')}>
+                            <button onClick={() => this.props.history.push('/ApplianceRepair/washingMachineRepair/shop')}>
                                 AC installation/ Un-installation<i className="fa fa-chevron-right"></i>
                             </button>
-                            <button onClick={() => this.props.history.push('/ApplianceRepair/washingMachineRepair/shop/#OtherIssues')}>
+                            <button onClick={() => this.props.history.push('/ApplianceRepair/washingMachineRepair/shop')}>
                                 Other Issues<i className="fa fa-chevron-right"></i>
                             </button>
                         </div>

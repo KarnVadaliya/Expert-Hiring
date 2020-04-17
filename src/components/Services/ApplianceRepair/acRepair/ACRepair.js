@@ -8,6 +8,8 @@ import Scrollspy from 'react-scrollspy'
 import Axios from 'axios'
 import { connect } from 'react-redux';
 import { setSearch } from '../../../../actions/setSearch';
+import { Button } from 'react-bootstrap';
+
 
 class ACRepair extends Component{
 
@@ -21,14 +23,14 @@ class ACRepair extends Component{
     componentDidMount(){
         Axios.post('http://localhost:5000/professionals/category',
         {
-            category: "AC Repair"
+            category: "AC Repair",
+            city: this.props.mainPageState.city
         },{
             "headers": {
               'Content-Type': 'application/json',
             }
           })
           .then(res=>{
-            //   const userReviews = this.sortReviews(res.data);
               const reviews = [];
               res.data.map(professional=>professional.reviews.map(review=>reviews.push(review)));
               this.setState({
@@ -66,6 +68,18 @@ class ACRepair extends Component{
     seeMoreReviews = (e) =>{
         this.setState({
             seeMoreReviews: true
+        })
+    }
+
+    seeLessOnClick = (e) =>{
+        this.setState({
+            seeMore: false
+        })
+    }
+     
+    seeLessReviews = (e) => {
+        this.setState({
+            seeMoreReviews: false
         })
     }
 
@@ -135,7 +149,7 @@ class ACRepair extends Component{
             <div className="service" style={{backgroundColor:"#F5F5F5"}}>
                 <div className="serviceBg" style={{backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3),
                        rgba(0, 0, 0, 0.4)),url(${Background})`}}>
-                    <h2>Best AC Repair Service in {this.props.mainPageState.city} </h2>
+                    <h2 id="h2">Best AC Repair Service in {this.props.mainPageState.city} </h2>
                 </div>
 
                 <div className="info" id="scrollspy">
@@ -202,6 +216,8 @@ class ACRepair extends Component{
                             </div>
                             <hr ></hr>
                         </li>
+                        <Button id="bookNow" style={{width:"100%", margin:"auto"}} onClick={() => this.props.history.push('/ApplianceRepair/acRepair/shop/#Service')}>Book Now!</Button>
+
                     </ul>
                 </section>
                 <br></br>
@@ -215,7 +231,12 @@ class ACRepair extends Component{
                        
                         { !this.state.seeMore &&
                             <div style={{textAlign:"center",padding:"20px"}}>
-                                <button onClick={this.seeMoreOnClick}><i className="fa fa-arrow-down"></i>&nbsp;&nbsp;See more</button>
+                                <button onClick={this.seeMoreOnClick}><i className="fa fa-arrow-down"></i>&nbsp;&nbsp;View more</button>
+                            </div>
+                        }
+                        { this.state.seeMore &&
+                            <div style={{textAlign:"center",padding:"20px"}}>
+                                <button onClick={this.seeLessOnClick}><i className="fa fa-arrow-up"></i>&nbsp;&nbsp;View less</button>
                             </div>
                         }
                         
@@ -233,9 +254,17 @@ class ACRepair extends Component{
                     <hr></hr>
                     {reviewsList}          
 
-                    <div style={{textAlign:"center",padding:"20px"}}>
+                   
+                    { !this.state.seeMoreReviews &&
+                       <div style={{textAlign:"center",padding:"20px"}}>
                         <button onClick={this.seeMoreReviews}><i className="fa fa-arrow-down"></i>&nbsp;&nbsp;View more</button>
-                    </div>          
+                    </div> }  
+
+                    { this.state.seeMoreReviews &&
+                       <div style={{textAlign:"center",padding:"20px"}}>
+                        <button onClick={this.seeLessReviews}><i className="fa fa-arrow-up"></i>&nbsp;&nbsp;View less</button>
+                    </div> }   
+                            
                 </section>
                 </div>
                 <div className="serviceBox">
@@ -243,15 +272,15 @@ class ACRepair extends Component{
                         <h4>Need an AC Expert for :</h4>
                         <div className="serviceButtonGroup">
                          
-                            <button onClick={() => this.props.history.push('/ApplianceRepair/acRepair/shop/#Service')}>
+                            <button onClick={() => this.props.history.push('/ApplianceRepair/acRepair/shop')}>
                                 AC Servicing <i style={{textAlign:"right"}} className="fa fa-chevron-right" />
                             </button> 
                        
-                            <button onClick={() => this.props.history.push('/ApplianceRepair/acRepair/shop/#Repair')}>
+                            <button onClick={() => this.props.history.push('/ApplianceRepair/acRepair/shop')}>
                                 AC not cooling/Repair<i className="fa fa-chevron-right"></i>
                             </button>
 
-                            <button onClick={() => this.props.history.push('/ApplianceRepair/acRepair/shop/#Install')}>
+                            <button onClick={() => this.props.history.push('/ApplianceRepair/acRepair/shop')}>
                                 AC installation/ Un-installation<i className="fa fa-chevron-right"></i>
                             </button>
                         </div>

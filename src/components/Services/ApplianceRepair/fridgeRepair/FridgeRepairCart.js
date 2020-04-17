@@ -26,7 +26,7 @@ class FridgeRepairCart extends Component {
     }
 
     componentDidMount(){
-        Axios.get('http://localhost:5000/ApplianceRepair/washingMachineRepair/')
+        Axios.get('http://localhost:5000/ApplianceRepair/fridge')
             .then(res=>{
                 console.log(res.data);
                 let tempList = []
@@ -171,7 +171,7 @@ class FridgeRepairCart extends Component {
                     </Button>
                 </div>
 
-                <Link to="/ApplianceRepair/fridgeRepair"><i className="fa fa-chevron-left" style={{fontSize:"50px", marginLeft:"10%", position:"absolute", top:"9%"}}/></Link>
+                <Link id="back" to="/ApplianceRepair/fridgeRepair"><i className="fa fa-chevron-left" style={{fontSize:"50px", marginLeft:"10%", position:"absolute", top:"9%"}}/></Link>
 
                 <h1 style={{fontWeight:"bold", letterSpacing:"2px", textTransform:"uppercase", textAlign:"center"}}>Professional Refrigerator Repairing</h1>
                 <br></br><br></br>

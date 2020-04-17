@@ -167,12 +167,20 @@ class ServiceBarComponet extends Component{
      
                     </div>
                     <div id="cleanModal" style={{display:(this.state.activeModal === "cleanModal")? ("block") : ("none")}}>
-                        <p>Bathroom Deep Cleaning</p>
-                        <p>Sofa Cleaning</p>
-                        <p>Kitchen Deep Cleaning</p>
+                        <Link to="/Cleaning/bathroomCleaning">
+                            <p>Bathroom Deep Cleaning</p>
+                        </Link>
+                        <Link to="/Cleaning/sofaCleaning">
+                            <p>Sofa Cleaning</p>
+                        </Link>
+                        <Link to="/Cleaning/kitchenCleaning">
+                            <p>Kitchen Deep Cleaning</p>
+                        </Link>
                     </div>
                     <div id="massageModal" style={{display:(this.state.activeModal === "massageModal")? ("block") : ("none")}}>
+                        <Link to="/Massage/bodyMassage">
                         <p>Massaage</p>
+                        </Link>
                     </div>
                     <div id="epcModal" style={{display:(this.state.activeModal === "epcModal")? ("block") : ("none")}}>
                         <Link to="/Homeservice/electrician">

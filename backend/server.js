@@ -26,8 +26,13 @@ app.use('/users',userRouter);
 //localhost:5000/users => userRouter
 
 
+// Cleaning Routers
 const productsSofaCleaningRouter = require('./routes/cleaning/productsSofaCleaning');
 app.use('/Cleaning/sofaCleaning',productsSofaCleaningRouter);
+const productsBathroomRouter = require('./routes/cleaning/productsBathroom');
+app.use('/Cleaning/bathroomCleaning',productsBathroomRouter);
+const productsKitchenRouter = require('./routes/cleaning/productsKitchen');
+app.use('/Cleaning/kitchenCleaning',productsKitchenRouter);
 
 const professionalRouter = require('./routes/professionals/professionals');
 app.use('/professionals', professionalRouter);
@@ -37,19 +42,19 @@ app.use('/application', applicationRouter);
 
 //Appliance Routers
 const productsACRouter = require('./routes/appliance/productsAC');
-app.use('/appliance/ac',productsACRouter);
+app.use('/ApplianceRepair/ac',productsACRouter);
 const productsFridgeRouter = require('./routes/appliance/productsFridge');
-app.use('/appliance/fridge',productsFridgeRouter);
+app.use('/ApplianceRepair/fridge',productsFridgeRouter);
 const productsWahingMachineRouter = require('./routes/appliance/productsWashingMachine');
-app.use('/appliance/washingmachine',productsWahingMachineRouter);
+app.use('/ApplianceRepair/washingmachine',productsWahingMachineRouter);
 
 //Electronic Routers
 const productsMicrowaveRouter = require('./routes/electronic/productsMicrowave');
-app.use('/electronic/microwave',productsMicrowaveRouter);
+app.use('/ElectronicRepair/microwave',productsMicrowaveRouter);
 const productsTVRouter = require('./routes/electronic/productsTV');
-app.use('/electronic/TV',productsTVRouter);
+app.use('/ElectronicRepair/tv',productsTVRouter);
 const productsWaterPurifierRouter = require('./routes/electronic/productsWaterPurifier');
-app.use('/electronic/water',productsWaterPurifierRouter);
+app.use('/ElectronicRepair/water',productsWaterPurifierRouter);
 
 const productsMakeUpRouter = require('./routes/salon/productsMakeUp');
 app.use('/Salon/makeup', productsMakeUpRouter);
@@ -70,7 +75,7 @@ const productsHaircutRouter = require('./routes/salon/productsHair');
 app.use('/Salon/haircut', productsHaircutRouter);
 
 const productsMassageRouter = require('./routes/massage/productsMassage');
-app.use('/Massage/BodyMassage', productsMassageRouter);
+app.use('/Massage/bodyMassage', productsMassageRouter);
 
 // const salonRouter = require('./routes/salon/productsMakeUp');
 // app.use('/salon/makeup', salonRouter);
@@ -90,6 +95,8 @@ passport.deserializeUser((user, cb) => {
   User.deserializeUser();
   cb(null, user);
 });
+
+
 
 app.listen(PORT, () => {
   console.log(`app running on port ${PORT}`)

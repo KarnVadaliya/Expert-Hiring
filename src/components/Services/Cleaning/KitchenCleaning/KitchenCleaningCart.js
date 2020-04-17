@@ -15,24 +15,22 @@ import { Link } from "react-router-dom";
 
   
 
-class MicrowaveRepairCart extends Component {
+class KitchenCleaningCart extends Component {
     constructor(props){
         super(props);
   
         this.state = {
-          services: ['Repair','Service','Other Issues'],
+          services: ['Gas Stoves','Shelves & Slabs','Chimney Cleaning','Floor'],
           products: []
         };
     }
 
     componentDidMount(){
-        Axios.get('http://localhost:5000/MicrowaveRepair/microwave')
+        Axios.get('http://localhost:5000/Cleaning/kitchenCleaning/')
             .then(res=>{
                 console.log(res.data);
-                let tempList = []
-                // res.data.map(product=> this.props.addProductFromDB(product));
+                let tempList = [];
                 res.data.map(product => tempList.push(product));
-                console.log(this.props.cartState);
                 this.setState({
                     products: tempList
                 })
@@ -44,12 +42,14 @@ class MicrowaveRepairCart extends Component {
 
     getList = (name) =>{
         switch (name) {
-            case 'Repair':
-                return global.mRepairList;
-            case 'Service':
-                return global.mServiceList;
-            case 'Other Issues':
-                return global.mOtherList;
+            case 'Gas Stoves':
+                return global.threeList;
+            case 'Shelves & Slabs':
+                return global.fourList;
+            case 'Chimney Cleaning':
+                return global.fiveList;
+            case 'Floor':
+                return global.sixList;
             default:
                 break;
         }
@@ -58,6 +58,18 @@ class MicrowaveRepairCart extends Component {
     
 
     render() {
+        let tempList = [];
+        this.state.products.map(product => tempList.push(product));
+        tempList.map(product => {
+            if(this.props.cartState.productsInCart[product.id] != null){
+                product.quantity = this.props.cartState.productsInCart[product.id].quantity;
+                product.inCart = this.props.cartState.productsInCart[product.id].inCart;
+            }else{
+                product.quantity = 0;
+                product.inCart = false;
+            }
+        });
+
         console.log(this.state);
         const { services } = this.state;
 
@@ -74,30 +86,35 @@ class MicrowaveRepairCart extends Component {
         );
 
         
-        const repairCategory = [];
-        for(var product in this.state.products){
-            if(this.state.products[product].category === 'Repair')
-                repairCategory.push(this.state.products[product])
-        }
+        const threeSeatsCategory = [];
+        tempList.map(product=>{
+            if(product.category === 'Gas Stoves')
+                threeSeatsCategory.push(product);
+        });
       
 
-        const serviceCategory = [];
-        for(var product in this.state.products){
-            if(this.state.products[product].category === 'Service')
-                serviceCategory.push(this.state.products[product])
-        }
+        const fiveSeatsCategory = [];
+        tempList.map(product=>{
+            if(product.category === 'Chimney Cleaning')
+                fiveSeatsCategory.push(product);
+        });
         
 
-        const otherCategory = [];
-        for(var product in this.state.products){
-            if(this.state.products[product].category === 'Other Issues')
-                otherCategory.push(this.state.products[product])
-        }
+        const fourSeatsCategory = [];
+        tempList.map(product=>{
+            if(product.category === 'Shelves & Slabs')
+                fourSeatsCategory.push(product);
+        });
 
+        const sixSeatsCategory = [];
+        tempList.map(product=>{
+            if(product.category === 'Floor')
+                sixSeatsCategory.push(product);
+        });
         
 
-        global.mRepairList = (repairCategory.length) ? (
-            repairCategory.map(product => {
+        global.threeList = (threeSeatsCategory.length) ? (
+            threeSeatsCategory.map(product => {
                 return(                    
                     <ProductCard product={product}/>
                 ) 
@@ -106,8 +123,8 @@ class MicrowaveRepairCart extends Component {
             <LoadingCard />
         );
 
-        global.mServiceList = (serviceCategory.length) ? (
-            serviceCategory.map(product => {
+        global.fourList = (fourSeatsCategory.length) ? (
+            fourSeatsCategory.map(product => {
                 return(
                     <ProductCard product={product}/>
                 ) 
@@ -116,8 +133,8 @@ class MicrowaveRepairCart extends Component {
             <LoadingCard />
         );
 
-        global.mOtherList = (otherCategory.length) ? (
-            otherCategory.map(product => {
+        global.fiveList = (fiveSeatsCategory.length) ? (
+            fiveSeatsCategory.map(product => {
                 return(
                    <ProductCard product={product}/>
                 ) 
@@ -125,6 +142,17 @@ class MicrowaveRepairCart extends Component {
         ) : (
             <LoadingCard />
         );
+
+        global.sixList = (sixSeatsCategory.length) ? (
+            sixSeatsCategory.map(product => {
+                return(
+                    <ProductCard product={product}/>
+                ) 
+            })
+        ) : (
+            <LoadingCard />
+        );
+
 
         const sectionList = this.state.services.map(service =>{
             return(
@@ -143,7 +171,7 @@ class MicrowaveRepairCart extends Component {
                     <Button onClick={this.props.toggleCartModal} style={{height:"50px", width:"400px", margin:"2px", backgroundImage:"linear-gradient(to right, #667eea, #764ba2, #6B8DD6, #8E37D7)"}}>
                     <Row>
                         <Col sm="6">
-                            <h5 style={{textAlign:"left", color:"white"}}><Badge className="badge-white">{this.state.cartNumbers}</Badge>&nbsp;&nbsp;${this.props.cartState.cartCost}</h5> 
+                            <h5 style={{textAlign:"left", color:"white"}}><Badge className="badge-white">{this.props.cartState.cartNumbers}</Badge>&nbsp;&nbsp;${this.props.cartState.cartCost}</h5> 
                         </Col>
                         <Col sm="6">
                             <h5 style={{textAlign:"right", color:"white"}}><i className="fa fa-chevron-up"></i></h5>                             
@@ -153,9 +181,9 @@ class MicrowaveRepairCart extends Component {
                     </Button>
                 </div>
 
-                <Link id="back" to="/ElectronicRepair/microwaveRepair"><i className="fa fa-chevron-left" style={{fontSize:"50px", marginLeft:"10%", position:"absolute", top:"9%"}}/></Link>
+                <Link to="/Cleaning/KitchenCleaning"><i className="fa fa-chevron-left" style={{fontSize:"50px", marginLeft:"10%", position:"absolute", top:"9%"}}/></Link>
 
-                <h1 style={{fontWeight:"bold", letterSpacing:"2px", textTransform:"uppercase", textAlign:"center"}}>Professional Microwave Repairing</h1>
+                <h1 style={{fontWeight:"bold", letterSpacing:"2px", textTransform:"uppercase", textAlign:"center"}}>Kitchen Cleaning</h1>
                 <br></br><br></br>
                 <div className="servicesSection">
                     <div className="servicesNav">
@@ -178,4 +206,4 @@ const mapStateToProps = (state) => ({
     cartState: state.cartState
 });
 
-export default connect(mapStateToProps,{ toggleCartModal, addProductFromDB })(MicrowaveRepairCart);
+export default connect(mapStateToProps,{ toggleCartModal, addProductFromDB })(KitchenCleaningCart);

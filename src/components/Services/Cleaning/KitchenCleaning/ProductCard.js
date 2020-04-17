@@ -17,7 +17,7 @@ const ProductCard = (props) =>{
         <Row style={{marginBottom:"20px"}}>
             <Col sm="6">
                 <Card body outline color="default" className="text-center" style={{width:"fit-content"}}>
-                <CardImg top width="100%" src={require("../../../../assets/img/electrician/"+props.product.image)} alt="Card image cap" />
+                <CardImg top width="100%" src={cleaningImage} alt="Card image cap" />
                     <CardBody>
                         <CardTitle style={{fontWeight:"bold"}}>{props.product.name}</CardTitle>
                         <CardText>{props.product.description}</CardText>

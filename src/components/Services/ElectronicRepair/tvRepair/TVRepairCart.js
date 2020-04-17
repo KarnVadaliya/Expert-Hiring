@@ -26,7 +26,7 @@ class TVRepairCart extends Component {
     }
 
     componentDidMount(){
-        Axios.get('http://localhost:5000/ElectronicRepair/tvRepair/')
+        Axios.get('http://localhost:5000/ElectronicRepair/tv')
             .then(res=>{
                 console.log(res.data);
                 let tempList = []
@@ -153,7 +153,7 @@ class TVRepairCart extends Component {
                     </Button>
                 </div>
 
-                <Link to="/ElectronicRepair/tvRepair"><i className="fa fa-chevron-left" style={{fontSize:"50px", marginLeft:"10%", position:"absolute", top:"9%"}}/></Link>
+                <Link id="back" to="/ElectronicRepair/tvRepair"><i className="fa fa-chevron-left" style={{fontSize:"50px", marginLeft:"10%", position:"absolute", top:"9%"}}/></Link>
 
                 <h1 style={{fontWeight:"bold", letterSpacing:"2px", textTransform:"uppercase", textAlign:"center"}}>Professional TV Repairing & Installation</h1>
                 <br></br><br></br>

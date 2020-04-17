@@ -20,7 +20,7 @@ class CarpenterCart extends Component {
         super(props);
   
         this.state = {
-          services: ['Quick Book','Switch and Socket','Appliance','Wiring'],
+          services: ['Quick Book','Bed','Furniture Repair'],
           products: []
         };
     }
@@ -181,7 +181,7 @@ class CarpenterCart extends Component {
                     </Button>
                 </div>
 
-                <Link to="/HomeService/electrician"><i className="fa fa-chevron-left" style={{fontSize:"50px", marginLeft:"10%", position:"absolute", top:"9%"}}/></Link>
+                <Link id="back" to="/HomeService/electrician"><i className="fa fa-chevron-left" style={{fontSize:"50px", marginLeft:"10%", position:"absolute", top:"9%"}}/></Link>
 
                 <h1 style={{fontWeight:"bold", letterSpacing:"2px", textTransform:"uppercase", textAlign:"center"}}>Electrician</h1>
                 <br></br><br></br>
