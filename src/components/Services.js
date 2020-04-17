@@ -94,7 +94,7 @@ class ServicesComponent extends Component{
                     subServices: [
                         {
                             name: "Bathroom Deep Cleaning",
-                            link: "#notGiven",                            
+                            link: "/Cleaning/BathroomCleaning",                            
                             image: "cleaning1.jpeg",
                             category: "Cleaning"
                         },
@@ -106,7 +106,7 @@ class ServicesComponent extends Component{
                         },
                         {
                             name: "Kitchen Deep Cleaning",
-                            link: "#notGiven",
+                            link: "/Cleaning/KitchenCleaning",
                             image: "cleaning3.jpeg",
                             category: "Cleaning"   
                         }
