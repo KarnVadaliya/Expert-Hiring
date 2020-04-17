@@ -26,7 +26,7 @@ class BodyMassageCart extends Component {
     }
 
     componentDidMount() {
-        Axios.get('http://localhost:5000/Massage/BodyMassage/')
+        Axios.get('http://localhost:5000/Massage/bodyMassage/')
             .then(res => {
                 console.log(res.data);
                 let tempList = [];

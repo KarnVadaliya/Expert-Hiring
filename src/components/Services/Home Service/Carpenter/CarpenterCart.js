@@ -20,7 +20,7 @@ class CarpenterCart extends Component {
         super(props);
   
         this.state = {
-          services: ['Quick Book','Switch and Socket','Appliance','Wiring'],
+          services: ['Quick Book','Bed','Furniture Repair'],
           products: []
         };
     }

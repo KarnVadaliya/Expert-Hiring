@@ -71,6 +71,18 @@ class ACRepair extends Component{
         })
     }
 
+    seeLessOnClick = (e) =>{
+        this.setState({
+            seeMore: false
+        })
+    }
+     
+    seeLessReviews = (e) => {
+        this.setState({
+            seeMoreReviews: false
+        })
+    }
+
     render(){
         console.log(this.averageUserRatings());
         console.log(this.state);
@@ -219,7 +231,12 @@ class ACRepair extends Component{
                        
                         { !this.state.seeMore &&
                             <div style={{textAlign:"center",padding:"20px"}}>
-                                <button onClick={this.seeMoreOnClick}><i className="fa fa-arrow-down"></i>&nbsp;&nbsp;See more</button>
+                                <button onClick={this.seeMoreOnClick}><i className="fa fa-arrow-down"></i>&nbsp;&nbsp;View more</button>
+                            </div>
+                        }
+                        { this.state.seeMore &&
+                            <div style={{textAlign:"center",padding:"20px"}}>
+                                <button onClick={this.seeLessOnClick}><i className="fa fa-arrow-up"></i>&nbsp;&nbsp;View less</button>
                             </div>
                         }
                         
@@ -237,9 +254,17 @@ class ACRepair extends Component{
                     <hr></hr>
                     {reviewsList}          
 
-                    <div style={{textAlign:"center",padding:"20px"}}>
+                   
+                    { !this.state.seeMoreReviews &&
+                       <div style={{textAlign:"center",padding:"20px"}}>
                         <button onClick={this.seeMoreReviews}><i className="fa fa-arrow-down"></i>&nbsp;&nbsp;View more</button>
-                    </div>          
+                    </div> }  
+
+                    { this.state.seeMoreReviews &&
+                       <div style={{textAlign:"center",padding:"20px"}}>
+                        <button onClick={this.seeLessReviews}><i className="fa fa-arrow-up"></i>&nbsp;&nbsp;View less</button>
+                    </div> }   
+                            
                 </section>
                 </div>
                 <div className="serviceBox">
@@ -247,15 +272,15 @@ class ACRepair extends Component{
                         <h4>Need an AC Expert for :</h4>
                         <div className="serviceButtonGroup">
                          
-                            <button onClick={() => this.props.history.push('/ApplianceRepair/acRepair/shop/#Service')}>
+                            <button onClick={() => this.props.history.push('/ApplianceRepair/acRepair/shop')}>
                                 AC Servicing <i style={{textAlign:"right"}} className="fa fa-chevron-right" />
                             </button> 
                        
-                            <button onClick={() => this.props.history.push('/ApplianceRepair/acRepair/shop/#Repair')}>
+                            <button onClick={() => this.props.history.push('/ApplianceRepair/acRepair/shop')}>
                                 AC not cooling/Repair<i className="fa fa-chevron-right"></i>
                             </button>
 
-                            <button onClick={() => this.props.history.push('/ApplianceRepair/acRepair/shop/#Install')}>
+                            <button onClick={() => this.props.history.push('/ApplianceRepair/acRepair/shop')}>
                                 AC installation/ Un-installation<i className="fa fa-chevron-right"></i>
                             </button>
                         </div>

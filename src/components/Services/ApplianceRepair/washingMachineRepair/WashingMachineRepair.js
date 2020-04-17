@@ -58,7 +58,7 @@ class WashingMachineRepair extends Component{
         return reviewList;
     }
 
-    getElements = (array) => array.slice(0,2);
+    getElements = (array) => array.slice(-2);
 
     seeMoreOnClick = (e) => {
         this.setState({
@@ -69,6 +69,18 @@ class WashingMachineRepair extends Component{
     seeMoreReviews = (e) =>{
         this.setState({
             seeMoreReviews: true
+        })
+    }
+
+    seeLessOnClick = (e) =>{
+        this.setState({
+            seeMore: false
+        })
+    }
+     
+    seeLessReviews = (e) => {
+        this.setState({
+            seeMoreReviews: false
         })
     }
 
@@ -248,18 +260,18 @@ class WashingMachineRepair extends Component{
                         <h4>Need a Washing Machine Technician for:</h4>
                         <div className="serviceButtonGroup">
                          
-                            <button onClick={() => this.props.history.push('/ApplianceRepair/washingMachineRepair/shop/#Service')}>
+                            <button onClick={() => this.props.history.push('/ApplianceRepair/washingMachineRepair/shop')}>
                                 Repair/ Service <i style={{textAlign:"right"}} className="fa fa-chevron-right" />
                             </button> 
                        
-                            <button onClick={() => this.props.history.push('/ApplianceRepair/washingMachineRepair/shop/#Leakage')}>
+                            <button onClick={() => this.props.history.push('/ApplianceRepair/washingMachineRepair/shop')}>
                                 Water Leakage<i className="fa fa-chevron-right"></i>
                             </button>
 
-                            <button onClick={() => this.props.history.push('/ApplianceRepair/washingMachineRepair/shop/#Install')}>
+                            <button onClick={() => this.props.history.push('/ApplianceRepair/washingMachineRepair/shop')}>
                                 AC installation/ Un-installation<i className="fa fa-chevron-right"></i>
                             </button>
-                            <button onClick={() => this.props.history.push('/ApplianceRepair/washingMachineRepair/shop/#OtherIssues')}>
+                            <button onClick={() => this.props.history.push('/ApplianceRepair/washingMachineRepair/shop')}>
                                 Other Issues<i className="fa fa-chevron-right"></i>
                             </button>
                         </div>

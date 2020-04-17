@@ -248,7 +248,7 @@ class SofaCleaning extends Component{
                        
                         { !this.state.seeMore &&
                             <div style={{textAlign:"center",padding:"20px"}}>
-                                <button onClick={this.seeMoreOnClick}><i className="fa fa-arrow-down"></i>&nbsp;&nbsp;See more</button>
+                                <button onClick={this.seeMoreOnClick}><i className="fa fa-arrow-down"></i>&nbsp;&nbsp;View more</button>
                             </div>
                         }
                         { this.state.seeMore &&
