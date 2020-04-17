@@ -150,7 +150,7 @@ class BodyMassage extends Component{
             <div className="service" style={{backgroundColor:"#F5F5F5"}}>
                  <div className="serviceBg" style={{backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3),
                        rgba(0, 0, 0, 0.4)),url(${Background})`}}>
-                    <h2 id="h2">Massage Service in {this.props.mainPageState.city}</h2>
+                    <h2 id="h2">Best Body Massage Service in {this.props.mainPageState.city}</h2>
                 </div>
 
                 <div className="info" id="scrollspy">
@@ -174,7 +174,7 @@ class BodyMassage extends Component{
                             </div> 
                             <p>&emsp;&emsp;</p>
                             <div>
-                                <h5>Choose a Salon Service</h5>
+                                <h5>Choose a Massage Service</h5>
                                 <p>Choose from various salon packages and services</p>
                                
                             </div>
@@ -199,8 +199,8 @@ class BodyMassage extends Component{
                             </div>
                             <p>&emsp;&emsp;</p>
                             <div>
-                                <h5>Pay</h5>
-                                <p>Hello There</p>
+                                <h5>Relax and Enjoy Massage service</h5>
+                                <p>Our professionals will get in touch with you an hour before service</p>
                             </div>
                             <hr ></hr>
                         </li>
@@ -210,8 +210,8 @@ class BodyMassage extends Component{
                 </section>
                 <br></br>
                 <section className="info professionals" id="Professionals">
-                    <h4>Massage Professionals</h4>
-                    <h6>{this.state.professionals.length} cleaning professionals in Ahmedabad</h6>
+                    <h4>Professionals</h4>
+                    <h6>{this.state.professionals.length} Massage Service Professionals in {this.props.mainPageState.city}</h6>
                     <hr></hr>
                     <div className="professionalsDetails">
                         
@@ -235,7 +235,7 @@ class BodyMassage extends Component{
                 <br></br>
                 <section className="info reviews" id="Reviews">
                     <h4>Recent Customer Reviews</h4>
-                    <h6>For Massage Professionals in Boston</h6>                   
+                    <h6>of Massage Service Professionals in {this.props.mainPageState.city}</h6>                   
                     <div className="crating">
                         <span style={{fontSize:"38px", color:"#5300a5", fontWeight:"650"}}>&#9733; {this.averageUserRatings()}</span><span style={{fontSize:"20px", color:"#5300a5", fontWeight:"600"}}>/5</span> &nbsp;based on {this.state.userReviews.length} ratings
                     </div>
@@ -256,7 +256,7 @@ class BodyMassage extends Component{
                 </div>
                 <div className="serviceBox">
                     <div className="serviceBoxButtons">
-                        <h4>Need a Massage Professional for :</h4>
+                        <h4>Need a Massage Professional for:</h4>
                         <div className="serviceButtonGroup">
                          
                             <button onClick={() => this.props.history.push('/Massage/bodyMassage/shop')}>
