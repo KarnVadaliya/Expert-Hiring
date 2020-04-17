@@ -8,6 +8,7 @@ import Scrollspy from 'react-scrollspy'
 import Axios from 'axios'
 import { connect } from 'react-redux'
 import { setSearch } from '../../../../actions/setSearch';
+import { Button } from 'react-bootstrap';
 
 class BathroomCleaning extends Component{
 
@@ -148,13 +149,13 @@ class BathroomCleaning extends Component{
             <div className="service" style={{backgroundColor:"#F5F5F5"}}>
                  <div className="serviceBg" style={{backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3),
                        rgba(0, 0, 0, 0.4)),url(${Background})`}}>
-                    <h2>Bathroom Cleaning Service in {this.props.mainPageState.city}</h2>
+                    <h2  id="h2">Bathroom Cleaning Service in {this.props.mainPageState.city}</h2>
                 </div>
 
-                <div className="info">
+                <div className="info" id="scrollspy">
                     <Scrollspy items={ ['How it Works', 'Professionals', 'Customer Reviews'] } currentClassName="is-current">
                                 <li><a active href="#Works">How it Works</a></li>
-                                <li><a href="#Professionals">Professionals</a></li>
+                                <li><a href="#Professionals">Cleaning Experts</a></li>
                                 <li><a href="#Reviews">Customer Reviews</a></li>
                     </Scrollspy>
                 </div>
@@ -202,12 +203,13 @@ class BathroomCleaning extends Component{
                             </div>
                             <hr ></hr>
                         </li>
+                        <Button id="bookNow" style={{width:"100%", margin:"auto"}} onClick={() => this.props.history.push('/Cleaning/kitchenCleaning/shop')}>Book Now!</Button>
                     </ul>
                 </section>
                 <br></br>
                 <section className="info professionals" id="Professionals">
                     <h4>Cleaning Experts</h4>
-                    <h6>{this.state.professionals.length} bathroom cleaning professionals in Ahmedabad</h6>
+                    <h6>{this.state.professionals.length} Bathroom Cleaning Service Professionals in {this.props.mainPageState.city}</h6>
                     <hr></hr>
                     <div className="professionalsDetails">
                         
@@ -231,7 +233,7 @@ class BathroomCleaning extends Component{
                 <br></br>
                 <section className="info reviews" id="Reviews">
                     <h4>Recent Customer Reviews</h4>
-                    <h6>For Bathroom Cleaning Service Professionals in Ahmedabad</h6>                   
+                    <h6>of Bathroom Cleaning Service Professionals in {this.props.mainPageState.city}</h6>                   
                     <div className="crating">
                         <span style={{fontSize:"38px", color:"#5300a5", fontWeight:"650"}}>&#9733; {this.averageUserRatings()}</span><span style={{fontSize:"20px", color:"#5300a5", fontWeight:"600"}}>/5</span> &nbsp;based on {this.state.userReviews.length} ratings
                     </div>
@@ -252,7 +254,7 @@ class BathroomCleaning extends Component{
                 </div>
                 <div className="serviceBox">
                     <div className="serviceBoxButtons">
-                        <h4>Need Bathroom Deep Cleaning for :</h4>
+                        <h4>Need Bathroom Deep Cleaning for:</h4>
                         <div className="serviceButtonGroup">
                          
                             <button onClick={() => this.props.history.push('/Cleaning/BathroomCleaning/shop/#Floor')}>

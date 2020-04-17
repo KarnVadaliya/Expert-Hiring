@@ -22,7 +22,8 @@ class MakeUp extends Component{
     componentDidMount(){
         Axios.post('http://localhost:5000/professionals/category',
         {
-            category: "Makeup"
+            category: "Makeup",
+            city: this.props.mainPageState.city
         },{
             "headers": {
               'Content-Type': 'application/json',
@@ -56,7 +57,7 @@ class MakeUp extends Component{
         return reviewList;
     }
 
-    getElements = (array) => array.slice(0,2);
+    getElements = (array) => array.slice(-2);
 
     seeMoreOnClick = (e) => {
         this.setState({
@@ -67,6 +68,18 @@ class MakeUp extends Component{
     seeMoreReviews = (e) =>{
         this.setState({
             seeMoreReviews: true
+        })
+    }
+
+    seeLessOnClick = (e) =>{
+        this.setState({
+            seeMore: false
+        })
+    }
+     
+    seeLessReviews = (e) => {
+        this.setState({
+            seeMoreReviews: false
         })
     }
 
@@ -173,7 +186,7 @@ class MakeUp extends Component{
                             <p>&emsp;&emsp;</p>
                             <div>
                                 <h5>Choose your time-slot</h5>
-                                <p>Hello There</p>
+                                <p>Pick time as per you convenience</p>
                                
                             </div>
                             <hr ></hr>
@@ -184,8 +197,8 @@ class MakeUp extends Component{
                             </div>
                             <p>&emsp;&emsp;</p>
                             <div>
-                                <h5>Pay</h5>
-                                <p>Hello There</p>
+                                <h5>Hassle-free service</h5>
+                                <p>Our Professionals will get in touch with you an hour before the service</p>
                             </div>
                             <hr ></hr>
                         </li>
@@ -196,7 +209,7 @@ class MakeUp extends Component{
                 <br></br>
                 <section className="info professionals" id="Professionals">
                     <h4>Make Up Professionals</h4>
-                    <h6>{this.state.professionals.length} make up professionals in {this.props.mainPageState.city}</h6>
+                    <h6>{this.state.professionals.length} Make Up Service Professionals in {this.props.mainPageState.city}</h6>
                     <hr></hr>
                     <div className="professionalsDetails">
                         
@@ -204,7 +217,12 @@ class MakeUp extends Component{
                        
                         { !this.state.seeMore &&
                             <div style={{textAlign:"center",padding:"20px"}}>
-                                <button onClick={this.seeMoreOnClick}><i className="fa fa-arrow-down"></i>&nbsp;&nbsp;See more</button>
+                                <button onClick={this.seeMoreOnClick}><i className="fa fa-arrow-down"></i>&nbsp;&nbsp;View more</button>
+                            </div>
+                        }
+                        { this.state.seeMore &&
+                            <div style={{textAlign:"center",padding:"20px"}}>
+                                <button onClick={this.seeLessOnClick}><i className="fa fa-arrow-up"></i>&nbsp;&nbsp;View less</button>
                             </div>
                         }
                         
@@ -215,16 +233,23 @@ class MakeUp extends Component{
                 <br></br>
                 <section className="info reviews" id="Reviews">
                     <h4>Recent Customer Reviews</h4>
-                    <h6>For Makeup and Hair stylists in {this.props.mainPageState.city} </h6>                   
+                    <h6>of Makeup Service Professionals in {this.props.mainPageState.city} </h6>                   
                     <div className="crating">
                         <span style={{fontSize:"38px", color:"#5300a5", fontWeight:"650"}}>&#9733; {this.averageUserRatings()}</span><span style={{fontSize:"20px", color:"#5300a5", fontWeight:"600"}}>/5</span> &nbsp;based on {this.state.userReviews.length} ratings
                     </div>
                     <hr></hr>
                     {reviewsList}          
 
-                    <div style={{textAlign:"center",padding:"20px"}}>
+                    { !this.state.seeMoreReviews &&
+                       <div style={{textAlign:"center",padding:"20px"}}>
                         <button onClick={this.seeMoreReviews}><i className="fa fa-arrow-down"></i>&nbsp;&nbsp;View more</button>
-                    </div>          
+                    </div> }  
+
+                    { this.state.seeMoreReviews &&
+                       <div style={{textAlign:"center",padding:"20px"}}>
+                        <button onClick={this.seeLessReviews}><i className="fa fa-arrow-up"></i>&nbsp;&nbsp;View less</button>
+                    </div> }   
+         
                 </section>
                 </div>
                 <div className="serviceBox">
