@@ -30,9 +30,7 @@ class ACRepairCart extends Component {
             .then(res=>{
                 console.log(res.data);
                 let tempList = []
-                // res.data.map(product=> this.props.addProductFromDB(product));
                 res.data.map(product => tempList.push(product));
-                console.log(this.props.cartState);
                 this.setState({
                     products: tempList
                 })
@@ -58,6 +56,17 @@ class ACRepairCart extends Component {
     
 
     render() {
+        let tempList = [];
+        this.state.products.map(product => tempList.push(product));
+        tempList.map(product => {
+            if(this.props.cartState.productsInCart[product.id] != null){
+                product.quantity = this.props.cartState.productsInCart[product.id].quantity;
+                product.inCart = this.props.cartState.productsInCart[product.id].inCart;
+            }else{
+                product.quantity = 0;
+                product.inCart = false;
+            }
+        });
         console.log(this.state);
         const { services } = this.state;
 
@@ -143,7 +152,7 @@ class ACRepairCart extends Component {
                     <Button onClick={this.props.toggleCartModal} style={{height:"50px", width:"400px", margin:"2px", backgroundImage:"linear-gradient(to right, #667eea, #764ba2, #6B8DD6, #8E37D7)"}}>
                     <Row>
                         <Col sm="6">
-                            <h5 style={{textAlign:"left", color:"white"}}><Badge className="badge-white">{this.state.cartNumbers}</Badge>&nbsp;&nbsp;${this.props.cartState.cartCost}</h5> 
+                            <h5 style={{textAlign:"left", color:"white"}}><Badge className="badge-white">{this.props.cartState.cartNumbers}</Badge>&nbsp;&nbsp;${this.props.cartState.cartCost}</h5> 
                         </Col>
                         <Col sm="6">
                             <h5 style={{textAlign:"right", color:"white"}}><i className="fa fa-chevron-up"></i></h5>                             
@@ -153,7 +162,7 @@ class ACRepairCart extends Component {
                     </Button>
                 </div>
 
-                <Link to="/ApplianceRepair/acRepair"><i className="fa fa-chevron-left" style={{fontSize:"50px", marginLeft:"10%", position:"absolute", top:"9%"}}/></Link>
+                <Link id="back" to="/ApplianceRepair/acRepair"><i className="fa fa-chevron-left" style={{fontSize:"50px", marginLeft:"10%", position:"absolute", top:"9%"}}/></Link>
 
                 <h1 style={{fontWeight:"bold", letterSpacing:"2px", textTransform:"uppercase", textAlign:"center"}}>Professional AC Repairing</h1>
                 <br></br><br></br>

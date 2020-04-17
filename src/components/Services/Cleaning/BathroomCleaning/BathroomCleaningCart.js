@@ -15,24 +15,22 @@ import { Link } from "react-router-dom";
 
   
 
-class MicrowaveRepairCart extends Component {
+class BathroomCleaningCart extends Component {
     constructor(props){
         super(props);
   
         this.state = {
-          services: ['Repair','Service','Other Issues'],
+          services: ['1 Bathroom','2 Bathroom','3 Bathroom','4 Bathroom'],
           products: []
         };
     }
 
     componentDidMount(){
-        Axios.get('http://localhost:5000/MicrowaveRepair/microwave')
+        Axios.get('http://localhost:5000/cleaning/sofaCleaning/')
             .then(res=>{
                 console.log(res.data);
-                let tempList = []
-                // res.data.map(product=> this.props.addProductFromDB(product));
+                let tempList = [];
                 res.data.map(product => tempList.push(product));
-                console.log(this.props.cartState);
                 this.setState({
                     products: tempList
                 })
@@ -44,12 +42,14 @@ class MicrowaveRepairCart extends Component {
 
     getList = (name) =>{
         switch (name) {
-            case 'Repair':
-                return global.mRepairList;
-            case 'Service':
-                return global.mServiceList;
-            case 'Other Issues':
-                return global.mOtherList;
+            case '1 Bathroom':
+                return global.oneList;
+            case '2 Bathroom':
+                return global.twoList;
+            case '3 Bathroom':
+                return global.threeList;
+            case '4 Bathroom':
+                return global.fourList;
             default:
                 break;
         }
@@ -58,6 +58,18 @@ class MicrowaveRepairCart extends Component {
     
 
     render() {
+        let tempList = [];
+        this.state.products.map(product => tempList.push(product));
+        tempList.map(product => {
+            if(this.props.cartState.productsInCart[product.id] != null){
+                product.quantity = this.props.cartState.productsInCart[product.id].quantity;
+                product.inCart = this.props.cartState.productsInCart[product.id].inCart;
+            }else{
+                product.quantity = 0;
+                product.inCart = false;
+            }
+        });
+
         console.log(this.state);
         const { services } = this.state;
 
@@ -74,30 +86,35 @@ class MicrowaveRepairCart extends Component {
         );
 
         
-        const repairCategory = [];
-        for(var product in this.state.products){
-            if(this.state.products[product].category === 'Repair')
-                repairCategory.push(this.state.products[product])
-        }
+        const oneBathroomCategory = [];
+        tempList.map(product=>{
+            if(product.category === '1 Bathroom')
+                oneBathroomCategory.push(product);
+        });
       
 
-        const serviceCategory = [];
-        for(var product in this.state.products){
-            if(this.state.products[product].category === 'Service')
-                serviceCategory.push(this.state.products[product])
-        }
+        const twoBathroomCategory = [];
+        tempList.map(product=>{
+            if(product.category === '2 Bathroom')
+                twoBathroomCategory.push(product);
+        });
         
 
-        const otherCategory = [];
-        for(var product in this.state.products){
-            if(this.state.products[product].category === 'Other Issues')
-                otherCategory.push(this.state.products[product])
-        }
+        const threeBathroomCategory = [];
+        tempList.map(product=>{
+            if(product.category === '3 Bathroom')
+                threeBathroomCategory.push(product);
+        });
 
+        const fourBathroomCategory = [];
+        tempList.map(product=>{
+            if(product.category === '4 Bathroom')
+                fourBathroomCategory.push(product);
+        });
         
 
-        global.mRepairList = (repairCategory.length) ? (
-            repairCategory.map(product => {
+        global.oneList = (oneBathroomCategory.length) ? (
+            oneBathroomCategory.map(product => {
                 return(                    
                     <ProductCard product={product}/>
                 ) 
@@ -106,8 +123,8 @@ class MicrowaveRepairCart extends Component {
             <LoadingCard />
         );
 
-        global.mServiceList = (serviceCategory.length) ? (
-            serviceCategory.map(product => {
+        global.twoList = (threeBathroomCategory.length) ? (
+            threeBathroomCategory.map(product => {
                 return(
                     <ProductCard product={product}/>
                 ) 
@@ -116,8 +133,8 @@ class MicrowaveRepairCart extends Component {
             <LoadingCard />
         );
 
-        global.mOtherList = (otherCategory.length) ? (
-            otherCategory.map(product => {
+        global.threeList = (twoBathroomCategory.length) ? (
+            twoBathroomCategory.map(product => {
                 return(
                    <ProductCard product={product}/>
                 ) 
@@ -125,6 +142,17 @@ class MicrowaveRepairCart extends Component {
         ) : (
             <LoadingCard />
         );
+
+        global.fourList = (fourBathroomCategory.length) ? (
+            fourBathroomCategory.map(product => {
+                return(
+                    <ProductCard product={product}/>
+                ) 
+            })
+        ) : (
+            <LoadingCard />
+        );
+
 
         const sectionList = this.state.services.map(service =>{
             return(
@@ -143,7 +171,7 @@ class MicrowaveRepairCart extends Component {
                     <Button onClick={this.props.toggleCartModal} style={{height:"50px", width:"400px", margin:"2px", backgroundImage:"linear-gradient(to right, #667eea, #764ba2, #6B8DD6, #8E37D7)"}}>
                     <Row>
                         <Col sm="6">
-                            <h5 style={{textAlign:"left", color:"white"}}><Badge className="badge-white">{this.state.cartNumbers}</Badge>&nbsp;&nbsp;${this.props.cartState.cartCost}</h5> 
+                            <h5 style={{textAlign:"left", color:"white"}}><Badge className="badge-white">{this.props.cartState.cartNumbers}</Badge>&nbsp;&nbsp;${this.props.cartState.cartCost}</h5> 
                         </Col>
                         <Col sm="6">
                             <h5 style={{textAlign:"right", color:"white"}}><i className="fa fa-chevron-up"></i></h5>                             
@@ -153,9 +181,9 @@ class MicrowaveRepairCart extends Component {
                     </Button>
                 </div>
 
-                <Link id="back" to="/ElectronicRepair/microwaveRepair"><i className="fa fa-chevron-left" style={{fontSize:"50px", marginLeft:"10%", position:"absolute", top:"9%"}}/></Link>
+                <Link to="/Cleaning/BathroomCleaning"><i className="fa fa-chevron-left" style={{fontSize:"50px", marginLeft:"10%", position:"absolute", top:"9%"}}/></Link>
 
-                <h1 style={{fontWeight:"bold", letterSpacing:"2px", textTransform:"uppercase", textAlign:"center"}}>Professional Microwave Repairing</h1>
+                <h1 style={{fontWeight:"bold", letterSpacing:"2px", textTransform:"uppercase", textAlign:"center"}}>Bathroom Cleaning</h1>
                 <br></br><br></br>
                 <div className="servicesSection">
                     <div className="servicesNav">
@@ -178,4 +206,4 @@ const mapStateToProps = (state) => ({
     cartState: state.cartState
 });
 
-export default connect(mapStateToProps,{ toggleCartModal, addProductFromDB })(MicrowaveRepairCart);
+export default connect(mapStateToProps,{ toggleCartModal, addProductFromDB })(BathroomCleaningCart);

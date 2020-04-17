@@ -6,6 +6,7 @@ import Axios from 'axios';
 
 
 
+
 class PaymentHistory extends Component{
     constructor(props)
     {
@@ -93,7 +94,7 @@ class PaymentHistory extends Component{
                         <h5 style={{fontWeight:"700",fontSize:"22px"}}>Order Details</h5>
                         <div>
                             <div>
-                            <Table borderless>
+                            <Table bordered>
                                 <thead>
                                 <tr>
                                     <th style={{fontSize:"18px"}}>Service Name</th>
@@ -103,7 +104,7 @@ class PaymentHistory extends Component{
                                 </thead>
                                 <tbody>
                                 {listitems}
-                                <tr style={{borderTop:"0.5px solid black"}}>
+                                <tr>
                                 <th scope="row" style={{fontSize:"18px"}}>Total :</th>
                                 <td></td>
                                 <td>$ {p.total}</td>
