@@ -9,38 +9,28 @@ class ServicesComponent extends Component{
         super(props);
         this.state = {
             services: [
+
                 {
-                    name: "Salon",
+                    name: "Home Services",
                     subServices: [
                         {
-                            name: "Makeup and Hairstyling",
-                            link: "/Salon/makeup",                            
-                            image: "salon2.jpg",
-                            category: "Salon"
+                            name: "Electrician",
+                            link: "/HomeService/electrician",                            
+                            image: "home1.jpg",
+                            category: "Home Services"
                         },
                         {
-                            name: "Salon at Home (Women)",
-                            link: "/Salon/salonAtHomeWomen",
-                            image: "salon1.jpg",
-                            category: "Salon"                             
+                            name: "Plumber",
+                            link: "/HomeService/plumber",
+                            image: "home2.jpeg",
+                            category: "Home Services"   
                         },
                         {
-                            name: "Hair-Cut",
-                            link: "/Salon/haircut",
-                            image: "salon3.jpg", 
-                            category: "Salon"  
+                            name: "Carpenter",
+                            link: "/HomeService/carpenter",
+                            image: "home3.jpeg",
+                            category: "Home Services"   
                         }
-                    ]
-                },
-                {
-                    name: "Massage",
-                    subServices: [
-                        {
-                            name: "Body Massage",
-                            link: "#notGiven",                            
-                            image: "salon1.jpeg",
-                            category: "Massage"
-                        }               
                     ]
                 },
                 {
@@ -90,6 +80,41 @@ class ServicesComponent extends Component{
                     ]
                 },
                 {
+                    name: "Salon",
+                    subServices: [
+                        {
+                            name: "Makeup and Hairstyling",
+                            link: "/Salon/makeup",                            
+                            image: "salon2.jpg",
+                            category: "Salon"
+                        },
+                        {
+                            name: "Salon at Home (Women)",
+                            link: "/Salon/salonAtHomeWomen",
+                            image: "salon1.jpg",
+                            category: "Salon"                             
+                        },
+                        {
+                            name: "Hair-Cut",
+                            link: "/Salon/haircut",
+                            image: "salon3.jpg", 
+                            category: "Salon"  
+                        }
+                    ]
+                },
+                {
+                    name: "Massage",
+                    subServices: [
+                        {
+                            name: "Body Massage",
+                            link: "#notGiven",                            
+                            image: "salon1.jpeg",
+                            category: "Massage"
+                        }               
+                    ]
+                },
+                
+                {
                     name: "Cleaning",
                     subServices: [
                         {
@@ -112,29 +137,7 @@ class ServicesComponent extends Component{
                         }
                     ]
                 },
-                {
-                    name: "Home Services",
-                    subServices: [
-                        {
-                            name: "Electrician",
-                            link: "/HomeService/electrician",                            
-                            image: "home1.jpg",
-                            category: "Home Services"
-                        },
-                        {
-                            name: "Plumber",
-                            link: "/HomeService/plumber",
-                            image: "home2.jpeg",
-                            category: "Home Services"   
-                        },
-                        {
-                            name: "Carpenter",
-                            link: "/HomeService/carpenter",
-                            image: "home3.jpeg",
-                            category: "Home Services"   
-                        }
-                    ]
-                },
+                
                 {
                     name: "Fitness",
                     subServices: [
@@ -260,14 +263,16 @@ class ServicesComponent extends Component{
                     {   notFound !== "notFound" &&
                         <div className="servicesNav">
                         <h3 style={{fontWeight:"600",color:"black",letterSpacing:"0.8px"}}>All Categories</h3>
-                        <Scrollspy items={ ['Salon', 'Massage', 'Appliance','Electronic','Cleaning','Home-Service','Fitness'] } currentClassName="is-current">
-                            <li><a href="#Salon">Salon</a></li>
-                            <li><a href="#Massage">Massage</a></li>
+                        <Scrollspy items={ ['HomeServices','ApplianceRepair','ElectronicRepair', 'Salon', 'Massage', 'Cleaning','Fitness'] } currentClassName="is-current">
+                           
+                            <li><a href="#HomeServices">Home Services</a></li>
                             <li><a href="#ApplianceRepair">Appliance Repair</a></li>
                             <li><a href="#ElectronicRepair">Electronic Repair</a></li>
+                            <li><a href="#Salon">Salon</a></li>
+                            <li><a href="#Massage">Massage</a></li>
                             <li><a href="#Cleaning">Cleaning</a></li>
-                            <li><a href="#HomeService">Home Services</a></li>
                             <li><a href="#Fitness">Fitness</a></li>
+
                         </Scrollspy>
                     </div>}
                     
