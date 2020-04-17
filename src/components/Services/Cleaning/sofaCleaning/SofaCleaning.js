@@ -8,6 +8,7 @@ import Scrollspy from 'react-scrollspy'
 import Axios from 'axios'
 import { connect } from 'react-redux'
 import { setSearch } from '../../../../actions/setSearch';
+import { Button } from 'react-bootstrap';
 
 class SofaCleaning extends Component{
 
@@ -148,10 +149,10 @@ class SofaCleaning extends Component{
             <div className="service" style={{backgroundColor:"#F5F5F5"}}>
                  <div className="serviceBg" style={{backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3),
                        rgba(0, 0, 0, 0.4)),url(${Background})`}}>
-                    <h2>Sofa Cleaning Service in {this.props.mainPageState.city}</h2>
+                    <h2 id="h2">Sofa Cleaning Service in {this.props.mainPageState.city}</h2>
                 </div>
 
-                <div className="info">
+                <div className="info" id="scrollspy">
                     <Scrollspy items={ ['How it Works', 'Professionals', 'Customer Reviews'] } currentClassName="is-current">
                                 <li><a active href="#Works">How it Works</a></li>
                                 <li><a href="#Professionals">Professionals</a></li>
@@ -189,7 +190,7 @@ class SofaCleaning extends Component{
                                 <p>Hello There</p>
                                
                             </div>
-                            <hr ></hr>
+                            <hr ></hr>                            
                         </li>
                         <li>
                             <div>
@@ -202,9 +203,42 @@ class SofaCleaning extends Component{
                             </div>
                             <hr ></hr>
                         </li>
+                        
+                            <Button id="bookNow" style={{width:"100%", margin:"auto"}} onClick={() => this.props.history.push('/Cleaning/sofaCleaning/shop/#3SofaSeats')}>Book Now!</Button>
+                        
                     </ul>
                 </section>
                 <br></br>
+                <div className="serviceBox">
+                    <div className="serviceBoxButtons">
+                        <h4>Need a Cleaning Professional for :</h4>
+                        <div className="serviceButtonGroup">
+                         
+                            <button onClick={() => this.props.history.push('/Cleaning/sofaCleaning/shop/#3SofaSeats')}>
+                                3 Sofa Seats <i style={{textAlign:"right"}} className="fa fa-chevron-right" />
+                            </button> 
+                       
+                            <button onClick={() => this.props.history.push('/Cleaning/sofaCleaning/shop/#4SofaSeats')}>
+                                4 Sofa Seats<i className="fa fa-chevron-right"></i>
+                            </button>
+
+                            <button onClick={() => this.props.history.push('/cleaning/sofaCleaning/shop/#5SofaSeats')}>
+                                5 Sofa Seats<i className="fa fa-chevron-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div className="serviceBoxRatings" >
+                        <div className="ratings"> 
+                            <span style={{fontSize:"26px", color:"#5300a5", fontWeight:"580"}}>&#9733; {this.averageUserRatings()}</span><span style={{fontSize:"20px", color:"#5300a5", fontWeight:"580"}}>/5</span>
+                            <p>based on {this.state.userReviews.length} ratings</p>
+                        </div>
+                        
+                       <div className="bookings">   
+                           <span style={{fontSize:"25px", color:"black", fontWeight:"580"}}>7,483</span>
+                           <p>Bookings done in past month</p>
+                       </div>
+                    </div>
+                </div>
                 <section className="info professionals" id="Professionals">
                     <h4>Cleaning Professionals</h4>
                     <h6>{this.state.professionals.length} cleaning professionals in Ahmedabad</h6>
@@ -250,36 +284,7 @@ class SofaCleaning extends Component{
 
                 </section>
                 </div>
-                <div className="serviceBox">
-                    <div className="serviceBoxButtons">
-                        <h4>Need a Cleaning Professional for :</h4>
-                        <div className="serviceButtonGroup">
-                         
-                            <button onClick={() => this.props.history.push('/Cleaning/sofaCleaning/shop/#3SofaSeats')}>
-                                3 Sofa Seats <i style={{textAlign:"right"}} className="fa fa-chevron-right" />
-                            </button> 
-                       
-                            <button onClick={() => this.props.history.push('/Cleaning/sofaCleaning/shop/#4SofaSeats')}>
-                                4 Sofa Seats<i className="fa fa-chevron-right"></i>
-                            </button>
-
-                            <button onClick={() => this.props.history.push('/cleaning/sofaCleaning/shop/#5SofaSeats')}>
-                                5 Sofa Seats<i className="fa fa-chevron-right"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div className="serviceBoxRatings" >
-                        <div className="ratings"> 
-                            <span style={{fontSize:"26px", color:"#5300a5", fontWeight:"580"}}>&#9733; {this.averageUserRatings()}</span><span style={{fontSize:"20px", color:"#5300a5", fontWeight:"580"}}>/5</span>
-                            <p>based on {this.state.userReviews.length} ratings</p>
-                        </div>
-                        
-                       <div className="bookings">   
-                           <span style={{fontSize:"25px", color:"black", fontWeight:"580"}}>7,483</span>
-                           <p>Bookings done in past month</p>
-                       </div>
-                    </div>
-                </div>
+                
             </div>
         )
     }

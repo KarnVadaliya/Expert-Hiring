@@ -93,3 +93,20 @@
         }
     }
 }
+
+@media only screen and (max-width: 600px){
+    .footer.has-cards{
+        padding-top: 0px;
+        &:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 10%;
+            bottom: 0;
+            height: inherit;
+            background: theme-color("dark");
+            
+        }
+    }
+}
