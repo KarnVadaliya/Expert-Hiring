@@ -21,7 +21,8 @@ class SofaCleaning extends Component{
     componentDidMount(){
         Axios.post('http://localhost:5000/professionals/category',
         {
-            category: "Plumber"
+            category: "Plumber",
+            city: this.props.mainPageState.city
         },{
             "headers": {
               'Content-Type': 'application/json',
@@ -55,7 +56,7 @@ class SofaCleaning extends Component{
         return reviewList;
     }
 
-    getElements = (array) => array.slice(0,2);
+    getElements = (array) => array.slice(-2);
 
     seeMoreOnClick = (e) => {
         this.setState({
@@ -66,6 +67,18 @@ class SofaCleaning extends Component{
     seeMoreReviews = (e) =>{
         this.setState({
             seeMoreReviews: true
+        })
+    }
+
+    seeLessOnClick = (e) =>{
+        this.setState({
+            seeMore: false
+        })
+    }
+     
+    seeLessReviews = (e) => {
+        this.setState({
+            seeMoreReviews: false
         })
     }
 
@@ -198,12 +211,18 @@ class SofaCleaning extends Component{
                     <div className="professionalsDetails">
                         
                         {professionalsList}
-                       
+
                         { !this.state.seeMore &&
                             <div style={{textAlign:"center",padding:"20px"}}>
-                                <button onClick={this.seeMoreOnClick}><i className="fa fa-arrow-down"></i>&nbsp;&nbsp;See more</button>
+                                <button onClick={this.seeMoreOnClick}><i className="fa fa-arrow-down"></i>&nbsp;&nbsp;View more</button>
                             </div>
                         }
+                        { this.state.seeMore &&
+                            <div style={{textAlign:"center",padding:"20px"}}>
+                                <button onClick={this.seeLessOnClick}><i className="fa fa-arrow-up"></i>&nbsp;&nbsp;View less</button>
+                            </div>
+                        }
+
                         
                     </div>
                     <div >
@@ -217,11 +236,18 @@ class SofaCleaning extends Component{
                         <span style={{fontSize:"38px", color:"#5300a5", fontWeight:"650"}}>&#9733; {this.averageUserRatings()}</span><span style={{fontSize:"20px", color:"#5300a5", fontWeight:"600"}}>/5</span> &nbsp;based on {this.state.userReviews.length} ratings
                     </div>
                     <hr></hr>
-                    {reviewsList}          
+                    {reviewsList} 
 
-                    <div style={{textAlign:"center",padding:"20px"}}>
+                    { !this.state.seeMoreReviews &&
+                       <div style={{textAlign:"center",padding:"20px"}}>
                         <button onClick={this.seeMoreReviews}><i className="fa fa-arrow-down"></i>&nbsp;&nbsp;View more</button>
-                    </div>          
+                    </div> }  
+
+                    { this.state.seeMoreReviews &&
+                       <div style={{textAlign:"center",padding:"20px"}}>
+                        <button onClick={this.seeLessReviews}><i className="fa fa-arrow-up"></i>&nbsp;&nbsp;View less</button>
+                    </div> }   
+
                 </section>
                 </div>
                 <div className="serviceBox">

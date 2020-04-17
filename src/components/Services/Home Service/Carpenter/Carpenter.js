@@ -21,7 +21,9 @@ class Carpenter extends Component{
     componentDidMount(){
         Axios.post('http://localhost:5000/professionals/category',
         {
-            category: "Carpenter"
+            category: "Carpenter",
+            city: this.props.mainPageState.city
+
         },{
             "headers": {
               'Content-Type': 'application/json',
@@ -66,6 +68,18 @@ class Carpenter extends Component{
     seeMoreReviews = (e) =>{
         this.setState({
             seeMoreReviews: true
+        })
+    }
+
+    seeLessOnClick = (e) =>{
+        this.setState({
+            seeMore: false
+        })
+    }
+     
+    seeLessReviews = (e) => {
+        this.setState({
+            seeMoreReviews: false
         })
     }
 
@@ -201,10 +215,15 @@ class Carpenter extends Component{
                        
                         { !this.state.seeMore &&
                             <div style={{textAlign:"center",padding:"20px"}}>
-                                <button onClick={this.seeMoreOnClick}><i className="fa fa-arrow-down"></i>&nbsp;&nbsp;See more</button>
+                                <button onClick={this.seeMoreOnClick}><i className="fa fa-arrow-down"></i>&nbsp;&nbsp;View more</button>
                             </div>
                         }
-                        
+                        { this.state.seeMore &&
+                            <div style={{textAlign:"center",padding:"20px"}}>
+                                <button onClick={this.seeLessOnClick}><i className="fa fa-arrow-up"></i>&nbsp;&nbsp;View less</button>
+                            </div>
+                        }
+
                     </div>
                     <div >
                     </div>
@@ -218,10 +237,15 @@ class Carpenter extends Component{
                     </div>
                     <hr></hr>
                     {reviewsList}          
-
-                    <div style={{textAlign:"center",padding:"20px"}}>
+                        { !this.state.seeMoreReviews &&
+                       <div style={{textAlign:"center",padding:"20px"}}>
                         <button onClick={this.seeMoreReviews}><i className="fa fa-arrow-down"></i>&nbsp;&nbsp;View more</button>
-                    </div>          
+                    </div> }  
+
+                    { this.state.seeMoreReviews &&
+                       <div style={{textAlign:"center",padding:"20px"}}>
+                        <button onClick={this.seeLessReviews}><i className="fa fa-arrow-up"></i>&nbsp;&nbsp;View less</button>
+                    </div> }         
                 </section>
                 </div>
                 <div className="serviceBox">

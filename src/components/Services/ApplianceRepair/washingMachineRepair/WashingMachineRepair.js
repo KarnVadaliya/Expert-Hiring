@@ -21,7 +21,8 @@ class WashingMachineRepair extends Component{
     componentDidMount(){
         Axios.post('http://localhost:5000/professionals/category',
         {
-            category: "Washing Machine Repair"
+            category: "Washing Machine Repair",
+            city: this.props.mainPageState.city
         },{
             "headers": {
               'Content-Type': 'application/json',
@@ -55,7 +56,7 @@ class WashingMachineRepair extends Component{
         return reviewList;
     }
 
-    getElements = (array) => array.slice(0,2);
+    getElements = (array) => array.slice(-2);
 
     seeMoreOnClick = (e) => {
         this.setState({
@@ -66,6 +67,18 @@ class WashingMachineRepair extends Component{
     seeMoreReviews = (e) =>{
         this.setState({
             seeMoreReviews: true
+        })
+    }
+
+    seeLessOnClick = (e) =>{
+        this.setState({
+            seeMore: false
+        })
+    }
+     
+    seeLessReviews = (e) => {
+        this.setState({
+            seeMoreReviews: false
         })
     }
 

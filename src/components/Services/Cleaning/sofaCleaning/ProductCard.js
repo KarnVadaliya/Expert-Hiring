@@ -1,14 +1,14 @@
-import React from './node_modules/react';
+import React from 'react';
 import { addProductToCart } from '../../../../actions/addProduct';
 import { removeProductFromCart } from '../../../../actions/removeProduct';
-import { connect } from './node_modules/react-redux';
+import { connect } from 'react-redux';
 import cleaningImage from './cleaning.jpg';
 import {
     Card,
     CardBody,
     CardTitle, CardText, Row, Col, CardImg, Badge
-  } from "./node_modules/reactstrap";
-import { Button } from "./node_modules/reactstrap";
+  } from "reactstrap";
+import { Button } from "reactstrap";
 
 const ProductCard = (props) =>{
     // {console.log(props.product)}
