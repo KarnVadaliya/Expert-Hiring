@@ -97,21 +97,36 @@ export default class AboutUs extends Component {
                         <img className="person" src={require("../assets/img/about/profile1.jpeg")}></img>
                         <br></br>
                         <p className="leaderName">Deep Gamit<a href="https://www.linkedin.com/in/deepgamit2105/" target="_blank"><img className="linkedin" src={require("../assets/img/about/ic.png")} style={{width:"30px",height:"20px"}} /></a></p>
-                        <p>Marketing Head<br></br>Ahmedabad, India.</p>
+                        <p>Marketing Head<br></br>Boston, USA.</p>
                         <br></br>
                     </div>
                     <div className="box">
                         <img className="person" src={require("../assets/img/about/profile2.jpeg")}></img>
                         <br></br>
                         <p className="leaderName">Karn Vadaliya<a href="https://www.linkedin.com/in/karn-vadaliya/" target="_blank"><img className="linkedin" src={require("../assets/img/about/ic.png")} style={{width:"30px",height:"20px"}} /></a></p>
-                        <p>Operations Head<br></br>Ahmedabad, India.</p>
+                        <p>Operations Head<br></br>Boston, USA.</p>
                         <br></br>
                     </div>
                     <div className="box">
                         <img className="person" src={require("../assets/img/about/profile3.jpeg")}></img>
                         <br></br>
                         <p className="leaderName">Priyam Suthar<a href="https://www.linkedin.com/in/pdsuthar10/" target="_blank"><img className="linkedin" src={require("../assets/img/about/ic.png")} style={{width:"30px",height:"20px"}} /></a></p>
-                        <p>Technology Head<br></br>Ahmedabad, India.</p>
+                        <p>Technology Head<br></br>Boston, USA.</p>
+                        <br></br>
+                    </div>
+                    <br></br>
+                    <div className="box">
+                        <img className="person" src={require("../assets/img/about/profile.jpg")}></img>
+                        <br></br>
+                        <p className="leaderName">Priyam Suthar<a href="https://www.linkedin.com/in/aishwaryamane/" target="_blank"><img className="linkedin" src={require("../assets/img/about/ic.png")} style={{width:"30px",height:"20px"}} /></a></p>
+                        <p>Sales Head<br></br>Boston, USA.</p>
+                        <br></br>
+                    </div>
+                    <div className="box">
+                        <img className="person" src={require("../assets/img/about/profile4.jpeg")}></img>
+                        <br></br>
+                        <p className="leaderName">Priyam Suthar<a href="https://www.linkedin.com/in/aayush-vijayant/" target="_blank"><img className="linkedin" src={require("../assets/img/about/ic.png")} style={{width:"30px",height:"20px"}} /></a></p>
+                        <p>Human Resource Head<br></br>Boston, USA.</p>
                         <br></br>
                     </div>
                 </div>

@@ -886,6 +886,10 @@ h2 {
 }
 .superbox {
     display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    
 }
 .box {
     flex: 1;
