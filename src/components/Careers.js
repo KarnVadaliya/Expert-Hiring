@@ -74,9 +74,27 @@ export default class Careers extends Component {
           })
           .then(res=>{
               console.log(res);                
-          })
+          }) 
           .catch(err=>console.log(err));
+
+
+          axios.post('http://localhost:5000/users/sendApp', 
+            this.state,
+            {
+                "headers": {
+                  'Content-Type': 'application/json',
+                }
+              })
+            .then(res => {
+              console.log(res);
+                
+            })
+            .catch(err => {
+                console.log(err);
+            })
     }
+
+    
 
     resetForm = () => { 
      document.getElementById("form").reset();
@@ -440,6 +458,11 @@ export default class Careers extends Component {
                           <Input placeholder="Skills" name="skills" type="text" onChange={this.handleOnChangeSkills} autoComplete="off"/>
                         </InputGroup>
                       </FormGroup>
+                      {/* <h5>Resume</h5>
+                      <form action="/upload" method="POST" enctype="multipart/form-data">
+                          <input type="file" name="uploadedFile" /> <br /> <br />
+                          
+                      </form> */}
                       <div className="text-center">
                         <Button
                           className="my-4"

@@ -9,6 +9,7 @@ router.route('/').get((req,res)=>{
 
 
 router.route('/add').post((req,res)=>{
+
     const name = req.body.name;
     const email = req.body.email;
     const phone = req.body.phone;
@@ -29,6 +30,9 @@ router.route('/add').post((req,res)=>{
         .then(()=>res.json('Application Submitted'))
         .catch(error=>res.status(400).json('Error: '+error));
 });
+
+
+
 
 //delete
 
