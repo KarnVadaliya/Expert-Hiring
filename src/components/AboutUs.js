@@ -118,14 +118,14 @@ export default class AboutUs extends Component {
                     <div className="box">
                         <img className="person" src={require("../assets/img/about/profile.jpg")}></img>
                         <br></br>
-                        <p className="leaderName">Priyam Suthar<a href="https://www.linkedin.com/in/aishwaryamane/" target="_blank"><img className="linkedin" src={require("../assets/img/about/ic.png")} style={{width:"30px",height:"20px"}} /></a></p>
+                        <p className="leaderName">Aishwarya Mane<a href="https://www.linkedin.com/in/aishwaryamane/" target="_blank"><img className="linkedin" src={require("../assets/img/about/ic.png")} style={{width:"30px",height:"20px"}} /></a></p>
                         <p>Sales Head<br></br>Boston, USA.</p>
                         <br></br>
                     </div>
                     <div className="box">
                         <img className="person" src={require("../assets/img/about/profile4.jpeg")}></img>
                         <br></br>
-                        <p className="leaderName">Priyam Suthar<a href="https://www.linkedin.com/in/aayush-vijayant/" target="_blank"><img className="linkedin" src={require("../assets/img/about/ic.png")} style={{width:"30px",height:"20px"}} /></a></p>
+                        <p className="leaderName">Aayush Vijayant<a href="https://www.linkedin.com/in/aayush-vijayant/" target="_blank"><img className="linkedin" src={require("../assets/img/about/ic.png")} style={{width:"30px",height:"20px"}} /></a></p>
                         <p>Human Resource Head<br></br>Boston, USA.</p>
                         <br></br>
                     </div>
