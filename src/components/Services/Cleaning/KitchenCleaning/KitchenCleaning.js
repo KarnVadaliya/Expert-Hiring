@@ -8,6 +8,7 @@ import Scrollspy from 'react-scrollspy'
 import Axios from 'axios'
 import { connect } from 'react-redux'
 import { setSearch } from '../../../../actions/setSearch';
+import { Button } from 'react-bootstrap';
 
 class KitchenCleaning extends Component{
 
@@ -94,7 +95,7 @@ class KitchenCleaning extends Component{
                     <React.Fragment key={professional._id}>
                         <img src={require("../../../../assets/img/serviceBackgrounds/random.jpg")}></img>
                         <div style={{marginLeft:"120px"}}>
-                            <span className="name">{professional.name}</span><br></br><br></br>
+                            <span className="name">{professional.name}</span><br></br>
                             <p>{professional.address}</p>
                             <span style={{marginTop:"-2px"}} className="rating">&#9733; {professional.ratings} <span style={{marginLeft:"2px", marginRight:"5px",color:"black"}}> ({professional.numberOfRatings} ratings) &emsp; &#x25cf; </span>  {professional.rated5Stars} times rated 5 star</span>
                             <br></br>    
@@ -148,13 +149,13 @@ class KitchenCleaning extends Component{
             <div className="service" style={{backgroundColor:"#F5F5F5"}}>
                  <div className="serviceBg" style={{backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3),
                        rgba(0, 0, 0, 0.4)),url(${Background})`}}>
-                    <h2>Kitchen Cleaning Service in {this.props.mainPageState.city}</h2>
+                    <h2 id="h2">Kitchen Cleaning Service in {this.props.mainPageState.city}</h2>
                 </div>
 
-                <div className="info">
+                <div className="info" id="scrollspy">
                     <Scrollspy items={ ['How it Works', 'Professionals', 'Customer Reviews'] } currentClassName="is-current">
                                 <li><a active href="#Works">How it Works</a></li>
-                                <li><a href="#Professionals">Professionals</a></li>
+                                <li><a href="#Professionals">Cleaning Experts</a></li>
                                 <li><a href="#Reviews">Customer Reviews</a></li>
                     </Scrollspy>
                 </div>
@@ -172,7 +173,7 @@ class KitchenCleaning extends Component{
                             </div> 
                             <p>&emsp;&emsp;</p>
                             <div>
-                            <h5>Select size of you kitchen</h5>
+                            <h5>Select the size of you kitchen</h5>
                                 <p>Browse through various packages and services</p>
                                
                             </div>
@@ -202,12 +203,13 @@ class KitchenCleaning extends Component{
                             </div>
                             <hr ></hr>
                         </li>
+                         <Button id="bookNow" style={{width:"100%", margin:"auto"}} onClick={() => this.props.history.push('/Cleaning/kitchenCleaning/shop')}>Book Now!</Button>
                     </ul>
                 </section>
                 <br></br>
                 <section className="info professionals" id="Professionals">
-                    <h4>Cleaning Professionals</h4>
-                    <h6>{this.state.professionals.length} Kitchen cleaning professionals in Ahmedabad</h6>
+                    <h4>Cleaning Experts</h4>
+                    <h6>{this.state.professionals.length} Kitchen Cleaning Service Professionals in {this.props.mainPageState.city}</h6>
                     <hr></hr>
                     <div className="professionalsDetails">
                         
@@ -231,7 +233,7 @@ class KitchenCleaning extends Component{
                 <br></br>
                 <section className="info reviews" id="Reviews">
                     <h4>Recent Customer Reviews</h4>
-                    <h6>For Kitchen Cleaning Service Professionals in Ahmedabad</h6>                   
+                    <h6>of Kitchen Cleaning Service Professionals in {this.props.mainPageState.city}</h6>                   
                     <div className="crating">
                         <span style={{fontSize:"38px", color:"#5300a5", fontWeight:"650"}}>&#9733; {this.averageUserRatings()}</span><span style={{fontSize:"20px", color:"#5300a5", fontWeight:"600"}}>/5</span> &nbsp;based on {this.state.userReviews.length} ratings
                     </div>
@@ -252,22 +254,22 @@ class KitchenCleaning extends Component{
                 </div>
                 <div className="serviceBox">
                     <div className="serviceBoxButtons">
-                        <h4>Need Kitchen Deep Cleaning for :</h4>
+                        <h4>Need Kitchen Deep Cleaning for:</h4>
                         <div className="serviceButtonGroup">
                          
-                            <button onClick={() => this.props.history.push('/Cleaning/KitchenCleaning/shop/#Gas')}>
+                            <button onClick={() => this.props.history.push('/Cleaning/kitchenCleaning/shop')}>
                                 Gas Stove Cleaning <i style={{textAlign:"right"}} className="fa fa-chevron-right" />
                             </button> 
                        
-                            <button onClick={() => this.props.history.push('/Cleaning/KitchenCleaning/shop/#Shelves')}>
+                            <button onClick={() => this.props.history.push('/Cleaning/kitchenCleaning/shop')}>
                                 Shelves & Slabs/Tiles <i className="fa fa-chevron-right"></i>
                             </button>
 
-                            <button onClick={() => this.props.history.push('/cleaning/KitchenCleaning/shop/#Chimney')}>
+                            <button onClick={() => this.props.history.push('/cleaning/kitchenCleaning/shop')}>
                                 Chimney Cleaning<i className="fa fa-chevron-right"></i>
                             </button>
 
-                            <button onClick={() => this.props.history.push('/cleaning/KitchenCleaning/shop/#Floor')}>
+                            <button onClick={() => this.props.history.push('/cleaning/kitchenCleaning/shop')}>
                                 Floor<i className="fa fa-chevron-right"></i>
                             </button>
                         </div>

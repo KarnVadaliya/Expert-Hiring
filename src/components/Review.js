@@ -27,7 +27,7 @@ class Review extends Component {
             // category: ['Sofa Cleaning', 'Hair Stylist', 'Microwave Repair', 'Makeup', 'TV Repair', 'Water Purifier Repair', 'Washing Machine Repair','Refrigerator Repair','Electrician','Carpenter','Salon At Home','Haircut','Plumber'],
             category: [],
             categorySelect: '',
-            citySelect: 'Ahmedabad',
+            citySelect: '',
             rating: 0,
             comment: '',
             ok: false
@@ -35,15 +35,7 @@ class Review extends Component {
     }
 
     componentDidMount(){
-        Axios.post('http://localhost:5000/professionals/city',
-        {
-            // category: this.state.categorySelect,
-            city: this.state.citySelect
-        },{
-            "headers": {
-              'Content-Type': 'application/json',
-            }
-          })
+        Axios.get('http://localhost:5000/professionals/')
             .then(res=>{
                 if(Object.keys(res.data).length === 0){
                     console.log("Couldnt fetch data!");
@@ -106,7 +98,8 @@ class Review extends Component {
                 this.setState({
                     professionals: res.data,
                     category: tempCategory,
-                    categorySelect: ''
+                    categorySelect: '',
+                    citySelect: cityFromDropdown
                 })
             })
     }
@@ -270,7 +263,9 @@ class Review extends Component {
                     </UncontrolledDropdown>     
                 </div>
                     <br></br><br></br><br></br>
-                    <div style={{textAlign:"center"}}>
+                    
+                   {    this.state.citySelect !== '' &&
+                       <div style={{textAlign:"center"}}>
                         <h4 style={{display:"inline"}}>Please select a category : &nbsp;&nbsp;</h4><span>{' '}</span>
                         <UncontrolledDropdown>
                             <DropdownToggle caret color="white">                                
@@ -281,7 +276,7 @@ class Review extends Component {
                                 {categoryInformation}
                             </DropdownMenu>
                         </UncontrolledDropdown>     
-                    </div>      
+                    </div>      }
                     <br>                    
                     </br>
                     <br>                    

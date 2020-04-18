@@ -5,7 +5,7 @@ import { Row, Col, Badge } from "reactstrap";
 import "../../../../assets/vendor/font-awesome/css/font-awesome.min.css";
 import { connect } from 'react-redux';
 import { toggleCartModal } from '../../../../actions/toggleCartModal';
-import CartModal from './CartModal';
+import CartModal from '../../Cleaning/SofaCleaning/CartModal';
 import { addProductFromDB } from '../../../../actions/addInputs/addProductFromDB';
 import Axios from 'axios';
 import ProductCard from './ProductCard';
@@ -26,7 +26,7 @@ class ACRepairCart extends Component {
     }
 
     componentDidMount(){
-        Axios.get('http://localhost:5000/ApplianceRepair/acRepair/')
+        Axios.get('http://localhost:5000/ApplianceRepair/ac')
             .then(res=>{
                 console.log(res.data);
                 let tempList = []

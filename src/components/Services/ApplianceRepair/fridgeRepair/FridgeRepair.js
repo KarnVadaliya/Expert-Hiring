@@ -57,7 +57,7 @@ class FridgeRepair extends Component{
         return reviewList;
     }
 
-    getElements = (array) => array.slice(0,2);
+    getElements = (array) => array.slice(-2);
 
     seeMoreOnClick = (e) => {
         this.setState({
@@ -68,6 +68,18 @@ class FridgeRepair extends Component{
     seeMoreReviews = (e) =>{
         this.setState({
             seeMoreReviews: true
+        })
+    }
+
+    seeLessOnClick = (e) =>{
+        this.setState({
+            seeMore: false
+        })
+    }
+     
+    seeLessReviews = (e) => {
+        this.setState({
+            seeMoreReviews: false
         })
     }
 
@@ -219,10 +231,15 @@ class FridgeRepair extends Component{
                        
                         { !this.state.seeMore &&
                             <div style={{textAlign:"center",padding:"20px"}}>
-                                <button onClick={this.seeMoreOnClick}><i className="fa fa-arrow-down"></i>&nbsp;&nbsp;See more</button>
+                                <button onClick={this.seeMoreOnClick}><i className="fa fa-arrow-down"></i>&nbsp;&nbsp;View more</button>
                             </div>
                         }
-                        
+                        { this.state.seeMore &&
+                            <div style={{textAlign:"center",padding:"20px"}}>
+                                <button onClick={this.seeLessOnClick}><i className="fa fa-arrow-up"></i>&nbsp;&nbsp;View less</button>
+                            </div>
+                        }
+
                     </div>
                     <div >
                     </div>
@@ -237,9 +254,16 @@ class FridgeRepair extends Component{
                     <hr></hr>
                     {reviewsList}          
 
-                    <div style={{textAlign:"center",padding:"20px"}}>
+                    { !this.state.seeMoreReviews &&
+                       <div style={{textAlign:"center",padding:"20px"}}>
                         <button onClick={this.seeMoreReviews}><i className="fa fa-arrow-down"></i>&nbsp;&nbsp;View more</button>
-                    </div>          
+                    </div> }  
+
+                    { this.state.seeMoreReviews &&
+                       <div style={{textAlign:"center",padding:"20px"}}>
+                        <button onClick={this.seeLessReviews}><i className="fa fa-arrow-up"></i>&nbsp;&nbsp;View less</button>
+                    </div> }   
+
                 </section>
                 </div>
                 <div className="serviceBox">
@@ -247,18 +271,18 @@ class FridgeRepair extends Component{
                         <h4>Need a Fridge Technician for:</h4>
                         <div className="serviceButtonGroup">
                          
-                            <button onClick={() => this.props.history.push('/ApplianceRepair/fridgeRepair/shop/#Service')}>
+                            <button onClick={() => this.props.history.push('/ApplianceRepair/fridgeRepair/shop')}>
                                 Repair/ Service <i style={{textAlign:"right"}} className="fa fa-chevron-right" />
                             </button> 
                        
-                            <button onClick={() => this.props.history.push('/ApplianceRepair/fridgeRepair/shop/#compressor')}>
+                            <button onClick={() => this.props.history.push('/ApplianceRepair/fridgeRepair/shop')}>
                                 Compressor/ Cooling Issue<i className="fa fa-chevron-right"></i>
                             </button>
 
-                            <button onClick={() => this.props.history.push('/ApplianceRepair/fridgeRepair/shop/#Gas')}>
+                            <button onClick={() => this.props.history.push('/ApplianceRepair/fridgeRepair/shop')}>
                                 Gas Filling<i className="fa fa-chevron-right"></i>
                             </button>
-                            <button onClick={() => this.props.history.push('/ApplianceRepair/fridgeRepair/shop/#OtherIssues')}>
+                            <button onClick={() => this.props.history.push('/ApplianceRepair/fridgeRepair/shop')}>
                                 Other Issues<i className="fa fa-chevron-right"></i>
                             </button>
                         </div>

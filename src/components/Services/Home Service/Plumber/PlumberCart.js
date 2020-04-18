@@ -5,7 +5,7 @@ import { Row, Col, Badge } from "reactstrap";
 import "../../../../assets/vendor/font-awesome/css/font-awesome.min.css";
 import { connect } from 'react-redux';
 import { toggleCartModal } from '../../../../actions/toggleCartModal';
-import CartModal from './CartModal';
+import CartModal from '../../Cleaning/SofaCleaning/CartModal';
 import { addProductFromDB } from '../../../../actions/addInputs/addProductFromDB';
 import Axios from 'axios';
 import ProductCard from './ProductCard';
@@ -217,7 +217,7 @@ class PlumberCart extends Component {
                     </Button>
                 </div>
 
-                <Link id="back" to="/HomeService/electrician"><i className="fa fa-chevron-left" style={{fontSize:"50px", marginLeft:"10%", position:"absolute", top:"9%"}}/></Link>
+                <Link id="back" to="/HomeService/plumber"><i className="fa fa-chevron-left" style={{fontSize:"50px", marginLeft:"10%", position:"absolute", top:"9%"}}/></Link>
 
                 <h1 style={{fontWeight:"bold", letterSpacing:"2px", textTransform:"uppercase", textAlign:"center"}}>Plumber</h1>
                 <br></br><br></br>

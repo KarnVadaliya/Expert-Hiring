@@ -23,7 +23,8 @@ class BodyMassage extends Component{
         this.props.setSearch("");
         Axios.post('http://localhost:5000/professionals/category',
         {
-            category: "Body Massage"
+            category: "Body Massage",
+            city: this.props.mainPageState.city
         },{
             "headers": {
               'Content-Type': 'application/json',
@@ -57,7 +58,7 @@ class BodyMassage extends Component{
         return reviewList;
     }
 
-    getElements = (array) => array.slice(0,2);
+    getElements = (array) => array.slice(-2);
 
     seeMoreOnClick = (e) => {
         this.setState({
@@ -68,6 +69,18 @@ class BodyMassage extends Component{
     seeMoreReviews = (e) =>{
         this.setState({
             seeMoreReviews: true
+        })
+    }
+
+    seeLessOnClick = (e) =>{
+        this.setState({
+            seeMore: false
+        })
+    }
+     
+    seeLessReviews = (e) => {
+        this.setState({
+            seeMoreReviews: false
         })
     }
 
@@ -137,7 +150,7 @@ class BodyMassage extends Component{
             <div className="service" style={{backgroundColor:"#F5F5F5"}}>
                  <div className="serviceBg" style={{backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3),
                        rgba(0, 0, 0, 0.4)),url(${Background})`}}>
-                    <h2 id="h2">Massage Service in {this.props.mainPageState.city}</h2>
+                    <h2 id="h2">Best Body Massage Service in {this.props.mainPageState.city}</h2>
                 </div>
 
                 <div className="info" id="scrollspy">
@@ -161,7 +174,7 @@ class BodyMassage extends Component{
                             </div> 
                             <p>&emsp;&emsp;</p>
                             <div>
-                                <h5>Choose a Salon Service</h5>
+                                <h5>Choose a Massage Service</h5>
                                 <p>Choose from various salon packages and services</p>
                                
                             </div>
@@ -186,8 +199,8 @@ class BodyMassage extends Component{
                             </div>
                             <p>&emsp;&emsp;</p>
                             <div>
-                                <h5>Pay</h5>
-                                <p>Hello There</p>
+                                <h5>Relax and Enjoy Massage service</h5>
+                                <p>Our professionals will get in touch with you an hour before service</p>
                             </div>
                             <hr ></hr>
                         </li>
@@ -197,8 +210,8 @@ class BodyMassage extends Component{
                 </section>
                 <br></br>
                 <section className="info professionals" id="Professionals">
-                    <h4>Massage Professionals</h4>
-                    <h6>{this.state.professionals.length} cleaning professionals in Ahmedabad</h6>
+                    <h4>Professionals</h4>
+                    <h6>{this.state.professionals.length} Massage Service Professionals in {this.props.mainPageState.city}</h6>
                     <hr></hr>
                     <div className="professionalsDetails">
                         
@@ -206,7 +219,12 @@ class BodyMassage extends Component{
                        
                         { !this.state.seeMore &&
                             <div style={{textAlign:"center",padding:"20px"}}>
-                                <button onClick={this.seeMoreOnClick}><i className="fa fa-arrow-down"></i>&nbsp;&nbsp;See more</button>
+                                <button onClick={this.seeMoreOnClick}><i className="fa fa-arrow-down"></i>&nbsp;&nbsp;View more</button>
+                            </div>
+                        }
+                        { this.state.seeMore &&
+                            <div style={{textAlign:"center",padding:"20px"}}>
+                                <button onClick={this.seeLessOnClick}><i className="fa fa-arrow-up"></i>&nbsp;&nbsp;View less</button>
                             </div>
                         }
                         
@@ -217,32 +235,39 @@ class BodyMassage extends Component{
                 <br></br>
                 <section className="info reviews" id="Reviews">
                     <h4>Recent Customer Reviews</h4>
-                    <h6>For Massage Professionals in Boston</h6>                   
+                    <h6>of Massage Service Professionals in {this.props.mainPageState.city}</h6>                   
                     <div className="crating">
                         <span style={{fontSize:"38px", color:"#5300a5", fontWeight:"650"}}>&#9733; {this.averageUserRatings()}</span><span style={{fontSize:"20px", color:"#5300a5", fontWeight:"600"}}>/5</span> &nbsp;based on {this.state.userReviews.length} ratings
                     </div>
                     <hr></hr>
                     {reviewsList}          
 
-                    <div style={{textAlign:"center",padding:"20px"}}>
+                    { !this.state.seeMoreReviews &&
+                       <div style={{textAlign:"center",padding:"20px"}}>
                         <button onClick={this.seeMoreReviews}><i className="fa fa-arrow-down"></i>&nbsp;&nbsp;View more</button>
-                    </div>          
+                    </div> }  
+
+                    { this.state.seeMoreReviews &&
+                       <div style={{textAlign:"center",padding:"20px"}}>
+                        <button onClick={this.seeLessReviews}><i className="fa fa-arrow-up"></i>&nbsp;&nbsp;View less</button>
+                    </div> }   
+
                 </section>
                 </div>
                 <div className="serviceBox">
                     <div className="serviceBoxButtons">
-                        <h4>Need a Massage Professional for :</h4>
+                        <h4>Need a Massage Professional for:</h4>
                         <div className="serviceButtonGroup">
                          
-                            <button onClick={() => this.props.history.push('/Massage/BodyMassageCart/shop')}>
+                            <button onClick={() => this.props.history.push('/Massage/bodyMassage/shop')}>
                                 Body Pain relief <i style={{textAlign:"right"}} className="fa fa-chevron-right" />
                             </button> 
                        
-                            <button onClick={() => this.props.history.push('/Massage/BodyMassageCart/shop')}>
+                            <button onClick={() => this.props.history.push('/Massage/bodyMassage/shop')}>
                                 Detoxify<i className="fa fa-chevron-right"></i>
                             </button>
 
-                            <button onClick={() => this.props.history.push('/Massage/BodyMassageCart/shop')}>
+                            <button onClick={() => this.props.history.push('/Massage/bodyMassage/shop')}>
                                 Stress relief<i className="fa fa-chevron-right"></i>
                             </button>
                         </div>

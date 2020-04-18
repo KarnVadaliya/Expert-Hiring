@@ -94,7 +94,7 @@ class SofaCleaning extends Component{
                     <React.Fragment key={professional._id}>
                         <img src={require("../../../../assets/img/serviceBackgrounds/random.jpg")}></img>
                         <div style={{marginLeft:"120px"}}>
-                            <span className="name">{professional.name}</span><br></br><br></br>
+                            <span className="name">{professional.name}</span><br></br>
                             <p>{professional.address}</p>
                             <span style={{marginTop:"-2px"}} className="rating">&#9733; {professional.ratings} <span style={{marginLeft:"2px", marginRight:"5px",color:"black"}}> ({professional.numberOfRatings} ratings) &emsp; &#x25cf; </span>  {professional.rated5Stars} times rated 5 star</span>
                             <br></br>    
@@ -148,13 +148,13 @@ class SofaCleaning extends Component{
             <div className="service" style={{backgroundColor:"#F5F5F5"}}>
                  <div className="serviceBg" style={{backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3),
                        rgba(0, 0, 0, 0.4)),url(${Background})`}}>
-                    <h2 id="h2">Sofa Cleaning Service in {this.props.mainPageState.city}</h2>
+                    <h2 id="h2">Sofa Cleaning Service At Home in {this.props.mainPageState.city}</h2>
                 </div>
 
                 <div className="info" id="scrollspy">
                     <Scrollspy items={ ['How it Works', 'Professionals', 'Customer Reviews'] } currentClassName="is-current">
                                 <li><a active href="#Works">How it Works</a></li>
-                                <li><a href="#Professionals">Professionals</a></li>
+                                <li><a href="#Professionals">Cleaning Experts</a></li>
                                 <li><a href="#Reviews">Customer Reviews</a></li>
                     </Scrollspy>
                 </div>
@@ -172,8 +172,8 @@ class SofaCleaning extends Component{
                             </div> 
                             <p>&emsp;&emsp;</p>
                             <div>
-                                <h5>Choose a Salon Service</h5>
-                                <p>Choose from various salon packges and services</p>
+                                <h5>Select he type of your Sofa</h5>
+                                <p>Browse through various services and packages</p>
                                
                             </div>
                             <hr ></hr>
@@ -203,25 +203,25 @@ class SofaCleaning extends Component{
                             <hr ></hr>
                         </li>
                         
-                            <Button id="bookNow" style={{width:"100%", margin:"auto"}} onClick={() => this.props.history.push('/Cleaning/sofaCleaning/shop/#3SofaSeats')}>Book Now!</Button>
+                            <Button id="bookNow" style={{width:"100%", margin:"auto"}} onClick={() => this.props.history.push('/Cleaning/sofaCleaning/shop')}>Book Now!</Button>
                         
                     </ul>
                 </section>
                 <br></br>
                 <div className="serviceBox">
                     <div className="serviceBoxButtons">
-                        <h4>Need a Cleaning Professional for :</h4>
+                        <h4>Need a Sofa Cleaning Professional for:</h4>
                         <div className="serviceButtonGroup">
                          
-                            <button onClick={() => this.props.history.push('/Cleaning/sofaCleaning/shop/#3SofaSeats')}>
+                            <button onClick={() => this.props.history.push('/Cleaning/sofaCleaning/shop')}>
                                 3 Sofa Seats <i style={{textAlign:"right"}} className="fa fa-chevron-right" />
                             </button> 
                        
-                            <button onClick={() => this.props.history.push('/Cleaning/sofaCleaning/shop/#4SofaSeats')}>
+                            <button onClick={() => this.props.history.push('/Cleaning/sofaCleaning/shop')}>
                                 4 Sofa Seats<i className="fa fa-chevron-right"></i>
                             </button>
 
-                            <button onClick={() => this.props.history.push('/cleaning/sofaCleaning/shop/#5SofaSeats')}>
+                            <button onClick={() => this.props.history.push('/cleaning/sofaCleaning/shop')}>
                                 5 Sofa Seats<i className="fa fa-chevron-right"></i>
                             </button>
                         </div>
@@ -239,8 +239,8 @@ class SofaCleaning extends Component{
                     </div>
                 </div>
                 <section className="info professionals" id="Professionals">
-                    <h4>Cleaning Professionals</h4>
-                    <h6>{this.state.professionals.length} Sofa cleaning professionals in Ahmedabad</h6>
+                    <h4>Cleaning Experts</h4>
+                    <h6>{this.state.professionals.length} Sofa Cleaning Service Professionals in {this.props.mainPageState.city}</h6>
                     <hr></hr>
                     <div className="professionalsDetails">
                         
@@ -248,7 +248,7 @@ class SofaCleaning extends Component{
                        
                         { !this.state.seeMore &&
                             <div style={{textAlign:"center",padding:"20px"}}>
-                                <button onClick={this.seeMoreOnClick}><i className="fa fa-arrow-down"></i>&nbsp;&nbsp;See more</button>
+                                <button onClick={this.seeMoreOnClick}><i className="fa fa-arrow-down"></i>&nbsp;&nbsp;View more</button>
                             </div>
                         }
                         { this.state.seeMore &&
@@ -264,7 +264,7 @@ class SofaCleaning extends Component{
                 <br></br>
                 <section className="info reviews" id="Reviews">
                     <h4>Recent Customer Reviews</h4>
-                    <h6>For Sofa Cleaning Professionals in Ahmedabad</h6>                   
+                    <h6>of Sofa Cleaning Service Professionals in {this.props.mainPageState.city}</h6>                   
                     <div className="crating">
                         <span style={{fontSize:"38px", color:"#5300a5", fontWeight:"650"}}>&#9733; {this.averageUserRatings()}</span><span style={{fontSize:"20px", color:"#5300a5", fontWeight:"600"}}>/5</span> &nbsp;based on {this.state.userReviews.length} ratings
                     </div>
@@ -282,36 +282,6 @@ class SofaCleaning extends Component{
                     </div> }   
 
                 </section>
-                </div>
-                <div className="serviceBox">
-                    <div className="serviceBoxButtons">
-                        <h4>Need Sofa Cleaning for :</h4>
-                        <div className="serviceButtonGroup">
-                         
-                            <button onClick={() => this.props.history.push('/Cleaning/sofaCleaning/shop/#3SofaSeats')}>
-                                3 Sofa Seats <i style={{textAlign:"right"}} className="fa fa-chevron-right" />
-                            </button> 
-                       
-                            <button onClick={() => this.props.history.push('/Cleaning/sofaCleaning/shop/#4SofaSeats')}>
-                                4 Sofa Seats<i className="fa fa-chevron-right"></i>
-                            </button>
-
-                            <button onClick={() => this.props.history.push('/cleaning/sofaCleaning/shop/#5SofaSeats')}>
-                                5 Sofa Seats<i className="fa fa-chevron-right"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div className="serviceBoxRatings" >
-                        <div className="ratings"> 
-                            <span style={{fontSize:"26px", color:"#5300a5", fontWeight:"580"}}>&#9733; {this.averageUserRatings()}</span><span style={{fontSize:"20px", color:"#5300a5", fontWeight:"580"}}>/5</span>
-                            <p>based on {this.state.userReviews.length} ratings</p>
-                        </div>
-                        
-                       <div className="bookings">   
-                           <span style={{fontSize:"25px", color:"black", fontWeight:"580"}}>7,483</span>
-                           <p>Bookings done in past month</p>
-                       </div>
-                    </div>
                 </div>
                 
             </div>

@@ -30,90 +30,63 @@ export default class Careers extends Component {
         super(props);
         this.state ={
             defaultModal: false,
-            file: null,
+            phone:"",
             name: "",
             email: "",
             skills: "",
-            jobPosition: "",
+            position: "",
             location: "",
-            regExName : /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/,
+            regExName : /^[a-z ,.'-]+$/i,
             regExEmail : /([\w\.]+)@([\w\.]+)\.(\w+)/,
+            regExPhone: /^[2-9]\d{2}-\d{3}-\d{4}$/,
             nameError: "",
-            emailError: ""
+            emailError: "",
+            phoneError: ""
         }
         this.onFormSubmit = this.onFormSubmit.bind(this)
-        this.onChange = this.onChange.bind(this)
-        this.fileUpload = this.fileUpload.bind(this)
       }
     
     toggleModal = (state, JobPosition, Location) => {
         this.setState({
         [state]: !this.state[state],
         location: Location,
-        jobPosition: JobPosition
-        });
-
-       
+        position: JobPosition
+        }); 
     };
 
-   
 
-
-    onFormSubmit = applicationID => e => {
+    onFormSubmit  = e => {
         e.preventDefault(); 
-        if(this.state.nameError === "" && this.state.emailError === ""){
-            this.fileUpload(this.state.file);
-            this.resetForm();
-        }
+        this.resetForm();
 
-        axios.post('http://localhost:5000/application/submit/'+applicationID,
+        axios.post('http://localhost:5000/application/add/',
         {
             name: this.state.name,
             email: this.state.email,
+            phone: this.state.phone,
             skills: this.state.skills,
             location: this.state.location,
-            position: this.state.jobPosition
+            position: this.state.position
         },{
             "headers": {
               'Content-Type': 'application/json',
             }
           })
           .then(res=>{
-              console.log(res);
-              // alert('Your application is submitted! Thank you!');
-                            
-                           
+              console.log(res);                
           })
           .catch(err=>console.log(err));
-
-        
-        
-    }
-    
-
-    onChange(e) {
-
-        this.setState({file:e.target.files[0]})
-
-    }
-
-
-    fileUpload(file){
-        const url = 'http://example.com/file-upload';
-        const formData = new FormData();
-        formData.append('file',file)
-        const config = {
-            headers: {
-                'content-type': 'multipart/form-data'
-            }
-        }
-        return  post(url, formData,config)
     }
 
     resetForm = () => { 
      document.getElementById("form").reset();
     }
 
+    handleOnChangeName = e =>{
+      this.setState({
+          [e.target.name]: e.target.value
+      })
+    }
     handleNameError = (e) =>{
         if(!this.state.name.match(this.state.regExName)){
             this.setState({
@@ -126,10 +99,15 @@ export default class Careers extends Component {
             })
         }
     }
+    handleOnChangeEmail = e =>{
+      this.setState({
+          [e.target.name]: e.target.value
+      })
+    }
     handleEmailError = (e) => {
         if(!this.state.email.match(this.state.regExEmail)){
             this.setState({
-                email: "",
+                [e.target.name]: "",
                 emailError: "Invalid input for your email id."
             })
         }else{
@@ -139,8 +117,31 @@ export default class Careers extends Component {
         }
     }
 
+    handleOnChangePhone = e =>{
+      this.setState({
+          [e.target.name]: e.target.value
+      })
+    }
+    handlePhoneError = (e) =>{
+        if(!this.state.phone.match(this.state.regExPhone)){
+            this.setState({
+                [e.target.name]: "",
+                phoneError: "Invalid input for your phonr."
+            })
+        }else{
+            this.setState({
+                phoneError: ""
+            })
+        }
+    }
+
+    handleOnChangeSkills = e =>{
+      this.setState({
+          [e.target.name]: e.target.value
+      })
+    }
+
   render() {
-    console.log(this.state.location)
     return (
       <div style={{marginTop:"-25px"}}>
       <div className = "image_container">
@@ -390,52 +391,44 @@ export default class Careers extends Component {
               <div className="modal-body p-0">
                 <Card className="bg-secondary shadow border-0">
                   <CardHeader className="bg-transparent pb-4">
-                    <div className="text-muted text-center mt-2 mb-3">
-                      <small><strong>Apply with</strong></small>
-                    </div>
-                    <div className="btn-wrapper text-center">
-                      <Button
-                        className="btn-neutral btn-icon"
-                        color="default"
-                        href="#pablo"
-                        onClick={e => e.preventDefault()}
-                      >
-                        <span className="btn-inner--icon">
-                          <img
-                            alt="..."
-                            src={require("../assets/img/careers/linkedin.svg")}
-                          />
-                        </span>
-                        <span className="btn-inner--text">LinkedIn</span>
-                      </Button>
+                    <div className=" text-center mt-2 mb-3">
+                      <strong>Send us your details and we will get back to you</strong>
                     </div>
                   </CardHeader>
                   <CardBody className="px-lg-5 py-lg-3">
-                    <div className="text-center text-muted mb-4">
-                      <small><strong>Or fill in the details</strong></small>
-                    </div>
                     <Form id="form">
-                    <FormGroup className="mb-3">
+                    <FormGroup className="mb-4">
                         <InputGroup className="input-group-alternative">
                           <InputGroupAddon addonType="prepend">
                             <InputGroupText>
                               <i className="ni ni-circle-08" />
                             </InputGroupText>
                           </InputGroupAddon>
-                          <Input placeholder="Full Name" name= "name" type="text" required onBlur={this.handleNameError} />
+                          <Input placeholder="Full Name" name= "name" type="text" required onBlur={this.handleNameError} onChange={this.handleOnChangeName}  autoComplete="off"/>
                         </InputGroup>
                         <div style={errorStyle}>{this.state.nameError}</div>
                       </FormGroup>
-                      <FormGroup className="mb-3">
+                      <FormGroup className="mb-4">
                         <InputGroup className="input-group-alternative">
                           <InputGroupAddon addonType="prepend">
                             <InputGroupText>
                               <i className="ni ni-email-83" />
                             </InputGroupText>
                           </InputGroupAddon>
-                          <Input placeholder="Email" name= "email" type="email" required onBlur={this.handleEmailError}/>
+                          <Input placeholder="Email" name= "email" type="text" required onBlur={this.handleEmailError} onChange={this.handleOnChangeEmail} autoComplete="off"/>
                         </InputGroup>
                         <div style={errorStyle}>{this.state.emailError}</div>
+                      </FormGroup>
+                      <FormGroup className="mb-4">
+                        <InputGroup className="input-group-alternative">
+                          <InputGroupAddon addonType="prepend">
+                            <InputGroupText>
+                              <i className="ni ni-mobile-button" />
+                            </InputGroupText>
+                          </InputGroupAddon>
+                          <Input placeholder="xxx-xxx-xxxx" name= "phone" type="text" required onBlur={this.handleEmailError} onChange={this.handleOnChangeEmail} autoComplete="off"/>
+                        </InputGroup>
+                        <div style={errorStyle}>{this.state.phoneError}</div>
                       </FormGroup>
                       <FormGroup>
                         <InputGroup className="input-group-alternative">
@@ -444,24 +437,19 @@ export default class Careers extends Component {
                               <i className="ni ni-map-big" />
                             </InputGroupText>
                           </InputGroupAddon>
-                          <Input placeholder="Skills" type="skills" />
+                          <Input placeholder="Skills" name="skills" type="text" onChange={this.handleOnChangeSkills} autoComplete="off"/>
                         </InputGroup>
                       </FormGroup>
-                      <h5>Resume</h5>
-                      <input type="file" onChange={this.onChange} />
                       <div className="text-center">
                         <Button
                           className="my-4"
                           color="primary"
                           type="submit"
                           onClick={this.onFormSubmit}
-                          onClick={() => this.toggleModal("defaultModal")}
+                          // onClick={() => this.toggleModal("defaultModal")}
                         >
                           Apply
                         </Button>
-                        {/* <Alert color="success" >
-                            <strong>Success!</strong> This is a success alert—check it out!
-                        </Alert> */}
                       </div>
                     </Form>
                   </CardBody>

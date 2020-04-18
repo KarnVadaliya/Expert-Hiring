@@ -5,7 +5,7 @@ import { Row, Col, Badge } from "reactstrap";
 import "../../../../assets/vendor/font-awesome/css/font-awesome.min.css";
 import { connect } from 'react-redux';
 import { toggleCartModal } from '../../../../actions/toggleCartModal';
-import CartModal from './CartModal';
+import CartModal from '../../Cleaning/SofaCleaning/CartModal';
 import { addProductFromDB } from '../../../../actions/addInputs/addProductFromDB';
 import Axios from 'axios';
 import ProductCard from './ProductCard';
@@ -20,13 +20,13 @@ class CarpenterCart extends Component {
         super(props);
   
         this.state = {
-          services: ['Quick Book','Switch and Socket','Appliance','Wiring'],
+          services: ['Quick Book','Bed', 'Door', 'Furniture Repair'],
           products: []
         };
     }
 
     componentDidMount(){
-        Axios.get('http://localhost:5000/homeservice/electrician/')
+        Axios.get('http://localhost:5000/homeservice/carpenter/')
             .then(res=>{
                 console.log(res.data);
                 let tempList = [];
@@ -44,12 +44,12 @@ class CarpenterCart extends Component {
         switch (name) {
             case 'Quick Book':
                 return global.quickBook;
-            case 'Switch and Socket':
-                return global.switchSocket;
-            case 'Appliance':
-                return global.appliance;
-            case 'Wiring':
-                return global.wiring;
+            case 'Bed':
+                return global.bed;
+            case 'Door':
+                return global.door;
+            case 'Furniture Repair':
+                return global.repair;
             default:
                 break;
         }
@@ -93,23 +93,23 @@ class CarpenterCart extends Component {
         });
       
 
-        const switchSocketCategory = [];
+        const bedCategory = [];
         tempList.map(product=>{
-            if(product.category === 'Switch and Socket')
-                switchSocketCategory.push(product);
+            if(product.category === 'Bed')
+                bedCategory.push(product);
         });
         
 
-        const applianceCategory = [];
+        const doorCategory = [];
         tempList.map(product=>{
-            if(product.category === 'Appliance')
-                applianceCategory.push(product);
+            if(product.category === 'Door')
+                doorCategory.push(product);
         });
 
-        const wiringCategory = [];
+        const repairCategory = [];
         tempList.map(product=>{
-            if(product.category === 'Wiring')
-                wiringCategory.push(product);
+            if(product.category === 'Furniture Repair')
+                repairCategory.push(product);
         });
         
 
@@ -123,8 +123,8 @@ class CarpenterCart extends Component {
             <LoadingCard />
         );
 
-        global.switchSocket = (switchSocketCategory.length) ? (
-            switchSocketCategory.map(product => {
+        global.bed = (bedCategory.length) ? (
+            bedCategory.map(product => {
                 return(
                     <ProductCard product={product}/>
                 ) 
@@ -133,8 +133,8 @@ class CarpenterCart extends Component {
             <LoadingCard />
         );
 
-        global.appliance = (applianceCategory.length) ? (
-            applianceCategory.map(product => {
+        global.door = (doorCategory.length) ? (
+            doorCategory.map(product => {
                 return(
                    <ProductCard product={product}/>
                 ) 
@@ -143,8 +143,8 @@ class CarpenterCart extends Component {
             <LoadingCard />
         );
 
-        global.wiring = (wiringCategory.length) ? (
-            wiringCategory.map(product => {
+        global.repair = (repairCategory.length) ? (
+            repairCategory.map(product => {
                 return(
                     <ProductCard product={product}/>
                 ) 
@@ -181,9 +181,9 @@ class CarpenterCart extends Component {
                     </Button>
                 </div>
 
-                <Link id="back" to="/HomeService/electrician"><i className="fa fa-chevron-left" style={{fontSize:"50px", marginLeft:"10%", position:"absolute", top:"9%"}}/></Link>
+                <Link id="back" to="/HomeService/carpenter"><i className="fa fa-chevron-left" style={{fontSize:"50px", marginLeft:"10%", position:"absolute", top:"9%"}}/></Link>
 
-                <h1 style={{fontWeight:"bold", letterSpacing:"2px", textTransform:"uppercase", textAlign:"center"}}>Electrician</h1>
+                <h1 style={{fontWeight:"bold", letterSpacing:"2px", textTransform:"uppercase", textAlign:"center"}}>Carpenter</h1>
                 <br></br><br></br>
                 <div className="servicesSection">
                     <div className="servicesNav">

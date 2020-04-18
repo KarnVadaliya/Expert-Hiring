@@ -5,16 +5,28 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const cors = require('cors');
 require('dotenv').config({path: __dirname + '/.env'})
-const uri = process.env.DB_CONNECTION;
+const uri = process.env.DB_CONNECTION ;
 const app = express();
 
 mongoose.Promise = global.Promise;
 
-mongoose.connect(uri,{useNewUrlParser:true,useUnifiedTopology: true})
+var connectionString = '';
+if(process.env.USERNAME){
+  connectionString = 'mongodb://'+process.env.USERNAME +':'+process.env.PASSWORD+'ds043057.mlab.com:43057/heroku_1mj6bx35'
+}
+
+
+
+mongoose.connect(uri || connectionString,{useNewUrlParser:true,useUnifiedTopology: true})
     .then(()=> console.log("Connected to MongoDB.."))
     .catch(err => console.error('Could not connect...',err));
 app.use(express.json());
 app.use(cors());
+
+if(process.env.NODE_ENV === 'production'){
+  app.use(express.static("../build"));
+}
+
 
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
@@ -42,19 +54,19 @@ app.use('/application', applicationRouter);
 
 //Appliance Routers
 const productsACRouter = require('./routes/appliance/productsAC');
-app.use('/appliance/ac',productsACRouter);
+app.use('/ApplianceRepair/ac',productsACRouter);
 const productsFridgeRouter = require('./routes/appliance/productsFridge');
-app.use('/appliance/fridge',productsFridgeRouter);
+app.use('/ApplianceRepair/fridge',productsFridgeRouter);
 const productsWahingMachineRouter = require('./routes/appliance/productsWashingMachine');
-app.use('/appliance/washingmachine',productsWahingMachineRouter);
+app.use('/ApplianceRepair/washingmachine',productsWahingMachineRouter);
 
 //Electronic Routers
 const productsMicrowaveRouter = require('./routes/electronic/productsMicrowave');
-app.use('/electronic/microwave',productsMicrowaveRouter);
+app.use('/ElectronicRepair/microwave',productsMicrowaveRouter);
 const productsTVRouter = require('./routes/electronic/productsTV');
-app.use('/electronic/TV',productsTVRouter);
+app.use('/ElectronicRepair/tv',productsTVRouter);
 const productsWaterPurifierRouter = require('./routes/electronic/productsWaterPurifier');
-app.use('/electronic/water',productsWaterPurifierRouter);
+app.use('/ElectronicRepair/water',productsWaterPurifierRouter);
 
 const productsMakeUpRouter = require('./routes/salon/productsMakeUp');
 app.use('/Salon/makeup', productsMakeUpRouter);
@@ -75,7 +87,7 @@ const productsHaircutRouter = require('./routes/salon/productsHair');
 app.use('/Salon/haircut', productsHaircutRouter);
 
 const productsMassageRouter = require('./routes/massage/productsMassage');
-app.use('/Massage/BodyMassage', productsMassageRouter);
+app.use('/Massage/bodyMassage', productsMassageRouter);
 
 // const salonRouter = require('./routes/salon/productsMakeUp');
 // app.use('/salon/makeup', salonRouter);
@@ -96,6 +108,8 @@ passport.deserializeUser((user, cb) => {
   cb(null, user);
 });
 
-app.listen(PORT, () => {
+
+
+app.listen(process.env.PORT || PORT, () => {
   console.log(`app running on port ${PORT}`)
 });
