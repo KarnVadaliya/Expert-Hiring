@@ -109,6 +109,31 @@ router.route("/sendQuery").post((req,res)=>{
     res.json("Query Send")
 });
 
+router.route("/sendApp").post((req,res)=>{
+
+    const mailOptions = {
+        from: LEGION_GMAIL_USERNAME,
+        to: req.body.email,
+        subject: "Application Recieved",
+        html: `<div><p>From: ${LEGION_GMAIL_USERNAME}</p><br>
+        <p>We will get back to you for further enquiries</p><br>
+        <p>Regards</p><p>Legion HR Team</p></div>`
+    };
+
+
+    transporter.sendMail(mailOptions, function (err, info) {
+        if (err) {
+            console.log("error while sending an email");
+            //  res.status(200);
+        } else {
+            console.log("Email sent");
+            //  res.status(400);
+        }
+    });
+    
+    res.json("Query Send")
+});
+
 
 
 

@@ -97,7 +97,6 @@ passport.deserializeUser((user, cb) => {
 });
 
 
-
 app.listen(PORT, () => {
   console.log(`app running on port ${PORT}`)
 });

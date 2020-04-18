@@ -26,7 +26,7 @@ class MicrowaveRepairCart extends Component {
     }
 
     componentDidMount(){
-        Axios.get('http://localhost:5000/MicrowaveRepair/microwave')
+        Axios.get('http://localhost:5000/ElectronicRepair/microwave')
             .then(res=>{
                 console.log(res.data);
                 let tempList = []
