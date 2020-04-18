@@ -176,6 +176,7 @@ class Carpenter extends Component{
                             <p>&emsp;&emsp;</p>
                             <div>
                                  <h5>Choose the type of service</h5>
+                                 <p>We service all types carpenter services</p>
                                
                             </div>
                             <hr ></hr>
@@ -204,7 +205,7 @@ class Carpenter extends Component{
                             </div>
                             <hr ></hr>
                         </li>
-                        <Button id="bookNow" style={{width:"100%", margin:"auto"}} onClick={() => this.props.history.push('/cleaning/sofaCleaning/shop/#3SofaSeats')}>Book Now!</Button>
+                        <Button id="bookNow" style={{width:"100%", margin:"auto"}} onClick={() => this.props.history.push('/HomeService/carpenter/shop')}>Book Now!</Button>
                     </ul>
                 </section>
                 <br></br>
@@ -256,15 +257,15 @@ class Carpenter extends Component{
                         <h4>Need a Cleaning Professional for :</h4>
                         <div className="serviceButtonGroup">
                          
-                            <button onClick={() => this.props.history.push('/cleaning/sofaCleaning/shop/#3SofaSeats')}>
+                            <button onClick={() => this.props.history.push('/HomeService/carpenter/shop')}>
                                 Repair & Fixes <i style={{textAlign:"right"}} className="fa fa-chevron-right" />
                             </button> 
                        
-                            <button onClick={() => this.props.history.push('/cleaning/sofaCleaning/shop/#4SofaSeats')}>
+                            <button onClick={() => this.props.history.push('/HomeService/carpenter/shop')}>
                                 New Furniture Making<i className="fa fa-chevron-right"></i>
                             </button>
 
-                            <button onClick={() => this.props.history.push('/cleaning/sofaCleaning/shop/#5SofaSeats')}>
+                            <button onClick={() => this.props.history.push('/HomeService/carpenter/shop')}>
                                 Other Woodwork<i className="fa fa-chevron-right"></i>
                             </button>
                         </div>

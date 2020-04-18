@@ -175,7 +175,7 @@ class Electrician extends Component{
                             <p>&emsp;&emsp;</p>
                             <div>
                                 <h5>Choose the type of service</h5>
-                                {/* <p>Choose from various salon packges and services</p> */}
+                                <p>We service many types of Electrician Services</p>
                                
                             </div>
                             <hr ></hr>

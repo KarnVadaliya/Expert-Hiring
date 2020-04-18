@@ -16,6 +16,12 @@ const applicationSchema = new Schema({
         trim: true,
         minlength: 3
     },
+    phone:{
+        type: String,
+        required: true,
+        trim: true,
+        minlength: 3
+    },
     skills:{
         type: String,
         required: true,
@@ -33,7 +39,7 @@ const applicationSchema = new Schema({
         required: true,
         trim: true,
         minlength: 3
-    },
+    }
 
 });
 
