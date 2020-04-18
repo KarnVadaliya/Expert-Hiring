@@ -161,7 +161,7 @@ class ServicesComponent extends Component{
                             category: "Fitness"   
                         }
                     ]
-                },                
+                }              
             ]
         }
     }

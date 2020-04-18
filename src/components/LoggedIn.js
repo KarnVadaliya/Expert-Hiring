@@ -11,7 +11,7 @@ import {
     Nav
   } from "reactstrap";
 import { toggleCartModal } from '../actions/toggleCartModal';
-import CartModal from '../components/Services/Cleaning/SofaCleaning/CartModal'
+import CartModal from './Services/Cleaning/SofaCleaning/CartModal'
 
 class LoggedIn extends Component {
 
